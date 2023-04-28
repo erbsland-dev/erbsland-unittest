@@ -19,7 +19,7 @@ include_guard()
 function(erbsland_unittest)
     # Read the arguments.
     set(options PRECOMPILE_HEADERS NO_LINK_SETTINGS)
-    set(oneValueArgs TARGET)
+    set(oneValueArgs TARGET COPY_TEST_DATA)
     set(multiValueArgs "")
     cmake_parse_arguments(ARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
@@ -80,5 +80,21 @@ function(erbsland_unittest)
     # Add the metadata target and file to the build process.
     add_dependencies("${ARGS_TARGET}" "${ARGS_TARGET}MetaGen")
     target_sources(${ARGS_TARGET} PRIVATE "${_testMetaDataSrc}")
+
+    if(ARGS_COPY_TEST_DATA)
+        cmake_path(SET _dataSourceDir NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/${ARGS_COPY_TEST_DATA}")
+        cmake_path(SET _dataDestDir NORMALIZE "${_targetBinaryDir}/${ARGS_COPY_TEST_DATA}")
+        if (${CMAKE_VERSION} VERSION_LESS "3.26")
+            # For CMake <3.26 use the old "copy_directory" command.
+            set(_copyCmd "copy_directory")
+        else()
+            # For CMake >=3.26 use the more efficient "copy_directory_if_different"
+            set(_copyCmd "copy_directory_if_different")
+        endif()
+        add_custom_command(TARGET ${ARGS_TARGET} POST_BUILD
+                COMMAND "${CMAKE_COMMAND}" -E ${_copyCmd} "${_dataSourceDir}" "${_dataDestDir}"
+                COMMENT "Copy test data..."
+                VERBATIM)
+    endif()
 endfunction()
 
