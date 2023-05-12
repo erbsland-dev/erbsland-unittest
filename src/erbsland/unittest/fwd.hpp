@@ -1,5 +1,5 @@
-// Copyright © 2023 Tobias Erbsland. Web: https://erbsland.dev
-// Copyright © 2023 EducateIT GmbH. Web: https://educateit.ch
+// Copyright © 2023 Tobias Erbsland. Web: https://erbsland.dev/
+// Copyright © 2023 EducateIT GmbH. Web: https://educateit.ch/
 //
 // This program is free software: you can redistribute it and/or modify it under the terms of the
 // GNU Lesser General Public License as published by the Free Software Foundation, either
