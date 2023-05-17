@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Structure and Naming" href="structure-and-naming.html" />
+    <link rel="prev" title="Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#full-unit-test-example">Full Unit Test Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-examples">Command Line Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting-in-code-examples">Formatting in Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-project-structure">Recommended Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-project-structure">Create the Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-root-project-cmake-file">Configuring the Root Project CMake File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-unit-test-cmake-file">Setting Up the Unit Test CMake File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-the-tests">Writing the Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-main-cpp-file">Creating the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-your-first-unit-test">Creating Your First Unit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-build-environment-and-compile-the-test">Create the Build Environment and Compile the Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-test">Run the Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-command-line-help">Get Command Line Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-all-tests-tags-and-targets">List all Tests, Tags and Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-tests-select-the-tests-you-like-to-run">Filtering Tests, Select the Tests you Like to Run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespaces.html">Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-reference.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-reference.html">Macros</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/quick-start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start">
+<span id="index-0"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
+<section id="full-unit-test-example">
+<h2>Full Unit Test Example<a class="headerlink" href="#full-unit-test-example" title="Permalink to this heading"></a></h2>
+<p>If you prefer learning through examples, take a look at the following repository:</p>
+<p>👉 <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest-example">Erbsland Unittest Example</a></p>
+</section>
+<section id="command-line-examples">
+<h2>Command Line Examples<a class="headerlink" href="#command-line-examples" title="Permalink to this heading"></a></h2>
+<p>Throughout the guide, you will find command line examples demonstrating how to use the <code class="docutils literal notranslate"><span class="pre">git</span></code> command to add submodules to the project, create directories with <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, and create or edit files with the text editor <code class="docutils literal notranslate"><span class="pre">nano</span></code>. These examples are provided for illustration purposes and are not meant to imply that you must work exclusively in the command line to set up your project. We have found that most software developers can easily understand and follow these examples.</p>
+</section>
+<section id="formatting-in-code-examples">
+<h2>Formatting in Code Examples<a class="headerlink" href="#formatting-in-code-examples" title="Permalink to this heading"></a></h2>
+<p>To keep this guide short and easy to read, most comments and empty lines were removed from the code listings. This does not mean you should do the same for real world projects. Please follow the usual coding guidelines when formatting the code for unit tests and build files.</p>
+</section>
+<section id="recommended-project-structure">
+<h2>Recommended Project Structure<a class="headerlink" href="#recommended-project-structure" title="Permalink to this heading"></a></h2>
+<p><em>Erbsland UnitTest</em> is intended to be utilized as a GIT submodule within a larger project. To ensure seamless integration and easy usage, we recommend the following project structure for a project called <code class="docutils literal notranslate"><span class="pre">erbsland-unittest-example</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>erbsland-unittest-example
+    ├── &lt;libraries&gt;         # All dependent libraries for the `Example` project (submodules)
+    ├── erbsland-unittest   # The Erbsland UnitTest library added as a submodule
+    ├── example-lib         # The &quot;Example&quot; project to be tested by the unit test (added as submodule as well)
+    │   ├── src (...)
+    │   └── CMakeLists.txt
+    ├── unittest            # The actual unit test, containing one or more unit test binaries
+    │   ├── src             # The source files for the unit tests
+    │   │   ├── main.cpp           # The main file for the executable
+    │   │   ├── BasicTest.hpp      # Each set of tests has to be in a file ending in ...Test.hpp
+    │   │   ├── ContextTest.hpp    # Each set contains a class with the same name of the file.
+    │   │   └── LongTest.hpp
+    │   ├── data            # Data for unit tests
+    │   └── CMakeLists.txt
+    └── CMakeLists.txt      # The root project CMake file
+</pre></div>
+</div>
+<p>By following this structure, you can ensure that your project is well-organized and easy to navigate. It also makes it simple to manage your unit tests, ensuring efficient and thorough testing of your libraries and applications.</p>
+</section>
+<section id="create-the-project-structure">
+<h2>Create the Project Structure<a class="headerlink" href="#create-the-project-structure" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+mkdir<span class="w"> </span>erbsland-unittest-example
+<span class="nb">cd</span><span class="w"> </span>erbsland-unittest-example
+git<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/erbsland-dev/erbsland-unittest.git<span class="w"> </span>erbsland-unittest
+git<span class="w"> </span>submodule<span class="w"> </span>init<span class="w"> </span>erbsland-unittest
+</pre></div>
+</div>
+<p>Next, import the application or library and all dependencies as submodules to this project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/erbsland-dev/erbsland-unittest-example-lib.git<span class="w"> </span>example-lib
+git<span class="w"> </span>submodule<span class="w"> </span>init<span class="w"> </span>example-lib
+</pre></div>
+</div>
+</section>
+<section id="configuring-the-root-project-cmake-file">
+<h2>Configuring the Root Project CMake File<a class="headerlink" href="#configuring-the-root-project-cmake-file" title="Permalink to this heading"></a></h2>
+<p>To set up the root project CMake file, use the following template:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>CMakeLists.txt
+</pre></div>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.20</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">ExampleUnitTest</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">erbsland-unittest</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">example-lib</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">unittest</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This configuration ensures that the project properly includes all necessary subdirectories for building and testing the <code class="docutils literal notranslate"><span class="pre">erbsland-unittest-example</span></code> project.</p>
+</section>
+<section id="setting-up-the-unit-test-cmake-file">
+<h2>Setting Up the Unit Test CMake File<a class="headerlink" href="#setting-up-the-unit-test-cmake-file" title="Permalink to this heading"></a></h2>
+<p>For a simple unit test with one executable, as illustrated in the example project structure, you’ll need a CMake file like the one shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>unittest
+<span class="nb">cd</span><span class="w"> </span>unitest
+nano<span class="w"> </span>CMakeLists.txt
+</pre></div>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.20</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">unittest</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">unittest</span>
+<span class="w">        </span><span class="s">src/main.cpp</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cxx_std_17</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">erbsland-unittest-example-lib</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">../example-lib/src</span><span class="p">)</span>
+<span class="nb">erbsland_unittest</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">unittest</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This configuration sets up the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> project with C++17 as the standard. It also adds the <code class="docutils literal notranslate"><span class="pre">src</span></code> subdirectory and incorporates the <em>Erbsland UnitTest</em> system.</p>
+<p>The last function call <code class="docutils literal notranslate"><span class="pre">erbsland_unittest(TARGET</span> <span class="pre">unittest)</span></code> does most of the work for you. It configures your executable to link the unit test library and adds the correct include path. Also, it creates an additional target <code class="docutils literal notranslate"><span class="pre">unittestMetaGen</span></code> that generates all the required additional code, so you don’t have to do it.</p>
+</section>
+<section id="writing-the-tests">
+<h2>Writing the Tests<a class="headerlink" href="#writing-the-tests" title="Permalink to this heading"></a></h2>
+<section id="creating-the-main-cpp-file">
+<h3>Creating the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> File<a class="headerlink" href="#creating-the-main-cpp-file" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> file serves as the entry point for your unit tests. To create and set it up, follow the example below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>src
+nano<span class="w"> </span>main.cpp
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="n">ERBSLAND_UNITTEST_MAIN</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">ERBSLAND_UNITTEST_MAIN();</span></code> macro, you can efficiently create the main function for your unit test executable.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> file is purposefully added manually to the project. Automatically generating it can cause issues with build environments, as they often determine the compiler language based on the project files. Our unit testing system allows test classes to be declared in header files without the need for additional implementation files. Having the <cite>main.cpp</cite> file in place helps prevent many potential problems.</p>
+</section>
+<section id="creating-your-first-unit-test">
+<h3>Creating Your First Unit Test<a class="headerlink" href="#creating-your-first-unit-test" title="Permalink to this heading"></a></h3>
+<p>To create unit tests using this system, follow these essential guidelines:</p>
+<ul class="simple">
+<li><p><strong>Each set of tests must be in a ``.hpp`` file or a combination of ``.hpp`` and ``.cpp`` files with a name ending in ``Test``.</strong></p></li>
+<li><p><strong>The file must contain a ``class`` that shares the _same_ name as the file.</strong></p></li>
+<li><p><strong>Tests should be _public_ methods within that class, with names beginning with lowercase ``test``.</strong></p></li>
+</ul>
+<p>Now, let’s create your first unit test. In most cases, using a single header file for all tests is more efficient, as the unit test system will automatically generate any missing implementation.</p>
+<p>Begin by creating a test suite called <code class="docutils literal notranslate"><span class="pre">Basic</span></code>. Name the file <code class="docutils literal notranslate"><span class="pre">BasicTest.hpp</span></code> and assign the same name <code class="docutils literal notranslate"><span class="pre">BasicTest</span></code> to the class inside the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>BasicTest.hpp
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ExampleLib.hpp&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">erbsland</span><span class="o">::</span><span class="n">ExampleLib</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BasicTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testMagic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">exampleLib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleLib</span><span class="p">{};</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getMagicWord</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Magic&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next add this file to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+nano<span class="w"> </span>CMakeLists.txt
+</pre></div>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.20</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">unittest</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">unittest</span>
+<span class="w">        </span><span class="s">src/BasicTest.hpp</span><span class="w">    </span><span class="c"># &lt;--- added the file</span>
+<span class="w">        </span><span class="s">src/main.cpp</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cxx_std_17</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">erbsland-unittest-example-lib</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">../example-lib/src</span><span class="p">)</span>
+<span class="nb">erbsland_unittest</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">unittest</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-the-build-environment-and-compile-the-test">
+<h2>Create the Build Environment and Compile the Test<a class="headerlink" href="#create-the-build-environment-and-compile-the-test" title="Permalink to this heading"></a></h2>
+<p>In order to compile the test, you need to create the build files using CMake first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+mkdir<span class="w"> </span>cmake-build
+<span class="nb">cd</span><span class="w"> </span>cmake-build
+cmake<span class="w"> </span>~/erbsland-unittest-example
+</pre></div>
+</div>
+<p>If everything is ok, you will get an output like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-- The C compiler identification is (...)
+-- The CXX compiler identification is (...)
+-- Detecting C compiler ABI info
+(...)
+-- Found Python3: (...) (found suitable version &quot;3.11.2&quot;, minimum required is &quot;3.11&quot;) found components: Interpreter
+-- Configuring done
+-- Generating done
+-- Build files have been written to: ~/erbsland-unittest-example
+</pre></div>
+</div>
+<p>Next, compile the unit test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(...)
+[100%] Linking CXX executable unittest
+[100%] Built target unittest
+</pre></div>
+</div>
+</section>
+<section id="run-the-test">
+<h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this heading"></a></h2>
+<p>Now you can run the test. It is placed in the subdirectory <cite>unittest</cite> of your build environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest
+</pre></div>
+</div>
+<p>If you followed along and just created a unit test with a single test function, you will get this output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 1 test suites with 1 tests ]===
+Start Time: Tue Apr 25 10:41:23 2023
+Filter: no filter set
+Suite: Basic OK!
+  Test: Magic OK!
+Total Test Duration: 8.63e-05 seconds
+===[ SUCCESS | Successfully run all tests without errors. ]===
+</pre></div>
+</div>
+<p>For the <em>complete example</em> you will get the following output, in colour if your console is supporting them:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 2 test suites with 4 tests ]===
+Start Time: Tue Apr 25 10:09:11 2023
+Filter: no filter set
+Suite: Basic OK!
+  Test: Magic OK!
+  Test: NameSetAndGet OK!
+  Test: IsNamePalindrome FAILED!
+[1]: ~/erbsland-unittest-example/unittest/src/BasicTest.hpp:57: REQUIRE(exampleLib.isNamePalindrome())
+Suite: Context OK!
+  Test: NameSetAndGet FAILED!
+[2]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+[1]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:63: WITH_CONTEXT(setAndVerifyName_error(&quot;Lisa&quot;))
+ExampleLib:
+    getName() = &quot;Lisa&quot;
+    getNameLength() = 4
+
+===[ ERROR SUMMARY ]===
+Error 1 - Basic / IsNamePalindrome FAILED!
+[1]: ~/erbsland-unittest-example/unittest/src/BasicTest.hpp:57: REQUIRE(exampleLib.isNamePalindrome())
+Error 2 - Context / NameSetAndGet FAILED!
+[2]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+[1]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:63: WITH_CONTEXT(setAndVerifyName_error(&quot;Lisa&quot;))
+===[ ERROR | 2 errors while running the tests. ]===
+</pre></div>
+</div>
+<p>No worries about all the errors, the example library and unit test produce these intentionally do demonstrate the various features.</p>
+<section id="get-command-line-help">
+<h3>Get Command Line Help<a class="headerlink" href="#get-command-line-help" title="Permalink to this heading"></a></h3>
+<p>To get a list with all command line options available for the test suite, use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>--help
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Erbsland Unit Test Help:
+  -h/--help ......... Display this help
+  -v/--verbose ...... Display verbose messages. Skipped tests.
+  -e ................ Stop at the first error.
+  -l/--list ......... List all suites and tests. Do not run any test.
+  -c/--no-color ..... Do not colorize the output and disable status updates.
+  -s/--no-summary ... Do not list the first three errors at the end of the run.
+  name:&lt;name&gt; ....... Exclusively run tests with the specified test or class name (case sensitive).
+  +name:&lt;name&gt; ...... Run tests with the specified test or class name, even optional ones.
+  -name:&lt;name&gt; ...... Skip tests with the specified test or class name.
+  target:&lt;target&gt; ... Exclusively run tests for the specified target.
+  +target:&lt;target&gt; .. Run tests with for the specified target, even optional ones.
+-target:&lt;target&gt; .. Skip tests with for the specified target.
+tag:&lt;tag&gt; ......... Exclusively run tests with the specified tags.
++tag:&lt;tag&gt; ........ Run tests with the specified tags, even optional ones.
+-tag:&lt;tag&gt; ........ Skip tests with the specified tags.
+</pre></div>
+</div>
+<p>By default all tests that are not marked with <code class="docutils literal notranslate"><span class="pre">SKIP_BY_DEFAULT()</span></code> are enabled.
+You can individually add <code class="docutils literal notranslate"><span class="pre">+</span></code> or remove <code class="docutils literal notranslate"><span class="pre">-</span></code> tests from this initial set.</p>
+<p>If you specify one or more options like <code class="docutils literal notranslate"><span class="pre">&lt;opt&gt;:&lt;tag&gt;</span></code>, only tests with
+are enabled, and further <code class="docutils literal notranslate"><span class="pre">+/-</span></code> options will change this set.</p>
+<p>The processing order of the options is <code class="docutils literal notranslate"><span class="pre">&lt;opt&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">+&lt;opt&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">-&lt;opt&gt;</span></code> and does not depend
+on the order how they are specified on the command line. Therefore <code class="docutils literal notranslate"><span class="pre">-</span></code> always have
+the highest priority and will skip these tests no mather what was specified otherwise.</p>
+</section>
+<section id="list-all-tests-tags-and-targets">
+<h3>List all Tests, Tags and Targets<a class="headerlink" href="#list-all-tests-tags-and-targets" title="Permalink to this heading"></a></h3>
+<p>To get an overview of all tests, tags and targets that are compiled in a test suite, use the <cite>-l</cite> or <cite>–list</cite> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>--list
+</pre></div>
+</div>
+<p>The <em>complete example</em> produces this result:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ List all test suites and tests ]===
+Suite: Basic &lt;ExampleLib&gt;
+  Test: Magic &lt;getMagicWord&gt;
+  Test: NameSetAndGet &lt;getName, getNameLength, setName&gt;
+  Test: IsNamePalindrome &lt;isNamePalindrome, setName&gt;
+Suite: Context &lt;ExampleLib&gt;
+  Test: NameSetAndGet &lt;getName, getNameLength, setName&gt;
+Suite: Long &lt;ExampleLib&gt;
+  Test: (IsNamePalindromeBruteForce) [long-test] &lt;isNamePalindrome, setName&gt;
+Done!
+</pre></div>
+</div>
+<p>The names directly after the colon are the <strong>names</strong> of the test suites and functions. The identifiers in the angle brackets (<code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code>) are <strong>targets</strong> and the identifiers in the square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) are <strong>tags</strong>. If the name of a suite or test is in round brackets (<code class="docutils literal notranslate"><span class="pre">()</span></code>) it means that it is skipped by default.</p>
+</section>
+<section id="filtering-tests-select-the-tests-you-like-to-run">
+<h3>Filtering Tests, Select the Tests you Like to Run<a class="headerlink" href="#filtering-tests-select-the-tests-you-like-to-run" title="Permalink to this heading"></a></h3>
+<p>If you look at this list, you see that the test <code class="docutils literal notranslate"><span class="pre">IsNamePalindromeBruteForce</span></code> is skipped by default and the tag <code class="docutils literal notranslate"><span class="pre">long-test</span></code> indicates why. So, lets start only the test with the tag <code class="docutils literal notranslate"><span class="pre">long-test</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>tag:long-test
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 1 test suites with 1 tests ]===
+Start Time: Tue Apr 25 10:48:11 2023
+Filter:
+  Tags: only use &#39;long-test&#39;
+Suite: Long OK!
+Testing name 0: baaaaa
+Testing name 1000000: phxeca
+Testing name 2000000: dpujea
+Testing name 3000000: rwroga
+(...)
+Testing name 293000000: vylery
+Testing name 294000000: jgjjty
+Testing name 295000000: xngovy
+Testing name 296000000: lvdtxy
+Testing name 297000000: zcbyzy
+  Test: IsNamePalindromeBruteForce OK!
+Total Test Duration: 85.1 seconds
+===[ SUCCESS | Successfully run all tests without errors. ]===
+</pre></div>
+</div>
+<p>This is indeed a long-running test (only when compiled for debugging).</p>
+</section>
+</section>
+<section id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p>If you not already did, have a look at the full <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest-example">example</a> that demonstrates most of the basic features of the unit test.</p>
+<p>👉 <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest-example">UnitTest Example</a> 👈</p>
+</li>
+<li><p>For more details about the unit testing system, have a look into the <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest/wiki/Documentation">documentation</a>:</p>
+<p>📚 <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest/wiki/Documentation">Documentation</a> 📚</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preface.html" class="btn btn-neutral float-left" title="Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structure-and-naming.html" class="btn btn-neutral float-right" title="Structure and Naming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

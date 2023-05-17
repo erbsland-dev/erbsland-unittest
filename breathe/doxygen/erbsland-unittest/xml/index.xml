@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="classerbsland_1_1unittest_1_1_unit_test" kind="class"><name>erbsland::unittest::UnitTest</name>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac96b60d37bd806132da680e187dc2288" kind="friend"><name>Private</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a8ada8b2b57fa4cbdc11fa926f2e11cdc" kind="friend"><name>AssertContext</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6e99771504460f1e6ecd7346829c7096" kind="variable"><name>p</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a5cff031792fc484c9a25e7de8b9ab4cc" kind="function"><name>UnitTest</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a4c8741be62df2983ab685c89c3113398" kind="function"><name>~UnitTest</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac09ae4fc9e35b9d1c6a2fd3e8bf1b77c" kind="function"><name>additionalErrorMessages</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac99dfb6625c6f49d1a9a1728f4d510fc" kind="function"><name>setUp</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1af221170ac6a184788391c4e810d86b6c" kind="function"><name>tearDown</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6f1f4e0632838b8022f0a0fc9f3cff08" kind="function"><name>runWithContext</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae19c3715d27180517a8773ae9bd5564a" kind="function"><name>consoleWriteLine</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae201e2e7eaed32b44d57a8671f1e4c41" kind="function"><name>unitTestExecutablePath</name></member>
+  </compound>
+  <compound refid="namespaceerbsland" kind="namespace"><name>erbsland</name>
+  </compound>
+  <compound refid="namespaceerbsland_1_1unittest" kind="namespace"><name>erbsland::unittest</name>
+  </compound>
+  <compound refid="all_8hpp" kind="file"><name>all.hpp</name>
+  </compound>
+  <compound refid="fwd_8hpp" kind="file"><name>fwd.hpp</name>
+  </compound>
+  <compound refid="_unit_test_8cpp" kind="file"><name>UnitTest.cpp</name>
+  </compound>
+  <compound refid="_unit_test_8hpp" kind="file"><name>UnitTest.hpp</name>
+  </compound>
+  <compound refid="dir_b1ace6ee297760975ab9205cfa76456c" kind="dir"><name>erbsland</name>
+  </compound>
+  <compound refid="dir_07da06a5c2678dad789feaeb36cb4bb4" kind="dir"><name>erbsland/unittest</name>
+  </compound>
+</doxygenindex>
