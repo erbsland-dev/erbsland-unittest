@@ -4,9 +4,9 @@ Welcome to *Erbsland UnitTest*, a standalone unit testing system designed for te
 
 ## Where to start?
 
-Please read the [quick start](https://github.com/erbsland-dev/erbsland-unittest/wiki/Quick%20Start) guide where you get a step-by-step guide how to set up your first unit test.
+Please read the [quick start](https://erbsland-dev.github.io/erbsland-unittest/chapters/quick-start.html) guide where you get a step-by-step guide how to set up your first unit test.
 
-👉 [Quick Start](https://github.com/erbsland-dev/erbsland-unittest/wiki/Quick%20Start) 👈
+👉 [Quick Start](https://erbsland-dev.github.io/erbsland-unittest/chapters/quick-start.html) 👈
 
 Or just have a look at the [example project](https://github.com/erbsland-dev/erbsland-unittest-example) that demonstrates the recommended project structure and most of the basic features.
 
@@ -14,9 +14,20 @@ Or just have a look at the [example project](https://github.com/erbsland-dev/erb
 
 ## Documentation
 
-The [documentation](https://erbsland-dev.github.io/erbsland-unittest/) 
+Read the full [documentation](https://erbsland-dev.github.io/erbsland-unittest/) where you learn how to set up and write unit tests: 
 
 👉 [Documentation](https://erbsland-dev.github.io/erbsland-unittest/) 👈
+
+## Requirements
+
+- Code Level Requirements
+  - A C++ compiler compatible with C++17 or later versions.
+  - A C++ standard library that supports C++17 features.
+- Build and Metadata System Requirements:
+  - CMake version 3.25 or newer.
+  - Python 3.11 or newer to compile the metadata.
+
+👉 [Requirements](https://erbsland-dev.github.io/erbsland-unittest/chapters/preface.html#requirements) 👈
 
 ## Goals
 
@@ -26,8 +37,7 @@ The [documentation](https://erbsland-dev.github.io/erbsland-unittest/)
 - Modern
 - Secure
 
-👉 [More about the goals...](https://github.com/erbsland-dev/erbsland-unittest/wiki/Goals)
-- [Requirements](https://github.com/erbsland-dev/erbsland-unittest/wiki/Requirements)
+👉 [More about the goals...](https://erbsland-dev.github.io/erbsland-unittest/chapters/goals.html) 👈
 
 ## Bugreports and Feature Requests
 
