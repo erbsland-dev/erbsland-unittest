@@ -41,7 +41,7 @@ class UnitTest {
     // fwd-entry: class UnitTest
 
 public:
-    /// ctor
+    /// Create a new unittest instance.
     ///
     UnitTest() = default;
 
@@ -53,6 +53,8 @@ public:
     /// Add additional output to the error message.
     ///
     /// Overwrite this method to add additional text after the error message.
+    ///
+    /// @return The additional text that is added to the error message. May contain newlines.
     ///
     virtual auto additionalErrorMessages() -> std::string;
 
@@ -99,6 +101,8 @@ public: // helper methods.
 
     /// Access the executable path for the unittest executable.
     ///
+    /// @return The absolute path to the currently executed unittest executable.
+    ///
     auto unitTestExecutablePath() -> std::filesystem::path;
 
 public:
@@ -106,7 +110,7 @@ public:
     friend class AssertContext;
 
 public:
-    Private p; ///< The private implementation
+    Private p; ///< @private The private implementation
 };
 
 

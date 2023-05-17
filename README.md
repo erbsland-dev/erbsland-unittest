@@ -14,9 +14,9 @@ Or just have a look at the [example project](https://github.com/erbsland-dev/erb
 
 ## Documentation
 
-The [documentation](https://github.com/erbsland-dev/erbsland-unittest/wiki/Documentation) 
+The [documentation](https://erbsland-dev.github.io/erbsland-unittest/) 
 
-👉 [Documentation](https://github.com/erbsland-dev/erbsland-unittest/wiki/Documentation) 👈
+👉 [Documentation](https://erbsland-dev.github.io/erbsland-unittest/) 👈
 
 ## Goals
 
