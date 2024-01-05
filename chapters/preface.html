@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preface &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quick Start" href="quick-start.html" />
+    <link rel="prev" title="Welcome to the Erbsland Unittest Documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-level-requirements">Code Level Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-and-metadata-system-requirements">Build and Metadata System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-project">Example Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bugreports-and-feature-requests">Bugreports and Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespaces.html">Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-reference.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-reference.html">Macros</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Preface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/preface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="preface">
+<h1>Preface<a class="headerlink" href="#preface" title="Link to this heading"></a></h1>
+<p>Welcome to <em>Erbsland UnitTest</em>, a standalone unit testing system designed for testing libraries and applications. Our unit testing system is built with a focus on productivity and minimal dependencies. For more convenient usage, it requires only a minimal set of dependencies (C++, CMake, Python) and is compatible with any compiler that support C++17 or any newer version of the language.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<section id="code-level-requirements">
+<h3>Code Level Requirements<a class="headerlink" href="#code-level-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>A C++ compiler compatible with C++17 or later versions.</p></li>
+<li><p>A C++ standard library that supports C++17 features.</p></li>
+</ul>
+</section>
+<section id="build-and-metadata-system-requirements">
+<h3>Build and Metadata System Requirements<a class="headerlink" href="#build-and-metadata-system-requirements" title="Link to this heading"></a></h3>
+<p>For the recommended setup with CMake and minimal configuration, you’ll need:</p>
+<ul class="simple">
+<li><p>CMake version 3.25 or newer.</p></li>
+<li><p>Python 3.11 or newer to compile the metadata.</p></li>
+</ul>
+</section>
+</section>
+<section id="example-project">
+<h2>Example Project<a class="headerlink" href="#example-project" title="Link to this heading"></a></h2>
+<p>There is an example project that demonstrates all basic features and the recommended structure how to use this unit testing system.</p>
+<p>👉 <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest-example">Erbsland Unittest Example</a></p>
+</section>
+<section id="bugreports-and-feature-requests">
+<h2>Bugreports and Feature Requests<a class="headerlink" href="#bugreports-and-feature-requests" title="Link to this heading"></a></h2>
+<p>Please use the GitHub issue tracker to report bugs or request features:</p>
+<p>👉 <a class="reference external" href="https://github.com/erbsland-dev/erbsland-unittest/issues">Report Bugs or Request Features</a></p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Copyright © 2023 Tobias Erbsland. Web: &lt;<a class="reference external" href="https://erbsland.dev/">https://erbsland.dev/</a>&gt;</div>
+<div class="line">Copyright © 2023 EducateIT GmbH. Web: &lt;<a class="reference external" href="https://educateit.ch/">https://educateit.ch/</a>&gt;</div>
+</div>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the
+GNU Lesser General Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for more details.</p>
+<p>You should have received a copy of the GNU Lesser General Public License along with this program.
+If not, see &lt;<a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to the Erbsland Unittest Documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick-start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2024, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
