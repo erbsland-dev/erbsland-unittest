@@ -21,6 +21,7 @@
 #undef CHECK_THROWS
 #undef CHECK_THROWS_AS
 #undef CHECK_NOTHROW
+#undef UNITTEST_SUBCLASS
 
 
 #define ASSERT_CONTEXT_REQUIRE(macroName, flags, ...) \
@@ -148,6 +149,10 @@
 ///
 #define ADD_CLASS(class_name) \
     ::erbsland::unittest::ManualRegistration<class_name> test_registration ## class_name{#class_name};
+
+/// Mark a class as subclass from `UnitTest`
+///
+#define UNITTEST_SUBCLASS(class_name) class_name
 
 /// Define an empty TAGS() macro, to safely mark the class and method with tags.
 ///
