@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMake Integration &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Macros for Unittests" href="macros-for-tests.html" />
+    <link rel="prev" title="The UnitTest Class" href="the-unittest-class.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CMake Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-root-cmake-file">Configuring the Root CMake File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-unit-test-project">Configuring the Unit Test Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilizing-the-erbsland-unittest-function">Utilizing the <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> Function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use">How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CMake Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/cmake-integration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cmake-integration">
+<span id="index-0"></span><span id="cmake"></span><h1>CMake Integration<a class="headerlink" href="#cmake-integration" title="Link to this heading"></a></h1>
+<p><em>Erbsland UnitTest</em> offers a straightforward CMake integration, enabling you to create unit tests with minimal additional effort. We suggest using the following directory structure for your CMake project:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unittest-project
+    ├── &lt;required libraries&gt;
+    ├── &lt;tested app/lib&gt;
+    │   ├── src (...)
+    │   └── CMakeLists.txt
+    ├── erbsland-unittest
+    ├── unittest
+    │   ├── src
+    │   │   ├── main.cpp
+    │   │   ├── &lt;Suite1&gt;Test.hpp
+    │   │   ├── &lt;Suite2&gt;Test.hpp
+    │   │   └── (...)
+    │   ├── data                  # Test data
+    │   │   └── (...)
+    │   └── CMakeLists.txt        # Unit test CMake configuration
+    └── CMakeLists.txt            # Root CMake configuration
+</pre></div>
+</div>
+<section id="configuring-the-root-cmake-file">
+<h2>Configuring the Root CMake File<a class="headerlink" href="#configuring-the-root-cmake-file" title="Link to this heading"></a></h2>
+<p>The root CMake file consolidates the tested application or library, its dependencies, the <em>Erbsland UnitTest</em> library, and the actual unittest into a single project.</p>
+<p>In this root CMake file, simply include the configurations from the subdirectories of all necessary components. The order in which you add them is crucial. First, add the Erbsland UnitTest library, followed by the dependencies for the application or library you’re testing, then your application or library itself, and finally, your unit test project.</p>
+</section>
+<section id="configuring-the-unit-test-project">
+<h2>Configuring the Unit Test Project<a class="headerlink" href="#configuring-the-unit-test-project" title="Link to this heading"></a></h2>
+<p>A typical unit test configuration for a small project appears as follows:</p>
+<p>Start by adding a new executable to the project using <code class="docutils literal notranslate"><span class="pre">add_executable</span></code>, specifying the target name <code class="docutils literal notranslate"><span class="pre">unittest</span></code> and all source files.</p>
+<p>Then, include the necessary <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code> and <code class="docutils literal notranslate"><span class="pre">target_include_directories</span></code> commands to access and link the unit test to the tested application. Depending on the complexity of the application or library being tested, this step may require more detailed configuration.</p>
+<p>Finally, invoke <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> with the <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> parameter set to the name of your unit test executable, which in this example is <code class="docutils literal notranslate"><span class="pre">unittest</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> call performs several tasks for you: it first adds the required include directories and links your unit test with the Erbsland UnitTest library. It then integrates the metadata script into the project, automatically generating all necessary structures to register your test suites, test functions, and added metadata.</p>
+</section>
+<section id="utilizing-the-erbsland-unittest-function">
+<h2>Utilizing the <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> Function<a class="headerlink" href="#utilizing-the-erbsland-unittest-function" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> function streamlines your unit test project configuration by accomplishing various tasks. It adds necessary include directories, links the unit test with the Erbsland UnitTest library, and integrates the metadata script to automatically generate essential structures for registering test suites, test functions, and added metadata.</p>
+<section id="how-to-use">
+<h3>How to Use<a class="headerlink" href="#how-to-use" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TARGET</span></code>: (required) Sets the target name for your unit test executable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRECOMPILE_HEADERS</span></code>: (optional) Activates precompiled headers for the unit test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NO_LINK_SETTINGS</span></code>: (optional) Deactivates automatic linking of the unit test, useful if you prefer manual linking or if the Erbsland UnitTest library is already part of another linked library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COPY_TEST_DATA</span></code>: (optional) Defines a path to test data, relative to the calling <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file, which will be copied to the build directory. Use <code class="docutils literal notranslate"><span class="pre">unitTestExecutablePath()</span></code> in your unit test to locate the data when running unit tests from the build directory.</p></li>
+</ul>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>The example below configures the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> target and specifies that all test data from the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory (refer to the example structure above) should be copied to the build directory.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">erbsland_unittest</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">unittest</span><span class="w"> </span><span class="s">COPY_TEST_DATA</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="the-unittest-class.html" class="btn btn-neutral float-left" title="The UnitTest Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macros-for-tests.html" class="btn btn-neutral float-right" title="Macros for Unittests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2024, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

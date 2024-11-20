@@ -1,0 +1,603 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="_macros_8hpp" kind="file" language="C++">
+    <compoundname>Macros.hpp</compoundname>
+    <includes local="yes">Private.hpp</includes>
+    <includedby refid="_unit_test_8hpp" local="yes">erbsland/unittest/UnitTest.hpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Private.hpp</label>
+      </node>
+      <node id="1">
+        <label>erbsland/unittest/impl/Macros.hpp</label>
+        <link refid="_macros_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>erbsland/unittest/all.hpp</label>
+        <link refid="all_8hpp_source"/>
+      </node>
+      <node id="2">
+        <label>erbsland/unittest/UnitTest.hpp</label>
+        <link refid="_unit_test_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>erbsland/unittest/impl/Macros.hpp</label>
+        <link refid="_macros_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_macros_8hpp_1afa0c32ba143802f6740d0a112ddf9b78" prot="public" static="no">
+        <name>ASSERT_CONTEXT_REQUIRE</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    do { \
+        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
+        try { \
+            if (__VA_ARGS__) { \
+                erbsland_unittest_assert_context.expectedResult(); \
+            } else { \
+                erbsland_unittest_assert_context.unexpectedResult(); \
+            } \
+        } catch (const ::erbsland::unittest::AssertFailed&amp;) { \
+            throw; \
+        } catch (const std::exception &amp;ex) { \
+            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
+            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } catch (...) { \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } \
+    } while(false);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="27" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a990db09d8dfe4ce2afacfb906076c520" prot="public" static="no">
+        <name>ASSERT_CONTEXT_NOTHROW</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    do { \
+        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
+        try { \
+            static_cast&lt;void&gt;(__VA_ARGS__); \
+            erbsland_unittest_assert_context.expectedResult(); \
+        } catch (const ::erbsland::unittest::AssertFailed&amp;) { \
+            throw; \
+        } catch (const std::exception &amp;ex) { \
+            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
+            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
+            erbsland_unittest_assert_context.unexpectedResult(); \
+        } catch (...) { \
+            erbsland_unittest_assert_context.unexpectedResult(); \
+        } \
+    } while(false);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="46" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a4bd9303a3c9f225fb9b84490ce576ea0" prot="public" static="no">
+        <name>ASSERT_CONTEXT_THROWS</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    do { \
+        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
+        try { \
+            static_cast&lt;void&gt;(__VA_ARGS__); \
+            erbsland_unittest_assert_context.unexpectedResult(); \
+        } catch (const ::erbsland::unittest::AssertFailed&amp;) { \
+            throw; \
+        } catch (...) { \
+            erbsland_unittest_assert_context.expectedResult(); \
+        } \
+    } while(false);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="62" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ac5810612c615844a810ae77440c3be2d" prot="public" static="no">
+        <name>ASSERT_CONTEXT_THROWS_AS</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    do { \
+        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #exceptionClass &quot;, &quot; #__VA_ARGS__, {__FILE__, __LINE__}); \
+        try { \
+            static_cast&lt;void&gt;(__VA_ARGS__); \
+            erbsland_unittest_assert_context.unexpectedResult(); \
+        } catch (const exceptionClass &amp;ex) { \
+            erbsland_unittest_assert_context.expectedResult(); \
+        } catch (const ::erbsland::unittest::AssertFailed&amp;) { \
+            throw; \
+        } catch (const std::exception &amp;ex) { \
+            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
+            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } catch (...) { \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } \
+    } while(false);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="74" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa6194506311604c30f72826d819c8793" prot="public" static="no">
+        <name>WITH_CONTEXT</name>
+        <param><defname>...</defname></param>
+        <initializer>    do { \
+        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, 0, &quot;WITH_CONTEXT&quot;, #__VA_ARGS__, {__FILE__, __LINE__}); \
+        try { \
+            (__VA_ARGS__); \
+        } catch(const ::erbsland::unittest::AssertFailed&amp;) { \
+            throw; \
+        } catch (const std::exception &amp;ex) { \
+            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
+            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } catch(...) { \
+            erbsland_unittest_assert_context.unexpectedException(); \
+        } \
+    } while(false);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="93" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa6e6fc9684bd84ce7b72da6a2eef668f" prot="public" static="no">
+        <name>SOURCE_LOCATION</name>
+        <param></param>
+        <initializer>(::erbsland::unittest::SourceLocation{__FILE__, __LINE__})</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="109" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ad57835ba8f1bb419a865ada6bd011a85" prot="public" static="no">
+        <name>REQUIRE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="111" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ada5065594bafc152162761ace47c1dcb" prot="public" static="no">
+        <name>REQUIRE_FALSE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE_FALSE&quot;, (::erbsland::unittest::AssertNegate), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="112" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ae3c33faa1d31a2bb0811dac74b994e3e" prot="public" static="no">
+        <name>REQUIRE_THROWS</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS(&quot;REQUIRE_THROWS&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="113" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a724f5fee494728ebc42e3b66bf373a20" prot="public" static="no">
+        <name>REQUIRE_THROWS_AS</name>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS_AS(&quot;REQUIRE_THROWS_AS&quot;, 0, exceptionClass, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="114" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ab0148f0dfca438f7aa01974e9c33216a" prot="public" static="no">
+        <name>REQUIRE_NOTHROW</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_NOTHROW(&quot;REQUIRE_NOTHROW&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="115" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a836cca6b6ed3a1706353f6d1bca0935f" prot="public" static="no">
+        <name>CHECK</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;CHECK&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="117" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a7bf095d8512cb180f8ff3a2258a6eaac" prot="public" static="no">
+        <name>CHECK_FALSE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;CHECK_FALSE&quot;, (::erbsland::unittest::AssertNegate|::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="118" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a5c646dfe831e596b59073014c1c8b9e5" prot="public" static="no">
+        <name>CHECK_THROWS</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS(&quot;CHECK_THROWS&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="119" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1acf0e97ea1cc4544ef5bac2a00a2fcb6e" prot="public" static="no">
+        <name>CHECK_THROWS_AS</name>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS_AS(&quot;CHECK_THROWS_AS&quot;, (::erbsland::unittest::AssertCheck), exceptionClass, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="120" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a78e70f011f20c4ade1d1ac2b8fd33626" prot="public" static="no">
+        <name>CHECK_NOTHROW</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_NOTHROW(&quot;CHECK_NOTHROW&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="121" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a983a869f847994c418f23e61dcc3c211" prot="public" static="no">
+        <name>TESTS_BEGIN</name>
+        <param><defname>class_name</defname></param>
+        <initializer>    public: \
+    static constexpr std::tuple&lt;void (class_name::*)(), const char*&gt; cTestFunctions[] = {</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The begin to manually registers tests. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="125" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a88f564ca29980cb3df327ca05d5c3bed" prot="public" static="no">
+        <name>TESTS_END</name>
+        <param></param>
+        <initializer>    };</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="129" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a38db39ac4f16b821148e74e4d2fdff6d" prot="public" static="no">
+        <name>TESTS_ENTRY</name>
+        <param><defname>function_name</defname></param>
+        <initializer>    std::make_tuple((&amp;function_name), #function_name),</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a test to the current unit test class.</para>
+<para>Use this method in the constructor of your unit test to add all test methods. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="136" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa475c570e482c07ab429920cc12a9c1f" prot="public" static="no">
+        <name>ADD_TEST</name>
+        <param><defname>function_name</defname></param>
+        <initializer>    p.addTest((&amp;function_name), std::string(#function_name));</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a test to the current unit test class.</para>
+<para>Use this method in the constructor of your unit test to add all test methods. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="143" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ae04af788c8529722357055571d7a8289" prot="public" static="no">
+        <name>ADD_CLASS</name>
+        <param><defname>class_name</defname></param>
+        <initializer>    ::erbsland::unittest::ManualRegistration&lt;class_name&gt; test_registration ## class_name{#class_name};</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a unit test class.</para>
+<para>Add this after your unit test class to automatically register it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="150" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a028a67378b2d399b07dc80fdf0e74e4f" prot="public" static="no">
+        <name>UNITTEST_SUBCLASS</name>
+        <param><defname>class_name</defname></param>
+        <initializer>class_name</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mark a class as subclass from <computeroutput>UnitTest</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="155" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a1801fa573c93869f4b57e039f99092eb" prot="public" static="no">
+        <name>TAGS</name>
+        <param><defname>tags</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define an empty TAGS() macro, to safely mark the class and method with tags. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="159" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a8afc24d7dc52efd0ef497be02ac1c7e0" prot="public" static="no">
+        <name>TESTED_TARGETS</name>
+        <param><defname>name_list</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define an empty TESTED_TARGETS() macro, allow adding a list of tested classes or functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="163" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a6e29443ad92bf6e597e59b354a55bbe4" prot="public" static="no">
+        <name>SKIP_BY_DEFAULT</name>
+        <param></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An empty macro to skip the test or class unless the tag is explicitly specified. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="167" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a616019a862e87f7a35f46698e919c55a" prot="public" static="no">
+        <name>ERBSLAND_UNITTEST_MAIN</name>
+        <param></param>
+        <initializer>    int main(int argc, char *argv[]) { \
+        return ::erbsland::unittest::Controller::instance()-&gt;main(argc, argv); \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define the main method for the unit test executable.</para>
+<para>Create a file <computeroutput>main.cpp</computeroutput> with this macro to define the main method for the unit test. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="173" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>©<sp/>2023-2024<sp/>Tobias<sp/>Erbsland<sp/>https://erbsland.dev/<sp/>and<sp/>EducateIT<sp/>GmbH<sp/>https://educateit.ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>According<sp/>to<sp/>the<sp/>copyright<sp/>terms<sp/>specified<sp/>in<sp/>the<sp/>file<sp/>&quot;COPYRIGHT.md&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>LGPL-3.0-or-later</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Private.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>make<sp/>sure<sp/>we<sp/>have<sp/>no<sp/>conflicts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>assert</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ADD_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ADD_CLASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_FALSE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_THROWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_THROWS_AS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_NOTHROW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_FALSE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_THROWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_THROWS_AS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_NOTHROW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>UNITTEST_SUBCLASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_REQUIRE(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::erbsland::unittest::AssertContext<sp/>erbsland_unittest_assert_context(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__});<sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(__VA_ARGS__)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.expectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>::erbsland::unittest::AssertFailed&amp;)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>std::exception<sp/>&amp;ex)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionType<sp/>=<sp/>std::string(typeid(ex).name());<sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionMessage<sp/>=<sp/>std::string(ex.what());<sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(...)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(false);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_NOTHROW(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::erbsland::unittest::AssertContext<sp/>erbsland_unittest_assert_context(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__});<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.expectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>::erbsland::unittest::AssertFailed&amp;)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>std::exception<sp/>&amp;ex)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionType<sp/>=<sp/>std::string(typeid(ex).name());<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionMessage<sp/>=<sp/>std::string(ex.what());<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(...)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(false);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_THROWS(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::erbsland::unittest::AssertContext<sp/>erbsland_unittest_assert_context(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__});<sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>::erbsland::unittest::AssertFailed&amp;)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(...)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.expectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(false);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_THROWS_AS(macroName,<sp/>flags,<sp/>exceptionClass,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::erbsland::unittest::AssertContext<sp/>erbsland_unittest_assert_context(this,<sp/>flags,<sp/>macroName,<sp/>#exceptionClass<sp/>&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__});<sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>exceptionClass<sp/>&amp;ex)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.expectedResult();<sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>::erbsland::unittest::AssertFailed&amp;)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>std::exception<sp/>&amp;ex)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionType<sp/>=<sp/>std::string(typeid(ex).name());<sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionMessage<sp/>=<sp/>std::string(ex.what());<sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(...)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>while(false);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>run<sp/>an<sp/>expression,<sp/>but<sp/>add<sp/>context<sp/>information<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WITH_CONTEXT(<sp/>...<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::erbsland::unittest::AssertContext<sp/>erbsland_unittest_assert_context(this,<sp/>0,<sp/>&quot;WITH_CONTEXT&quot;</highlight><highlight class="normal">,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__});<sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch(const<sp/>::erbsland::unittest::AssertFailed&amp;)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>std::exception<sp/>&amp;ex)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionType<sp/>=<sp/>std::string(typeid(ex).name());<sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.exceptionMessage<sp/>=<sp/>std::string(ex.what());<sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch(...)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erbsland_unittest_assert_context.unexpectedException();<sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>while(false);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>run<sp/>context<sp/>for<sp/>the<sp/>function<sp/>`runWithContext`.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SOURCE_LOCATION()<sp/>(::erbsland::unittest::SourceLocation{__FILE__,<sp/>__LINE__})</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_FALSE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE_FALSE&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertNegate),<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_THROWS(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS(&quot;REQUIRE_THROWS&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_THROWS_AS(exceptionClass,<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS_AS(&quot;REQUIRE_THROWS_AS&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>exceptionClass,<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_NOTHROW(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_NOTHROW(&quot;REQUIRE_NOTHROW&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;CHECK&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_FALSE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;CHECK_FALSE&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertNegate|::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_THROWS(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS(&quot;CHECK_THROWS&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_THROWS_AS(exceptionClass,<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS_AS(&quot;CHECK_THROWS_AS&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertCheck),<sp/>exceptionClass,<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_NOTHROW(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_NOTHROW(&quot;CHECK_NOTHROW&quot;</highlight><highlight class="normal">,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor">#define<sp/>TESTS_BEGIN(class_name)<sp/>\</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>public:<sp/>\</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>static<sp/>constexpr<sp/>std::tuple&lt;void<sp/>(class_name::*)(),<sp/>const<sp/>char*&gt;<sp/>cTestFunctions[]<sp/>=<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TESTS_END()<sp/>\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor">#define<sp/>TESTS_ENTRY(function_name)<sp/>\</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::make_tuple((&amp;function_name),<sp/>#function_name),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor">#define<sp/>ADD_TEST(function_name)<sp/>\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>p.addTest((&amp;function_name),<sp/>std::string(#function_name));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="preprocessor">#define<sp/>ADD_CLASS(class_name)<sp/>\</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::ManualRegistration&lt;class_name&gt;<sp/>test_registration<sp/>##<sp/>class_name{#class_name};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor">#define<sp/>UNITTEST_SUBCLASS(class_name)<sp/>class_name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor">#define<sp/>TAGS(tags)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor">#define<sp/>TESTED_TARGETS(name_list)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor">#define<sp/>SKIP_BY_DEFAULT()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor">#define<sp/>ERBSLAND_UNITTEST_MAIN()<sp/>\</highlight></codeline>
+<codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>int<sp/>main(int<sp/>argc,<sp/>char<sp/>*argv[])<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>::erbsland::unittest::Controller::instance()-&gt;main(argc,<sp/>argv);<sp/>\</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="erbsland/unittest/impl/Macros.hpp"/>
+  </compounddef>
+</doxygen>
