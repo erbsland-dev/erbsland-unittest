@@ -1,4 +1,5 @@
 
+.. _command-line:
 .. index::
     !single: Command Line Options
     single: Command Line

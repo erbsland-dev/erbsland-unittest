@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install Sphinx
         run: |
-          pip install sphinx breathe sphinx-rtd-theme
+          pip install sphinx breathe sphinx-rtd-theme sphinx_design
       - name: Install Doxygen
         run: sudo apt-get install doxygen -y
         shell: bash

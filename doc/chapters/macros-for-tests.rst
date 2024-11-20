@@ -46,6 +46,7 @@ Helper Macros
 
 - :c:expr:`SOURCE_LOCATION()`: Gets the source location, used for the :cpp:expr:`runWithContext()` call.
 - :c:expr:`ERBSLAND_UNITTEST_MAIN()`: Creates a simple main function to start the unittest.
+- :c:expr:`UNITTEST_SUBCLASS()`: Marks a subclass that is derived from :cpp:expr:`UnitTest` in order that the CMake system will properly register the unittest class.
 
 
 The :c:expr:`REQUIRE(expression)` Macro

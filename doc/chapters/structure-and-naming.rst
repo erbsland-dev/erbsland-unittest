@@ -1,10 +1,13 @@
 
+.. _structure-and-naming:
 .. index::
     !single: Structure
     !single: Naming
 
 Structure and Naming
 ====================
+
+In this chapter, we explain how your unittest project should be structured and how you shall name your classes and test methods.
 
 Structure
 ---------
@@ -67,7 +70,8 @@ For large projects, with more than 50 test suites, we recommend the following pr
 
 Configure this project that several executables are compiled, one for each module. To run all unittests you can either write a shell script or utilize the CMake build system to compile and run all executables for you.
 
-## Project, Test Module, Test Suites, Test Block and Tests
+Organizing your Tests
+---------------------
 
 We designed this unit testing system to allow to organize the tests in modules, suites and blocks:
 
@@ -91,10 +95,10 @@ For large projects we recommend the following organisation of the tests:
 - Create at least one test suite for each tested class in your target.
 - Create at least one test block for each tested function in your class.
 
-Naming
-------
+Naming of Classes and Methods
+-----------------------------
 
-For the automatic mata data generator to work, you have to following this naming schema:
+The automatic metadata generator will automatically register all your test classes and methods for you, and also extract your tags and markings. In order for the automatic registration system to work, you need to name your files, classes and methods according to the following rules:
 
 - | The source files for test suites have to end in ``Test``.
   | Examples: ``ExampleTest.hpp``, ``ExampleTest.cpp``
@@ -104,8 +108,8 @@ For the automatic mata data generator to work, you have to following this naming
   | Example: The file ``ExampleTest.hpp`` contains the declaration ``class ExampleTest : (...)``.
 - | Test classes must inherit :cpp:expr:`erbsland::unittest::UnitTest` or short :cpp:expr:`el::UnitTest`.
   | Example: ``class ExampleTest : public el::UnitTest { (...) };``
-- | Test functions in the test classes must be public ::cpp:expr:`void` functions with no arguments.
-- | The name of test functions must start with lowercase ``test``.
+- Test functions in the test classes must be public ::cpp:expr:`void` functions with no arguments.
+- The name of test functions must start with lowercase ``test``.
 
 .. code-block:: cpp
     :caption: The file ``ExampleTest.hpp``
@@ -115,52 +119,21 @@ For the automatic mata data generator to work, you have to following this naming
     // ...
     class ExampleTest : public el::UnitTest {
     public:
-        void testExample() {
+        void testExample1() {
             // ...
         }
+
+        void testExample2() {
+            // ...
+        }
+
         // ...
     };
 
 Split Declaration and Implementation
 ------------------------------------
 
-We recommend to declare and implement the whole test class in the header file, but you can split the declaration and implementation into separate ``.hpp`` and ``.cpp`` files if this makes more sense for you.
-
-Further Inheritance
--------------------
-
-You can create a base class to provide common functionality for test classes, but the name of this base class must not end in ``Test``:
-
-.. code-block:: cpp
-    :caption: The file ``CommonBase.hpp``
-
-    #pragma once
-    #include <erbsland/unittest/UnitTest.hpp>
-    // ...
-    class CommonBase : public el::UnitTest {
-    public:
-        void commonTestFunction() {
-            // ...
-        }
-        // ...
-    };
-
-.. code-block:: cpp
-    :caption: The file ``ExampleTest.hpp``
-
-    #pragma once
-    #include "CommonBase.hpp"
-    // ...
-    class ExampleTest : public CommonBase {
-    public:
-        void testExample() {
-            WITH_CONTEXT(commonTestFunction());
-            // ...
-        }
-        // ...
-    };
-
-You must not inherit from the test classes itself.
+We recommend to declare and implement the whole test class in either the header or implementation file, but you can split the declaration and implementation into separate ``.hpp`` and ``.cpp`` files if this makes more sense for you.
 
 Helper Functions
 ----------------

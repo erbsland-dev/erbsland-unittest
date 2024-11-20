@@ -22,4 +22,5 @@ See :ref:`macros` for a detailed description of the following macros.
 .. doxygendefine:: TESTED_TARGETS
 .. doxygendefine:: SKIP_BY_DEFAULT
 .. doxygendefine:: SOURCE_LOCATION
+.. doxygendefine:: UNITTEST_SUBCLASS
 .. doxygendefine:: ERBSLAND_UNITTEST_MAIN

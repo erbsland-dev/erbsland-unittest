@@ -1,31 +1,57 @@
-
-Welcome to the Erbsland Unittest Documentation!
+Welcome to the Erbsland UnitTest Documentation!
 ===============================================
 
-Welcome to *Erbsland UnitTest*, a standalone unit testing system designed for testing libraries and applications. Our unit testing system is built with a focus on productivity and minimal dependencies. For more convenient usage, it requires only a minimal set of dependencies (C++, CMake, Python) and is compatible with any compiler that support C++17 or any newer version of the language.
+**Erbsland UnitTest** is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting C++17 or newer.
 
+.. grid:: 2
+
+    .. grid-item-card:: Minimal dependencies:
+
+        Requires only C++, CMake, and Python.
+
+    .. grid-item-card:: Broad compatibility:
+
+        Supports any compiler adhering to C++17 or newer.
+
+.. button-ref:: get-started
+    :color: success
+    :align: center
+    :expand:
+    :class: sd-fs-2 sd-font-weight-bold sd-p-3
+
+    Get Started →
+
+Familiar with the framework? Dive into the specifics with chapters on:
+
+    - :ref:`structure-and-naming`
+    - :ref:`the-unittest-class`
+    - :ref:`cmake`
+    - :ref:`macros`
+    - :ref:`command-line`
+    - :ref:`advanced`
+
+Contents at a Glance
+---------------------
 
 .. toctree::
-    :maxdepth: 2
-    :caption: Contents:
+    :maxdepth: 3
 
-    chapters/preface
-    chapters/quick-start
+    chapters/get-started/index
     chapters/structure-and-naming
     chapters/the-unittest-class
     chapters/cmake-integration
     chapters/macros-for-tests
     chapters/command-line-options
+    chapters/advanced-usages
+    chapters/feedback
     chapters/goals
-    chapters/namespaces
-    chapters/classes-reference
-    chapters/macros-reference
+    chapters/requirements
+    chapters/license
+    chapters/reference/index
 
-
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

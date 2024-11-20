@@ -1,4 +1,5 @@
 
+.. _cmake:
 .. index::
     !single: cmake
     single: integration
@@ -96,7 +97,6 @@ Example
 
 The example below configures the ``unittest`` target and specifies that all test data from the ``data`` directory (refer to the example structure above) should be copied to the build directory.
 
-.. code-block: cmake
+.. code-block:: cmake
 
     erbsland_unittest(TARGET unittest COPY_TEST_DATA "data")
-
