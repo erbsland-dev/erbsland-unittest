@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 project = "Erbsland Unittest"
-copyright = "2023-2024, Erbsland DEV"
+copyright = "2023-2025, Erbsland DEV"
 author = "Erbsland DEV"
 release = "1.0"
 

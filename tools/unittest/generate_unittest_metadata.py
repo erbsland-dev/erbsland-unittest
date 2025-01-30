@@ -98,13 +98,13 @@ class WorkingSet:
         (   # Capture one or more tags for the test class.
             (?: [A-Z_] {4,20} \( [^)]* \) \s* )+
         )?
-        (?: class | struct ) \s+  # Accept `class` or `struct`.
-        (?: final \s+ )?          # Optinal `final` keyword.
-        ( \w+ Test ) \s*          # The class name must end with `Test`.
-        :                         # It must be a subclass
-        \s* public \s+
+        (?: class | struct ) \s+      # Accept `class` or `struct`.
+        ( \w+ Test )                  # The class name must end with `Test`.
+        (?: \s+ final )?              # Optional `final` keyword.
+        \s* :                         # It must be a subclass
+        \s* (?: (?: public | protected | private) \s+)?
         (?:  # Accept a class name that is maked as unittest subclass.
-            UNITTEST_SUBCLASS \s* \( \s* \w+ \s* \)
+            UNITTEST_SUBCLASS \s* \( \s* (?: \w+ :: )* \w+ \s* \)
         |    # Or accept a class directly derived from `UnitTest` using any kind of valid namespace prefix.
             (?: (?: :: \s* )? (?: el \s* :: \s* | erbsland \s* :: \s* ) ( unittest \s* :: \s* )? )? UnitTest
         )
@@ -133,11 +133,11 @@ class WorkingSet:
         self.input_map: dict[str, Path] = {}
         self.test_classes: list[TestClass] = []
 
-    def init_logging(self):
+    def init_logging(self, log_level):
         """
         Initialize logging for this script.
         """
-        logging.basicConfig(encoding="utf-8", level=logging.INFO)
+        logging.basicConfig(encoding="utf-8", level=log_level)
         self.log = logging.getLogger("main")
         self.log.debug("Building unittest metadata")
 
@@ -152,7 +152,10 @@ class WorkingSet:
         parser.add_argument("-v", "--verbose", action="store_true")
         args = parser.parse_args()
         if args.verbose:
+            self.init_logging(logging.DEBUG)
             self.verbose = True
+        else:
+            self.init_logging(logging.INFO)
         self.source_dir = Path(args.source_dir)
         if not self.source_dir.is_dir():
             raise ScriptError("Specified source directory does not exist.")
@@ -174,10 +177,10 @@ class WorkingSet:
                 raise ScriptError(f"Input file exceeds 10MB: {path}")
             if path.name.endswith(".toml"):
                 yield from self._extract_toml_paths(path)
-            elif not path.name.endswith(("Test.cpp", "Test.hpp", "Test.h")):
+            elif path.name.endswith(("Test.cpp", "Test.hpp", "Test.h")):
                 yield path
             else:
-                self.log.debug(f"Skipping file: {path}")
+                self.log.debug(f"Skipping file (filename does not match): {path}")
 
     def _extract_toml_paths(self, path: Path):
         content = path.read_text(encoding="utf-8")
@@ -243,7 +246,6 @@ class WorkingSet:
 
     def run(self):
         try:
-            self.init_logging()
             self.parse_cmd_line()
             self.scan_all_files()
             self.write_metadata()

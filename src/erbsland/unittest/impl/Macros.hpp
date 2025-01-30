@@ -25,86 +25,36 @@
 
 
 #define ASSERT_CONTEXT_REQUIRE(macroName, flags, ...) \
-    do { \
-        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
-        try { \
-            if (__VA_ARGS__) { \
-                erbsland_unittest_assert_context.expectedResult(); \
-            } else { \
-                erbsland_unittest_assert_context.unexpectedResult(); \
-            } \
-        } catch (const ::erbsland::unittest::AssertFailed&) { \
-            throw; \
-        } catch (const std::exception &ex) { \
-            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
-            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } catch (...) { \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } \
-    } while(false);
+    ::erbsland::unittest::AssertContext{ \
+        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
+    }.require([&, this]() { \
+        return (__VA_ARGS__); \
+    });
 #define ASSERT_CONTEXT_NOTHROW(macroName, flags, ...) \
-    do { \
-        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
-        try { \
-            static_cast<void>(__VA_ARGS__); \
-            erbsland_unittest_assert_context.expectedResult(); \
-        } catch (const ::erbsland::unittest::AssertFailed&) { \
-            throw; \
-        } catch (const std::exception &ex) { \
-            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
-            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
-            erbsland_unittest_assert_context.unexpectedResult(); \
-        } catch (...) { \
-            erbsland_unittest_assert_context.unexpectedResult(); \
-        } \
-    } while(false);
+    ::erbsland::unittest::AssertContext{ \
+        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
+    }.requireNoThrow([&, this]() { \
+        static_cast<void>(__VA_ARGS__); \
+    });
 #define ASSERT_CONTEXT_THROWS(macroName, flags, ...) \
-    do { \
-        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}); \
-        try { \
-            static_cast<void>(__VA_ARGS__); \
-            erbsland_unittest_assert_context.unexpectedResult(); \
-        } catch (const ::erbsland::unittest::AssertFailed&) { \
-            throw; \
-        } catch (...) { \
-            erbsland_unittest_assert_context.expectedResult(); \
-        } \
-    } while(false);
+    ::erbsland::unittest::AssertContext{ \
+        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
+    }.requireThrows([&, this]() { \
+        static_cast<void>(__VA_ARGS__); \
+    });
 #define ASSERT_CONTEXT_THROWS_AS(macroName, flags, exceptionClass, ...) \
-    do { \
-        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}); \
-        try { \
-            static_cast<void>(__VA_ARGS__); \
-            erbsland_unittest_assert_context.unexpectedResult(); \
-        } catch (const exceptionClass &ex) { \
-            erbsland_unittest_assert_context.expectedResult(); \
-        } catch (const ::erbsland::unittest::AssertFailed&) { \
-            throw; \
-        } catch (const std::exception &ex) { \
-            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
-            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } catch (...) { \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } \
-    } while(false);
+    ::erbsland::unittest::AssertContext{ \
+        this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__} \
+    }.requireThrowsAs<exceptionClass>([&, this]() { \
+        static_cast<void>(__VA_ARGS__); \
+    });
 // run an expression, but add context information to it.
 #define WITH_CONTEXT( ... ) \
-    do { \
-        ::erbsland::unittest::AssertContext erbsland_unittest_assert_context(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}); \
-        try { \
-            (__VA_ARGS__); \
-        } catch(const ::erbsland::unittest::AssertFailed&) { \
-            throw; \
-        } catch (const std::exception &ex) { \
-            erbsland_unittest_assert_context.exceptionType = std::string(typeid(ex).name()); \
-            erbsland_unittest_assert_context.exceptionMessage = std::string(ex.what()); \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } catch(...) { \
-            erbsland_unittest_assert_context.unexpectedException(); \
-        } \
-    } while(false);
+    ::erbsland::unittest::AssertContext{ \
+        this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__} \
+    }.runWithContext([&, this]() { \
+        static_cast<void>(__VA_ARGS__); \
+    });
 // get the run context for the function `runWithContext`.
 #define SOURCE_LOCATION() (::erbsland::unittest::SourceLocation{__FILE__, __LINE__})
 
