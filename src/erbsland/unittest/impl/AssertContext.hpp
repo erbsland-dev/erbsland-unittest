@@ -20,8 +20,7 @@ class UnitTest;
 /// @internal
 /// The context for an assert (require, check) evaluation.
 ///
-class AssertContext
-{
+class AssertContext final {
 public:
     /// ctor
     ///
@@ -53,83 +52,6 @@ public:
     ///
     auto toString() -> std::string;
 
-public: // function execution in context
-    inline void require(const std::function<bool()> &func) {
-        try {
-            if (func()) {
-                expectedResult();
-            } else {
-                unexpectedResult();
-            }
-        } catch (const AssertFailed&) {
-            throw;
-        } catch (const std::exception &ex) {
-            exceptionType = std::string(typeid(ex).name());
-            exceptionMessage = std::string(ex.what());
-            unexpectedException();
-        } catch (...) {
-            unexpectedException();
-        }
-    }
-
-    inline void requireNoThrow(const std::function<void()> &func) {
-        try {
-            func();
-            expectedResult();
-        } catch (const AssertFailed&) {
-            throw;
-        } catch (const std::exception &ex) {
-            exceptionType = std::string(typeid(ex).name());
-            exceptionMessage = std::string(ex.what());
-            unexpectedResult();
-        } catch (...) {
-            unexpectedResult();
-        }
-    }
-
-    inline void requireThrows(const std::function<void()> &func) {
-        try {
-            func();
-            unexpectedResult();
-        } catch (const AssertFailed&) {
-            throw;
-        } catch (...) {
-            expectedResult();
-        }
-    }
-
-    template<typename ExceptionClass>
-    inline void requireThrowsAs(const std::function<void()> &func) {
-        try {
-            func();
-            unexpectedResult();
-        } catch (const ExceptionClass&) {
-            expectedResult();
-        } catch (const AssertFailed&) {
-            throw; \
-        } catch (const std::exception &ex) {
-            exceptionType = std::string(typeid(ex).name());
-            exceptionMessage = std::string(ex.what());
-            unexpectedException();
-        } catch (...) {
-            unexpectedException();
-        }
-    }
-
-    inline void runWithContext(const std::function<void()> &func) {
-        try {
-            func();
-        } catch(const AssertFailed&) {
-            throw;
-        } catch (const std::exception &ex) {
-            exceptionType = std::string(typeid(ex).name());
-            exceptionMessage = std::string(ex.what());
-            unexpectedException();
-        } catch(...) {
-            unexpectedException();
-        }
-    }
-
 public:
     UnitTest* unitTest; ///< Unittest for this context.
     int flags; ///< The flags.
@@ -139,6 +61,131 @@ public:
     std::string exceptionType; ///< The type of the exception
     std::string exceptionMessage; ///< The `what()` message of the exception.
 };
+
+
+template<typename Func>
+inline void require(
+    UnitTest* test,
+    int flags,
+    const char* macroName,
+    const char* expr,
+    SourceLocation loc,
+    Func&& func)
+{
+    AssertContext ctx{test, flags, macroName, expr, loc};
+    try {
+        if (func()) {
+            ctx.expectedResult();
+        } else {
+            ctx.unexpectedResult();
+        }
+    } catch (const AssertFailed&) {
+        throw;
+    } catch (const std::exception &ex) {
+        ctx.exceptionType = std::string(typeid(ex).name());
+        ctx.exceptionMessage = std::string(ex.what());
+        ctx.unexpectedException();
+    } catch (...) {
+        ctx.unexpectedException();
+    }
+}
+
+
+template<typename Func>
+inline void requireNoThrow(
+    UnitTest* test,
+    int flags,
+    const char* macroName,
+    const char* expr,
+    SourceLocation loc,
+    Func&& func)
+{
+    AssertContext ctx{test, flags, macroName, expr, loc};
+    try {
+        func();
+        ctx.expectedResult();
+    } catch (const AssertFailed&) {
+        throw;
+    } catch (const std::exception &ex) {
+        ctx.exceptionType = std::string(typeid(ex).name());
+        ctx.exceptionMessage = std::string(ex.what());
+        ctx.unexpectedResult();
+    } catch (...) {
+        ctx.unexpectedResult();
+    }
+}
+
+
+template<typename Func>
+inline void requireThrows(
+    UnitTest* test,
+    int flags,
+    const char* macroName,
+    const char* expr,
+    SourceLocation loc,
+    Func&& func)
+{
+    AssertContext ctx{test, flags, macroName, expr, loc};
+    try {
+        func();
+        ctx.unexpectedResult();
+    } catch (const AssertFailed&) {
+        throw;
+    } catch (...) {
+        ctx.expectedResult();
+    }
+}
+
+
+template<typename ExceptionClass, typename Func>
+inline void requireThrowsAs(
+    UnitTest* test,
+    int flags,
+    const char* macroName,
+    const char* expr,
+    SourceLocation loc,
+    Func&& func)
+{
+    AssertContext ctx{test, flags, macroName, expr, loc};
+    try {
+        func();
+        ctx.unexpectedResult();
+    } catch (const ExceptionClass&) {
+        ctx.expectedResult();
+    } catch (const AssertFailed&) {
+        throw; \
+    } catch (const std::exception &ex) {
+        ctx.exceptionType = std::string(typeid(ex).name());
+        ctx.exceptionMessage = std::string(ex.what());
+        ctx.unexpectedException();
+    } catch (...) {
+        ctx.unexpectedException();
+    }
+}
+
+
+template<typename Func>
+inline void runWithContext(
+    UnitTest* test,
+    int flags,
+    const char* macroName,
+    const char* expr,
+    SourceLocation loc,
+    Func&& func)
+{
+    AssertContext ctx{test, flags, macroName, expr, loc};
+    try {
+        func();
+    } catch(const AssertFailed&) {
+        throw;
+    } catch (const std::exception &ex) {
+        ctx.exceptionType = std::string(typeid(ex).name());
+        ctx.exceptionMessage = std::string(ex.what());
+        ctx.unexpectedException();
+    } catch(...) {
+        ctx.unexpectedException();
+    }
+}
 
 
 }

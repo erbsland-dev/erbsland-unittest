@@ -25,34 +25,24 @@
 
 
 #define ASSERT_CONTEXT_REQUIRE(macroName, flags, ...) \
-    ::erbsland::unittest::AssertContext{ \
-        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
-    }.require([&, this]() { \
+    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         return (__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_NOTHROW(macroName, flags, ...) \
-    ::erbsland::unittest::AssertContext{ \
-        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
-    }.requireNoThrow([&, this]() { \
+    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS(macroName, flags, ...) \
-    ::erbsland::unittest::AssertContext{ \
-        this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__} \
-    }.requireThrows([&, this]() { \
+    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS_AS(macroName, flags, exceptionClass, ...) \
-    ::erbsland::unittest::AssertContext{ \
-        this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__} \
-    }.requireThrowsAs<exceptionClass>([&, this]() { \
+    ::erbsland::unittest::requireThrowsAs<exceptionClass>(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 // run an expression, but add context information to it.
 #define WITH_CONTEXT( ... ) \
-    ::erbsland::unittest::AssertContext{ \
-        this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__} \
-    }.runWithContext([&, this]() { \
+    ::erbsland::unittest::runWithContext(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 // get the run context for the function `runWithContext`.
