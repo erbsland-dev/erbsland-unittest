@@ -1,22 +1,24 @@
-# The Erbsland Unit Testing System
+# Erbsland Unit Testing System
 
-Welcome to *Erbsland UnitTest*, a standalone unit testing system designed for testing Erbsland libraries and applications. Our unit testing system is built with a focus on minimal dependencies, making it theoretically dependency-free. For a more convenient usage, it requires only a minimal set of dependencies (C++, CMake, Python) and is compatible with any C++17 or later compiler.
+Welcome to *Erbsland UnitTest*, a standalone unit testing system originally designed for testing Erbsland libraries and applications. Built with a focus on minimal dependencies—making it practically dependency-free—it serves as a lightweight and flexible testing framework. The system is compatible with any C++17 or newer compiler.
+
+While no special build tools are required to use this framework, for a more convenient experience, CMake and Python are recommended.
 
 ## Where to start?
 
-Please read the [quick start](https://erbsland-dev.github.io/erbsland-unittest/chapters/quick-start.html) guide where you get a step-by-step guide how to set up your first unit test.
+Please read the [Getting Started](https://erbsland-dev.github.io/erbsland-unittest/chapters/get-started/) chapter where you get a step-by-step guide how to set up your first unit test.
 
-👉 [Quick Start](https://erbsland-dev.github.io/erbsland-unittest/chapters/quick-start.html) 👈
+▶️ [Getting Started](https://erbsland-dev.github.io/erbsland-unittest/chapters/get-started/)
 
 Or just have a look at the [example project](https://github.com/erbsland-dev/erbsland-unittest-example) that demonstrates the recommended project structure and most of the basic features.
 
-👉 [Example Project](https://github.com/erbsland-dev/erbsland-unittest-example) 👈
+▶️ [Example Project](https://github.com/erbsland-dev/erbsland-unittest-example)
 
 ## Documentation
 
 Read the full [documentation](https://erbsland-dev.github.io/erbsland-unittest/) where you learn how to set up and write unit tests: 
 
-👉 [Documentation](https://erbsland-dev.github.io/erbsland-unittest/) 👈
+▶️ [Documentation](https://erbsland-dev.github.io/erbsland-unittest/)
 
 ## Requirements
 
@@ -27,7 +29,7 @@ Read the full [documentation](https://erbsland-dev.github.io/erbsland-unittest/)
   - CMake version 3.25 or newer.
   - Python 3.11 or newer to compile the metadata.
 
-👉 [Requirements](https://erbsland-dev.github.io/erbsland-unittest/chapters/preface.html#requirements) 👈
+▶️ [Requirements](https://erbsland-dev.github.io/erbsland-unittest/chapters/requirements.html)
 
 ## Goals
 
@@ -37,13 +39,13 @@ Read the full [documentation](https://erbsland-dev.github.io/erbsland-unittest/)
 - Modern
 - Secure
 
-👉 [More about the goals...](https://erbsland-dev.github.io/erbsland-unittest/chapters/goals.html) 👈
+▶️ [More about the goals...](https://erbsland-dev.github.io/erbsland-unittest/chapters/goals.html)
 
 ## Bugreports and Feature Requests
 
 Please use the GitHub issue tracker to report bugs or request features:
 
-👉 [Report an Issue](https://github.com/erbsland-dev/erbsland-unittest/issues) 👈
+▶️ [Report an Issue](https://github.com/erbsland-dev/erbsland-unittest/issues)
 
 ## License
 
