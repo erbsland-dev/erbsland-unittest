@@ -25,7 +25,7 @@ void Private::handleAssertResult(
 
     ErrorCapturePtr errorCapture;
     if (result == UnexpectedException) {
-        errorCapture = Controller::instance()->reportError("UNEXPECTED EXCEPTION!", Console::Red);
+        errorCapture = Controller::instance()->reportError("UNEXPECTED EXCEPTION!", ConsoleColor::Red);
     } else {
         bool isExpected = (result == ExpectedResult);
         if ((context.flags & AssertNegate) != 0) {
@@ -34,7 +34,7 @@ void Private::handleAssertResult(
         if (isExpected) {
             return;
         }
-        errorCapture = Controller::instance()->reportError("FAILED!", Console::Red);
+        errorCapture = Controller::instance()->reportError("FAILED!", ConsoleColor::Red);
     }
 
     std::stringstream text;

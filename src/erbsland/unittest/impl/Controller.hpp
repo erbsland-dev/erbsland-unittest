@@ -56,7 +56,7 @@ public:
 
     /// Report an error.
     ///
-    auto reportError(const std::string &result, Console::Color textColor) -> ErrorCapturePtr;
+    auto reportError(const std::string &result, ConsoleColor textColor) -> ErrorCapturePtr;
 
     /// Access the console.
     ///

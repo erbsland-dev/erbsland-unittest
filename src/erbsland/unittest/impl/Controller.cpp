@@ -130,7 +130,7 @@ auto Controller::main(int argc, char **argv) -> int {
             try {
                 testClass->createUnitTest();
             } catch (const std::exception &ex) {
-                auto errorCapture = reportError("EXCEPTION!", Console::Red);
+                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeLine("Exception while creating the unit test instance.");
                 errorCapture->addContextInfo("Exception while creating the unit test instance.");
                 auto exceptionType = std::string(typeid(ex).name());
@@ -146,7 +146,7 @@ auto Controller::main(int argc, char **argv) -> int {
                 }
                 continue;
             } catch(...) {
-                auto errorCapture = reportError("EXCEPTION!", Console::Red);
+                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Unknown exception while creating the unit test instance.");
                 errorCapture->addContextInfo("Unknown exception while creating the unit test instance.");
                 console()->writeDebug("Unknown exception.");
@@ -156,12 +156,12 @@ auto Controller::main(int argc, char **argv) -> int {
             if (_waitAfterEachTest) {
                 std::this_thread::sleep_for(std::chrono::seconds{1});
             }
-            console()->finishTask("OK!", Console::Green);
+            console()->finishTask("Running", ConsoleColor::White);
             ++currentTask;
         } else {
             if (_verbose) {
                 console()->startTask(text.str(), currentTask, totalTaskCount);
-                console()->finishTask("Skipped", Console::Orange);
+                console()->finishTask("Skipped", ConsoleColor::Orange);
             }
             continue;
         }
@@ -178,7 +178,7 @@ auto Controller::main(int argc, char **argv) -> int {
             } else {
                 if (_verbose) {
                     console()->startTask(text.str(), currentTask, totalTaskCount);
-                    console()->finishTask("Skipped", Console::Orange);
+                    console()->finishTask("Skipped", ConsoleColor::Orange);
                 }
                 continue;
             }
@@ -202,11 +202,11 @@ auto Controller::main(int argc, char **argv) -> int {
                 if (_waitAfterEachTest) {
                     std::this_thread::sleep_for(std::chrono::seconds{1});
                 }
-                console()->finishTask("OK!", Console::Green);
+                console()->finishTask("OK!", ConsoleColor::Green);
             } catch(const AssertFailed&) {
                 ++errors;
             } catch (const std::exception &ex) { \
-                auto errorCapture = reportError("EXCEPTION!", Console::Red);
+                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Exception outside of assert clause.");
                 errorCapture->addContextInfo("Exception outside of assert clause.");
                 auto exceptionType = std::string(typeid(ex).name());
@@ -218,7 +218,7 @@ auto Controller::main(int argc, char **argv) -> int {
                 errorCapture->addDebugInfo(text.str());
                 ++errors;
             } catch(...) {
-                auto errorCapture = reportError("EXCEPTION!", Console::Red);
+                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Unknown exception outside of assert clause.");
                 errorCapture->addContextInfo("Unknown exception outside of assert clause.");
                 console()->writeDebug("Unknown exception.");
@@ -255,6 +255,7 @@ auto Controller::main(int argc, char **argv) -> int {
         text.str({});
         text << "===[ ERROR | " << errors << " errors while running the tests. ]===";
         console()->writeError(text.str());
+        console()->resetFormatting();
         return 1;
     }
     const auto endTime = std::chrono::steady_clock::now();
@@ -263,6 +264,7 @@ auto Controller::main(int argc, char **argv) -> int {
     text << "Total Test Duration: " << std::setprecision(3) << testDuration.count() << " seconds";
     console()->writeLine(text.str());
     console()->writeSuccess("===[ SUCCESS | Successfully run all tests without errors. ]===");
+    console()->resetFormatting();
     return 0;
 }
 
@@ -427,7 +429,7 @@ void Controller::writeFromUnitTest(const std::string &text) {
 }
 
 
-auto Controller::reportError(const std::string &result, Console::Color textColor) -> ErrorCapturePtr {
+auto Controller::reportError(const std::string &result, ConsoleColor textColor) -> ErrorCapturePtr {
     auto errorCapture = std::make_shared<ErrorCapture>(_currentSuite, _currentTest, result, textColor);
     _capturedErrors.push_back(errorCapture);
     console()->finishTask(result, textColor);

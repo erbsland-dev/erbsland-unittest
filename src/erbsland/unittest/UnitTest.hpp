@@ -5,10 +5,9 @@
 
 
 #include "impl/AssertContext.hpp"
+#include "impl/Definitions.hpp"
 #include "impl/Macros.hpp"
 #include "impl/Private.hpp"
-
-#include "impl/Definitions.hpp"
 
 #include <filesystem>
 

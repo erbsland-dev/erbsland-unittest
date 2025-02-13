@@ -12,6 +12,10 @@ target_sources(erbsland-unittest PRIVATE
         AssertResult.hpp
         Console.cpp
         Console.hpp
+        ConsoleColor.cpp
+        ConsoleColor.hpp
+        ConsoleLine.cpp
+        ConsoleLine.hpp
         Controller.cpp
         Controller.hpp
         Definitions.hpp

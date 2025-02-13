@@ -13,45 +13,8 @@
 namespace erbsland::unittest {
 
 
-Console::Console() {
-    _colorMap = {
-        {Black,       std::make_tuple(30, 40)},
-        {DarkRed,     std::make_tuple(31, 41)},
-        {Green,       std::make_tuple(32, 42)},
-        {Orange,      std::make_tuple(33, 43)},
-        {DarkBlue,    std::make_tuple(34, 44)},
-        {Violet,      std::make_tuple(35, 45)},
-        {DarkCyan,    std::make_tuple(36, 46)},
-        {White,       std::make_tuple(37, 47)},
-        {DarkGray,    std::make_tuple(90, 90)},
-        {Red,         std::make_tuple(91, 101)},
-        {LightGreen,  std::make_tuple(92, 102)},
-        {Yellow,      std::make_tuple(93, 103)},
-        {LightBlue,   std::make_tuple(94, 104)},
-        {Magenta,     std::make_tuple(95, 105)},
-        {Cyan,        std::make_tuple(96, 106)},
-        {BrightWhite, std::make_tuple(97, 107)},
-    };
-}
-
-
 void Console::setUseColor(bool enabled) {
     _useColor = enabled;
-}
-
-
-void Console::write(const std::string &text, Console::Color textColor) {
-    if (_useColor) {
-        if (textColor != Default) {
-            std::cout << "\x1b[" << std::get<0>(_colorMap[textColor]) << "m";
-        }
-    }
-    std::cout << text;
-    if (_useColor) {
-        if (textColor != Default) {
-            std::cout << "\x1b[0m";
-        }
-    }
 }
 
 
@@ -66,53 +29,79 @@ void Console::writeLine(const std::string &text) {
 
 
 void Console::writeDebug(const std::string &text) {
-    writeLineWithColor(text, DarkGray);
+    writeLineWithColor(text, ConsoleColor::DarkGray);
 }
 
 
 void Console::writeError(const std::string &text) {
-    writeLineWithColor(text, Red);
+    writeLineWithColor(text, ConsoleColor::Red);
 }
 
 
 void Console::writeErrorInfo(const std::string &text) {
-    writeLineWithColor(text, Orange);
+    writeLineWithColor(text, ConsoleColor::Orange);
 }
 
 
 void Console::writeSuccess(const std::string &text) {
-    writeLineWithColor(text, Green);
+    writeLineWithColor(text, ConsoleColor::Green);
 }
 
 
-void Console::writeLineWithColor(const std::string &text, Color textColor) {
+void Console::writeLineWithColor(const std::string &text, const ConsoleColor textColor) {
     beforeWriteLine();
-    write(text, textColor);
-    write("\n");
+    // split multiple lines in `text` to keep things synchronized.
+    std::string::size_type lastPos = 0;
+    std::string::size_type pos = text.find('\n');
+    while (pos != std::string::npos) {
+        sendLineSynchronized(ConsoleLine{text.substr(lastPos, pos - lastPos - 1), textColor});
+        lastPos = std::exchange(pos, text.find('\n', pos + 1));
+    }
+    if (const auto lastLine = ConsoleLine{text.substr(lastPos), textColor}; !lastLine.empty()) {
+        sendLineSynchronized(lastLine);
+    }
     afterWriteLine();
 }
 
 
-void Console::startTask(const std::string &text, int taskNumber, int totalTasks) {
-    if (!_currentTask.empty()) {
-        finishTask({});
+auto Console::createTaskLine(
+    const TaskInfo &taskInfo,
+    const std::string &status,
+    const ConsoleColor statusColor) noexcept -> ConsoleLine {
+
+    ConsoleLine line;
+    if (status.empty()) {
+        line.addText("[", ConsoleColor::LightBlue);
+        line.addText(ConsoleLine::rightJustify(taskInfo.taskNumber, 4), ConsoleColor::BrightWhite);
+        line.addText("/", ConsoleColor::LightBlue);
+        line.addText(ConsoleLine::rightJustify(taskInfo.totalTasks, 4), ConsoleColor::BrightWhite);
+        line.addText("] ", ConsoleColor::LightBlue);
+        line.addText(taskInfo.text, ConsoleColor::Yellow);
+        line.addText(" ...", ConsoleColor::BrightWhite);
+    } else {
+        line.addText("- ");
+        line.addText(taskInfo.text, ConsoleColor::White);
+        line.addText(" ");
+        line.addText(status, statusColor);
     }
-    _currentTaskNumber = taskNumber;
-    _currentTotalTasks = totalTasks;
-    _currentTask = text;
+    return line;
+}
+
+
+void Console::startTask(const std::string &text, int taskNumber, int totalTasks) {
+    _currentTask.taskNumber = taskNumber;
+    _currentTask.totalTasks = totalTasks;
+    _currentTask.text = text;
+    _currentTaskLine = createTaskLine(_currentTask, {}, {});
     writeTaskLine();
 }
 
 
-void Console::finishTask(const std::string &result, Console::Color textColor) {
-    if (_currentTask.empty()) {
-        return;
-    }
+void Console::finishTask(const std::string &result, ConsoleColor textColor) {
     clearTaskLine();
-    write(_currentTask);
-    write(" ");
-    write(result, textColor);
-    write("\n");
+    _currentTaskLine = createTaskLine(_currentTask, result, textColor);
+    sendLineSynchronized(_currentTaskLine);
+    _currentTaskLine = {};
     _currentTask = {};
 }
 
@@ -121,97 +110,113 @@ void Console::writeTaskLine() {
     if (!_useColor) {
         return;
     }
-    std::stringstream ss;
-    ss << "[" << _currentTaskNumber << "/" << _currentTotalTasks << "] ";
-    write(ss.str(), LightBlue);
-    _currentTaskLineSize = ss.str().size();
-    write(_currentTask, Yellow);
-    write(" ...");
-    _currentTaskLineSize += _currentTask.size() + 4;
+    sendLineSynchronized(_currentTaskLine);
     flush();
 }
 
 
 void Console::clearTaskLine() {
     if (_useColor) {
-        for (std::size_t i{}; i < _currentTaskLineSize; ++i) {
-            std::cout << '\x08';
-        }
-        for (std::size_t i{}; i < _currentTaskLineSize; ++i) {
-            std::cout << ' ';
-        }
-        for (std::size_t i{}; i < _currentTaskLineSize; ++i) {
-            std::cout << '\x08';
-        }
+        std::cout << "\x1b[1F\x1b[0K";
     }
 }
 
 
 void Console::beforeWriteLine() {
-    if (!_currentTask.empty()) {
+    if (!_currentTaskLine.empty()) {
         clearTaskLine();
     }
 }
 
 
 void Console::afterWriteLine() {
-    if (!_currentTask.empty()) {
+    if (!_currentTaskLine.empty()) {
         writeTaskLine();
     }
 }
 
 
 void Console::writeTestEntry(const std::string &type, const MetaData &metaData) {
-    write(type);
-    write(": ");
+    ConsoleLine result;
+    result.addText(type);
+    result.addText(": ");
     if (metaData.isSkipByDefault()) {
-        write("(");
+        result.addText("(");
     }
-    write(metaData.shortName(), White);
+    result.addText(metaData.shortName(), ConsoleColor::White);
     if (metaData.isSkipByDefault()) {
-        write(")");
+        result.addText(")");
     }
     if (!metaData.tags().empty()) {
-        write(" [", DarkCyan);
+        result.addText(" [", ConsoleColor::DarkCyan);
         bool first = true;
         for (const auto &tag : metaData.tags()) {
             if (!first) {
-                write(", ", DarkCyan);
+                result.addText(", ", ConsoleColor::DarkCyan);
             }
-            write(tag, Cyan);
+            result.addText(tag, ConsoleColor::Cyan);
             first = false;
         }
-        write("]", DarkCyan);
+        result.addText("]", ConsoleColor::DarkCyan);
     }
     if (!metaData.targets().empty()) {
-        write(" <", Violet);
+        result.addText(" <", ConsoleColor::Violet);
         bool first = true;
         for (const auto &target : metaData.targets()) {
             if (!first) {
-                write(", ", Violet);
+                result.addText(", ", ConsoleColor::Violet);
             }
-            write(target, Magenta);
+            result.addText(target, ConsoleColor::Magenta);
             first = false;
         }
-        write(">", Violet);
+        result.addText(">", ConsoleColor::Violet);
     }
-    write("\n");
+    sendLineSynchronized(result);
 }
 
-auto Console::currentTask() const -> std::string {
-    return _currentTask;
+
+void Console::resetFormatting() {
+    if (_useColor) {
+        std::cout << "\x1b[0m\n";
+        flush();
+    }
 }
 
 
 void Console::writeErrorTaskLine(
     const std::string &task,
     const std::string &result,
-    Console::Color textColor) {
+    const ConsoleColor textColor) {
 
-    write(task);
-    write(" ");
-    write(result, textColor);
-    write("\n");
+    ConsoleLine line;
+    line.addText(task);
+    line.addText(" ");
+    line.addText(result, textColor);
+    sendLineSynchronized(line);
+}
+
+
+void Console::sendLineSynchronized(const ConsoleLine &line) noexcept {
+    std::unique_lock lock{_mutex};
+    ConsoleColor foreground;
+    ConsoleColor background;
+    if (_useColor) {
+        std::cout << "\x1b[0m"; // reset.
+    }
+    for (const auto &part : line.parts()) {
+        if (_useColor) {
+            if (part.foreground != foreground) {
+                foreground = part.foreground;
+                std::cout << foreground.foreground();
+            }
+            if (part.background != background) {
+                background = part.background;
+                std::cout << background.background();
+            }
+        }
+        std::cout << part.text;
+    }
+    std::cout << "\n";
 }
 
 

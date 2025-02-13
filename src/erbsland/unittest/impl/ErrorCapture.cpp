@@ -4,18 +4,21 @@
 #include "ErrorCapture.hpp"
 
 
+#include <utility>
+
+
 namespace erbsland::unittest {
 
 
 ErrorCapture::ErrorCapture(
-    const std::string &suite,
-    const std::string &test,
-    const std::string &result,
-    Console::Color resultColor)
+    std::string suite,
+    std::string test,
+    std::string result,
+    const ConsoleColor resultColor)
 :
-    _suite{suite},
-    _test{test},
-    _result{result},
+    _suite{std::move(suite)},
+    _test{std::move(test)},
+    _result{std::move(result)},
     _resultColor{resultColor} {
 }
 
@@ -30,22 +33,22 @@ void ErrorCapture::addDebugInfo(const std::string &debugLine) {
 }
 
 
-auto ErrorCapture::suite() const -> const std::string & {
+auto ErrorCapture::suite() const -> const std::string& {
     return _suite;
 }
 
 
-auto ErrorCapture::test() const -> const std::string & {
+auto ErrorCapture::test() const -> const std::string& {
     return _test;
 }
 
 
-auto ErrorCapture::result() const -> const std::string & {
+auto ErrorCapture::result() const -> const std::string& {
     return _result;
 }
 
 
-auto ErrorCapture::resultColor() const -> Console::Color {
+auto ErrorCapture::resultColor() const -> ConsoleColor {
     return _resultColor;
 }
 

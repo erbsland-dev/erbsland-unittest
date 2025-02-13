@@ -20,10 +20,10 @@ public:
     /// Create a new error capture.
     ///
     ErrorCapture(
-        const std::string &suite,
-        const std::string &test,
-        const std::string &result,
-        Console::Color resultColor);
+        std::string suite,
+        std::string test,
+        std::string result,
+        ConsoleColor resultColor);
 
 public:
     /// Add context information.
@@ -38,7 +38,7 @@ public:
     [[nodiscard]] auto suite() const -> const std::string&;
     [[nodiscard]] auto test() const -> const std::string&;
     [[nodiscard]] auto result() const -> const std::string&;
-    [[nodiscard]] auto resultColor() const -> Console::Color;
+    [[nodiscard]] auto resultColor() const -> ConsoleColor;
     [[nodiscard]] auto contextInfo() const -> const std::list<std::string>&;
     [[nodiscard]] auto debugInfo() const -> const std::list<std::string>&;
 
@@ -46,7 +46,7 @@ private:
     std::string _suite;
     std::string _test;
     std::string _result;
-    Console::Color _resultColor;
+    ConsoleColor _resultColor;
     std::list<std::string> _contextInfo;
     std::list<std::string> _debugInfo;
 };

@@ -4,8 +4,12 @@
 #pragma once
 
 
+#include "ConsoleLine.hpp"
+
 #include <map>
+#include <mutex>
 #include <string>
+#include <thread>
 
 
 namespace erbsland::unittest {
@@ -19,31 +23,16 @@ class MetaData;
 ///
 class Console {
 public:
-    /// The text/background color
-    enum Color : int {
-        Default = -1,
-        Black = 0,
-        DarkRed = 1,
-        Green = 2,
-        Orange = 3,
-        DarkBlue = 4,
-        Violet = 5,
-        DarkCyan = 6,
-        White = 7,
-        DarkGray = 8,
-        Red = 9,
-        LightGreen = 10,
-        Yellow = 11,
-        LightBlue = 12,
-        Magenta = 13,
-        Cyan = 6,
-        BrightWhite = 7,
+    struct TaskInfo {
+        std::string text;
+        int taskNumber{};
+        int totalTasks{};
     };
 
 public:
     /// ctor
     ///
-    Console();
+    Console() = default;
 
 public: // settings
     /// Set if colour shall be used.
@@ -75,6 +64,10 @@ public: // usage
     ///
     void writeTestEntry(const std::string &type, const MetaData &metaData);
 
+    /// Reset the formatting at the end of the output.
+    ///
+    void resetFormatting();
+
 public: // status handling.
     /// Start a new task.
     ///
@@ -90,30 +83,28 @@ public: // status handling.
     ///
     /// Finishes the task, by replacing the status line with "<task text> <result>".
     ///
-    void finishTask(const std::string &result, Color textColor = Default);
-
-    /// Get the current task.
-    ///
-    [[nodiscard]] auto currentTask() const -> std::string;
+    void finishTask(const std::string &result, ConsoleColor textColor = {});
 
     /// Write a task line for error reporting.
     ///
-    void writeErrorTaskLine(
-        const std::string &task,
-        const std::string &result,
-        Color textColor);
+    void writeErrorTaskLine(const std::string &task, const std::string &result, ConsoleColor textColor);
 
 private: // low level API
     /// Write a line in a given color.
     ///
-    void writeLineWithColor(const std::string &text, Color textColor = Default);
+    void writeLineWithColor(const std::string &text, ConsoleColor textColor = {});
 
-    /// Write text.
+    /// Prepare a task line.
     ///
-    /// @param text The text to write.
-    /// @param textColor The colour of the text.
+    /// @param taskInfo The information about the task to prepare.
+    /// @param status An optional status. Empty means "running".
+    /// @param statusColor An optional status color, only used if a status is set.
+    /// @return The prepared status line.
     ///
-    void write(const std::string &text, Color textColor = Default);
+    [[nodiscard]] auto createTaskLine(
+        const TaskInfo &taskInfo,
+        const std::string &status,
+        ConsoleColor statusColor) noexcept -> ConsoleLine;
 
     /// Flush the output buffer.
     ///
@@ -135,13 +126,15 @@ private: // low level API
     ///
     void clearTaskLine();
 
+    /// Send a line to the console.
+    ///
+    void sendLineSynchronized(const ConsoleLine &line) noexcept;
+
 private:
-    bool _useColor{true};
-    int _currentTaskNumber{0};
-    int _currentTotalTasks{0};
-    std::string _currentTask{};
-    std::size_t _currentTaskLineSize{0};
-    std::map<Color, std::tuple<int, int>> _colorMap;
+    bool _useColor{true}; ///< Flag if coloured output shall be used.
+    mutable std::mutex _mutex; ///< A mutex to synchronize the output lines.
+    TaskInfo _currentTask; ///< Information aber the currently running task.
+    ConsoleLine _currentTaskLine; ///< The current formatted task line.
 };
 
 
