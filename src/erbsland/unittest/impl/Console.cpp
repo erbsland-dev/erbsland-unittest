@@ -54,7 +54,7 @@ void Console::writeLineWithColor(const std::string &text, const ConsoleColor tex
     std::string::size_type lastPos = 0;
     std::string::size_type pos = text.find('\n');
     while (pos != std::string::npos) {
-        sendLineSynchronized(ConsoleLine{text.substr(lastPos, pos - lastPos - 1), textColor});
+        sendLineSynchronized(ConsoleLine{text.substr(lastPos, pos - lastPos), textColor});
         lastPos = std::exchange(pos, text.find('\n', pos + 1));
     }
     if (const auto lastLine = ConsoleLine{text.substr(lastPos), textColor}; !lastLine.empty()) {
@@ -177,6 +177,8 @@ void Console::writeTestEntry(const std::string &type, const MetaData &metaData) 
 
 void Console::resetFormatting() {
     if (_useColor) {
+        _currentForeground = {};
+        _currentBackground = {};
         std::cout << "\x1b[0m\n";
         flush();
     }
@@ -198,25 +200,21 @@ void Console::writeErrorTaskLine(
 
 void Console::sendLineSynchronized(const ConsoleLine &line) noexcept {
     std::unique_lock lock{_mutex};
-    ConsoleColor foreground;
-    ConsoleColor background;
-    if (_useColor) {
-        std::cout << "\x1b[0m"; // reset.
-    }
     for (const auto &part : line.parts()) {
         if (_useColor) {
-            if (part.foreground != foreground) {
-                foreground = part.foreground;
-                std::cout << foreground.foreground();
+            if (part.foreground != _currentForeground) {
+                _currentForeground = part.foreground;
+                std::cout << _currentForeground.foreground();
             }
-            if (part.background != background) {
-                background = part.background;
-                std::cout << background.background();
+            if (part.background != _currentBackground) {
+                _currentBackground = part.background;
+                std::cout << _currentBackground.background();
             }
         }
         std::cout << part.text;
     }
     std::cout << "\n";
+    flush();
 }
 
 
