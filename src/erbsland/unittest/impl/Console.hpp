@@ -64,7 +64,7 @@ public: // usage
     ///
     void writeTestEntry(const std::string &type, const MetaData &metaData);
 
-    /// Reset the formatting at the end of the output.
+    /// Reset the formatting at the start and end of the output.
     ///
     void resetFormatting();
 
@@ -135,6 +135,8 @@ private:
     mutable std::mutex _mutex; ///< A mutex to synchronize the output lines.
     TaskInfo _currentTask; ///< Information aber the currently running task.
     ConsoleLine _currentTaskLine; ///< The current formatted task line.
+    ConsoleColor _currentForeground; ///< The current foreground color
+    ConsoleColor _currentBackground; ///< The current background color.
 };
 
 

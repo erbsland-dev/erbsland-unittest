@@ -42,6 +42,8 @@ auto Controller::main(int argc, char **argv) -> int {
     if (auto result = parseCommandLine(argc, argv); result != 0) {
         return result;
     }
+    // Reset the formatting to make sure the output always starts in the same color.
+    console()->resetFormatting();
     // Sort the test classes by name, as registration may change depending on the compilation order.
     std::stable_sort(
         _testClasses.begin(),
