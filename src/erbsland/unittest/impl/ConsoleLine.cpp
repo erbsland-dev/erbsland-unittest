@@ -51,8 +51,9 @@ auto ConsoleLine::utf8Length(const std::string_view &text) noexcept -> std::size
 auto ConsoleLine::utf8RemoveControlCharacters(const std::string_view &text) noexcept -> std::string {
     std::string result;
     result.reserve(text.size());
-    for (auto character : text) {
-        if (character < 32 || character == 127) {
+    for (const auto character : text) {
+        const auto asByte = static_cast<uint8_t>(character);
+        if (asByte < 0x20U || asByte == 0x7FU) {
             continue;
         }
         result.push_back(character);
