@@ -119,6 +119,59 @@ constexpr bool is_formattable = std::is_default_constructible_v<
 >;
 
 
+/// Generates a detailed error message for a failed comparison.
+///
+/// @tparam A The type of the first argument.
+/// @tparam B The type of the second argument.
+/// @param opExpr The textual representation of the comparison operator.
+/// @param aExpr The textual representation of the first argument.
+/// @param bExpr The textual representation of the second argument.
+/// @param aValue The value of the first argument.
+/// @param bValue The value of the second argument.
+/// @return A detailed error message.
+///
+template<typename A, typename B>
+auto comparisonErrorMessage(
+    const std::string_view opExpr,
+    const std::string_view aExpr,
+    const std::string_view bExpr,
+    const A &aValue,
+    const B &bValue) -> std::string {
+
+    constexpr std::size_t maxLen = 80;
+    std::string result = "Comparison failed: ";
+
+    if constexpr (is_formattable<A>) {
+        result += ConsoleLine::utf8SafeString(std::format("{}", aValue), maxLen);
+    } else {
+        result += aExpr;
+    }
+    result += ' ';
+    result += opExpr;
+    result += ' ';
+    if constexpr (is_formattable<B>) {
+        result += ConsoleLine::utf8SafeString(std::format("{}", bValue), maxLen);
+    } else {
+        result += bExpr;
+    }
+    if constexpr (is_formattable<A>) {
+        result += std::format(
+            "\n  A: {} => {}",
+            aExpr,
+            ConsoleLine::utf8SafeString(std::format("{}", aValue), maxLen)
+        );
+    }
+    if constexpr (is_formattable<B>) {
+        result += std::format(
+            "\n  B: {} => {}",
+            bExpr,
+            ConsoleLine::utf8SafeString(std::format("{}", bValue), maxLen)
+        );
+    }
+    return result;
+}
+
+
 /// Executes a comparison check using a custom comparator, and reports a failure with a custom message if the
 /// comparison returns false.
 ///
@@ -129,7 +182,8 @@ constexpr bool is_formattable = std::is_default_constructible_v<
 /// @param macroName The name of the macro that invoked this comparison (e.g. "REQUIRE").
 /// @param expr The textual representation of the comparison expression.
 /// @param loc The source location where the comparison was invoked.
-/// @param compareFunc Callable that performs the comparison; if it returns false, the failure message from `messageFunc` is recorded.
+/// @param compareFunc Callable that performs the comparison; if it returns false, the failure message from
+///     `messageFunc` is recorded.
 /// @param messageFunc Callable that returns a detailed error message for a false comparison.
 ///
 template<typename CompareFunc, typename MessageFunc>
