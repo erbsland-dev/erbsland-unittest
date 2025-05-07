@@ -27,7 +27,7 @@ We believe that unit tests with an excessive number of macros and test functions
 Modern
 ------
 
-Our unit test system is written in modern C++ (up to C++17) but also works with the latest C++20 features if needed. It is compatible with a wide range of compilers, even those that may not yet fully support C++17 features.
+Our unit test system is written in modern C++ and works with the latest C++20 features if needed. It is compatible with a wide range of compilers, even those that may not yet fully support C++20 features.
 
 Secure
 ------

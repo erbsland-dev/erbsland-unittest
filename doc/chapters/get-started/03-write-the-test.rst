@@ -112,7 +112,7 @@ To compile and include the test suite, update your `CMakeLists.txt` file:
        add_executable(unittest
                src/BasicTest.hpp    # Add the new test suite
                src/main.cpp)
-       target_compile_features(unittest PRIVATE cxx_std_17)
+       target_compile_features(unittest PRIVATE cxx_std_20)
        target_link_libraries(unittest PRIVATE erbsland-unittest-example-lib)
        target_include_directories(unittest PRIVATE ../example-lib/src)
        erbsland_unittest(TARGET unittest)

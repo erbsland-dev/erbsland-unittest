@@ -57,7 +57,7 @@ To configure a unit test executable within the recommended project structure, fo
         project(unittest)
         add_executable(unittest
                src/main.cpp)
-        target_compile_features(unittest PRIVATE cxx_std_17)
+        target_compile_features(unittest PRIVATE cxx_std_20)
         target_link_libraries(unittest PRIVATE erbsland-unittest-example-lib)
         target_include_directories(unittest PRIVATE ../example-lib/src)
         erbsland_unittest(TARGET unittest)
@@ -78,7 +78,7 @@ The unit test :file:`CMakeLists.txt` file accomplishes the following:
 
 3. **Specifies the C++ Standard**:
 
-    - Configures the project to use C++17 with ``target_compile_features``.
+    - Configures the project to use C++20 with ``target_compile_features``.
 
 4. **Links the Unit Test Library**:
 

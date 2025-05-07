@@ -1,5 +1,6 @@
-// Copyright © 2025 EducateIT GmbH (https://educateit.ch/) and Tobias Erbsland (https://erbsland.dev/)
-// All rights are reserved. Detailed terms are specified in the "COPYRIGHT.md" file.
+// Copyright © 2023-2024 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
+// According to the copyright terms specified in the file "COPYRIGHT.md".
+// SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
 
@@ -74,7 +75,18 @@ public:
 
     /// Remove control characters from UTF-8 text.
     ///
+    /// @param text The text to process.
+    /// @return A text without any control characters.
+    ///
     static auto utf8RemoveControlCharacters(const std::string_view &text) noexcept -> std::string;
+
+    /// Create a safe string by escaping and length limiting the text.
+    ///
+    /// @param text The text to process.
+    /// @param maxLength The maximum length of the *processed* text.
+    /// @return A safe, escaped text that can be written to the console.
+    ///
+    static auto utf8SafeString(const std::string_view &text, std::size_t maxLength) noexcept -> std::string;
 
 private:
     std::vector<Part> _parts;

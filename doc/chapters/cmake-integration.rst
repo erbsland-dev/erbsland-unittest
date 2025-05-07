@@ -34,7 +34,7 @@ Configuring the Root CMake File
 
 The root CMake file consolidates the tested application or library, its dependencies, the *Erbsland UnitTest* library, and the actual unittest into a single project.
 
-.. code-block: cmake
+.. code-block:: cmake
 
     cmake_minimum_required(VERSION 3.20)
     project(ExampleUnitTest)
@@ -49,7 +49,7 @@ Configuring the Unit Test Project
 
 A typical unit test configuration for a small project appears as follows:
 
-.. code-block: cmake
+.. code-block:: cmake
 
     cmake_minimum_required(VERSION 3.20)
     project(unittest)
@@ -58,7 +58,7 @@ A typical unit test configuration for a small project appears as follows:
             src/BasicTest.hpp
             src/ContextTest.hpp
             src/LongTest.hpp)
-    target_compile_features(unittest PRIVATE cxx_std_17)
+    target_compile_features(unittest PRIVATE cxx_std_20)
     target_link_libraries(unittest PRIVATE erbsland-unittest-example-lib)
     target_include_directories(unittest PRIVATE ../example-lib/src)
     erbsland_unittest(TARGET unittest)
@@ -79,7 +79,7 @@ The ``erbsland_unittest`` function streamlines your unit test project configurat
 How to Use
 ^^^^^^^^^^
 
-.. code-block: cmake
+.. code-block:: cmake
 
     erbsland_unittest(
         TARGET <target_name>

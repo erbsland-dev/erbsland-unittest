@@ -8,7 +8,6 @@
 
 
 // make sure we have no conflicts.
-#undef assert
 #undef ADD_TEST
 #undef ADD_CLASS
 #undef REQUIRE
@@ -16,11 +15,23 @@
 #undef REQUIRE_THROWS
 #undef REQUIRE_THROWS_AS
 #undef REQUIRE_NOTHROW
+#undef REQUIRE_EQUAL
+#undef REQUIRE_NOT_EQUAL
+#undef REQUIRE_LESS
+#undef REQUIRE_LESS_EQUAL
+#undef REQUIRE_GREATER
+#undef REQUIRE_GREATER_EQUAL
 #undef CHECK
 #undef CHECK_FALSE
 #undef CHECK_THROWS
 #undef CHECK_THROWS_AS
 #undef CHECK_NOTHROW
+#undef CHECK_EQUAL
+#undef CHECK_NOT_EQUAL
+#undef CHECK_LESS
+#undef CHECK_LESS_EQUAL
+#undef CHECK_GREATER
+#undef CHECK_GREATER_EQUAL
 #undef UNITTEST_SUBCLASS
 
 
@@ -28,6 +39,10 @@
     ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         return (__VA_ARGS__); \
     });
+#define ASSERT_CONTEXT_COMPARISON(macroName, flags, op, a, b) \
+    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&, this]() { \
+        return ((a) op (b)); \
+    }, [&, this]() { return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); });
 #define ASSERT_CONTEXT_NOTHROW(macroName, flags, ...) \
     ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
         static_cast<void>(__VA_ARGS__); \
@@ -53,19 +68,33 @@
 #define REQUIRE_THROWS( ... ) ASSERT_CONTEXT_THROWS("REQUIRE_THROWS", 0, __VA_ARGS__)
 #define REQUIRE_THROWS_AS(exceptionClass, ... ) ASSERT_CONTEXT_THROWS_AS("REQUIRE_THROWS_AS", 0, exceptionClass, __VA_ARGS__)
 #define REQUIRE_NOTHROW( ... ) ASSERT_CONTEXT_NOTHROW("REQUIRE_NOTHROW", 0, __VA_ARGS__)
+#define REQUIRE_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_EQUAL", 0, ==, a, b)
+#define REQUIRE_NOT_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_NOT_EQUAL", 0, !=, a, b)
+#define REQUIRE_LESS(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_LESS", 0, <, a, b)
+#define REQUIRE_LESS_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_LESS_EQUAL", 0, <=, a, b)
+#define REQUIRE_GREATER(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_GREATER", 0, >, a, b)
+#define REQUIRE_GREATER_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("REQUIRE_GREATER_EQUAL", 0, >=, a, b)
 
 #define CHECK( ... ) ASSERT_CONTEXT_REQUIRE("CHECK", (::erbsland::unittest::AssertCheck), __VA_ARGS__)
 #define CHECK_FALSE( ... ) ASSERT_CONTEXT_REQUIRE("CHECK_FALSE", (::erbsland::unittest::AssertNegate|::erbsland::unittest::AssertCheck), __VA_ARGS__)
 #define CHECK_THROWS( ... ) ASSERT_CONTEXT_THROWS("CHECK_THROWS", (::erbsland::unittest::AssertCheck), __VA_ARGS__)
 #define CHECK_THROWS_AS(exceptionClass, ... ) ASSERT_CONTEXT_THROWS_AS("CHECK_THROWS_AS", (::erbsland::unittest::AssertCheck), exceptionClass, __VA_ARGS__)
 #define CHECK_NOTHROW( ... ) ASSERT_CONTEXT_NOTHROW("CHECK_NOTHROW", (::erbsland::unittest::AssertCheck), __VA_ARGS__)
+#define CHECK_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_EQUAL", (::erbsland::unittest::AssertCheck), ==, a, b)
+#define CHECK_NOT_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_NOT_EQUAL", (::erbsland::unittest::AssertCheck), !=, a, b)
+#define CHECK_LESS(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_LESS", (::erbsland::unittest::AssertCheck), <, a, b)
+#define CHECK_LESS_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_LESS_EQUAL", (::erbsland::unittest::AssertCheck), <=, a, b)
+#define CHECK_GREATER(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_GREATER", (::erbsland::unittest::AssertCheck), >, a, b)
+#define CHECK_GREATER_EQUAL(a, b) ASSERT_CONTEXT_COMPARISON("CHECK_GREATER_EQUAL", (::erbsland::unittest::AssertCheck), >=, a, b)
 
-/// The begin to manually registers tests.
+/// Begin: Manual test registration.
 ///
 #define TESTS_BEGIN(class_name) \
     public: \
     static constexpr std::tuple<void (class_name::*)(), const char*> cTestFunctions[] = {
 
+/// End: Manual test registration.
+///
 #define TESTS_END() \
     };
 

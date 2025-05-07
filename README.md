@@ -1,67 +1,66 @@
 # Erbsland Unit Testing System
 
-Welcome to *Erbsland UnitTest*, a standalone unit testing system originally designed for testing Erbsland libraries and applications. Built with a focus on minimal dependencies—making it practically dependency-free—it serves as a lightweight and flexible testing framework. The system is compatible with any C++17 or newer compiler.
+Welcome to **Erbsland UnitTest** — a lightweight and modern unit testing framework designed specifically for C++20 and beyond. Originally created for testing Erbsland libraries and applications, this system is tailored to be **practically dependency-free**, offering developers a clean and minimalistic testing environment.
 
-While no special build tools are required to use this framework, for a more convenient experience, CMake and Python are recommended.
+Compatible with any C++20-compliant compiler, this framework is perfect for those who value simplicity and control in their testing workflows.
 
-## Where to start?
+Although no external build tools are strictly required, we recommend using **CMake** and **Python** for a more streamlined experience, especially when working with metadata.
 
-Please read the [Getting Started](https://erbsland-dev.github.io/erbsland-unittest/chapters/get-started/) chapter where you get a step-by-step guide how to set up your first unit test.
+## Getting Started 🚀
+
+If you're new here, the best place to begin is the step-by-step **Getting Started Guide**. It walks you through everything you need to write and run your first unit test:
 
 ▶️ [Getting Started](https://erbsland-dev.github.io/erbsland-unittest/chapters/get-started/)
 
-Or just have a look at the [example project](https://github.com/erbsland-dev/erbsland-unittest-example) that demonstrates the recommended project structure and most of the basic features.
+Or jump straight into the code with our hands-on **example project**, which showcases the suggested project layout and core testing features:
 
 ▶️ [Example Project](https://github.com/erbsland-dev/erbsland-unittest-example)
 
-## Documentation
+## Documentation 📚
 
-Read the full [documentation](https://erbsland-dev.github.io/erbsland-unittest/) where you learn how to set up and write unit tests: 
+The full documentation provides comprehensive coverage on setting up your environment, writing unit tests, configuring metadata, and more:
 
-▶️ [Documentation](https://erbsland-dev.github.io/erbsland-unittest/)
+▶️ [Full Documentation](https://erbsland-dev.github.io/erbsland-unittest/)
 
 ## Requirements
 
-- Code Level Requirements
-  - A C++ compiler compatible with C++17 or later versions.
-  - A C++ standard library that supports C++17 features.
-- Build and Metadata System Requirements:
-  - CMake version 3.25 or newer.
-  - Python 3.11 or newer to compile the metadata.
+To build and use the framework, make sure your environment meets the following criteria:
 
-▶️ [Requirements](https://erbsland-dev.github.io/erbsland-unittest/chapters/requirements.html)
+### Code-Level Requirements
+* A C++ compiler with full C++20 support.
+* A standard library implementation compatible with C++20.
 
-## Goals
+### Build and Metadata Tools (Recommended)
+* **CMake** version 3.25 or newer.
+* **Python** 3.11 or newer (used for metadata compilation).
 
-- Dependency-Free
-- User-Friendly
-- Minimalistic
-- Modern
-- Secure
+▶️ [Detailed Requirements](https://erbsland-dev.github.io/erbsland-unittest/chapters/requirements.html)
 
-▶️ [More about the goals...](https://erbsland-dev.github.io/erbsland-unittest/chapters/goals.html)
+## Project Goals
 
-## Bugreports and Feature Requests
+Our design philosophy emphasizes:
 
-Please use the GitHub issue tracker to report bugs or request features:
+* **Dependency-Free** — no third-party libraries required.
+* **User-Friendly** — intuitive syntax and setup.
+* **Minimalistic** — only the essentials, nothing more.
+* **Modern** — aligned with current and upcoming C++ standards.
+* **Secure** — tested and built with safety in mind.
+
+▶️ [Learn more about our goals](https://erbsland-dev.github.io/erbsland-unittest/chapters/goals.html)
+
+## Bug Reports & Feature Requests
+
+Found a bug? Have a feature in mind? We value community input and encourage you to contribute via our GitHub issue tracker:
 
 ▶️ [Report an Issue](https://github.com/erbsland-dev/erbsland-unittest/issues)
 
 ## License
 
-Copyright © 2023 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch/
-According to the copyright terms specified in the file "COPYRIGHT.md".
+Copyright © 2025 [Tobias Erbsland](https://erbsland.dev/) and [EducateIT GmbH](https://educateit.ch/)
 
-SPDX-License-Identifier: LGPL-3.0-or-later
+This project is licensed under the **GNU Lesser General Public License v3.0 or later** (LGPL-3.0-or-later). See the file `COPYRIGHT.md` for details.
 
-This program is free software: you can redistribute it and/or modify it under the terms of the
-GNU Lesser General Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+This software is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY** — without even the implied warranty of **MERCHANTABILITY** or **FITNESS FOR A PARTICULAR PURPOSE**.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along with this program.
-If not, see <https://www.gnu.org/licenses/>.
+Learn more at: <https://www.gnu.org/licenses/>
 

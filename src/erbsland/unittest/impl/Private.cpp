@@ -39,7 +39,11 @@ void Private::handleAssertResult(
 
     std::stringstream text;
     auto console = Controller::instance()->console();
-    if (!context.exceptionType.empty()) {
+    if (context.exceptionType == "requireComparison") {
+        // For comparison failures, use the exception message without a prefix.
+        text << context.exceptionMessage;
+        console->writeError(text.str());
+    } else if (!context.exceptionType.empty()) {
         text << "Exception Type: " << demangleTypeName(context.exceptionType) << "\n"
             << "Exception Message: " << context.exceptionMessage;
         console->writeDebug(text.str());

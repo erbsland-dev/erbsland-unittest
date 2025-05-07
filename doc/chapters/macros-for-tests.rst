@@ -16,7 +16,7 @@ Quick Overview
 --------------
 
 Macros for Tests
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 - :c:expr:`REQUIRE(expression)`: Tests if the given expression is true.
 - :c:expr:`REQUIRE_FALSE(expression)`: Tests if the given expression is false.
@@ -34,15 +34,31 @@ For all ``REQUIRE_...`` macros listed above, there is a corresponding ``CHECK_..
 
 - :c:expr:`WITH_CONTEXT(expression)`: Executes the expression, but adds a context for error reporting.
 
+Comparison Macros
+~~~~~~~~~~~~~~~~~
+
+- :c:expr:`REQUIRE_EQUAL(value_a, value_b)`: Asserts ``(value_a) == (value_b)``.
+- :c:expr:`REQUIRE_NOT_EQUAL(value_a, value_b)`: Asserts ``(value_a) != (value_b)``.
+- :c:expr:`REQUIRE_LESS(value_a, value_b)`: Asserts ``(value_a) < (value_b)``.
+- :c:expr:`REQUIRE_LESS_EQUAL(value_a, value_b)`: Asserts ``(value_a) <= (value_b)``.
+- :c:expr:`REQUIRE_GREATER(value_a, value_b)`: Asserts ``(value_a) > (value_b)``.
+- :c:expr:`REQUIRE_GREATER_EQUAL(value_a, value_b)`: Asserts ``(value_a) >= (value_b)``.
+- :c:expr:`CHECK_EQUAL(value_a, value_b)`: Checks ``(value_a) == (value_b)``.
+- :c:expr:`CHECK_NOT_EQUAL(value_a, value_b)`: Checks ``(value_a) != (value_b)``.
+- :c:expr:`CHECK_LESS(value_a, value_b)`: Checks ``(value_a) < (value_b)``.
+- :c:expr:`CHECK_LESS_EQUAL(value_a, value_b)`: Checks ``(value_a) <= (value_b)``.
+- :c:expr:`CHECK_GREATER(value_a, value_b)`: Checks ``(value_a) > (value_b)``.
+- :c:expr:`CHECK_GREATER_EQUAL(value_a, value_b)`: Checks ``(value_a) >= (value_b)``.
+
 Macros for Meta Data
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 - :c:expr:`TAGS(tags)`: Adds a tag to a class or test function.
 - :c:expr:`TESTED_TARGETS(targets)`: Adds a tested target to a class or test function.
 - :c:expr:`SKIP_BY_DEFAULT()`: Skips a test or class by default.
 
 Helper Macros
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 - :c:expr:`SOURCE_LOCATION()`: Gets the source location, used for the :cpp:expr:`runWithContext()` call.
 - :c:expr:`ERBSLAND_UNITTEST_MAIN()`: Creates a simple main function to start the unittest.
@@ -158,6 +174,82 @@ The :c:expr:`REQUIRE_NOTHROW(expression)` Macro
 -----------------------------------------------
 
 This macro expects the expression throws no exception. Compared with :c:expr:`REQUIRE`, it does not expect and discards any return value of the expression.
+
+Macros for Value Comparison
+---------------------------
+
+To simplify testing of relational expressions, *Erbsland UnitTest* provides a dedicated set of macros that compare two values using common comparison operators: ``==``, ``!=``, ``<``, ``<=``, ``>`` and ``>=``. These macros assert that the comparison evaluates to ``true``. If the result is ``false``, an error message is displayed showing the original expressions, and—when supported by `std::format`—their evaluated values as well.
+
+The macros follow the ``REQUIRE`` and ``CHECK`` idioms:
+
+* ``REQUIRE_...`` macros abort the test immediately on failure.
+* ``CHECK_...`` macros continue the test but issue a warning.
+
+Comparison Macros
+~~~~~~~~~~~~~~~~~
+
+**REQUIRE-based macros (test must pass):**
+
+- :c:expr:`REQUIRE_EQUAL(value_a, value_b)`: Asserts ``(value_a) == (value_b)``.
+- :c:expr:`REQUIRE_NOT_EQUAL(value_a, value_b)`: Asserts ``(value_a) != (value_b)``.
+- :c:expr:`REQUIRE_LESS(value_a, value_b)`: Asserts ``(value_a) < (value_b)``.
+- :c:expr:`REQUIRE_LESS_EQUAL(value_a, value_b)`: Asserts ``(value_a) <= (value_b)``.
+- :c:expr:`REQUIRE_GREATER(value_a, value_b)`: Asserts ``(value_a) > (value_b)``.
+- :c:expr:`REQUIRE_GREATER_EQUAL(value_a, value_b)`: Asserts ``(value_a) >= (value_b)``.
+
+**CHECK-based macros (only issue a warning on failure):**
+
+- :c:expr:`CHECK_EQUAL(value_a, value_b)`: Checks ``(value_a) == (value_b)``.
+- :c:expr:`CHECK_NOT_EQUAL(value_a, value_b)`: Checks ``(value_a) != (value_b)``.
+- :c:expr:`CHECK_LESS(value_a, value_b)`: Checks ``(value_a) < (value_b)``.
+- :c:expr:`CHECK_LESS_EQUAL(value_a, value_b)`: Checks ``(value_a) <= (value_b)``.
+- :c:expr:`CHECK_GREATER(value_a, value_b)`: Checks ``(value_a) > (value_b)``.
+- :c:expr:`CHECK_GREATER_EQUAL(value_a, value_b)`: Checks ``(value_a) >= (value_b)``.
+
+Example Error Message
+~~~~~~~~~~~~~~~~~~~~~
+
+If a comparison fails, a diagnostic message is shown that includes the compared expressions and, if formatting is available, their evaluated values:
+
+.. code-block:: text
+
+    Comparison failed: ExampleA == ExampleB
+      A: value.type() => ExampleA
+      B: expectedValue.type() => ExampleB
+
+Custom Formatting with `std::format`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For types that do not natively support `std::format`, you can enable value formatting in your error messages by specializing the `std::formatter` template.
+
+Here is an example for a custom enum type:
+
+.. code-block:: cpp
+
+    template<>
+    struct std::formatter<MyEnum> : std::formatter<std::string_view> {
+        auto format(MyEnum value, format_context& ctx) const {
+            std::string_view str;
+            switch (value) {
+                case MyEnum::ExampleA: str = "ExampleA"; break;
+                case MyEnum::ExampleB: str = "ExampleB"; break;
+            }
+            return std::formatter<std::string_view>::format(str, ctx);
+        }
+    };
+
+For types with a string conversion method:
+
+.. code-block:: cpp
+
+    template<>
+    struct std::formatter<MyString> : std::formatter<std::string> {
+        auto format(MyString str, format_context& ctx) const {
+            return std::formatter<std::string_view>::format(str.toStdString(), ctx);
+        }
+    };
+
+By implementing `std::formatter` for your types, you make your test output more insightful and readable—especially when debugging comparison failures.
 
 The ``CHECK_...`` Macros
 ------------------------

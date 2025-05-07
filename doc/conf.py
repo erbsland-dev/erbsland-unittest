@@ -19,12 +19,10 @@ html_static_path = ["_static"]
 # -- Options for Breathe -----------------------------------------------------
 _project_dir = Path(__file__).parent.parent
 _src_dir = _project_dir / "src"
-breathe_projects = {"erbsland-unittest": str(_project_dir / "_build/breathe/doxygen/erbsland-unittest/xml")}
+breathe_projects = {"erbsland-unittest": _project_dir / "_build/breathe/doxygen/erbsland-unittest/xml"}
 breathe_default_project = "erbsland-unittest"
-breathe_projects_source = {
-    "erbsland-unittest": (str(_src_dir), ["erbsland/unittest", "erbsland/unittest/impl/Macros.hpp"])
-}
+breathe_projects_source = {"erbsland-unittest": (_src_dir, ["erbsland/unittest", "erbsland/unittest/impl/Macros.hpp"])}
 breathe_doxygen_config_options = {
-    "STRIP_FROM_PATH": str(_src_dir),
-    "STRIP_FROM_INC_PATH": str(_src_dir),
+    "STRIP_FROM_PATH": _src_dir,
+    "STRIP_FROM_INC_PATH": _src_dir,
 }

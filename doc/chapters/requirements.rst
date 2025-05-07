@@ -5,8 +5,9 @@ Requirements
 Code-Level Requirements
 -----------------------
 
-* A C++ compiler compatible with C++17 or later.
-* A standard C++ library supporting all C++17 features.
+* A C++ compiler compatible with C++20 or later.
+* A standard C++ library supporting C++20 features.
+* For comparison macros, like `REQUIRE_EQUAL`, the standard library must support `std::format`.
 
 Build and Metadata System Requirements
 --------------------------------------

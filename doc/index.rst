@@ -1,7 +1,7 @@
 Welcome to the Erbsland UnitTest Documentation!
 ===============================================
 
-**Erbsland UnitTest** is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting C++17 or newer.
+**Erbsland UnitTest** is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting c++20 or newer.
 
 .. grid:: 2
 
@@ -11,7 +11,7 @@ Welcome to the Erbsland UnitTest Documentation!
 
     .. grid-item-card:: Broad compatibility:
 
-        Supports any compiler adhering to C++17 or newer.
+        Supports any compiler adhering to C++20 or newer.
 
 .. button-ref:: get-started
     :color: success
