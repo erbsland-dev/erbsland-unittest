@@ -1,4 +1,4 @@
-# Copyright © 2023-2024 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch/
+# Copyright © 2023-2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch/
 # According to the copyright terms specified in the file "COPYRIGHT.md".
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -24,6 +24,9 @@ function(erbsland_unittest)
     get_target_property(_targetSources ${ARGS_TARGET} SOURCES)
     get_target_property(_targetSourceDir ${ARGS_TARGET} SOURCE_DIR)
     get_target_property(_targetBinaryDir ${ARGS_TARGET} BINARY_DIR)
+
+    # Create a static library that will contain all metadata for the unittest.
+    set(META_TARGET "${ARGS_TARGET}MetaGen")
 
     # Configure the unittest target to include the unittest headers, etc.
     add_dependencies(${ARGS_TARGET} erbsland-unittest)
@@ -54,22 +57,32 @@ function(erbsland_unittest)
     endforeach()
     file(APPEND "${_testSourcesPath}" "]\n# EOF\n\n")
 
-    # Create a new target to build metadata for the unittest.
-    cmake_path(SET _testMetaDataSrc NORMALIZE "${_targetBinaryDir}/unittest_metadata.cpp")
-    add_custom_target("${ARGS_TARGET}MetaGen"
-            "${Python3_EXECUTABLE}" "${_unittestScriptDir}/generate_unittest_metadata.py" "-v"
-                "${_targetSourceDir}"
-                "${_testMetaDataSrc}"
-                "${_testSourcesPath}"
-            DEPENDS "${_testSourcesPath}" ${_sourcesToProcess}
-            BYPRODUCTS "${_testMetaDataSrc}"
-            COMMAND_EXPAND_LISTS
-            USES_TERMINAL
-    )
+    # Group source and header files.
+    foreach(src IN LISTS _sourcesToProcess)
+        get_filename_component(basename "${src}" NAME_WE)
+        list(APPEND test_group_${basename} "${src}")
+        list(APPEND basenames_list "${basename}")
+    endforeach()
+    list(REMOVE_DUPLICATES basenames_list)
 
-    # Add the metadata target and file to the build process.
-    add_dependencies("${ARGS_TARGET}" "${ARGS_TARGET}MetaGen")
-    target_sources(${ARGS_TARGET} PRIVATE "${_testMetaDataSrc}")
+    set(metadata_outputs "")
+    foreach(name IN LISTS basenames_list)
+        set(out_cpp "${_targetBinaryDir}/${name}_metadata.cpp")
+        set(group_name "test_group_${name}")
+        add_custom_command(
+                OUTPUT "${out_cpp}"
+                COMMAND "${Python3_EXECUTABLE}"
+                "${_unittestScriptDir}/generate_unittest_metadata.py"
+                "${_targetSourceDir}"
+                "${out_cpp}"
+                ${${group_name}}
+                DEPENDS ${${group_name}}
+                COMMENT "Generating metadata for ${name}"
+                VERBATIM
+        )
+        list(APPEND metadata_outputs "${out_meta}")
+        target_sources(${ARGS_TARGET} PRIVATE "${out_cpp}")
+    endforeach()
 
     if(ARGS_COPY_TEST_DATA)
         cmake_path(SET _dataSourceDir NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/${ARGS_COPY_TEST_DATA}")
