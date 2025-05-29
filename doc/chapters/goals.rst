@@ -15,7 +15,7 @@ For a more convenient user experience, the CMake build system and Python are req
 User-Friendly
 -------------
 
-Writing unit tests is a crucial part of developing secure and reliable software, but it can be a tedious and time-consuming task. With this in mind, we designed our unit test system to minimize setup time and reduce the required files and code structures. A minimal working unit test only requires a `CMakeLists.txt`, `main.cpp`, and `ExampleTest.hpp` file. See the examples later in this document.
+Writing unit tests is a crucial part of developing secure and reliable software, but it can be a tedious and time-consuming task. With this in mind, we designed our unit test system to minimize setup time and reduce the required files and code structures. A minimal working unit test only requires a `CMakeLists.txt`, `main.cpp`, and `ExampleTest.cpp` file. See the examples later in this document.
 
 You can quickly expand your tests by adding tags, target information, and additional error messages. This allows you to easily scale from a minimal working test to a comprehensive test suite.
 

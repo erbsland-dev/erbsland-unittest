@@ -18,7 +18,7 @@ To link all necessary components and prepare your project for building, create t
 
    .. code-block:: cmake
 
-       cmake_minimum_required(VERSION 3.20)
+       cmake_minimum_required(VERSION 3.23)
        project(ExampleUnitTest)
        add_subdirectory(erbsland-unittest)
        add_subdirectory(example-lib)
@@ -26,11 +26,11 @@ To link all necessary components and prepare your project for building, create t
 
 This CMake configuration:
 
-* **Defines the Minimum CMake Version**: Ensures compatibility with CMake 3.20 or newer.
+* **Defines the Minimum CMake Version**: Ensures compatibility with CMake 3.23 or newer.
 * **Sets the Project Name**: Defines the project as ``ExampleUnitTest``.
 * **Includes Subdirectories**:
 
-  - :file:`erbsland-unittest`: The Erbsland UnitTest framework.
+  - :file:`erbsland-unittest`: The Erbsland Unit Test framework.
   - :file:`example-lib`: The application or library being tested.
   - :file:`unittest`: The unit test binaries and supporting files.
 
@@ -88,12 +88,12 @@ The unit test :file:`CMakeLists.txt` file accomplishes the following:
 
     - Ensures the unit test can access header files from the library's source directory using ``target_include_directories``.
 
-6. **Integrates Erbsland UnitTest**:
+6. **Integrates Erbsland Unit Test**:
 
     - The ``erbsland_unittest`` function configures the target to link the required unit test library and automatically sets up the necessary include paths.
     - This function also creates an auxiliary target, ``unittestMetaGen``, to handle additional code generation required for the unit test.
 
-With these configurations, your unit test project is ready to build and execute, leveraging the full functionality of the Erbsland UnitTest framework.
+With these configurations, your unit test project is ready to build and execute, leveraging the full functionality of the Erbsland Unit Test framework.
 
 .. button-ref:: write-the-test
     :color: success

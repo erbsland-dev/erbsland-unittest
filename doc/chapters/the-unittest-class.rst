@@ -14,6 +14,7 @@ The :cpp:expr:`UnitTest` class provides the following public interface that can 
 .. code-block:: cpp
 
     namespace erbsland::unittest {
+
     class UnitTest {
     public:
         virtual auto additionalErrorMessages() -> std::string;
@@ -26,6 +27,7 @@ The :cpp:expr:`UnitTest` class provides the following public interface that can 
         void consoleWriteLine(const std::string &text);
         auto unitTestExecutablePath() -> std::filesystem::path;
     };
+
     }
 
 The :cpp:expr:`additionalErrorMessages()` Function
@@ -41,11 +43,11 @@ Implement the :cpp:expr:`additionalErrorMessages()` function to provide more det
 
         auto additionalErrorMessages() -> std::string override {
             try {
-                auto text = std::ostringstream{};
-                text << "ExampleLib:\n"
-                     << "    getName() = \"" << exampleLib.getName() << "\"\n"
-                     << "    getNameLength() = " << exampleLib.getNameLength() << "\n";
-                return text.str();
+                std::string text;
+                text += "ExampleLib:\n";
+                text += std::format("    getName() = \"{}\"\n", exampleLib.getName());
+                text += std::format("    getNameLength() = {}\n", exampleLib.getNameLength());
+                return text;
             } catch(...) {
                 return {"Unexpected Exception"};
             }
@@ -69,13 +71,13 @@ This example uses an instance variable ``exampleLib`` for the tested object and 
         bool result{};
         std::string name{};
 
-        std::string additionalErrorMessages() override {
+        auto additionalErrorMessages() -> std::string override {
             try {
-                auto text = std::ostringstream{};
-                text << "result = " << std::boolalpha << result << "\n"
-                     << "name = \"" << name << "\"\n"
-                     << "expected result = " << std::boolalpha << expectedResult() << "\n";
-                return text.str();
+                std::string text;
+                text += std::format("result = {}\n", result);
+                text += std::format("name = \"{}\"\n", name);
+                text += std::format("expected result = {}\n", expectedResult());
+                return text;
             } catch(...) {
                 return {"Unexpected Exception"};
             }

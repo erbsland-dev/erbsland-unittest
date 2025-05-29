@@ -68,5 +68,5 @@ You’ve successfully built your unit test executable! Next, let’s run the tes
 .. card:: Build Troubleshooting Tips
 
     - **Missing Dependencies**: Ensure all required libraries, such as `erbsland-unittest`, are initialized as submodules and included in the project.
-    - **CMake Version**: Verify that your installed CMake version meets the minimum required version (3.20 or newer).
+    - **CMake Version**: Verify that your installed CMake version meets the minimum required version (3.23 or newer).
     - **Compiler Issues**: Check that your C++ compiler is correctly configured and supports C++20.

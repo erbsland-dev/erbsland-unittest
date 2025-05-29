@@ -19,7 +19,7 @@ If you followed the earlier steps and created a test suite with a single test, t
 .. code-block:: none
 
     ===[ Running 1 test suites with 1 tests ]===
-    Start Time: Tue Apr 25 10:41:23 2023
+    Start Time: Tue Apr 25 10:41:23 2025
     Filter: no filter set
     Suite: Basic OK!
       Test: Magic OK!
@@ -31,27 +31,27 @@ For the **complete example**, the output includes more details, such as errors a
 .. code-block:: none
 
     ===[ Running 2 test suites with 4 tests ]===
-    Start Time: Tue Apr 25 10:09:11 2023
+    Start Time: Tue Apr 25 10:09:11 2025
     Filter: no filter set
     Suite: Basic OK!
       Test: Magic OK!
       Test: NameSetAndGet OK!
       Test: IsNamePalindrome FAILED!
-    [1]: ~/erbsland-unittest-example/unittest/src/BasicTest.hpp:57: REQUIRE(exampleLib.isNamePalindrome())
+    [1]: ~/erbsland-unittest-example/unittest/src/BasicTest.cpp:57: REQUIRE(exampleLib.isNamePalindrome())
     Suite: Context OK!
       Test: NameSetAndGet FAILED!
-    [2]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
-    [1]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:63: WITH_CONTEXT(setAndVerifyName_error("Lisa"))
+    [2]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+    [1]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:63: WITH_CONTEXT(setAndVerifyName_error("Lisa"))
     ExampleLib:
         getName() = "Lisa"
         getNameLength() = 4
 
     ===[ ERROR SUMMARY ]===
     Error 1 - Basic / IsNamePalindrome FAILED!
-    [1]: ~/erbsland-unittest-example/unittest/src/BasicTest.hpp:57: REQUIRE(exampleLib.isNamePalindrome())
+    [1]: ~/erbsland-unittest-example/unittest/src/BasicTest.cpp:57: REQUIRE(exampleLib.isNamePalindrome())
     Error 2 - Context / NameSetAndGet FAILED!
-    [2]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
-    [1]: ~/erbsland-unittest-example/unittest/src/ContextTest.hpp:63: WITH_CONTEXT(setAndVerifyName_error("Lisa"))
+    [2]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+    [1]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:63: WITH_CONTEXT(setAndVerifyName_error("Lisa"))
     ===[ ERROR | 2 errors while running the tests. ]===
 
 .. card:: Why the Errors?
@@ -132,7 +132,7 @@ The output will look like this:
 .. code-block:: none
 
     ===[ Running 1 test suites with 1 tests ]===
-    Start Time: Tue Apr 25 10:48:11 2023
+    Start Time: Tue Apr 25 10:48:11 2025
     Filter:
       Tags: only use 'long-test'
     Suite: Long OK!

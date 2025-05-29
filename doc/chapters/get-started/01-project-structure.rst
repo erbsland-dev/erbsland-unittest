@@ -6,22 +6,22 @@ The Project Structure
 Organizing Your Project for Success
 -----------------------------------
 
-To streamline integration and maintainability, Erbsland UnitTest is designed to be included as a **Git submodule** within your project. We recommend the following directory structure for a sample project called ``erbsland-unittest-example``:
+To streamline integration and maintainability, Erbsland Unit Test is designed to be included as a **Git submodule** within your project. We recommend the following directory structure for a sample project called ``erbsland-unittest-example``:
 
 .. code-block:: none
 
     erbsland-unittest-example
         ├── <libraries>         # All dependent libraries for the `Example` project (submodules)
-        ├── erbsland-unittest   # The Erbsland UnitTest library added as a submodule
+        ├── erbsland-unittest   # The Erbsland Unit Test library added as a submodule
         ├── example-lib         # The "Example" project being tested (also added as a submodule)
         │   ├── src (...)
         │   └── CMakeLists.txt
         ├── unittest            # The actual unit tests, containing one or more test binaries
         │   ├── src             # Source files for the unit tests
         │   │   ├── main.cpp           # Main entry point for the unit test executable
-        │   │   ├── BasicTest.hpp      # Each test set resides in a file ending with ...Test.hpp
-        │   │   ├── ContextTest.hpp    # Each file contains a test class matching the file name
-        │   │   └── LongTest.hpp
+        │   │   ├── BasicTest.cpp      # Each test set resides in a file ending with ...Test.cpp
+        │   │   ├── ContextTest.cpp    # Each file contains a test class matching the file name
+        │   │   └── LongTest.cpp
         │   ├── data            # Supporting data for unit tests
         │   └── CMakeLists.txt
         └── CMakeLists.txt      # The root project's CMake configuration file

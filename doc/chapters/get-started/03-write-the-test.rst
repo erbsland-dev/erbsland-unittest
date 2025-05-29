@@ -35,7 +35,7 @@ Creating Your First Unit Test
 To define your unit tests, follow these conventions:
 
 
-.. grid:: 1 1 1 3
+.. grid:: 1 1 1 1
     :gutter: 3
 
     .. grid-item-card::
@@ -61,11 +61,11 @@ Example: Basic Test Suite
 
 Let’s create a test suite named ``BasicTest``:
 
-1. Create the file ``BasicTest.hpp``:
+1. Create the file ``BasicTest.cpp``:
 
    .. code-block:: bash
 
-       nano BasicTest.hpp
+       nano BasicTest.cpp
 
 2. Add the following content to define the test suite:
 
@@ -107,10 +107,10 @@ To compile and include the test suite, update your `CMakeLists.txt` file:
 
    .. code-block:: cmake
 
-       cmake_minimum_required(VERSION 3.20)
+       cmake_minimum_required(VERSION 3.23)
        project(unittest)
        add_executable(unittest
-               src/BasicTest.hpp    # Add the new test suite
+               src/BasicTest.cpp    # Add the new test suite
                src/main.cpp)
        target_compile_features(unittest PRIVATE cxx_std_20)
        target_link_libraries(unittest PRIVATE erbsland-unittest-example-lib)
@@ -120,10 +120,10 @@ To compile and include the test suite, update your `CMakeLists.txt` file:
 Summary
 ~~~~~~~
 
-- **Test Suite Integration**: The `BasicTest.hpp` file is added to the executable target.
+- **Test Suite Integration**: The `BasicTest.cpp` file is added to the executable target.
 - **Seamless Compilation**: The updated CMake configuration ensures the new test suite is compiled and linked correctly.
 
-By completing these steps, you have successfully created and configured your first test suite using the Erbsland UnitTest framework. You're now ready to build and run your tests!
+By completing these steps, you have successfully created and configured your first test suite using the Erbsland Unit Test framework. You're now ready to build and run your tests!
 
 .. button-ref:: build-the-test
     :color: success

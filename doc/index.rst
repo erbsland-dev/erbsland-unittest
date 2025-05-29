@@ -1,7 +1,7 @@
 Welcome to the Erbsland UnitTest Documentation!
 ===============================================
 
-**Erbsland UnitTest** is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting c++20 or newer.
+**Erbsland Unit Test** is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting c++20 or newer.
 
 .. grid:: 2
 
@@ -29,6 +29,7 @@ Familiar with the framework? Dive into the specifics with chapters on:
     - :ref:`macros`
     - :ref:`command-line`
     - :ref:`advanced`
+    - :doc:`chapters/github-integration`
 
 Contents at a Glance
 ---------------------
@@ -43,6 +44,7 @@ Contents at a Glance
     chapters/macros-for-tests
     chapters/command-line-options
     chapters/advanced-usages
+    chapters/github-integration
     chapters/feedback
     chapters/goals
     chapters/requirements

@@ -10,7 +10,7 @@
 Macros for Unittests
 ====================
 
-*Erbsland UnitTest* has a small number of macros to perform the tests and for adding meta information to the test classes and methods.
+*Erbsland Unit Test* has a small number of macros to perform the tests and for adding meta information to the test classes and methods.
 
 Quick Overview
 --------------
@@ -92,9 +92,7 @@ For local and specialized tests, enclose the tested block with a :cpp:expr:`runW
             x = 9;
             REQUIRE(x == 10);
         }, [&]() {
-            std::stringstream text;
-            text << "x = " << x;
-            return text.str();
+            return std::format("x = {}", x);
         });
     }
 
@@ -110,9 +108,7 @@ We suggest using small test suites and instance variables shared between all tes
 
         auto additionalErrorMessages() -> std::string override {
             try {
-                auto text = std::ostringstream{};
-                text << "inputA = " << inputA << " / inputB = " << inputB << " / expected = " << expected << "\n";
-                return text.str();
+                return std::format("inputA = {} / inputB = {} / expected = {}\n", inputA, inputB, expected);
             } catch(...) {
                 return {"Unexpected Exception"};
             }
@@ -178,7 +174,7 @@ This macro expects the expression throws no exception. Compared with :c:expr:`RE
 Macros for Value Comparison
 ---------------------------
 
-To simplify testing of relational expressions, *Erbsland UnitTest* provides a dedicated set of macros that compare two values using common comparison operators: ``==``, ``!=``, ``<``, ``<=``, ``>`` and ``>=``. These macros assert that the comparison evaluates to ``true``. If the result is ``false``, an error message is displayed showing the original expressions, and—when supported by `std::format`—their evaluated values as well.
+To simplify testing of relational expressions, *Erbsland Unit Test* provides a dedicated set of macros that compare two values using common comparison operators: ``==``, ``!=``, ``<``, ``<=``, ``>`` and ``>=``. These macros assert that the comparison evaluates to ``true``. If the result is ``false``, an error message is displayed showing the original expressions, and—when supported by `std::format`—their evaluated values as well.
 
 The macros follow the ``REQUIRE`` and ``CHECK`` idioms:
 
@@ -285,8 +281,8 @@ In case of a problem, you see the nested calls in the output:
 .. code-block:: none
 
     Test: NameSetAndGet FAILED!
-    [2]: /erbsland-unittest-example/unittest/src/ContextTest.hpp:56: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
-    [1]: /erbsland-unittest-example/unittest/src/ContextTest.hpp:67: WITH_CONTEXT(setAndVerifyName("Lisa"))
+    [2]: /erbsland-unittest-example/unittest/src/ContextTest.cpp:56: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+    [1]: /erbsland-unittest-example/unittest/src/ContextTest.cpp:67: WITH_CONTEXT(setAndVerifyName("Lisa"))
 
 You can nest as many :c:expr:`WITH_CONTEXT` macros as you like.
 

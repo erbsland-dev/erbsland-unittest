@@ -7,7 +7,7 @@ Getting Started
 
 **Welcome! Let’s Begin Writing Your First Unit Test**
 
-This guide will walk you through creating a small unit test for our example library using the Erbsland UnitTest framework. To get started, ensure you have:
+This guide will walk you through creating a small unit test for our example library using the Erbsland Unit Test framework. To get started, ensure you have:
 
 * Your favorite C++ development environment.
 * A Git client of your choice.
@@ -34,7 +34,7 @@ We’ll demonstrate using command-line tools, but you’re encouraged to use wha
 
         Explore the Example Repository
 
-    This repository contains a fully functional example, showcasing best practices for structuring and using the Erbsland UnitTest framework.
+    This repository contains a fully functional example, showcasing best practices for structuring and using the Erbsland Unit Test framework.
 
 **Navigate the Chapter**
 

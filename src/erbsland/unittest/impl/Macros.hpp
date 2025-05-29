@@ -1,4 +1,4 @@
-﻿// Copyright © 2023-2024 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
+﻿// Copyright © 2023-2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
@@ -36,28 +36,28 @@
 
 
 #define ASSERT_CONTEXT_REQUIRE(macroName, flags, ...) \
-    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
         return (__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_COMPARISON(macroName, flags, op, a, b) \
-    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&]() { \
         return ((a) op (b)); \
-    }, [&, this]() { return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); });
+    }, [&]() { return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); });
 #define ASSERT_CONTEXT_NOTHROW(macroName, flags, ...) \
-    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS(macroName, flags, ...) \
-    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS_AS(macroName, flags, exceptionClass, ...) \
-    ::erbsland::unittest::requireThrowsAs<exceptionClass>(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::requireThrowsAs<exceptionClass>(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 // run an expression, but add context information to it.
 #define WITH_CONTEXT( ... ) \
-    ::erbsland::unittest::runWithContext(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}, [&, this]() { \
+    ::erbsland::unittest::runWithContext(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
         static_cast<void>(__VA_ARGS__); \
     });
 // get the run context for the function `runWithContext`.
@@ -140,7 +140,7 @@
 /// Create a file `main.cpp` with this macro to define the main method for the unit test.
 ///
 #define ERBSLAND_UNITTEST_MAIN() \
-    int main(int argc, char *argv[]) { \
+    auto main(int argc, char *argv[]) -> int { \
         return ::erbsland::unittest::Controller::instance()->main(argc, argv); \
     }
 

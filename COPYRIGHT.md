@@ -1,7 +1,7 @@
 
 # Informative Preamble
 
-Hey there! 👋 If you're reading this, you might be a developer, a contributor, or just someone curious about the project *Erbsland UnitTest*. While this document may look a bit formal, there's no need to fret! Its main goal is to clarify the copyright and license terms, primarily for those explicitly listed as *Copyright Holders* further down.
+Hey there! 👋 If you're reading this, you might be a developer, a contributor, or just someone curious about the project *Erbsland Unit Test*. While this document may look a bit formal, there's no need to fret! Its main goal is to clarify the copyright and license terms, primarily for those explicitly listed as *Copyright Holders* further down.
 
 ## What This Means for You
 
@@ -13,7 +13,7 @@ So, unless you're specifically listed as a *Copyright Holder*, go ahead and carr
 
 ---
 
-# Copyright Terms for Project *Erbsland UnitTest*
+# Copyright Terms for Project *Erbsland Unit Test*
 
 _Version: 1.0, Last Modified: 2024-01-04_
 

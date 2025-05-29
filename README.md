@@ -1,6 +1,6 @@
 # Erbsland Unit Testing System
 
-Welcome to **Erbsland UnitTest** — a lightweight and modern unit testing framework designed specifically for C++20 and beyond. Originally created for testing Erbsland libraries and applications, this system is tailored to be **practically dependency-free**, offering developers a clean and minimalistic testing environment.
+Welcome to **Erbsland Unit Test** — a lightweight and modern unit testing framework designed specifically for C++20 and beyond. Originally created for testing Erbsland libraries and applications, this system is tailored to be **practically dependency-free**, offering developers a clean and minimalistic testing environment.
 
 Compatible with any C++20-compliant compiler, this framework is perfect for those who value simplicity and control in their testing workflows.
 

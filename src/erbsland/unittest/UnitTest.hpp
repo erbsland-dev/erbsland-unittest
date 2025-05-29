@@ -1,4 +1,4 @@
-// Copyright © 2023-2024 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
+// Copyright © 2023-2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
@@ -15,16 +15,12 @@
 namespace erbsland::unittest {
 
 
-/// A minimal unit test system to write tests for the library.
+/// The base class for all unit test suites.
 ///
-/// You can use it for your own unittests, but be aware of the potential naming
-/// conflicts because of all the macros used for the tests. Make sure you add `#include <erbsland/UnitTest.h>`
-/// as the last include statement in your unittest file!
+/// Please read the documentation on how to write your unit tests.
 ///
-/// See the existing unit tests for the core library how to use this unit test class.
-///
-/// **Thread Safety:** The unit tests are meant to run in a single thread. If tests use multi threaded testing,
-/// macros like `REQUIRE()` must only be called from the main thread.
+/// @warning <b>Thread Safety:</b> The unit tests are meant to run in a single thread. If tests use
+/// multithreaded testing, macros like `REQUIRE()` must only be called from the main thread.
 ///
 class UnitTest {
     // fwd-entry: class UnitTest
@@ -43,6 +39,24 @@ public:
     ///
     /// Overwrite this method to add additional text after the error message.
     ///
+    /// Usage:
+    /// <code>
+    /// class MyTest final : public el::UnitTest {
+    /// public:
+    ///     TestedType testedType{};
+    ///     auto additionalErrorMessages() -> std::string override {
+    ///     try {
+    ///         std::string text;
+    ///         text += std::format("testedType.foo = {}\n", testedType.foo);
+    ///         // ...
+    ///         return text;
+    ///     } catch(...) {
+    ///         return {"Unexpected Exception"};
+    ///     }
+    ///     // ...
+    /// };
+    /// </code>
+    ///
     /// @return The additional text that is added to the error message. May contain newlines.
     ///
     virtual auto additionalErrorMessages() -> std::string;
@@ -56,20 +70,18 @@ public:
     virtual void tearDown();
 
 public: // helper methods.
-    /// Run a code in a separate context and optionally collect additional information if a tests is failing.
+    /// Run a code in a separate context and optionally collect additional information if tests are failing.
     ///
-    /// Use this function like this:
-    /// ```
+    /// Usage:
+    /// <code>
     /// int x = 5;
     /// runWithContext(SOURCE_LOCATION(), [&]() {
     ///     x = 9;
     ///     REQUIRE(x == 10);
     /// }, [&]() {
-    ///     std::stringstream text;
-    ///     text << "x = " << x;
-    ///     return text.str();
+    ///     return std::format("x = {}", x);
     /// });
-    /// ```
+    /// </code>
     ///
     /// @param sourceLocation Use the `SOURCE_LOCATION()` macro for this parameter.
     /// @param testFn The lambda function with the tests.

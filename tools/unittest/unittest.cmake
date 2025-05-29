@@ -2,7 +2,7 @@
 # According to the copyright terms specified in the file "COPYRIGHT.md".
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.23)
 include_guard()
 
 # Add unittest metadata processing to the given target.

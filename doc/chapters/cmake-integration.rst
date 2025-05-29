@@ -8,7 +8,7 @@
 CMake Integration
 =================
 
-*Erbsland UnitTest* offers a straightforward CMake integration, enabling you to create unit tests with minimal additional effort. We suggest using the following directory structure for your CMake project:
+*Erbsland Unit Test* offers a straightforward CMake integration, enabling you to create unit tests with minimal additional effort. We suggest using the following directory structure for your CMake project:
 
 .. code-block:: none
 
@@ -32,17 +32,24 @@ CMake Integration
 Configuring the Root CMake File
 -------------------------------
 
-The root CMake file consolidates the tested application or library, its dependencies, the *Erbsland UnitTest* library, and the actual unittest into a single project.
+The root CMake file consolidates the tested application or library, its dependencies, the *Erbsland Unit Test* framework, and the actual unittest into a single project.
 
 .. code-block:: cmake
 
-    cmake_minimum_required(VERSION 3.20)
+    cmake_minimum_required(VERSION 3.23)
     project(ExampleUnitTest)
     add_subdirectory(erbsland-unittest)
     add_subdirectory(example-lib)
     add_subdirectory(unittest)
+    enable_testing()
+    add_test(
+            NAME unittest
+            COMMAND $<TARGET_FILE:unittest> --no-color
+    )
 
-In this root CMake file, simply include the configurations from the subdirectories of all necessary components. The order in which you add them is crucial. First, add the Erbsland UnitTest library, followed by the dependencies for the application or library you're testing, then your application or library itself, and finally, your unit test project.
+In this root CMake file, simply include the configurations from the subdirectories of all necessary components. The order in which you add them is crucial. First, add the Erbsland Unit Test library, followed by the dependencies for the application or library you're testing, then your application or library itself, and finally, your unit test project.
+
+At the end of the root CMake file, CTest integration is activated by defining a test with the name `unittest`. This test refers to the `unittest` executable defined in the unit test subproject. By enabling CTest this way, you can conveniently run your tests using the `ctest` command from the build directory, ensuring seamless integration into continuous integration pipelines and local development workflows.
 
 Configuring the Unit Test Project
 ---------------------------------
@@ -51,7 +58,7 @@ A typical unit test configuration for a small project appears as follows:
 
 .. code-block:: cmake
 
-    cmake_minimum_required(VERSION 3.20)
+    cmake_minimum_required(VERSION 3.23)
     project(unittest)
     add_executable(unittest
             src/main.cpp
@@ -69,12 +76,12 @@ Then, include the necessary ``target_link_libraries`` and ``target_include_direc
 
 Finally, invoke ``erbsland_unittest`` with the ``TARGET`` parameter set to the name of your unit test executable, which in this example is ``unittest``.
 
-The ``erbsland_unittest`` call performs several tasks for you: it first adds the required include directories and links your unit test with the Erbsland UnitTest library. It then integrates the metadata script into the project, automatically generating all necessary structures to register your test suites, test functions, and added metadata.
+The ``erbsland_unittest`` call performs several tasks for you: it first adds the required include directories and links your unit test with the Erbsland Unit Test library. It then integrates the metadata script into the project, automatically generating all necessary structures to register your test suites, test functions, and added metadata.
 
 Utilizing the ``erbsland_unittest`` Function
 --------------------------------------------
 
-The ``erbsland_unittest`` function streamlines your unit test project configuration by accomplishing various tasks. It adds necessary include directories, links the unit test with the Erbsland UnitTest library, and integrates the metadata script to automatically generate essential structures for registering test suites, test functions, and added metadata.
+The ``erbsland_unittest`` function streamlines your unit test project configuration by accomplishing various tasks. It adds necessary include directories, links the unit test with the Erbsland Unit Test library, and integrates the metadata script to automatically generate essential structures for registering test suites, test functions, and added metadata.
 
 How to Use
 ^^^^^^^^^^
@@ -89,7 +96,7 @@ How to Use
 
 - ``TARGET``: (required) Sets the target name for your unit test executable.
 - ``PRECOMPILE_HEADERS``: (optional) Activates precompiled headers for the unit test.
-- ``NO_LINK_SETTINGS``: (optional) Deactivates automatic linking of the unit test, useful if you prefer manual linking or if the Erbsland UnitTest library is already part of another linked library.
+- ``NO_LINK_SETTINGS``: (optional) Deactivates automatic linking of the unit test, useful if you prefer manual linking or if the Erbsland Unit Test library is already part of another linked library.
 - ``COPY_TEST_DATA``: (optional) Defines a path to test data, relative to the calling ``CMakeLists.txt`` file, which will be copied to the build directory. Use ``unitTestExecutablePath()`` in your unit test to locate the data when running unit tests from the build directory.
 
 Example

@@ -3,7 +3,7 @@
 What's Next?
 ============
 
-Congratulations on completing the basics of the Erbsland UnitTest framework! 
+Congratulations on completing the basics of the Erbsland Unit Test framework!
 
 Explore the Full Example
 ------------------------
@@ -15,7 +15,7 @@ If you haven’t already, take a look at the full `example <https://github.com/e
     :outline:
     :expand:
 
-    UnitTest Example →
+    Unit Test Example →
 
 Dive Deeper Into the Framework
 ------------------------------
