@@ -8,7 +8,7 @@ include_guard()
 # Add unittest metadata processing to the given target.
 function(erbsland_unittest)
     # Read the arguments.
-    set(options PRECOMPILE_HEADERS NO_LINK_SETTINGS)
+    set(options PRECOMPILE_HEADERS NO_LINK_SETTINGS ENABLE_DATA_DEPS)
     set(oneValueArgs TARGET COPY_TEST_DATA)
     set(multiValueArgs "")
     cmake_parse_arguments(ARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
@@ -87,6 +87,7 @@ function(erbsland_unittest)
     if(ARGS_COPY_TEST_DATA)
         cmake_path(SET _dataSourceDir NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/${ARGS_COPY_TEST_DATA}")
         cmake_path(SET _dataDestDir NORMALIZE "${_targetBinaryDir}/${ARGS_COPY_TEST_DATA}")
+
         if (${CMAKE_VERSION} VERSION_LESS "3.26")
             # For CMake <3.26 use the old "copy_directory" command.
             set(_copyCmd "copy_directory")
@@ -94,10 +95,32 @@ function(erbsland_unittest)
             # For CMake >=3.26 use the more efficient "copy_directory_if_different"
             set(_copyCmd "copy_directory_if_different")
         endif()
-        add_custom_command(TARGET ${ARGS_TARGET} POST_BUILD
-                COMMAND "${CMAKE_COMMAND}" -E ${_copyCmd} "${_dataSourceDir}" "${_dataDestDir}"
-                COMMENT "Copy test data..."
-                VERBATIM)
+
+        if(ARGS_ENABLE_DATA_DEPS)
+            file(GLOB_RECURSE _dataFiles "${_dataSourceDir}/*")
+
+            add_custom_command(
+                    OUTPUT "${_dataDestDir}/.data_copy_stamp"
+                    COMMAND "${CMAKE_COMMAND}" -E ${_copyCmd} "${_dataSourceDir}" "${_dataDestDir}" &&
+                    "${CMAKE_COMMAND}" -E touch "${_dataDestDir}/.data_copy_stamp"
+                    DEPENDS ${_dataFiles}
+                    COMMENT "Copy test data..."
+                    VERBATIM
+            )
+
+            add_custom_target(${ARGS_TARGET}_copy_test_data ALL
+                    DEPENDS "${_dataDestDir}/.data_copy_stamp"
+            )
+
+            add_dependencies(${ARGS_TARGET} ${ARGS_TARGET}_copy_test_data)
+        else()
+            add_custom_command(
+                    TARGET ${ARGS_TARGET}
+                    POST_BUILD
+                    COMMAND "${CMAKE_COMMAND}" -E ${_copyCmd} "${_dataSourceDir}" "${_dataDestDir}"
+                    COMMENT "Copy test data..."
+                    VERBATIM)
+        endif()
     endif()
 endfunction()
 
