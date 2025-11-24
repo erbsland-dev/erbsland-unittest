@@ -36,28 +36,28 @@
 
 
 #define ASSERT_CONTEXT_REQUIRE(macroName, flags, ...) \
-    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
-        return (__VA_ARGS__); \
+    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> bool { \
+        return static_cast<bool>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_COMPARISON(macroName, flags, op, a, b) \
-    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&]() { \
-        return ((a) op (b)); \
+    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&]() -> bool { \
+        return static_cast<bool>((a) op (b)); \
     }, [&]() { return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); });
 #define ASSERT_CONTEXT_NOTHROW(macroName, flags, ...) \
-    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
+    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> void { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS(macroName, flags, ...) \
-    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
+    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> void { \
         static_cast<void>(__VA_ARGS__); \
     });
 #define ASSERT_CONTEXT_THROWS_AS(macroName, flags, exceptionClass, ...) \
-    ::erbsland::unittest::requireThrowsAs<exceptionClass>(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
+    ::erbsland::unittest::requireThrowsAs<exceptionClass>(this, flags, macroName, #exceptionClass ", " #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> void { \
         static_cast<void>(__VA_ARGS__); \
     });
 // run an expression, but add context information to it.
 #define WITH_CONTEXT( ... ) \
-    ::erbsland::unittest::runWithContext(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}, [&]() { \
+    ::erbsland::unittest::runWithContext(this, 0, "WITH_CONTEXT", #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> void { \
         static_cast<void>(__VA_ARGS__); \
     });
 // get the run context for the function `runWithContext`.
