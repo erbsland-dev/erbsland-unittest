@@ -6,10 +6,10 @@
 
 #include "Filter.hpp"
 
+#include <cstdint>
 #include <set>
 #include <string>
 #include <vector>
-#include <cstdint>
 
 
 namespace erbsland::unittest {

@@ -9,8 +9,10 @@
 #include "TestBase.hpp"
 #include "TestClassBase.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <mutex>
+#include <ranges>
 #include <sstream>
 #include <thread>
 
@@ -31,7 +33,7 @@ Controller::~Controller() {
 auto Controller::instance() -> Controller* {
     static std::once_flag storageOnce; // Flag to synchronize controller creation.
     static Controller *storage = nullptr;
-    std::call_once(storageOnce, [] {
+    std::call_once(storageOnce, []() -> void {
         storage = new Controller();
     });
     return storage;
@@ -45,9 +47,8 @@ auto Controller::main(int argc, char **argv) -> int {
     // Reset the formatting to make sure the output always starts in the same color.
     console()->resetFormatting();
     // Sort the test classes by name, as registration may change depending on the compilation order.
-    std::stable_sort(
-        _testClasses.begin(),
-        _testClasses.end(),
+    std::ranges::stable_sort(
+        _testClasses,
         [](const auto &a, const auto &b) -> bool { return a->name() < b->name(); });
     // Create the initial set of tests.
     if (_filter.hasExclusiveSet()) {

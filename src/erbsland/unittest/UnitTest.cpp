@@ -23,7 +23,7 @@ void UnitTest::tearDown() {
 
 
 auto UnitTest::unitTestExecutablePath() -> std::filesystem::path {
-    return Controller::instance()->executablePath();
+    return fh::unitTestExecutablePath();
 }
 
 

@@ -8,7 +8,7 @@ include_guard()
 # Add unittest metadata processing to the given target.
 function(erbsland_unittest)
     # Read the arguments.
-    set(options PRECOMPILE_HEADERS NO_LINK_SETTINGS ENABLE_DATA_DEPS)
+    set(options PRECOMPILE_HEADERS NO_LINK_SETTINGS ENABLE_WARNINGS ENABLE_DATA_DEPS)
     set(oneValueArgs TARGET COPY_TEST_DATA)
     set(multiValueArgs "")
     cmake_parse_arguments(ARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
@@ -40,6 +40,14 @@ function(erbsland_unittest)
     if(NOT ARGS_NO_LINK_SETTINGS)
         # link the target to the unit test.
         target_link_libraries(${ARGS_TARGET} PRIVATE erbsland-unittest)
+    endif()
+
+    if(ARGS_ENABLE_WARNINGS)
+        if(MSVC)
+            target_compile_options(${ARGS_TARGET} PRIVATE "/W4" "/WX")
+        else()
+            target_compile_options(${ARGS_TARGET} PRIVATE "-Wall" "-Wextra" "-Werror")
+        endif()
     endif()
 
     # Create a list with all files that are part of the unittest.

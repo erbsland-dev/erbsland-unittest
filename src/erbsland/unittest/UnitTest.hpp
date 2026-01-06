@@ -4,6 +4,8 @@
 #pragma once
 
 
+#include "FileHelper.hpp"
+
 #include "impl/AssertContext.hpp"
 #include "impl/Definitions.hpp"
 #include "impl/Macros.hpp"

@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    env:
+      BUILD_DIR: cmake-build
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.BUILD_DIR }}
+          key: ${{ runner.os }}-cmake-${{ hashFiles('**/CMakeLists.txt') }}
+
+      - name: Install dependencies (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake ninja-build
+
+      - name: Install dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ninja
+
+      - name: Install dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ninja
+
+      - name: Configure
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" == "Windows" ]; then
+            # Use MSVC on Windows
+            cmake -S . -B ${{ env.BUILD_DIR }} -DCMAKE_BUILD_TYPE=Debug -DERBSLAND_UNITTEST_ENABLE_TESTS=ON
+          else
+            cmake -S . -B ${{ env.BUILD_DIR }} -G Ninja -DCMAKE_BUILD_TYPE=Debug -DERBSLAND_UNITTEST_ENABLE_TESTS=ON
+          fi
+
+      - name: Build
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            cmake --build ${{ env.BUILD_DIR }} --config Debug --parallel
+          else
+            cmake --build ${{ env.BUILD_DIR }} --parallel
+          fi
+
+      - name: Run tests
+        shell: bash
+        run: |
+          cd ${{ env.BUILD_DIR }}
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            ctest --output-on-failure -C Debug
+          else
+            ctest --output-on-failure
+          fi

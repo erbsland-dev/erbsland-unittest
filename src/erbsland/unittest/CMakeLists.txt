@@ -7,6 +7,8 @@ cmake_minimum_required(VERSION 3.20)
 target_sources(erbsland-unittest PRIVATE
         all.hpp
         fwd.hpp
+        FileHelper.cpp
+        FileHelper.hpp
         UnitTest.cpp
         UnitTest.hpp
 )

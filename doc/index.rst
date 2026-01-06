@@ -25,6 +25,7 @@ Familiar with the framework? Dive into the specifics with chapters on:
 
     - :ref:`structure-and-naming`
     - :ref:`the-unittest-class`
+    - :ref:`file-helpers`
     - :ref:`cmake`
     - :ref:`macros`
     - :ref:`command-line`
@@ -40,6 +41,7 @@ Contents at a Glance
     chapters/get-started/index
     chapters/structure-and-naming
     chapters/the-unittest-class
+    chapters/file-helpers
     chapters/cmake-integration
     chapters/macros-for-tests
     chapters/command-line-options

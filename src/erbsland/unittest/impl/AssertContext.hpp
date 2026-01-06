@@ -8,9 +8,9 @@
 #include "ConsoleLine.hpp"
 #include "SourceLocation.hpp"
 
+#include <format>
 #include <functional>
 #include <string>
-#include <format>
 #include <type_traits>
 
 
