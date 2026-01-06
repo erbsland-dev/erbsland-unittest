@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The UnitTest Class &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File Helpers" href="file-helpers.html" />
+    <link rel="prev" title="Structure and Naming" href="structure-and-naming.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-additionalerrormessages-function">The <span class="cpp-expr sig sig-inline cpp"><span class="n">additionalErrorMessages</span><span class="p">(</span><span class="p">)</span></span> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-setup-and-teardown-methods">The <span class="cpp-expr sig sig-inline cpp"><span class="n">setUp</span><span class="p">(</span><span class="p">)</span></span> and <span class="cpp-expr sig sig-inline cpp"><span class="n">tearDown</span><span class="p">(</span><span class="p">)</span></span> Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-runwithcontext-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">runWithContext</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-consolewriteline-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">consoleWriteLine</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-unittestexecutablepath-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">unitTestExecutablePath</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/the-unittest-class.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-unittest-class">
+<span id="index-0"></span><span id="id1"></span><h1>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n">UnitTest</span></a></span> Class<a class="headerlink" href="#the-unittest-class" title="Link to this heading"></a></h1>
+<p>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n">UnitTest</span></a></span> class provides the following public interface that can be utilized:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">erbsland</span><span class="o">::</span><span class="nn">unittest</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">additionalErrorMessages</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setUp</span><span class="p">();</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tearDown</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">runWithContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">SourceLocation</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sourceLocation</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">testFn</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">diagnoseFn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">consoleWriteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">unitTestExecutablePath</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="the-additionalerrormessages-function">
+<h2>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest23additionalErrorMessagesEv" title="erbsland::unittest::UnitTest::additionalErrorMessages"><span class="n">additionalErrorMessages</span></a><span class="p">(</span><span class="p">)</span></span> Function<a class="headerlink" href="#the-additionalerrormessages-function" title="Link to this heading"></a></h2>
+<p>Implement the <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest23additionalErrorMessagesEv" title="erbsland::unittest::UnitTest::additionalErrorMessages"><span class="n">additionalErrorMessages</span></a><span class="p">(</span><span class="p">)</span></span> function to provide more details about the state of instance variables in case a test fails:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ContextTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ExampleLib</span><span class="w"> </span><span class="n">exampleLib</span><span class="p">{};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">additionalErrorMessages</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;ExampleLib:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;    getName() = </span><span class="se">\&quot;</span><span class="s">{}</span><span class="se">\&quot;\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getName</span><span class="p">());</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;    getNameLength() = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getNameLength</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Unexpected Exception&quot;</span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">setAndVerifyName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">expectedSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getNameLength</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expectedSize</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This example uses an instance variable <code class="docutils literal notranslate"><span class="pre">exampleLib</span></code> for the tested object and tries to return additional details about the state of the object when a test failed.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LongTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">{};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">additionalErrorMessages</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;result = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;name = </span><span class="se">\&quot;</span><span class="s">{}</span><span class="se">\&quot;\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;expected result = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expectedResult</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Unexpected Exception&quot;</span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ... tests ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This example does not store the tested instance, but the test input and result as instance variables. If a test fails, the last state of the input and result is returned.</p>
+<p><em>It is important to catch every exception that could have been thrown by the implementation of this function. It ensures that you always get a meaningful output, even when the additional information cannot be extracted.</em></p>
+</section>
+<section id="the-setup-and-teardown-methods">
+<h2>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest5setUpEv" title="erbsland::unittest::UnitTest::setUp"><span class="n">setUp</span></a><span class="p">(</span><span class="p">)</span></span> and <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest8tearDownEv" title="erbsland::unittest::UnitTest::tearDown"><span class="n">tearDown</span></a><span class="p">(</span><span class="p">)</span></span> Methods<a class="headerlink" href="#the-setup-and-teardown-methods" title="Link to this heading"></a></h2>
+<p>Overwrite these methods to execute code before and after <em>every</em> test function in the test suite. We do not recommend using these methods and provide them only for people that are used to working with them.</p>
+<p>If an object must be prepared for each test, we recommend writing a function like <code class="docutils literal notranslate"><span class="pre">createExampleObject()</span></code> that creates an instance of the tested object for the test function.</p>
+</section>
+<section id="the-runwithcontext-method">
+<h2>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest14runWithContextERK14SourceLocationRKNSt8functionIFvvEEERKNSt8functionIFNSt6stringEvEEE" title="erbsland::unittest::UnitTest::runWithContext"><span class="n">runWithContext</span></a><span class="p">(</span><span class="p">)</span></span> Method<a class="headerlink" href="#the-runwithcontext-method" title="Link to this heading"></a></h2>
+<p>If you like to return additional context information of local variables, you can call this function as shown in the next example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">runWithContext</span><span class="p">(</span><span class="n">SOURCE_LOCATION</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;x = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-consolewriteline-method">
+<h2>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest16consoleWriteLineERKNSt6stringE" title="erbsland::unittest::UnitTest::consoleWriteLine"><span class="n">consoleWriteLine</span></a><span class="p">(</span><span class="p">)</span></span> Method<a class="headerlink" href="#the-consolewriteline-method" title="Link to this heading"></a></h2>
+<p>If you are searching for problems in your tests, or like to provide status information on long-running tests, you can call this method from within your test methods to produce additional output on the console.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testIsNamePalindromeBruteForce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">exampleLib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleLib</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">size</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;z&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">isNamePalindrome</span><span class="p">();</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expectedResult</span><span class="p">());</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="sc">&#39;z&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">1&#39;000&#39;000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="p">{};</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Testing name &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">consoleWriteLine</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">str</span><span class="p">());</span><span class="w">  </span><span class="c1">// &lt;------------------------------</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-unittestexecutablepath-method">
+<h2>The <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest22unitTestExecutablePathEv" title="erbsland::unittest::UnitTest::unitTestExecutablePath"><span class="n">unitTestExecutablePath</span></a><span class="p">(</span><span class="p">)</span></span> Method<a class="headerlink" href="#the-unittestexecutablepath-method" title="Link to this heading"></a></h2>
+<p>If you work with test data that is stored along the unit test executable, you can call this method to get the path of the currently running unittest.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="structure-and-naming.html" class="btn btn-neutral float-left" title="Structure and Naming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="file-helpers.html" class="btn btn-neutral float-right" title="File Helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

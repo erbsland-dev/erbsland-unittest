@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structure and Naming &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The UnitTest Class" href="the-unittest-class.html" />
+    <link rel="prev" title="What’s Next?" href="get-started/06-whats-next.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Structure and Naming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure-for-separate-tests">Structure for Separate Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-for-integrated-tests">Structure for Integrated Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#optional-test-inclusion-via-cmake">Optional Test Inclusion via CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#organizing-your-tests">Organizing your Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#naming-of-classes-and-methods">Naming of Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#split-declaration-and-implementation">Split Declaration and Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helper-functions">Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-variables">Instance Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Structure and Naming</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/structure-and-naming.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="index-0">
+<span id="structure-and-naming"></span><span id="id1"></span><h1>Structure and Naming<a class="headerlink" href="#index-0" title="Link to this heading"></a></h1>
+<p>In this chapter, we explain how your unittest project should be structured and how you shall name your classes and test methods.</p>
+<section id="structure-for-separate-tests">
+<h2>Structure for Separate Tests<a class="headerlink" href="#structure-for-separate-tests" title="Link to this heading"></a></h2>
+<p>If you like to keep your tests in a separate repository, we recommend the following project structure for small unit tests with 1-50 test suites:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unittest-project
+    ├── &lt;required libraries&gt;
+    ├── &lt;tested app/lib&gt;
+    │   ├── src (...)
+    │   └── CMakeLists.txt
+    ├── erbsland-unittest
+    ├── unittest
+    │   ├── src
+    │   │   ├── main.cpp
+    │   │   ├── &lt;Suite1&gt;Test.cpp
+    │   │   ├── &lt;Suite2&gt;Test.cpp
+    │   │   └── (...)
+    │   ├── data
+    │   └── CMakeLists.txt
+    └── CMakeLists.txt
+</pre></div>
+</div>
+<p>We recommend adding the <em>Erbsland Unit Test</em>, all required libraries and the tested application or library as submodule. This simplifies versioning and updates and let you work more efficiently on the tests.</p>
+<p>So, even with rapid development on the tested application, you can update to newer tested revisions at your chosen time. Also, you have a way to go back to old revisions of the unittest and easy find out at which point a problem was introduced in the application (or test).</p>
+<p>For large projects, with more than 50 test suites, we recommend the following project structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unittest-project
+    ├── &lt;required libraries&gt;
+    ├── &lt;tested app/lib&gt;
+    │   ├── src (...)
+    │   └── CMakeLists.txt
+    ├── erbsland-unittest
+    ├── unittest
+    │   ├── src
+    │   │   ├── main.cpp
+    │   │   ├── &lt;module1&gt;
+    │   │   │   ├── CMakeLists.txt
+    │   │   │   ├── &lt;Suite1&gt;Test.cpp
+    │   │   │   ├── &lt;Suite2&gt;Test.cpp
+    │   │   │   └── (...)
+    │   │   ├── &lt;module2&gt;
+    │   │   │   ├── CMakeLists.txt
+    │   │   │   ├── &lt;Suite1&gt;Test.cpp
+    │   │   │   ├── &lt;Suite2&gt;Test.cpp
+    │   │   │   └── (...)
+    │   │   ├── &lt;module3&gt;
+    │   │   │   ├── CMakeLists.txt
+    │   │   │   ├── &lt;Suite1&gt;Test.cpp
+    │   │   │   ├── &lt;Suite2&gt;Test.cpp
+    │   │   │   └── (...)
+    │   │   └── (...)
+    │   └── CMakeLists.txt
+    └── CMakeLists.txt
+</pre></div>
+</div>
+<p>Configure this project that several executables are compiled, one for each module. To run all unittests you can either write a shell script or utilize the CMake build system to compile and run all executables for you.</p>
+</section>
+<section id="structure-for-integrated-tests">
+<h2>Structure for Integrated Tests<a class="headerlink" href="#structure-for-integrated-tests" title="Link to this heading"></a></h2>
+<p>If you prefer to integrate your unit tests directly into the repository of the tested project, we recommend the following structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tested-project
+    ├── &lt;required libraries&gt;
+    ├── include
+    ├── src
+    │   ├── ...
+    │   └── CMakeLists.txt
+    ├── test
+    │   ├── erbsland-unittest
+    │   ├── unittest
+    │   │   ├── src
+    │   │   │   ├── main.cpp
+    │   │   │   ├── &lt;Suite1&gt;Test.cpp
+    │   │   │   ├── &lt;Suite2&gt;Test.cpp
+    │   │   │   └── (...)
+    │   │   ├── data
+    │   │   └── CMakeLists.txt
+    │   └── CMakeLists.txt
+    └── CMakeLists.txt
+</pre></div>
+</div>
+<p>All test-related code is placed within the <code class="docutils literal notranslate"><span class="pre">test</span></code> subdirectory. This structure allows you to easily exclude tests when integrating the project as a library into another system or when packaging it for production.</p>
+<p>We suggest adding the <em>Erbsland Unit Test</em> framework as a Git submodule:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span><span class="nb">test</span>
+git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/erbsland-dev/erbsland-unittest.git<span class="w"> </span>test/erbsland-unittest
+git<span class="w"> </span>submodule<span class="w"> </span>init<span class="w"> </span>test/erbsland-unittest
+</pre></div>
+</div>
+<p>This setup ensures that your testing framework is version-controlled alongside your codebase, making it easy to maintain consistency and reproduce test results across different environments.</p>
+<section id="optional-test-inclusion-via-cmake">
+<h3>Optional Test Inclusion via CMake<a class="headerlink" href="#optional-test-inclusion-via-cmake" title="Link to this heading"></a></h3>
+<p>Because tests are neatly isolated in the <code class="docutils literal notranslate"><span class="pre">test</span></code> directory, you can make test compilation optional by extending your top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.23</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">ExampleProject</span><span class="p">)</span>
+<span class="hll"><span class="nb">option</span><span class="p">(</span><span class="s">EXAMPLE_PROJECT_ENABLE_TESTS</span><span class="w"> </span><span class="s2">&quot;Enable unit tests&quot;</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
+</span>
+<span class="c"># ... rest of your CMake configuration ...</span>
+
+<span class="hll"><span class="nb">if</span><span class="p">(</span><span class="s">EXAMPLE_PROJECT_ENABLE_TESTS</span><span class="p">)</span>
+</span><span class="hll"><span class="w">    </span><span class="c"># Add the unit tests</span>
+</span><span class="hll"><span class="w">    </span><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">test</span><span class="p">)</span>
+</span><span class="hll"><span class="w">    </span><span class="nb">enable_testing</span><span class="p">()</span>
+</span><span class="hll"><span class="w">    </span><span class="nb">add_test</span><span class="p">(</span>
+</span><span class="hll"><span class="w">        </span><span class="s">NAME</span><span class="w"> </span><span class="s">unittest</span>
+</span><span class="hll"><span class="w">        </span><span class="s">COMMAND</span><span class="w"> </span><span class="o">$&lt;</span><span class="nv">TARGET_FILE:unittest</span><span class="o">&gt;</span><span class="w"> </span><span class="s">--no-color</span>
+</span><span class="hll"><span class="w">    </span><span class="p">)</span>
+</span><span class="hll"><span class="nb">endif</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<p>To enable testing during your build configuration, pass the option flag:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>cmake-build-debug<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-DEXAMPLE_PROJECT_ENABLE_TESTS<span class="o">=</span>ON
+</pre></div>
+</div>
+<p>This approach allows your test infrastructure to stay part of the main project while remaining completely optional and unobtrusive in environments where tests are not required.</p>
+</section>
+</section>
+<section id="organizing-your-tests">
+<h2>Organizing your Tests<a class="headerlink" href="#organizing-your-tests" title="Link to this heading"></a></h2>
+<p>We designed this unit testing system to allow to organize the tests in modules, suites and blocks:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Project
+    └── Test Module         =&gt; executable DateAndTimeTests.txt
+        └── Test Suite      =&gt; class DateTest : public el::UnitTest { ... };
+            └── Test Block  =&gt; void testConstruction() { ... }
+                └── Tests   =&gt; REQUIRE(dateTime.isEmpty())
+</pre></div>
+</div>
+<p>For small projects we recommend this organisation of the tests:</p>
+<ul class="simple">
+<li><p>Create one single module (application) for all tests.</p></li>
+<li><p>Create at least one test suite for each tested class in your target.</p></li>
+<li><p>Create at least one test block for each tested function in your class.</p></li>
+</ul>
+<p>For large projects we recommend the following organisation of the tests:</p>
+<ul class="simple">
+<li><p>Create one single module (application) for each logical part of your project.</p></li>
+<li><p>Create at least one test suite for each tested class in your target.</p></li>
+<li><p>Create at least one test block for each tested function in your class.</p></li>
+</ul>
+</section>
+<section id="naming-of-classes-and-methods">
+<h2>Naming of Classes and Methods<a class="headerlink" href="#naming-of-classes-and-methods" title="Link to this heading"></a></h2>
+<p>The automatic metadata generator will automatically register all your test classes and methods for you, and also extract your tags and markings. In order for the automatic registration system to work, you need to name your files, classes and methods according to the following rules:</p>
+<ul>
+<li><div class="line-block">
+<div class="line">The source files for test suites have to end in <code class="docutils literal notranslate"><span class="pre">Test</span></code>.</div>
+<div class="line">Examples: <code class="docutils literal notranslate"><span class="pre">ExampleTest.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">ExampleTest.cpp</span></code></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">The source files must use the suffixes <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> and <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>.</div>
+<div class="line">Examples: <code class="docutils literal notranslate"><span class="pre">ExampleTest.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">ExampleTest.cpp</span></code></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Each source file of a test suite must contain the declaration and/or implementation of a class with the same name.</div>
+<div class="line">Example: The file <code class="docutils literal notranslate"><span class="pre">ExampleTest.hpp</span></code> contains the declaration <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">ExampleTest</span> <span class="pre">:</span> <span class="pre">(...)</span></code>.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Test classes must inherit <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/namespaces.html#_CPPv48erbsland" title="erbsland"><span class="n">erbsland</span></a><span class="p">::</span><a class="reference internal" href="reference/namespaces.html#_CPPv4N8erbsland8unittestE" title="erbsland::unittest"><span class="n">unittest</span></a><span class="p">::</span><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n">UnitTest</span></a></span> or short <span class="cpp-expr sig sig-inline cpp"><span class="n">el</span><span class="p">::</span><span class="n">UnitTest</span></span>.</div>
+<div class="line">Example: <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">ExampleTest</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">el::UnitTest</span> <span class="pre">{</span> <span class="pre">(...)</span> <span class="pre">};</span></code></div>
+</div>
+</li>
+<li><p>Test functions in the test classes must be public :<span class="cpp-expr sig sig-inline cpp"><span class="kt">void</span></span> functions with no arguments.</p></li>
+<li><p>The name of test functions must start with lowercase <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">The file <code class="docutils literal notranslate"><span class="pre">ExampleTest.cpp</span></code></span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testExample1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testExample2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="split-declaration-and-implementation">
+<h2>Split Declaration and Implementation<a class="headerlink" href="#split-declaration-and-implementation" title="Link to this heading"></a></h2>
+<p>You have the flexibility to organize your test classes in the way that best fits your project. While we recommend keeping the declaration and implementation of your test class together in a single file—either a header or source file—you may split them into separate <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> and <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files if it better suits your structure or coding standards.</p>
+<p>The <em>Erbsland Unit Test</em> framework fully supports all of the following patterns:</p>
+<ul class="simple">
+<li><p>Implementing the entire test class directly in a <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file without a separate header (our recommend solution).</p></li>
+<li><p>Declaring and implementing the test class entirely in a header file.</p></li>
+<li><p>Declaring the class in a <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> file and implementing it in a corresponding <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file.</p></li>
+</ul>
+<p>Choose the approach that keeps your test code clean, maintainable, and in harmony with the conventions of the rest of your project.</p>
+</section>
+<section id="helper-functions">
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Link to this heading"></a></h2>
+<p>Your test class can include any number of additional helper functions to improve readability and reduce duplication across your test cases. However, it’s important that these functions <strong>do not start with the lowercase prefix ``test``</strong>, as this would cause them to be mistakenly registered as actual test methods.</p>
+<p>If your helper function performs assertions or validation steps, we recommend wrapping its call in the <code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT</span></code> macro. This macro captures the context from which the function is invoked and includes it in any resulting error messages, greatly improving diagnostics.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setAndVerifyName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">expectedSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getNameLength</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expectedSize</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">getName</span><span class="w"> </span><span class="n">getNameLength</span><span class="w"> </span><span class="n">setName</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">({}));</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">(</span><span class="s">&quot;joe&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">(</span><span class="s">&quot;anna&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT</span></code> ensures that if a failure occurs within a helper function, the name of the test and the specific call site are clearly visible in the output. This helps you pinpoint failing inputs without digging through stack traces.</p>
+<p>For more details, refer to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="macros-for-tests.html"><span class="doc">Macros for Unittests</span></a> – to understand the purpose and scope of test macros like <code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code> and <code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT</span></code>.</p></li>
+<li><p><a class="reference internal" href="cmake-integration.html"><span class="doc">CMake Integration</span></a> – to see the framework detects test suites and methods by name.</p></li>
+</ul>
+</section>
+<section id="instance-variables">
+<h2>Instance Variables<a class="headerlink" href="#instance-variables" title="Link to this heading"></a></h2>
+<p>You can declare instance variables within your test class to share state between test blocks. This is particularly useful when testing value types or modules whose internal state needs to be inspected after assertions. Shared instance variables make debugging easier and help reduce duplication in your test setup.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Example</span><span class="w"> </span><span class="n">example</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">additionalErrorMessages</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;example.a = {}</span><span class="se">\n</span><span class="s">example.b = {}</span><span class="se">\n</span><span class="s">example.c = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">example</span><span class="p">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">example</span><span class="p">.</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">example</span><span class="p">.</span><span class="n">c</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Unexpected exception while collecting diagnostics.&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">setUp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testConstruction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Example</span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">);</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Example</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Additional test blocks can reuse `example` here</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get-started/06-whats-next.html" class="btn btn-neutral float-left" title="What’s Next?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="the-unittest-class.html" class="btn btn-neutral float-right" title="The UnitTest Class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Write the Test! &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Build the Test!" href="04-build-the-test.html" />
+    <link rel="prev" title="The CMake Configuration" href="02-cmake-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-project-structure.html">The Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-cmake-configuration.html">The CMake Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Write the Test!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-main-cpp-file">Creating the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-your-first-unit-test">Creating Your First Unit Test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-basic-test-suite">Example: Basic Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-the-test-suite-to-the-cmake-configuration">Adding the Test Suite to the CMake Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-build-the-test.html">Build the Test!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-run-the-test.html">Run the Test!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-whats-next.html">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Write the Test!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/chapters/get-started/03-write-the-test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="write-the-test">
+<span id="id1"></span><h1>Write the Test!<a class="headerlink" href="#write-the-test" title="Link to this heading"></a></h1>
+<section id="creating-the-main-cpp-file">
+<h2>Creating the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> File<a class="headerlink" href="#creating-the-main-cpp-file" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> file serves as the entry point for your unit tests. Follow these steps to create and configure it:</p>
+<ol class="arabic">
+<li><p>Create the directory and file for your unit test executable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>src
+nano<span class="w"> </span>main.cpp
+</pre></div>
+</div>
+</li>
+<li><p>Add the following content to the file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="n">ERBSLAND_UNITTEST_MAIN</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Explanation</div>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Macro Simplification</strong>: The <code class="docutils literal notranslate"><span class="pre">ERBSLAND_UNITTEST_MAIN();</span></code> macro streamlines the creation of the <cite>main</cite> function, automatically setting up your test executable.</p></li>
+<li><p class="sd-card-text"><strong>Build Environment Compatibility</strong>: Including a <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> file ensures proper recognition of the project language by the build environment and prevents potential issues during compilation.</p></li>
+</ul>
+<p class="sd-card-text">This approach provides flexibility for defining test classes in header files without requiring additional implementation files.</p>
+</div>
+</div>
+</section>
+<section id="creating-your-first-unit-test">
+<h2>Creating Your First Unit Test<a class="headerlink" href="#creating-your-first-unit-test" title="Link to this heading"></a></h2>
+<p>To define your unit tests, follow these conventions:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>File Naming</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Each test suite should reside in a file ending with <code class="docutils literal notranslate"><span class="pre">Test</span></code>, either in a single <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> or <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file, or a combination of <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> and <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Class Naming</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The file must contain a class with the <strong>same name</strong> as the file.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Test Method Naming</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Test functions should be <strong>public methods</strong> in the class and start with a lowercase <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="example-basic-test-suite">
+<h3>Example: Basic Test Suite<a class="headerlink" href="#example-basic-test-suite" title="Link to this heading"></a></h3>
+<p>Let’s create a test suite named <code class="docutils literal notranslate"><span class="pre">BasicTest</span></code>:</p>
+<ol class="arabic">
+<li><p>Create the file <code class="docutils literal notranslate"><span class="pre">BasicTest.cpp</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>BasicTest.cpp
+</pre></div>
+</div>
+</li>
+<li><p>Add the following content to define the test suite:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ExampleLib.hpp&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">erbsland</span><span class="o">::</span><span class="n">ExampleLib</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BasicTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testMagic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">exampleLib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleLib</span><span class="p">{};</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getMagicWord</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Magic&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Key Points</div>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Include Guards</strong>: The <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code> directive ensures the header file is included only once during compilation.</p></li>
+<li><p class="sd-card-text"><strong>Assertions</strong>: Use the <code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code> macro to assert that test conditions are met, such as verifying the return value of <code class="docutils literal notranslate"><span class="pre">getMagicWord()</span></code>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="adding-the-test-suite-to-the-cmake-configuration">
+<h2>Adding the Test Suite to the CMake Configuration<a class="headerlink" href="#adding-the-test-suite-to-the-cmake-configuration" title="Link to this heading"></a></h2>
+<p>To compile and include the test suite, update your <cite>CMakeLists.txt</cite> file:</p>
+<ol class="arabic">
+<li><p>Navigate to the parent directory and open the <cite>CMakeLists.txt</cite> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+nano<span class="w"> </span>CMakeLists.txt
+</pre></div>
+</div>
+</li>
+<li><p>Update the file with the new test suite:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.23</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">unittest</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">unittest</span>
+<span class="w">        </span><span class="s">src/BasicTest.cpp</span><span class="w">    </span><span class="c"># Add the new test suite</span>
+<span class="w">        </span><span class="s">src/main.cpp</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cxx_std_20</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">erbsland-unittest-example-lib</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">unittest</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">../example-lib/src</span><span class="p">)</span>
+<span class="nb">erbsland_unittest</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">unittest</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Test Suite Integration</strong>: The <cite>BasicTest.cpp</cite> file is added to the executable target.</p></li>
+<li><p><strong>Seamless Compilation</strong>: The updated CMake configuration ensures the new test suite is compiled and linked correctly.</p></li>
+</ul>
+<p>By completing these steps, you have successfully created and configured your first test suite using the Erbsland Unit Test framework. You’re now ready to build and run your tests!</p>
+<p class="sd-text-center"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-success sd-fs-5 sd-font-weight-bold sd-p-2 reference internal" href="04-build-the-test.html#build-the-test"><span class="std std-ref">Build the Test! →</span></a></span></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02-cmake-configuration.html" class="btn btn-neutral float-left" title="The CMake Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04-build-the-test.html" class="btn btn-neutral float-right" title="Build the Test!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

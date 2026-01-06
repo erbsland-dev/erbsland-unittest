@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceerbsland_1_1unittest" kind="namespace" language="C++">
+    <compoundname>erbsland::unittest</compoundname>
+    <innerclass refid="classerbsland_1_1unittest_1_1_unit_test" prot="public">erbsland::unittest::UnitTest</innerclass>
+    <innernamespace refid="namespaceerbsland_1_1unittest_1_1fh">erbsland::unittest::fh</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="erbsland/unittest/FileHelper.cpp" line="16" column="1"/>
+  </compounddef>
+</doxygen>

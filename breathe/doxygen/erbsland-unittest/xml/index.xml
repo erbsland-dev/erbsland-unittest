@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classerbsland_1_1unittest_1_1_unit_test" kind="class"><name>erbsland::unittest::UnitTest</name>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac96b60d37bd806132da680e187dc2288" kind="friend"><name>Private</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a8ada8b2b57fa4cbdc11fa926f2e11cdc" kind="friend"><name>AssertContext</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6e99771504460f1e6ecd7346829c7096" kind="variable"><name>p</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a5cff031792fc484c9a25e7de8b9ab4cc" kind="function"><name>UnitTest</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a4c8741be62df2983ab685c89c3113398" kind="function"><name>~UnitTest</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac09ae4fc9e35b9d1c6a2fd3e8bf1b77c" kind="function"><name>additionalErrorMessages</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac99dfb6625c6f49d1a9a1728f4d510fc" kind="function"><name>setUp</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1af221170ac6a184788391c4e810d86b6c" kind="function"><name>tearDown</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6f1f4e0632838b8022f0a0fc9f3cff08" kind="function"><name>runWithContext</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae19c3715d27180517a8773ae9bd5564a" kind="function"><name>consoleWriteLine</name></member>
+    <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae201e2e7eaed32b44d57a8671f1e4c41" kind="function"><name>unitTestExecutablePath</name></member>
+  </compound>
+  <compound refid="namespaceerbsland" kind="namespace"><name>erbsland</name>
+  </compound>
+  <compound refid="namespaceerbsland_1_1unittest" kind="namespace"><name>erbsland::unittest</name>
+  </compound>
+  <compound refid="namespaceerbsland_1_1unittest_1_1fh" kind="namespace"><name>erbsland::unittest::fh</name>
+    <member refid="namespaceerbsland_1_1unittest_1_1fh_1a16017016487af09af4f9cac67128e617" kind="function"><name>unitTestExecutablePath</name></member>
+    <member refid="namespaceerbsland_1_1unittest_1_1fh_1a28d9e6866e754f4648e6369e34051ac0" kind="function"><name>resolveDataPath</name></member>
+    <member refid="namespaceerbsland_1_1unittest_1_1fh_1a0ad121e69e6afc807ff453636c23d010" kind="function"><name>readDataText</name></member>
+    <member refid="namespaceerbsland_1_1unittest_1_1fh_1ab99a0f94ce60247365ac642a794bb51d" kind="function"><name>readDataLines</name></member>
+  </compound>
+  <compound refid="namespaceerbsland_1_1unittest_1_1fh_1_1_0d1" kind="namespace"><name>erbsland::unittest::fh::@1</name>
+  </compound>
+  <compound refid="all_8hpp" kind="file"><name>all.hpp</name>
+  </compound>
+  <compound refid="_file_helper_8cpp" kind="file"><name>FileHelper.cpp</name>
+  </compound>
+  <compound refid="_file_helper_8hpp" kind="file"><name>FileHelper.hpp</name>
+  </compound>
+  <compound refid="fwd_8hpp" kind="file"><name>fwd.hpp</name>
+  </compound>
+  <compound refid="_macros_8hpp" kind="file"><name>Macros.hpp</name>
+    <member refid="_macros_8hpp_1afa0c32ba143802f6740d0a112ddf9b78" kind="define"><name>ASSERT_CONTEXT_REQUIRE</name></member>
+    <member refid="_macros_8hpp_1acb5dddd9ff925a935bb6c366fb6bf842" kind="define"><name>ASSERT_CONTEXT_COMPARISON</name></member>
+    <member refid="_macros_8hpp_1a990db09d8dfe4ce2afacfb906076c520" kind="define"><name>ASSERT_CONTEXT_NOTHROW</name></member>
+    <member refid="_macros_8hpp_1a4bd9303a3c9f225fb9b84490ce576ea0" kind="define"><name>ASSERT_CONTEXT_THROWS</name></member>
+    <member refid="_macros_8hpp_1ac5810612c615844a810ae77440c3be2d" kind="define"><name>ASSERT_CONTEXT_THROWS_AS</name></member>
+    <member refid="_macros_8hpp_1aa6194506311604c30f72826d819c8793" kind="define"><name>WITH_CONTEXT</name></member>
+    <member refid="_macros_8hpp_1aa6e6fc9684bd84ce7b72da6a2eef668f" kind="define"><name>SOURCE_LOCATION</name></member>
+    <member refid="_macros_8hpp_1ad57835ba8f1bb419a865ada6bd011a85" kind="define"><name>REQUIRE</name></member>
+    <member refid="_macros_8hpp_1ada5065594bafc152162761ace47c1dcb" kind="define"><name>REQUIRE_FALSE</name></member>
+    <member refid="_macros_8hpp_1ae3c33faa1d31a2bb0811dac74b994e3e" kind="define"><name>REQUIRE_THROWS</name></member>
+    <member refid="_macros_8hpp_1a724f5fee494728ebc42e3b66bf373a20" kind="define"><name>REQUIRE_THROWS_AS</name></member>
+    <member refid="_macros_8hpp_1ab0148f0dfca438f7aa01974e9c33216a" kind="define"><name>REQUIRE_NOTHROW</name></member>
+    <member refid="_macros_8hpp_1a03a63454f5826978f2a50c03c0e27c24" kind="define"><name>REQUIRE_EQUAL</name></member>
+    <member refid="_macros_8hpp_1ae5b4d3825e9b055b2393a9c7a58cd89f" kind="define"><name>REQUIRE_NOT_EQUAL</name></member>
+    <member refid="_macros_8hpp_1aba572a8f556b6b299b79df7bac0298ef" kind="define"><name>REQUIRE_LESS</name></member>
+    <member refid="_macros_8hpp_1a779472ba7e98e0a35ef121b73f225dab" kind="define"><name>REQUIRE_LESS_EQUAL</name></member>
+    <member refid="_macros_8hpp_1ad64479d6af56c319bb1f38fb6bc846a9" kind="define"><name>REQUIRE_GREATER</name></member>
+    <member refid="_macros_8hpp_1a8ae34fa7af0fd68bb3f597e86329e6a1" kind="define"><name>REQUIRE_GREATER_EQUAL</name></member>
+    <member refid="_macros_8hpp_1a836cca6b6ed3a1706353f6d1bca0935f" kind="define"><name>CHECK</name></member>
+    <member refid="_macros_8hpp_1a7bf095d8512cb180f8ff3a2258a6eaac" kind="define"><name>CHECK_FALSE</name></member>
+    <member refid="_macros_8hpp_1a5c646dfe831e596b59073014c1c8b9e5" kind="define"><name>CHECK_THROWS</name></member>
+    <member refid="_macros_8hpp_1acf0e97ea1cc4544ef5bac2a00a2fcb6e" kind="define"><name>CHECK_THROWS_AS</name></member>
+    <member refid="_macros_8hpp_1a78e70f011f20c4ade1d1ac2b8fd33626" kind="define"><name>CHECK_NOTHROW</name></member>
+    <member refid="_macros_8hpp_1abfadc5d6128f37a150c1c87475b392d2" kind="define"><name>CHECK_EQUAL</name></member>
+    <member refid="_macros_8hpp_1adc901bd6c473ea51a81fb3a22b9b022a" kind="define"><name>CHECK_NOT_EQUAL</name></member>
+    <member refid="_macros_8hpp_1ab14e667ceb76791caf5c3e11a716228d" kind="define"><name>CHECK_LESS</name></member>
+    <member refid="_macros_8hpp_1a69dee48638df6eec3ebb054f622c2ecd" kind="define"><name>CHECK_LESS_EQUAL</name></member>
+    <member refid="_macros_8hpp_1ad961b204913982e5124fe7e6a036ccd5" kind="define"><name>CHECK_GREATER</name></member>
+    <member refid="_macros_8hpp_1aebc1fe5c55a76c02c88276f15e809a1a" kind="define"><name>CHECK_GREATER_EQUAL</name></member>
+    <member refid="_macros_8hpp_1a983a869f847994c418f23e61dcc3c211" kind="define"><name>TESTS_BEGIN</name></member>
+    <member refid="_macros_8hpp_1a88f564ca29980cb3df327ca05d5c3bed" kind="define"><name>TESTS_END</name></member>
+    <member refid="_macros_8hpp_1a38db39ac4f16b821148e74e4d2fdff6d" kind="define"><name>TESTS_ENTRY</name></member>
+    <member refid="_macros_8hpp_1aa475c570e482c07ab429920cc12a9c1f" kind="define"><name>ADD_TEST</name></member>
+    <member refid="_macros_8hpp_1ae04af788c8529722357055571d7a8289" kind="define"><name>ADD_CLASS</name></member>
+    <member refid="_macros_8hpp_1a028a67378b2d399b07dc80fdf0e74e4f" kind="define"><name>UNITTEST_SUBCLASS</name></member>
+    <member refid="_macros_8hpp_1a1801fa573c93869f4b57e039f99092eb" kind="define"><name>TAGS</name></member>
+    <member refid="_macros_8hpp_1a8afc24d7dc52efd0ef497be02ac1c7e0" kind="define"><name>TESTED_TARGETS</name></member>
+    <member refid="_macros_8hpp_1a6e29443ad92bf6e597e59b354a55bbe4" kind="define"><name>SKIP_BY_DEFAULT</name></member>
+    <member refid="_macros_8hpp_1a616019a862e87f7a35f46698e919c55a" kind="define"><name>ERBSLAND_UNITTEST_MAIN</name></member>
+  </compound>
+  <compound refid="_unit_test_8cpp" kind="file"><name>UnitTest.cpp</name>
+  </compound>
+  <compound refid="_unit_test_8hpp" kind="file"><name>UnitTest.hpp</name>
+  </compound>
+  <compound refid="dir_b1ace6ee297760975ab9205cfa76456c" kind="dir"><name>erbsland</name>
+  </compound>
+  <compound refid="dir_df46d0b236c90952d596c174be385cbe" kind="dir"><name>erbsland/unittest/impl</name>
+  </compound>
+  <compound refid="dir_07da06a5c2678dad789feaeb36cb4bb4" kind="dir"><name>erbsland/unittest</name>
+  </compound>
+</doxygenindex>

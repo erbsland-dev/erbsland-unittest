@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macros for Unittests &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command Line Options for the Unit Test Executable" href="command-line-options.html" />
+    <link rel="prev" title="CMake Integration" href="cmake-integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Macros for Unittests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-overview">Quick Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#macros-for-tests">Macros for Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-macros">Comparison Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macros-for-meta-data">Macros for Meta Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-macros">Helper Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-false-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_FALSE</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-throws-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_THROWS</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-throws-as-exception-class-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_THROWS_AS</span><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-nothrow-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_NOTHROW</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macros-for-value-comparison">Macros for Value Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Comparison Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-error-message">Example Error Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-formatting-with-std-format">Custom Formatting with <cite>std::format</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-check-macros">The <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-with-context-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-tags-with-tags">Add Tags with <span class="c-expr sig sig-inline c"><span class="n">TAGS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-targets-with-tested-targets">Add Targets with <span class="c-expr sig sig-inline c"><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#skip-tests-by-default-with-skip-by-default">Skip Tests by Default with <span class="c-expr sig sig-inline c"><span class="n">SKIP_BY_DEFAULT</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combine-tags-tested-targets-and-skip-by-default">Combine <span class="c-expr sig sig-inline c"><span class="n">TAGS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span>, <span class="c-expr sig sig-inline c"><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><span class="n">SKIP_BY_DEFAULT</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-macro-source-location">The Macro <span class="c-expr sig sig-inline c"><span class="n">SOURCE_LOCATION</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-macro-erbsland-unittest-main">The Macro <span class="c-expr sig sig-inline c"><span class="n">ERBSLAND_UNITTEST_MAIN</span><span class="p">(</span><span class="p">)</span></span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Macros for Unittests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/macros-for-tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macros-for-unittests">
+<span id="macros"></span><span id="index-0"></span><h1>Macros for Unittests<a class="headerlink" href="#macros-for-unittests" title="Link to this heading"></a></h1>
+<p><em>Erbsland Unit Test</em> has a small number of macros to perform the tests and for adding meta information to the test classes and methods.</p>
+<section id="quick-overview">
+<h2>Quick Overview<a class="headerlink" href="#quick-overview" title="Link to this heading"></a></h2>
+<section id="macros-for-tests">
+<h3>Macros for Tests<a class="headerlink" href="#macros-for-tests" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE" title="REQUIRE"><span class="n">REQUIRE</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Tests if the given expression is true.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_FALSE" title="REQUIRE_FALSE"><span class="n">REQUIRE_FALSE</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Tests if the given expression is false.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_THROWS" title="REQUIRE_THROWS"><span class="n">REQUIRE_THROWS</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Tests if the given expression throws an exception. Fails if it does not.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_THROWS_AS" title="REQUIRE_THROWS_AS"><span class="n">REQUIRE_THROWS_AS</span></a><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span></span>: Tests if the given expression throws an exception of the specified type or derived type <code class="docutils literal notranslate"><span class="pre">exception</span> <span class="pre">class&gt;</span></code>. Fails if it does not.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_NOTHROW" title="REQUIRE_NOTHROW"><span class="n">REQUIRE_NOTHROW</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Tests if the given expression does <em>not</em> throw an exception. Fails if it does.</p></li>
+</ul>
+<p>For all <code class="docutils literal notranslate"><span class="pre">REQUIRE_...</span></code> macros listed above, there is a corresponding <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> version. These check versions only display a message in the output, but the test will not fail.</p>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK" title="CHECK"><span class="n">CHECK</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Like <code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code>, but only warns.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_FALSE" title="CHECK_FALSE"><span class="n">CHECK_FALSE</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Like <code class="docutils literal notranslate"><span class="pre">REQUIRE_FALSE</span></code>, but only warns.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_THROWS" title="CHECK_THROWS"><span class="n">CHECK_THROWS</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Like <code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS</span></code>, but only warns.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_THROWS_AS" title="CHECK_THROWS_AS"><span class="n">CHECK_THROWS_AS</span></a><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span></span>: Like <code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS_AS</span></code>, but only warns.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_NOTHROW" title="CHECK_NOTHROW"><span class="n">CHECK_NOTHROW</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Like <code class="docutils literal notranslate"><span class="pre">REQUIRE_NOTHROW</span></code>, but only warns.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.WITH_CONTEXT" title="WITH_CONTEXT"><span class="n">WITH_CONTEXT</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span>: Executes the expression, but adds a context for error reporting.</p></li>
+</ul>
+</section>
+<section id="comparison-macros">
+<h3>Comparison Macros<a class="headerlink" href="#comparison-macros" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_EQUAL" title="REQUIRE_EQUAL"><span class="n">REQUIRE_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">==</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_NOT_EQUAL" title="REQUIRE_NOT_EQUAL"><span class="n">REQUIRE_NOT_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">!=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_LESS" title="REQUIRE_LESS"><span class="n">REQUIRE_LESS</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_LESS_EQUAL" title="REQUIRE_LESS_EQUAL"><span class="n">REQUIRE_LESS_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_GREATER" title="REQUIRE_GREATER"><span class="n">REQUIRE_GREATER</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_GREATER_EQUAL" title="REQUIRE_GREATER_EQUAL"><span class="n">REQUIRE_GREATER_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_EQUAL" title="CHECK_EQUAL"><span class="n">CHECK_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">==</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_NOT_EQUAL" title="CHECK_NOT_EQUAL"><span class="n">CHECK_NOT_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">!=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_LESS" title="CHECK_LESS"><span class="n">CHECK_LESS</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_LESS_EQUAL" title="CHECK_LESS_EQUAL"><span class="n">CHECK_LESS_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_GREATER" title="CHECK_GREATER"><span class="n">CHECK_GREATER</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_GREATER_EQUAL" title="CHECK_GREATER_EQUAL"><span class="n">CHECK_GREATER_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+</ul>
+</section>
+<section id="macros-for-meta-data">
+<h3>Macros for Meta Data<a class="headerlink" href="#macros-for-meta-data" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TAGS" title="TAGS"><span class="n">TAGS</span></a><span class="p">(</span><span class="n">tags</span><span class="p">)</span></span>: Adds a tag to a class or test function.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TESTED_TARGETS" title="TESTED_TARGETS"><span class="n">TESTED_TARGETS</span></a><span class="p">(</span><span class="n">targets</span><span class="p">)</span></span>: Adds a tested target to a class or test function.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a><span class="p">(</span><span class="p">)</span></span>: Skips a test or class by default.</p></li>
+</ul>
+</section>
+<section id="helper-macros">
+<h3>Helper Macros<a class="headerlink" href="#helper-macros" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SOURCE_LOCATION" title="SOURCE_LOCATION"><span class="n">SOURCE_LOCATION</span></a><span class="p">(</span><span class="p">)</span></span>: Gets the source location, used for the <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest14runWithContextERK14SourceLocationRKNSt8functionIFvvEEERKNSt8functionIFNSt6stringEvEEE" title="erbsland::unittest::UnitTest::runWithContext"><span class="n">runWithContext</span></a><span class="p">(</span><span class="p">)</span></span> call.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.ERBSLAND_UNITTEST_MAIN" title="ERBSLAND_UNITTEST_MAIN"><span class="n">ERBSLAND_UNITTEST_MAIN</span></a><span class="p">(</span><span class="p">)</span></span>: Creates a simple main function to start the unittest.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.UNITTEST_SUBCLASS" title="UNITTEST_SUBCLASS"><span class="n">UNITTEST_SUBCLASS</span></a><span class="p">(</span><span class="p">)</span></span>: Marks a subclass that is derived from <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n">UnitTest</span></a></span> in order that the CMake system will properly register the unittest class.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-require-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE" title="REQUIRE"><span class="n">REQUIRE</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-require-expression-macro" title="Link to this heading"></a></h2>
+<p>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE" title="REQUIRE"><span class="n">REQUIRE</span></a></span> macro evaluates whether an expression is <code class="docutils literal notranslate"><span class="pre">true</span></code>. If the expression results in <code class="docutils literal notranslate"><span class="pre">false</span></code> or throws an exception, the test suite stops with an error. The error message displays the exact location in the code where the error occurred and the tested expression.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Peter&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You might be familiar with unit testing systems that use test macros like <code class="docutils literal notranslate"><span class="pre">COMPARE(A,</span> <span class="pre">B)</span></code>, which return the actual compared values in case of an error. We found these to be less useful, as complex tests often involve values that cannot be easily converted into text.</p>
+<p>To view the tested values, we recommend one of the following approaches.</p>
+<p>For local and specialized tests, enclose the tested block with a <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest14runWithContextERK14SourceLocationRKNSt8functionIFvvEEERKNSt8functionIFNSt6stringEvEEE" title="erbsland::unittest::UnitTest::runWithContext"><span class="n">runWithContext</span></a><span class="p">(</span><span class="p">)</span></span> call. The second lambda function displays all relevant information about the tested values in case of an error.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">runWithContext</span><span class="p">(</span><span class="n">SOURCE_LOCATION</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;x = {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We suggest using small test suites and instance variables shared between all test blocks. Then implement the <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest23additionalErrorMessagesEv" title="erbsland::unittest::UnitTest::additionalErrorMessages"><span class="n">additionalErrorMessages</span></a><span class="p">(</span><span class="p">)</span></span> to display the state of these variables if an error occurs. This approach not only makes tests easier to read, it also helps debugging them.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">inputA</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">inputB</span><span class="p">{};</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">{};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">additionalErrorMessages</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;inputA = {} / inputB = {} / expected = {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">inputA</span><span class="p">,</span><span class="w"> </span><span class="n">inputB</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Unexpected Exception&quot;</span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span>
+<span class="w">        </span><span class="n">inputA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">inputB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">inputA</span><span class="p">,</span><span class="w"> </span><span class="n">inputB</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="the-require-false-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_FALSE" title="REQUIRE_FALSE"><span class="n">REQUIRE_FALSE</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-require-false-expression-macro" title="Link to this heading"></a></h2>
+<p>This test macro works like <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE" title="REQUIRE"><span class="n">REQUIRE</span></a></span>, but expects <code class="docutils literal notranslate"><span class="pre">false</span></code> as result. If the expression results in <code class="docutils literal notranslate"><span class="pre">true</span></code> or throws an exception, the test suite is stopped with an error.</p>
+<p>The macro exists to have a more visual indicator a negative result is expected.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Peter&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE_FALSE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">isNamePalindrome</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-require-throws-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_THROWS" title="REQUIRE_THROWS"><span class="n">REQUIRE_THROWS</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-require-throws-expression-macro" title="Link to this heading"></a></h2>
+<p>This test macro expects that the given expression throws an exception. Any thrown exception is accepted. If the expression throws no exception, the test suite stops with an error.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">exampleLib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleLib</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;joe&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE_THROWS</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">isEvenPalindrome</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-require-throws-as-exception-class-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_THROWS_AS" title="REQUIRE_THROWS_AS"><span class="n">REQUIRE_THROWS_AS</span></a><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-require-throws-as-exception-class-expression-macro" title="Link to this heading"></a></h2>
+<p>This macro works like <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_THROWS" title="REQUIRE_THROWS"><span class="n">REQUIRE_THROWS</span></a></span> but you can also specify the class of the exception you expect.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">exampleLib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleLib</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;joe&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE_THROWS_AS</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">domain_error</span><span class="p">,</span><span class="w"> </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">isEvenPalindrome</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-require-nothrow-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_NOTHROW" title="REQUIRE_NOTHROW"><span class="n">REQUIRE_NOTHROW</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-require-nothrow-expression-macro" title="Link to this heading"></a></h2>
+<p>This macro expects the expression throws no exception. Compared with <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE" title="REQUIRE"><span class="n">REQUIRE</span></a></span>, it does not expect and discards any return value of the expression.</p>
+</section>
+<section id="macros-for-value-comparison">
+<h2>Macros for Value Comparison<a class="headerlink" href="#macros-for-value-comparison" title="Link to this heading"></a></h2>
+<p>To simplify testing of relational expressions, <em>Erbsland Unit Test</em> provides a dedicated set of macros that compare two values using common comparison operators: <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>. These macros assert that the comparison evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>. If the result is <code class="docutils literal notranslate"><span class="pre">false</span></code>, an error message is displayed showing the original expressions, and—when supported by <cite>std::format</cite>—their evaluated values as well.</p>
+<p>The macros follow the <code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code> and <code class="docutils literal notranslate"><span class="pre">CHECK</span></code> idioms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REQUIRE_...</span></code> macros abort the test immediately on failure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> macros continue the test but issue a warning.</p></li>
+</ul>
+<section id="id1">
+<h3>Comparison Macros<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p><strong>REQUIRE-based macros (test must pass):</strong></p>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_EQUAL" title="REQUIRE_EQUAL"><span class="n">REQUIRE_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">==</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_NOT_EQUAL" title="REQUIRE_NOT_EQUAL"><span class="n">REQUIRE_NOT_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">!=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_LESS" title="REQUIRE_LESS"><span class="n">REQUIRE_LESS</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_LESS_EQUAL" title="REQUIRE_LESS_EQUAL"><span class="n">REQUIRE_LESS_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_GREATER" title="REQUIRE_GREATER"><span class="n">REQUIRE_GREATER</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.REQUIRE_GREATER_EQUAL" title="REQUIRE_GREATER_EQUAL"><span class="n">REQUIRE_GREATER_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Asserts <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+</ul>
+<p><strong>CHECK-based macros (only issue a warning on failure):</strong></p>
+<ul class="simple">
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_EQUAL" title="CHECK_EQUAL"><span class="n">CHECK_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">==</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_NOT_EQUAL" title="CHECK_NOT_EQUAL"><span class="n">CHECK_NOT_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">!=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_LESS" title="CHECK_LESS"><span class="n">CHECK_LESS</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_LESS_EQUAL" title="CHECK_LESS_EQUAL"><span class="n">CHECK_LESS_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&lt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_GREATER" title="CHECK_GREATER"><span class="n">CHECK_GREATER</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;</span> <span class="pre">(value_b)</span></code>.</p></li>
+<li><p><span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.CHECK_GREATER_EQUAL" title="CHECK_GREATER_EQUAL"><span class="n">CHECK_GREATER_EQUAL</span></a><span class="p">(</span><span class="n">value_a</span><span class="p">,</span><span class="w"> </span><span class="n">value_b</span><span class="p">)</span></span>: Checks <code class="docutils literal notranslate"><span class="pre">(value_a)</span> <span class="pre">&gt;=</span> <span class="pre">(value_b)</span></code>.</p></li>
+</ul>
+</section>
+<section id="example-error-message">
+<h3>Example Error Message<a class="headerlink" href="#example-error-message" title="Link to this heading"></a></h3>
+<p>If a comparison fails, a diagnostic message is shown that includes the compared expressions and, if formatting is available, their evaluated values:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Comparison failed: ExampleA == ExampleB
+  A: value.type() =&gt; ExampleA
+  B: expectedValue.type() =&gt; ExampleB
+</pre></div>
+</div>
+</section>
+<section id="custom-formatting-with-std-format">
+<h3>Custom Formatting with <cite>std::format</cite><a class="headerlink" href="#custom-formatting-with-std-format" title="Link to this heading"></a></h3>
+<p>For types that do not natively support <cite>std::format</cite>, you can enable value formatting in your error messages by specializing the <cite>std::formatter</cite> template.</p>
+<p>Here is an example for a custom enum type:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">MyEnum</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="n">MyEnum</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">format_context</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">MyEnum</span><span class="o">::</span><span class="no">ExampleA</span><span class="p">:</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ExampleA&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">MyEnum</span><span class="o">::</span><span class="no">ExampleB</span><span class="p">:</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ExampleB&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>For types with a string conversion method:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">MyString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="n">MyString</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">format_context</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;::</span><span class="n">format</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">toStdString</span><span class="p">(),</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>By implementing <cite>std::formatter</cite> for your types, you make your test output more insightful and readable—especially when debugging comparison failures.</p>
+</section>
+</section>
+<section id="the-check-macros">
+<h2>The <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> Macros<a class="headerlink" href="#the-check-macros" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> macros are counterparts to the <code class="docutils literal notranslate"><span class="pre">REQUIRE_...</span></code> macros. If the test in one of these macros fails, this is only reported as warning in the output, but does not stop the test suite.</p>
+</section>
+<section id="the-with-context-expression-macro">
+<h2>The <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.WITH_CONTEXT" title="WITH_CONTEXT"><span class="n">WITH_CONTEXT</span></a><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro<a class="headerlink" href="#the-with-context-expression-macro" title="Link to this heading"></a></h2>
+<p>This macro adds a context around the expression. In case a test fails in the nested expression, the line and file of the <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.WITH_CONTEXT" title="WITH_CONTEXT"><span class="n">WITH_CONTEXT</span></a></span> statement is also reported in the output.</p>
+<p>Use this macro if you call additional test methods to get the original location of the call.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setAndVerifyName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">exampleLib</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">expectedSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">exampleLib</span><span class="p">.</span><span class="n">getNameLength</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expectedSize</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">getName</span><span class="w"> </span><span class="n">getNameLength</span><span class="w"> </span><span class="n">setName</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">testNameSetAndGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">({}));</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">(</span><span class="s">&quot;joe&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">setAndVerifyName</span><span class="p">(</span><span class="s">&quot;anna&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In case of a problem, you see the nested calls in the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Test: NameSetAndGet FAILED!
+[2]: /erbsland-unittest-example/unittest/src/ContextTest.cpp:56: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+[1]: /erbsland-unittest-example/unittest/src/ContextTest.cpp:67: WITH_CONTEXT(setAndVerifyName(&quot;Lisa&quot;))
+</pre></div>
+</div>
+<p>You can nest as many <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.WITH_CONTEXT" title="WITH_CONTEXT"><span class="n">WITH_CONTEXT</span></a></span> macros as you like.</p>
+</section>
+<section id="add-tags-with-tags">
+<h2>Add Tags with <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TAGS" title="TAGS"><span class="n">TAGS</span></a><span class="p">(</span><span class="p">...</span><span class="p">)</span></span><a class="headerlink" href="#add-tags-with-tags" title="Link to this heading"></a></h2>
+<p>You can use the <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TAGS" title="TAGS"><span class="n">TAGS</span></a><span class="p">(</span><span class="p">...</span><span class="p">)</span></span> macro to add any number of tags to test classes or functions. These tags can help you include or exclude specific groups of test classes or functions when running tests.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TAGS</span><span class="p">(</span><span class="n">HeavyCPU</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TAGS</span><span class="p">(</span><span class="n">LongRun</span><span class="w"> </span><span class="n">ExtensiveTest</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testEveryCombination</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The usage of tags is flexible and depends on your preferences.</p>
+</section>
+<section id="add-targets-with-tested-targets">
+<h2>Add Targets with <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TESTED_TARGETS" title="TESTED_TARGETS"><span class="n">TESTED_TARGETS</span></a><span class="p">(</span><span class="p">...</span><span class="p">)</span></span><a class="headerlink" href="#add-targets-with-tested-targets" title="Link to this heading"></a></h2>
+<p>The c:expr:<cite>TESTED_TARGETS(…)</cite> macro allows you to add information about which targets a given test class or test function is testing. You can use these targets to include or exclude a group of test classes or functions from the test.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Nanoseconds</span><span class="w"> </span><span class="n">Microseconds</span><span class="w"> </span><span class="n">Milliseconds</span><span class="w"> </span><span class="n">Seconds</span><span class="w"> </span><span class="n">Minutes</span><span class="w"> </span><span class="n">Hours</span><span class="w"> </span><span class="n">Days</span><span class="w"> </span><span class="n">Weeks</span><span class="w"> </span><span class="n">Amount</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeAmountsTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Nanoseconds</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testNanoseconds</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>You can specify any number of identifiers, separated by whitespace. Although the identifiers don’t need to be related to the tested code, we recommended to use the names of tested classes and/or functions.</p>
+</section>
+<section id="skip-tests-by-default-with-skip-by-default">
+<h2>Skip Tests by Default with <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a><span class="p">(</span><span class="p">)</span></span><a class="headerlink" href="#skip-tests-by-default-with-skip-by-default" title="Link to this heading"></a></h2>
+<p>Using the <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a><span class="p">(</span><span class="p">)</span></span> macro, you can mark test classes or functions that should not be executed by default. Classes and functions marked with this macro will only be executed if they are explicitly included using a command-line argument when starting the unit test.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SKIP_BY_DEFAULT</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">SKIP_BY_DEFAULT</span><span class="p">()</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testEveryCombination</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="combine-tags-tested-targets-and-skip-by-default">
+<h2>Combine <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TAGS" title="TAGS"><span class="n">TAGS</span></a><span class="p">(</span><span class="p">...</span><span class="p">)</span></span>, <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TESTED_TARGETS" title="TESTED_TARGETS"><span class="n">TESTED_TARGETS</span></a><span class="p">(</span><span class="p">...</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a><span class="p">(</span><span class="p">)</span></span><a class="headerlink" href="#combine-tags-tested-targets-and-skip-by-default" title="Link to this heading"></a></h2>
+<p>You can combine <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TAGS" title="TAGS"><span class="n">TAGS</span></a></span>, <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.TESTED_TARGETS" title="TESTED_TARGETS"><span class="n">TESTED_TARGETS</span></a></span>, and <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a></span> for every class and test function by separating them with whitespace:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TAGS</span><span class="p">(</span><span class="n">MyTag</span><span class="p">)</span>
+<span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Example</span><span class="p">)</span>
+<span class="n">SKIP_BY_DEFAULT</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TAGS</span><span class="p">(</span><span class="n">MyTag</span><span class="p">)</span><span class="w"> </span><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Example</span><span class="p">)</span><span class="w"> </span><span class="n">SKIP_BY_DEFAULT</span><span class="p">()</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testEveryCombination</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This flexibility allows you to define meta information for each test class and function, making it easier to manage and filter tests based on your requirements.</p>
+</section>
+<section id="the-macro-source-location">
+<h2>The Macro <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SOURCE_LOCATION" title="SOURCE_LOCATION"><span class="n">SOURCE_LOCATION</span></a><span class="p">(</span><span class="p">)</span></span><a class="headerlink" href="#the-macro-source-location" title="Link to this heading"></a></h2>
+<p>The macro <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SOURCE_LOCATION" title="SOURCE_LOCATION"><span class="n">SOURCE_LOCATION</span></a><span class="p">(</span><span class="p">)</span></span> is only used when calling the function <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTest14runWithContextERK14SourceLocationRKNSt8functionIFvvEEERKNSt8functionIFNSt6stringEvEEE" title="erbsland::unittest::UnitTest::runWithContext"><span class="n">runWithContext</span></a><span class="p">(</span><span class="p">)</span></span></p>
+</section>
+<section id="the-macro-erbsland-unittest-main">
+<h2>The Macro <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.ERBSLAND_UNITTEST_MAIN" title="ERBSLAND_UNITTEST_MAIN"><span class="n">ERBSLAND_UNITTEST_MAIN</span></a><span class="p">(</span><span class="p">)</span></span><a class="headerlink" href="#the-macro-erbsland-unittest-main" title="Link to this heading"></a></h2>
+<p>The macro <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.ERBSLAND_UNITTEST_MAIN" title="ERBSLAND_UNITTEST_MAIN"><span class="n">ERBSLAND_UNITTEST_MAIN</span></a><span class="p">(</span><span class="p">)</span></span> is a shortcut for the following <code class="docutils literal notranslate"><span class="pre">main</span></code> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">erbsland</span><span class="o">::</span><span class="n">unittest</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">instance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">main</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmake-integration.html" class="btn btn-neutral float-left" title="CMake Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command-line-options.html" class="btn btn-neutral float-right" title="Command Line Options for the Unit Test Executable" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Run the Test! &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="What’s Next?" href="06-whats-next.html" />
+    <link rel="prev" title="Build the Test!" href="04-build-the-test.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-project-structure.html">The Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-cmake-configuration.html">The CMake Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-write-the-test.html">Write the Test!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-build-the-test.html">Build the Test!</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Run the Test!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-unit-test">Run the Unit Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-command-line-help">Get Command Line Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-all-tests-tags-and-targets">List All Tests, Tags, and Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-tests">Filtering Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06-whats-next.html">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Run the Test!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/chapters/get-started/05-run-the-test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="run-the-test">
+<span id="id1"></span><h1>Run the Test!<a class="headerlink" href="#run-the-test" title="Link to this heading"></a></h1>
+<p>Running your unit tests is the final step to validate your setup. Follow the instructions below to run and manage your tests effectively.</p>
+<section id="run-the-unit-test">
+<h2>Run the Unit Test<a class="headerlink" href="#run-the-unit-test" title="Link to this heading"></a></h2>
+<p>Navigate to the <cite>unittest</cite> directory in your build environment and execute the unit test binary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest
+</pre></div>
+</div>
+<p>If you followed the earlier steps and created a test suite with a single test, the output should look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 1 test suites with 1 tests ]===
+Start Time: Tue Apr 25 10:41:23 2025
+Filter: no filter set
+Suite: Basic OK!
+  Test: Magic OK!
+Total Test Duration: 8.63e-05 seconds
+===[ SUCCESS | Successfully run all tests without errors. ]===
+</pre></div>
+</div>
+<p>For the <strong>complete example</strong>, the output includes more details, such as errors and additional tests:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 2 test suites with 4 tests ]===
+Start Time: Tue Apr 25 10:09:11 2025
+Filter: no filter set
+Suite: Basic OK!
+  Test: Magic OK!
+  Test: NameSetAndGet OK!
+  Test: IsNamePalindrome FAILED!
+[1]: ~/erbsland-unittest-example/unittest/src/BasicTest.cpp:57: REQUIRE(exampleLib.isNamePalindrome())
+Suite: Context OK!
+  Test: NameSetAndGet FAILED!
+[2]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+[1]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:63: WITH_CONTEXT(setAndVerifyName_error(&quot;Lisa&quot;))
+ExampleLib:
+    getName() = &quot;Lisa&quot;
+    getNameLength() = 4
+
+===[ ERROR SUMMARY ]===
+Error 1 - Basic / IsNamePalindrome FAILED!
+[1]: ~/erbsland-unittest-example/unittest/src/BasicTest.cpp:57: REQUIRE(exampleLib.isNamePalindrome())
+Error 2 - Context / NameSetAndGet FAILED!
+[2]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:52: REQUIRE_FALSE(exampleLib.getNameLength() == expectedSize)
+[1]: ~/erbsland-unittest-example/unittest/src/ContextTest.cpp:63: WITH_CONTEXT(setAndVerifyName_error(&quot;Lisa&quot;))
+===[ ERROR | 2 errors while running the tests. ]===
+</pre></div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Why the Errors?</div>
+<p class="sd-card-text">Don’t worry about the errors in the complete example. They are intentionally included to demonstrate the framework’s features, such as error handling and contextual output.</p>
+</div>
+</div>
+</section>
+<section id="get-command-line-help">
+<h2>Get Command Line Help<a class="headerlink" href="#get-command-line-help" title="Link to this heading"></a></h2>
+<p>To explore all available command-line options for your test suite, use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>This outputs a list of options:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Erbsland Unit Test Help:
+  -h/--help ......... Display this help
+  -v/--verbose ...... Display verbose messages. Skipped tests.
+  -e ................ Stop at the first error.
+  -l/--list ......... List all suites and tests. Do not run any test.
+  -c/--no-color ..... Do not colorize the output and disable status updates.
+  -s/--no-summary ... Do not list the first three errors at the end of the run.
+  name:&lt;name&gt; ....... Exclusively run tests with the specified test or class name (case sensitive).
+  +name:&lt;name&gt; ...... Run tests with the specified test or class name, even optional ones.
+  -name:&lt;name&gt; ...... Skip tests with the specified test or class name.
+  target:&lt;target&gt; ... Exclusively run tests for the specified target.
+  +target:&lt;target&gt; .. Run tests with for the specified target, even optional ones.
+  -target:&lt;target&gt; .. Skip tests with for the specified target.
+  tag:&lt;tag&gt; ......... Exclusively run tests with the specified tags.
+  +tag:&lt;tag&gt; ........ Run tests with the specified tags, even optional ones.
+  -tag:&lt;tag&gt; ........ Skip tests with the specified tags.
+</pre></div>
+</div>
+<p>By default, all tests not marked with <code class="docutils literal notranslate"><span class="pre">SKIP_BY_DEFAULT()</span></code> are enabled. Use the <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code> options to customize the test set.</p>
+</section>
+<section id="list-all-tests-tags-and-targets">
+<h2>List All Tests, Tags, and Targets<a class="headerlink" href="#list-all-tests-tags-and-targets" title="Link to this heading"></a></h2>
+<p>To get an overview of all test suites, tags, and targets in your test suite, use the <cite>-l</cite> or <cite>–list</cite> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>--list
+</pre></div>
+</div>
+<p>For the <strong>complete example</strong>, the output looks like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ List all test suites and tests ]===
+Suite: Basic &lt;ExampleLib&gt;
+  Test: Magic &lt;getMagicWord&gt;
+  Test: NameSetAndGet &lt;getName, getNameLength, setName&gt;
+  Test: IsNamePalindrome &lt;isNamePalindrome, setName&gt;
+Suite: Context &lt;ExampleLib&gt;
+  Test: NameSetAndGet &lt;getName, getNameLength, setName&gt;
+Suite: Long &lt;ExampleLib&gt;
+  Test: (IsNamePalindromeBruteForce) [long-test] &lt;isNamePalindrome, setName&gt;
+Done!
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Suite Names</strong>: Displayed after “Suite”.</p></li>
+<li><p><strong>Target Identifiers</strong>: Shown in angle brackets (<code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code>).</p></li>
+<li><p><strong>Tags</strong>: Shown in square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>).</p></li>
+</ul>
+</section>
+<section id="filtering-tests">
+<h2>Filtering Tests<a class="headerlink" href="#filtering-tests" title="Link to this heading"></a></h2>
+<p>You can run specific tests using tags, names, or targets. For example, to run the <code class="docutils literal notranslate"><span class="pre">IsNamePalindromeBruteForce</span></code> test, use the tag <code class="docutils literal notranslate"><span class="pre">long-test</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>tag:long-test
+</pre></div>
+</div>
+<p>The output will look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>===[ Running 1 test suites with 1 tests ]===
+Start Time: Tue Apr 25 10:48:11 2025
+Filter:
+  Tags: only use &#39;long-test&#39;
+Suite: Long OK!
+(...)
+  Test: IsNamePalindromeBruteForce OK!
+Total Test Duration: 85.1 seconds
+===[ SUCCESS | Successfully run all tests without errors. ]===
+</pre></div>
+</div>
+<p>This test takes longer to execute, especially in debugging mode.</p>
+<p>With these tools, you can efficiently run and manage your test suite. Let’s proceed to explore what’s next.</p>
+<p class="sd-text-center"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-success sd-fs-5 sd-font-weight-bold sd-p-2 reference internal" href="06-whats-next.html#whats-next"><span class="std std-ref">What’s Next? →</span></a></span></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04-build-the-test.html" class="btn btn-neutral float-left" title="Build the Test!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="06-whats-next.html" class="btn btn-neutral float-right" title="What’s Next?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

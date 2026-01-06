@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command Line Options for the Unit Test Executable &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Usages" href="advanced-usages.html" />
+    <link rel="prev" title="Macros for Unittests" href="macros-for-tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Command Line Options for the Unit Test Executable</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/command-line-options.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="command-line-options-for-the-unit-test-executable">
+<span id="index-0"></span><span id="command-line"></span><h1>Command Line Options for the Unit Test Executable<a class="headerlink" href="#command-line-options-for-the-unit-test-executable" title="Link to this heading"></a></h1>
+<p>The unit test executable supports the following command-line arguments:</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-h">
+<span id="cmdoption-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-h" title="Link to this definition"></a></dt>
+<dd><p>Display help information.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-v">
+<span id="cmdoption-verbose"></span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-v" title="Link to this definition"></a></dt>
+<dd><p>Display verbose messages, including skipped tests.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-e">
+<span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-e" title="Link to this definition"></a></dt>
+<dd><p>Stop at the first error.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-l">
+<span id="cmdoption-list"></span><span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-l" title="Link to this definition"></a></dt>
+<dd><p>List all test suites and tests without running them.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-c">
+<span id="cmdoption-no-color"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-color</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-c" title="Link to this definition"></a></dt>
+<dd><p>Disable colorized output and status updates.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-s">
+<span id="cmdoption-no-summary"></span><span class="sig-name descname"><span class="pre">-s</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--no-summary</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-s" title="Link to this definition"></a></dt>
+<dd><p>Do not list the first three errors at the end of the test run.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-name-name">
+<span class="sig-name descname"><span class="pre">name:&lt;name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-name-name" title="Link to this definition"></a></dt>
+<dd><p>Run only tests with the specified test or class name (case-sensitive).</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-0">
+<span class="sig-name descname"><span class="pre">+name:&lt;name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-0" title="Link to this definition"></a></dt>
+<dd><p>Include tests with the specified test or class name, even if they are optional.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-name-name">
+<span class="sig-name descname"><span class="pre">-name:&lt;name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-name-name" title="Link to this definition"></a></dt>
+<dd><p>Exclude tests with the specified test or class name.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-target-target">
+<span class="sig-name descname"><span class="pre">target:&lt;target&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-target-target" title="Link to this definition"></a></dt>
+<dd><p>Run only tests for the specified target.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-1">
+<span class="sig-name descname"><span class="pre">+target:&lt;target&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-1" title="Link to this definition"></a></dt>
+<dd><p>Include tests for the specified target, even if they are optional.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-target-target">
+<span class="sig-name descname"><span class="pre">-target:&lt;target&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-target-target" title="Link to this definition"></a></dt>
+<dd><p>Exclude tests for the specified target.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-tag-tag">
+<span class="sig-name descname"><span class="pre">tag:&lt;tag&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-tag-tag" title="Link to this definition"></a></dt>
+<dd><p>Run only tests with the specified tags.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-2">
+<span class="sig-name descname"><span class="pre">+tag:&lt;tag&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-2" title="Link to this definition"></a></dt>
+<dd><p>Include tests with the specified tags, even if they are optional.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-tag-tag">
+<span class="sig-name descname"><span class="pre">-tag:&lt;tag&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-tag-tag" title="Link to this definition"></a></dt>
+<dd><p>Exclude tests with the specified tags.</p>
+</dd></dl>
+
+<p>By default, all tests that are not marked with <span class="c-expr sig sig-inline c"><a class="reference internal" href="reference/macros-reference.html#c.SKIP_BY_DEFAULT" title="SKIP_BY_DEFAULT"><span class="n">SKIP_BY_DEFAULT</span></a><span class="p">(</span><span class="p">)</span></span> are enabled. You can individually add (<code class="docutils literal notranslate"><span class="pre">+</span></code>) or remove (<code class="docutils literal notranslate"><span class="pre">-</span></code>) tests from this initial set using the options above.</p>
+<p>When specifying one or more options like <code class="docutils literal notranslate"><span class="pre">&lt;opt&gt;:&lt;tag&gt;</span></code>, only tests with the given tags are enabled. Further <code class="docutils literal notranslate"><span class="pre">+/-</span></code> options will modify this set.</p>
+<p>The processing order of the options is <cite>&lt;opt&gt;</cite>, <cite>+&lt;opt&gt;</cite>, <cite>-&lt;opt&gt;</cite> and does not depend on their order on the command line. Therefore, the <cite>-</cite> options always have the highest priority and will skip the specified tests regardless of any other options.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="macros-for-tests.html" class="btn btn-neutral float-left" title="Macros for Unittests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="advanced-usages.html" class="btn btn-neutral float-right" title="Advanced Usages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

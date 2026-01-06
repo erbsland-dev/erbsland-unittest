@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Helpers &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Namespaces" href="namespaces.html" />
+    <link rel="prev" title="Macros" href="macros-reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes-reference.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macros-reference.html">Macros</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2fhE"><code class="docutils literal notranslate"><span class="pre">erbsland::unittest::fh</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2fh22unitTestExecutablePathEv"><code class="docutils literal notranslate"><span class="pre">unitTestExecutablePath()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2fh15resolveDataPathENSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">resolveDataPath()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2fh12readDataTextENSt11string_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">readDataText()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2fh13readDataLinesENSt11string_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">readDataLines()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Reference</a></li>
+      <li class="breadcrumb-item active">File Helpers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/chapters/reference/file-helpers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-helpers">
+<span id="index-0"></span><h1>File Helpers<a class="headerlink" href="#file-helpers" title="Link to this heading"></a></h1>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2fhE">
+<span id="_CPPv3N8erbsland8unittest2fhE"></span><span id="_CPPv2N8erbsland8unittest2fhE"></span><span id="erbsland::unittest::fh"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1fh"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fh</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2fhE" title="Link to this definition"></a><br /></dt>
+<dd><p>Namespace for file and data helpers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2fh22unitTestExecutablePathEv">
+<span id="_CPPv3N8erbsland8unittest2fh22unitTestExecutablePathEv"></span><span id="_CPPv2N8erbsland8unittest2fh22unitTestExecutablePathEv"></span><span id="erbsland::unittest::fh::unitTestExecutablePath"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1fh_1a16017016487af09af4f9cac67128e617"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unitTestExecutablePath</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2fh22unitTestExecutablePathEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Access the executable path for the unittest executable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The absolute path to the currently executed unittest executable. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2fh15resolveDataPathENSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2fh15resolveDataPathENSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2fh15resolveDataPathENSt11string_viewE"></span><span id="erbsland::unittest::fh::resolveDataPath__std::string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1fh_1a28d9e6866e754f4648e6369e34051ac0"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resolveDataPath</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">relativePath</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2fh15resolveDataPathENSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Resolves the path to a test data file or directory.</p>
+<p>This method searches for the given relative path in the directory containing the executable and its parent directory to support various CMake build configurations (e.g., MSVC multi-config builds).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>relativePath</strong> – The relative path to the test data. </p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">AssertFailed</span></span></span> – If the path cannot be resolved. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The resolved absolute path to the test data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2fh12readDataTextENSt11string_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2fh12readDataTextENSt11string_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2fh12readDataTextENSt11string_viewENSt6size_tE"></span><span id="erbsland::unittest::fh::readDataText__std::string_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1fh_1a0ad121e69e6afc807ff453636c23d010"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readDataText</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">relativePath</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maximumSize</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2fh12readDataTextENSt11string_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reads the complete contents of a test data file into a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>relativePath</strong> – The relative path to the test data file. </p></li>
+<li><p><strong>maximumSize</strong> – The maximum allowed size of the file in bytes (default 10MB). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">AssertFailed</span></span></span> – If the file cannot be found or exceeds the maximum size. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The contents of the file as a string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2fh13readDataLinesENSt11string_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2fh13readDataLinesENSt11string_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2fh13readDataLinesENSt11string_viewENSt6size_tE"></span><span id="erbsland::unittest::fh::readDataLines__std::string_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1fh_1ab99a0f94ce60247365ac642a794bb51d"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readDataLines</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">relativePath</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maximumSize</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">10000000U</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2fh13readDataLinesENSt11string_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reads a test data file line by line into a vector of strings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>relativePath</strong> – The relative path to the test data file. </p></li>
+<li><p><strong>maximumSize</strong> – The maximum allowed size of the file in bytes (default 10MB). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">AssertFailed</span></span></span> – If the file cannot be found or exceeds the maximum size. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A vector containing each line of the file. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="macros-reference.html" class="btn btn-neutral float-left" title="Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="namespaces.html" class="btn btn-neutral float-right" title="Namespaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

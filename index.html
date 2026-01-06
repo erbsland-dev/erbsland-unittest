@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to the Erbsland UnitTest Documentation! &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="chapters/get-started/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="chapters/get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to the Erbsland UnitTest Documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-the-erbsland-unittest-documentation">
+<h1>Welcome to the Erbsland UnitTest Documentation!<a class="headerlink" href="#welcome-to-the-erbsland-unittest-documentation" title="Link to this heading"></a></h1>
+<p><strong>Erbsland Unit Test</strong> is a standalone unit testing framework tailored for testing libraries and applications with simplicity and efficiency in mind. Designed to boost developer productivity, it features minimal dependencies—requiring only C++, CMake, and Python—and is compatible with any compiler supporting c++20 or newer.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Minimal dependencies:</div>
+<p class="sd-card-text">Requires only C++, CMake, and Python.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Broad compatibility:</div>
+<p class="sd-card-text">Supports any compiler adhering to C++20 or newer.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="sd-text-center"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-success sd-fs-2 sd-font-weight-bold sd-p-3 reference internal" href="chapters/get-started/index.html#get-started"><span class="std std-ref">Get Started →</span></a></span></p>
+<p>Familiar with the framework? Dive into the specifics with chapters on:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="chapters/structure-and-naming.html#structure-and-naming"><span class="std std-ref">Structure and Naming</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/the-unittest-class.html#the-unittest-class"><span class="std std-ref">The UnitTest Class</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/file-helpers.html#file-helpers"><span class="std std-ref">File Helpers</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/cmake-integration.html#cmake"><span class="std std-ref">CMake Integration</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/macros-for-tests.html#macros"><span class="std std-ref">Macros for Unittests</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/command-line-options.html#command-line"><span class="std std-ref">Command Line Options for the Unit Test Executable</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/advanced-usages.html#advanced"><span class="std std-ref">Advanced Usages</span></a></p></li>
+<li><p><a class="reference internal" href="chapters/github-integration.html"><span class="doc">GitHub Integration</span></a></p></li>
+</ul>
+</div></blockquote>
+<section id="contents-at-a-glance">
+<h2>Contents at a Glance<a class="headerlink" href="#contents-at-a-glance" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chapters/get-started/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/01-project-structure.html">The Project Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/01-project-structure.html#organizing-your-project-for-success">Organizing Your Project for Success</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/01-project-structure.html#create-the-structure">Create the Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/02-cmake-configuration.html">The CMake Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/02-cmake-configuration.html#configuring-the-root-project-cmake-file">Configuring the Root Project CMake File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/02-cmake-configuration.html#setting-up-the-unit-test-cmake-file">Setting Up the Unit Test CMake File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/03-write-the-test.html">Write the Test!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/03-write-the-test.html#creating-the-main-cpp-file">Creating the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/03-write-the-test.html#creating-your-first-unit-test">Creating Your First Unit Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/03-write-the-test.html#adding-the-test-suite-to-the-cmake-configuration">Adding the Test Suite to the CMake Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/04-build-the-test.html">Build the Test!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/04-build-the-test.html#generate-build-files-with-cmake">Generate Build Files with CMake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/04-build-the-test.html#compile-the-unit-test">Compile the Unit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/05-run-the-test.html">Run the Test!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/05-run-the-test.html#run-the-unit-test">Run the Unit Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/05-run-the-test.html#get-command-line-help">Get Command Line Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/05-run-the-test.html#list-all-tests-tags-and-targets">List All Tests, Tags, and Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/05-run-the-test.html#filtering-tests">Filtering Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/get-started/06-whats-next.html">What’s Next?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/06-whats-next.html#explore-the-full-example">Explore the Full Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/get-started/06-whats-next.html#dive-deeper-into-the-framework">Dive Deeper Into the Framework</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/structure-and-naming.html">Structure and Naming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#structure-for-separate-tests">Structure for Separate Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#structure-for-integrated-tests">Structure for Integrated Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/structure-and-naming.html#optional-test-inclusion-via-cmake">Optional Test Inclusion via CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#organizing-your-tests">Organizing your Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#naming-of-classes-and-methods">Naming of Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#split-declaration-and-implementation">Split Declaration and Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#helper-functions">Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/structure-and-naming.html#instance-variables">Instance Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/the-unittest-class.html#the-additionalerrormessages-function">The <span class="cpp-expr sig sig-inline cpp"><span class="n">additionalErrorMessages</span><span class="p">(</span><span class="p">)</span></span> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/the-unittest-class.html#the-setup-and-teardown-methods">The <span class="cpp-expr sig sig-inline cpp"><span class="n">setUp</span><span class="p">(</span><span class="p">)</span></span> and <span class="cpp-expr sig sig-inline cpp"><span class="n">tearDown</span><span class="p">(</span><span class="p">)</span></span> Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/the-unittest-class.html#the-runwithcontext-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">runWithContext</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/the-unittest-class.html#the-consolewriteline-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">consoleWriteLine</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/the-unittest-class.html#the-unittestexecutablepath-method">The <span class="cpp-expr sig sig-inline cpp"><span class="n">unitTestExecutablePath</span><span class="p">(</span><span class="p">)</span></span> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/file-helpers.html">File Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/file-helpers.html#the-unittestexecutablepath-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">unitTestExecutablePath()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/file-helpers.html#the-resolvedatapath-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resolveDataPath()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/file-helpers.html#the-readdatatext-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">readDataText()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/file-helpers.html#the-readdatalines-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">readDataLines()</span></code> Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/cmake-integration.html">CMake Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/cmake-integration.html#configuring-the-root-cmake-file">Configuring the Root CMake File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/cmake-integration.html#configuring-the-unit-test-project">Configuring the Unit Test Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/cmake-integration.html#utilizing-the-erbsland-unittest-function">Utilizing the <code class="docutils literal notranslate"><span class="pre">erbsland_unittest</span></code> Function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/cmake-integration.html#how-to-use">How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/cmake-integration.html#about-test-data-dependencies">About Test Data Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/cmake-integration.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/macros-for-tests.html">Macros for Unittests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#quick-overview">Quick Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#macros-for-tests">Macros for Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#comparison-macros">Comparison Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#macros-for-meta-data">Macros for Meta Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#helper-macros">Helper Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-require-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-require-false-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_FALSE</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-require-throws-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_THROWS</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-require-throws-as-exception-class-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_THROWS_AS</span><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-require-nothrow-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">REQUIRE_NOTHROW</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#macros-for-value-comparison">Macros for Value Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#id1">Comparison Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#example-error-message">Example Error Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/macros-for-tests.html#custom-formatting-with-std-format">Custom Formatting with <cite>std::format</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-check-macros">The <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code> Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-with-context-expression-macro">The <span class="c-expr sig sig-inline c"><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></span> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#add-tags-with-tags">Add Tags with <span class="c-expr sig sig-inline c"><span class="n">TAGS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#add-targets-with-tested-targets">Add Targets with <span class="c-expr sig sig-inline c"><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#skip-tests-by-default-with-skip-by-default">Skip Tests by Default with <span class="c-expr sig sig-inline c"><span class="n">SKIP_BY_DEFAULT</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#combine-tags-tested-targets-and-skip-by-default">Combine <span class="c-expr sig sig-inline c"><span class="n">TAGS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span>, <span class="c-expr sig sig-inline c"><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="p">...</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><span class="n">SKIP_BY_DEFAULT</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-macro-source-location">The Macro <span class="c-expr sig sig-inline c"><span class="n">SOURCE_LOCATION</span><span class="p">(</span><span class="p">)</span></span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/macros-for-tests.html#the-macro-erbsland-unittest-main">The Macro <span class="c-expr sig sig-inline c"><span class="n">ERBSLAND_UNITTEST_MAIN</span><span class="p">(</span><span class="p">)</span></span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/advanced-usages.html">Advanced Usages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/advanced-usages.html#sharing-functionalities-with-a-common-base-class">Sharing Functionalities with a Common Base Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/advanced-usages.html#organizing-your-tests-with-labels">Organizing Your Tests with Labels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/advanced-usages.html#adding-tags-to-test-classes-and-functions">Adding Tags to Test Classes and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/advanced-usages.html#adding-targets-to-track-tested-functions">Adding Targets to Track Tested Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/advanced-usages.html#example-marking-long-running-tests">Example: Marking Long-Running Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/github-integration.html">GitHub Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/github-integration.html#verify-ctest-activation">Verify CTest Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/github-integration.html#create-the-workflow-file">Create the Workflow File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/github-integration.html#step-by-step-explanation">Step-by-Step Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#workflow-trigger">Workflow Trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#job-definition">Job Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#checkout-the-repository">Checkout the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#cache-the-build">Cache the Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#install-dependencies">Install Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#configure-the-build">Configure the Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#build-the-project">Build the Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/github-integration.html#run-the-tests">Run the Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/github-integration.html#final-outcome">Final Outcome</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/goals.html">Goals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#dependency-free">Dependency-Free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#user-friendly">User-Friendly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#minimalistic">Minimalistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#modern">Modern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#secure">Secure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/goals.html#scalable">Scalable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/requirements.html">Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/requirements.html#code-level-requirements">Code-Level Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/requirements.html#build-and-metadata-system-requirements">Build and Metadata System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/reference/index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/reference/classes-reference.html">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE"><code class="docutils literal notranslate"><span class="pre">erbsland::unittest::UnitTest</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/reference/macros-reference.html">Macros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE"><code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_FALSE"><code class="docutils literal notranslate"><span class="pre">REQUIRE_FALSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_THROWS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_THROWS_AS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS_AS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_NOTHROW"><code class="docutils literal notranslate"><span class="pre">REQUIRE_NOTHROW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_NOT_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_NOT_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_LESS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_LESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_LESS_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_LESS_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_GREATER"><code class="docutils literal notranslate"><span class="pre">REQUIRE_GREATER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.REQUIRE_GREATER_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_GREATER_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK"><code class="docutils literal notranslate"><span class="pre">CHECK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_FALSE"><code class="docutils literal notranslate"><span class="pre">CHECK_FALSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_THROWS"><code class="docutils literal notranslate"><span class="pre">CHECK_THROWS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_THROWS_AS"><code class="docutils literal notranslate"><span class="pre">CHECK_THROWS_AS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_NOTHROW"><code class="docutils literal notranslate"><span class="pre">CHECK_NOTHROW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_NOT_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_NOT_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_LESS"><code class="docutils literal notranslate"><span class="pre">CHECK_LESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_LESS_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_LESS_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_GREATER"><code class="docutils literal notranslate"><span class="pre">CHECK_GREATER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.CHECK_GREATER_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_GREATER_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.WITH_CONTEXT"><code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.TAGS"><code class="docutils literal notranslate"><span class="pre">TAGS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.TESTED_TARGETS"><code class="docutils literal notranslate"><span class="pre">TESTED_TARGETS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.SKIP_BY_DEFAULT"><code class="docutils literal notranslate"><span class="pre">SKIP_BY_DEFAULT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.SOURCE_LOCATION"><code class="docutils literal notranslate"><span class="pre">SOURCE_LOCATION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.UNITTEST_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">UNITTEST_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/macros-reference.html#c.ERBSLAND_UNITTEST_MAIN"><code class="docutils literal notranslate"><span class="pre">ERBSLAND_UNITTEST_MAIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/reference/file-helpers.html">File Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/file-helpers.html#_CPPv4N8erbsland8unittest2fhE"><code class="docutils literal notranslate"><span class="pre">erbsland::unittest::fh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/reference/namespaces.html">Namespaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/namespaces.html#_CPPv48erbsland"><code class="docutils literal notranslate"><span class="pre">erbsland</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/namespaces.html#_CPPv4N8erbsland8unittestE"><code class="docutils literal notranslate"><span class="pre">erbsland::unittest</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/namespaces.html#shortcuts">Shortcuts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chapters/reference/namespaces.html#prevent-or-redefine-the-shortcuts">Prevent or Redefine the Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapters/get-started/index.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

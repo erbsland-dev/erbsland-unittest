@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classerbsland_1_1unittest_1_1_unit_test" kind="class" language="C++" prot="public">
+    <compoundname>erbsland::unittest::UnitTest</compoundname>
+    <includes refid="_unit_test_8hpp" local="no">erbsland/unittest/UnitTest.hpp</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classerbsland_1_1unittest_1_1_unit_test_1ac96b60d37bd806132da680e187dc2288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Private</definition>
+        <argsstring></argsstring>
+        <name>Private</name>
+        <qualifiedname>erbsland::unittest::UnitTest::Private</qualifiedname>
+        <param>
+          <type>Private</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="112" column="18" bodyfile="erbsland/unittest/UnitTest.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classerbsland_1_1unittest_1_1_unit_test_1a8ada8b2b57fa4cbdc11fa926f2e11cdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class AssertContext</definition>
+        <argsstring></argsstring>
+        <name>AssertContext</name>
+        <qualifiedname>erbsland::unittest::UnitTest::AssertContext</qualifiedname>
+        <param>
+          <type>AssertContext</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="113" column="18" bodyfile="erbsland/unittest/UnitTest.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classerbsland_1_1unittest_1_1_unit_test_1a6e99771504460f1e6ecd7346829c7096" prot="private" static="no" mutable="no">
+        <type>Private</type>
+        <definition>Private erbsland::unittest::UnitTest::p</definition>
+        <argsstring></argsstring>
+        <name>p</name>
+        <qualifiedname>erbsland::unittest::UnitTest::p</qualifiedname>
+        <briefdescription>
+<para>The private implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="116" column="13" bodyfile="erbsland/unittest/UnitTest.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1a5cff031792fc484c9a25e7de8b9ab4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>erbsland::unittest::UnitTest::UnitTest</definition>
+        <argsstring>()=default</argsstring>
+        <name>UnitTest</name>
+        <qualifiedname>erbsland::unittest::UnitTest::UnitTest</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new unittest instance. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1a4c8741be62df2983ab685c89c3113398" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual erbsland::unittest::UnitTest::~UnitTest</definition>
+        <argsstring>()=default</argsstring>
+        <name>~UnitTest</name>
+        <qualifiedname>erbsland::unittest::UnitTest::~UnitTest</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>dtor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="37" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1ac09ae4fc9e35b9d1c6a2fd3e8bf1b77c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::UnitTest::additionalErrorMessages</definition>
+        <argsstring>() -&gt; std::string</argsstring>
+        <name>additionalErrorMessages</name>
+        <qualifiedname>erbsland::unittest::UnitTest::additionalErrorMessages</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add additional output to the error message.</para>
+<para>Overwrite this method to add additional text after the error message.</para>
+<para>Usage: <computeroutput> class MyTest final : public el::UnitTest { public: TestedType testedType{}; auto <ref refid="classerbsland_1_1unittest_1_1_unit_test_1ac09ae4fc9e35b9d1c6a2fd3e8bf1b77c" kindref="member">additionalErrorMessages()</ref> -&gt; std::string override { try { std::string text; text += std::format(&quot;testedType.foo = {}\n&quot;, testedType.foo); // ... return text; } catch(...) { return {&quot;Unexpected Exception&quot;}; } // ... }; </computeroutput></para>
+<para><simplesect kind="return"><para>The additional text that is added to the error message. May contain newlines. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="64" column="18" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1ac99dfb6625c6f49d1a9a1728f4d510fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::UnitTest::setUp</definition>
+        <argsstring>()</argsstring>
+        <name>setUp</name>
+        <qualifiedname>erbsland::unittest::UnitTest::setUp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute code before every test in this class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="68" column="18" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1af221170ac6a184788391c4e810d86b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::UnitTest::tearDown</definition>
+        <argsstring>()</argsstring>
+        <name>tearDown</name>
+        <qualifiedname>erbsland::unittest::UnitTest::tearDown</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute code after every test in this class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="72" column="18" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1a6f1f4e0632838b8022f0a0fc9f3cff08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::UnitTest::runWithContext</definition>
+        <argsstring>(const SourceLocation &amp;sourceLocation, const std::function&lt; void()&gt; &amp;testFn, const std::function&lt; std::string()&gt; &amp;diagnoseFn=nullptr)</argsstring>
+        <name>runWithContext</name>
+        <qualifiedname>erbsland::unittest::UnitTest::runWithContext</qualifiedname>
+        <param>
+          <type>const SourceLocation &amp;</type>
+          <declname>sourceLocation</declname>
+        </param>
+        <param>
+          <type>const std::function&lt; void()&gt; &amp;</type>
+          <declname>testFn</declname>
+        </param>
+        <param>
+          <type>const std::function&lt; std::string()&gt; &amp;</type>
+          <declname>diagnoseFn</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Run a code in a separate context and optionally collect additional information if tests are failing.</para>
+<para>Usage: <computeroutput> int x = 5; runWithContext(SOURCE_LOCATION(), [&amp;]() { x = 9; REQUIRE(x == 10); }, [&amp;]() { return std::format(&quot;x = {}&quot;, x); }); </computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sourceLocation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Use the <computeroutput>SOURCE_LOCATION()</computeroutput> macro for this parameter. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>testFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lambda function with the tests. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diagnoseFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional function to collect diagnose information. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="92" column="10" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="30" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1ae19c3715d27180517a8773ae9bd5564a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::UnitTest::consoleWriteLine</definition>
+        <argsstring>(const std::string &amp;text)</argsstring>
+        <name>consoleWriteLine</name>
+        <qualifiedname>erbsland::unittest::UnitTest::consoleWriteLine</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method to write debug messages to the console.</para>
+<para>A newline will be added automatically.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to write to the console. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="103" column="10" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classerbsland_1_1unittest_1_1_unit_test_1ae201e2e7eaed32b44d57a8671f1e4c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::UnitTest::unitTestExecutablePath</definition>
+        <argsstring>() -&gt; std::filesystem::path</argsstring>
+        <name>unitTestExecutablePath</name>
+        <qualifiedname>erbsland::unittest::UnitTest::unitTestExecutablePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Access the executable path for the unittest executable.</para>
+<para><simplesect kind="return"><para>The absolute path to the currently executed unittest executable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/UnitTest.hpp" line="109" column="10" bodyfile="erbsland/unittest/UnitTest.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The base class for all unit test suites.</para>
+<para>Please read the documentation on how to write your unit tests.</para>
+<para><simplesect kind="warning"><para><bold>Thread Safety:</bold> The unit tests are meant to run in a single thread. If tests use multithreaded testing, macros like <computeroutput>REQUIRE()</computeroutput> must only be called from the main thread. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="erbsland/unittest/UnitTest.hpp" line="27" column="1" bodyfile="erbsland/unittest/UnitTest.hpp" bodystart="27" bodyend="117"/>
+    <listofallmembers>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac09ae4fc9e35b9d1c6a2fd3e8bf1b77c" prot="public" virt="virtual"><scope>erbsland::unittest::UnitTest</scope><name>additionalErrorMessages</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1a8ada8b2b57fa4cbdc11fa926f2e11cdc" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>AssertContext</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae19c3715d27180517a8773ae9bd5564a" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>consoleWriteLine</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6e99771504460f1e6ecd7346829c7096" prot="private" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>p</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac96b60d37bd806132da680e187dc2288" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>Private</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1a6f1f4e0632838b8022f0a0fc9f3cff08" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>runWithContext</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1ac99dfb6625c6f49d1a9a1728f4d510fc" prot="public" virt="virtual"><scope>erbsland::unittest::UnitTest</scope><name>setUp</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1af221170ac6a184788391c4e810d86b6c" prot="public" virt="virtual"><scope>erbsland::unittest::UnitTest</scope><name>tearDown</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1a5cff031792fc484c9a25e7de8b9ab4cc" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>UnitTest</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1ae201e2e7eaed32b44d57a8671f1e4c41" prot="public" virt="non-virtual"><scope>erbsland::unittest::UnitTest</scope><name>unitTestExecutablePath</name></member>
+      <member refid="classerbsland_1_1unittest_1_1_unit_test_1a4c8741be62df2983ab685c89c3113398" prot="public" virt="virtual"><scope>erbsland::unittest::UnitTest</scope><name>~UnitTest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

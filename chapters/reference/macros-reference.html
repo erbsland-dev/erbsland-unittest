@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macros &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Helpers" href="file-helpers.html" />
+    <link rel="prev" title="Classes" href="classes-reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes-reference.html">Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Macros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE"><code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_FALSE"><code class="docutils literal notranslate"><span class="pre">REQUIRE_FALSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_THROWS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_THROWS_AS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_THROWS_AS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_NOTHROW"><code class="docutils literal notranslate"><span class="pre">REQUIRE_NOTHROW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_NOT_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_NOT_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_LESS"><code class="docutils literal notranslate"><span class="pre">REQUIRE_LESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_LESS_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_LESS_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_GREATER"><code class="docutils literal notranslate"><span class="pre">REQUIRE_GREATER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.REQUIRE_GREATER_EQUAL"><code class="docutils literal notranslate"><span class="pre">REQUIRE_GREATER_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK"><code class="docutils literal notranslate"><span class="pre">CHECK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_FALSE"><code class="docutils literal notranslate"><span class="pre">CHECK_FALSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_THROWS"><code class="docutils literal notranslate"><span class="pre">CHECK_THROWS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_THROWS_AS"><code class="docutils literal notranslate"><span class="pre">CHECK_THROWS_AS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_NOTHROW"><code class="docutils literal notranslate"><span class="pre">CHECK_NOTHROW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_NOT_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_NOT_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_LESS"><code class="docutils literal notranslate"><span class="pre">CHECK_LESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_LESS_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_LESS_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_GREATER"><code class="docutils literal notranslate"><span class="pre">CHECK_GREATER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CHECK_GREATER_EQUAL"><code class="docutils literal notranslate"><span class="pre">CHECK_GREATER_EQUAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.WITH_CONTEXT"><code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.TAGS"><code class="docutils literal notranslate"><span class="pre">TAGS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.TESTED_TARGETS"><code class="docutils literal notranslate"><span class="pre">TESTED_TARGETS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.SKIP_BY_DEFAULT"><code class="docutils literal notranslate"><span class="pre">SKIP_BY_DEFAULT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.SOURCE_LOCATION"><code class="docutils literal notranslate"><span class="pre">SOURCE_LOCATION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UNITTEST_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">UNITTEST_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ERBSLAND_UNITTEST_MAIN"><code class="docutils literal notranslate"><span class="pre">ERBSLAND_UNITTEST_MAIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Reference</a></li>
+      <li class="breadcrumb-item active">Macros</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/chapters/reference/macros-reference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macros">
+<span id="index-0"></span><h1>Macros<a class="headerlink" href="#macros" title="Link to this heading"></a></h1>
+<p>See <a class="reference internal" href="../macros-for-tests.html#macros"><span class="std std-ref">Macros for Unittests</span></a> for a detailed description of the following macros.</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE">
+<span class="target" id="_macros_8hpp_1ad57835ba8f1bb419a865ada6bd011a85"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_FALSE">
+<span class="target" id="_macros_8hpp_1ada5065594bafc152162761ace47c1dcb"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_FALSE</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_FALSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_THROWS">
+<span class="target" id="_macros_8hpp_1ae3c33faa1d31a2bb0811dac74b994e3e"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_THROWS</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_THROWS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_THROWS_AS">
+<span class="target" id="_macros_8hpp_1a724f5fee494728ebc42e3b66bf373a20"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_THROWS_AS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exceptionClass</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_THROWS_AS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_NOTHROW">
+<span class="target" id="_macros_8hpp_1ab0148f0dfca438f7aa01974e9c33216a"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_NOTHROW</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_NOTHROW" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_EQUAL">
+<span class="target" id="_macros_8hpp_1a03a63454f5826978f2a50c03c0e27c24"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_NOT_EQUAL">
+<span class="target" id="_macros_8hpp_1ae5b4d3825e9b055b2393a9c7a58cd89f"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_NOT_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_NOT_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_LESS">
+<span class="target" id="_macros_8hpp_1aba572a8f556b6b299b79df7bac0298ef"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_LESS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_LESS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_LESS_EQUAL">
+<span class="target" id="_macros_8hpp_1a779472ba7e98e0a35ef121b73f225dab"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_LESS_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_LESS_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_GREATER">
+<span class="target" id="_macros_8hpp_1ad64479d6af56c319bb1f38fb6bc846a9"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_GREATER</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_GREATER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_GREATER_EQUAL">
+<span class="target" id="_macros_8hpp_1a8ae34fa7af0fd68bb3f597e86329e6a1"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_GREATER_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_GREATER_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK">
+<span class="target" id="_macros_8hpp_1a836cca6b6ed3a1706353f6d1bca0935f"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_FALSE">
+<span class="target" id="_macros_8hpp_1a7bf095d8512cb180f8ff3a2258a6eaac"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_FALSE</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_FALSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_THROWS">
+<span class="target" id="_macros_8hpp_1a5c646dfe831e596b59073014c1c8b9e5"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_THROWS</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_THROWS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_THROWS_AS">
+<span class="target" id="_macros_8hpp_1acf0e97ea1cc4544ef5bac2a00a2fcb6e"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_THROWS_AS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exceptionClass</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_THROWS_AS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_NOTHROW">
+<span class="target" id="_macros_8hpp_1a78e70f011f20c4ade1d1ac2b8fd33626"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_NOTHROW</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_NOTHROW" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_EQUAL">
+<span class="target" id="_macros_8hpp_1abfadc5d6128f37a150c1c87475b392d2"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_NOT_EQUAL">
+<span class="target" id="_macros_8hpp_1adc901bd6c473ea51a81fb3a22b9b022a"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_NOT_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_NOT_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_LESS">
+<span class="target" id="_macros_8hpp_1ab14e667ceb76791caf5c3e11a716228d"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_LESS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_LESS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_LESS_EQUAL">
+<span class="target" id="_macros_8hpp_1a69dee48638df6eec3ebb054f622c2ecd"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_LESS_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_LESS_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_GREATER">
+<span class="target" id="_macros_8hpp_1ad961b204913982e5124fe7e6a036ccd5"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_GREATER</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_GREATER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CHECK_GREATER_EQUAL">
+<span class="target" id="_macros_8hpp_1aebc1fe5c55a76c02c88276f15e809a1a"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_GREATER_EQUAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CHECK_GREATER_EQUAL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WITH_CONTEXT">
+<span class="target" id="_macros_8hpp_1aa6194506311604c30f72826d819c8793"></span><span class="sig-name descname"><span class="n"><span class="pre">WITH_CONTEXT</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WITH_CONTEXT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TAGS">
+<span class="target" id="_macros_8hpp_1a1801fa573c93869f4b57e039f99092eb"></span><span class="sig-name descname"><span class="n"><span class="pre">TAGS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">tags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TAGS" title="Link to this definition"></a><br /></dt>
+<dd><p>Define an empty TAGS() macro, to safely mark the class and method with tags. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TESTED_TARGETS">
+<span class="target" id="_macros_8hpp_1a8afc24d7dc52efd0ef497be02ac1c7e0"></span><span class="sig-name descname"><span class="n"><span class="pre">TESTED_TARGETS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">name_list</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TESTED_TARGETS" title="Link to this definition"></a><br /></dt>
+<dd><p>Define an empty TESTED_TARGETS() macro, allow adding a list of tested classes or functions. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SKIP_BY_DEFAULT">
+<span class="target" id="_macros_8hpp_1a6e29443ad92bf6e597e59b354a55bbe4"></span><span class="sig-name descname"><span class="n"><span class="pre">SKIP_BY_DEFAULT</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.SKIP_BY_DEFAULT" title="Link to this definition"></a><br /></dt>
+<dd><p>An empty macro to skip the test or class unless the tag is explicitly specified. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SOURCE_LOCATION">
+<span class="target" id="_macros_8hpp_1aa6e6fc9684bd84ce7b72da6a2eef668f"></span><span class="sig-name descname"><span class="n"><span class="pre">SOURCE_LOCATION</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.SOURCE_LOCATION" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UNITTEST_SUBCLASS">
+<span class="target" id="_macros_8hpp_1a028a67378b2d399b07dc80fdf0e74e4f"></span><span class="sig-name descname"><span class="n"><span class="pre">UNITTEST_SUBCLASS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">class_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UNITTEST_SUBCLASS" title="Link to this definition"></a><br /></dt>
+<dd><p>Mark a class as subclass from <code class="docutils literal notranslate"><span class="pre">UnitTest</span></code></p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ERBSLAND_UNITTEST_MAIN">
+<span class="target" id="_macros_8hpp_1a616019a862e87f7a35f46698e919c55a"></span><span class="sig-name descname"><span class="n"><span class="pre">ERBSLAND_UNITTEST_MAIN</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.ERBSLAND_UNITTEST_MAIN" title="Link to this definition"></a><br /></dt>
+<dd><p>Define the main method for the unit test executable.</p>
+<p>Create a file <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> with this macro to define the main method for the unit test. </p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classes-reference.html" class="btn btn-neutral float-left" title="Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="file-helpers.html" class="btn btn-neutral float-right" title="File Helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Integration &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bug Reports and Feature Requests" href="feedback.html" />
+    <link rel="prev" title="Advanced Usages" href="advanced-usages.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GitHub Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#verify-ctest-activation">Verify CTest Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-workflow-file">Create the Workflow File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-explanation">Step-by-Step Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-trigger">Workflow Trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-definition">Job Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checkout-the-repository">Checkout the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache-the-build">Cache the Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-build">Configure the Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-project">Build the Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-tests">Run the Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#final-outcome">Final Outcome</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GitHub Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/github-integration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="github-integration">
+<span id="index-0"></span><h1>GitHub Integration<a class="headerlink" href="#github-integration" title="Link to this heading"></a></h1>
+<p>Integrating <em>Erbsland Unit Test</em> with GitHub Actions allows you to automatically build and test your project on each push or pull request. This ensures that all contributions meet quality standards and pass unit tests before being merged.</p>
+<section id="verify-ctest-activation">
+<h2>Verify CTest Activation<a class="headerlink" href="#verify-ctest-activation" title="Link to this heading"></a></h2>
+<p>Ensure that <strong>CTest</strong> is enabled in your CMake project and configured to run the <cite>unittest</cite> target. Add the following lines to your main <cite>CMakeLists.txt</cite>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.23</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">ExampleUnitTest</span><span class="p">)</span>
+
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">erbsland-unittest</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">example-lib</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">unittest</span><span class="p">)</span>
+
+<span class="hll"><span class="c"># Activate CTest</span>
+</span><span class="hll"><span class="nb">enable_testing</span><span class="p">()</span>
+</span><span class="hll"><span class="nb">add_test</span><span class="p">(</span>
+</span><span class="hll"><span class="w">    </span><span class="s">NAME</span><span class="w"> </span><span class="s">unittest</span>
+</span><span class="hll"><span class="w">    </span><span class="s">COMMAND</span><span class="w"> </span><span class="o">$&lt;</span><span class="nv">TARGET_FILE:unittest</span><span class="o">&gt;</span><span class="w"> </span><span class="s">--no-color</span>
+</span><span class="hll"><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This configuration registers a test named <code class="docutils literal notranslate"><span class="pre">unittest</span></code>, which executes your unit test binary using <code class="docutils literal notranslate"><span class="pre">CTest</span></code>. The <code class="docutils literal notranslate"><span class="pre">--no-color</span></code> flag ensures clean log output in CI environments like GitHub Actions.</p>
+</section>
+<section id="create-the-workflow-file">
+<h2>Create the Workflow File<a class="headerlink" href="#create-the-workflow-file" title="Link to this heading"></a></h2>
+<p>To enable this integration, create a new workflow file named <code class="docutils literal notranslate"><span class="pre">ci.yml</span></code> (or alternatively <code class="docutils literal notranslate"><span class="pre">unittest.yml</span></code>) inside your repository under the path <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code>. This file defines a GitHub Actions workflow that sets up the build environment, compiles your project, and runs the tests.</p>
+<p>Here is a complete example of such a workflow:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">BUILD_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake-build</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">recursive</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cache CMake build</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.BUILD_DIR }}</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ runner.os }}-cmake-${{ hashFiles(&#39;**/CMakeLists.txt&#39;) }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install apt deps</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">sudo apt-get update</span>
+<span class="w">          </span><span class="no">sudo apt-get install -y build-essential cmake ninja-build</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake -S . -B ${{ env.BUILD_DIR }} -G Ninja -DCMAKE_BUILD_TYPE=Debug</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake --build ${{ env.BUILD_DIR }} --config Debug</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd ${{ env.BUILD_DIR }}</span>
+<span class="w">          </span><span class="no">ctest --output-on-failure</span>
+</pre></div>
+</div>
+</section>
+<section id="step-by-step-explanation">
+<h2>Step-by-Step Explanation<a class="headerlink" href="#step-by-step-explanation" title="Link to this heading"></a></h2>
+<p>This workflow is designed to automatically build and test your project using GitHub-hosted runners. Let’s go through each section:</p>
+<section id="workflow-trigger">
+<h3>Workflow Trigger<a class="headerlink" href="#workflow-trigger" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>The workflow is triggered on two events:</p>
+<ul class="simple">
+<li><p>When a commit is pushed to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p></li>
+<li><p>When a pull request is opened or updated.</p></li>
+</ul>
+<p>These triggers ensure that both direct changes and proposed changes are verified.</p>
+</section>
+<section id="job-definition">
+<h3>Job Definition<a class="headerlink" href="#job-definition" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">BUILD_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake-build</span>
+</pre></div>
+</div>
+<p>A single job named <code class="docutils literal notranslate"><span class="pre">build</span></code> is defined. It runs on the latest Ubuntu runner and uses an environment variable <code class="docutils literal notranslate"><span class="pre">BUILD_DIR</span></code> to store build artifacts in a dedicated subdirectory.</p>
+</section>
+<section id="checkout-the-repository">
+<h3>Checkout the Repository<a class="headerlink" href="#checkout-the-repository" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">recursive</span>
+</pre></div>
+</div>
+<p>This step checks out your source code, including all Git submodules, which are often used for test frameworks or dependencies.</p>
+</section>
+<section id="cache-the-build">
+<h3>Cache the Build<a class="headerlink" href="#cache-the-build" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cache CMake build</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@v3</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.BUILD_DIR }}</span>
+<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ runner.os }}-cmake-${{ hashFiles(&#39;**/CMakeLists.txt&#39;) }}</span>
+</pre></div>
+</div>
+<p>To speed up repeated builds, this step caches the <code class="docutils literal notranslate"><span class="pre">cmake-build</span></code> directory. The cache is keyed by the operating system and the contents of all <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files. If nothing changed in those files, the cached build output can be reused.</p>
+</section>
+<section id="install-dependencies">
+<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install apt deps</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sudo apt-get update</span>
+<span class="w">    </span><span class="no">sudo apt-get install -y build-essential cmake ninja-build</span>
+</pre></div>
+</div>
+<p>Installs required packages for building the project using CMake and Ninja. This is typically needed for C++ development environments on CI runners.</p>
+</section>
+<section id="configure-the-build">
+<h3>Configure the Build<a class="headerlink" href="#configure-the-build" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake -S . -B ${{ env.BUILD_DIR }} -G Ninja -DCMAKE_BUILD_TYPE=Debug</span>
+</pre></div>
+</div>
+<p>Runs CMake to configure the project using the Ninja generator. The build type is set to <code class="docutils literal notranslate"><span class="pre">Debug</span></code> to include debugging symbols and enable assertions in your unit tests.</p>
+</section>
+<section id="build-the-project">
+<h3>Build the Project<a class="headerlink" href="#build-the-project" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake --build ${{ env.BUILD_DIR }} --config Debug</span>
+</pre></div>
+</div>
+<p>Builds the project using the previously configured Ninja setup. The <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag is mostly relevant for multi-config generators, but including it keeps the setup consistent.</p>
+</section>
+<section id="run-the-tests">
+<h3>Run the Tests<a class="headerlink" href="#run-the-tests" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">cd ${{ env.BUILD_DIR }}</span>
+<span class="w">    </span><span class="no">ctest --output-on-failure</span>
+</pre></div>
+</div>
+<p>Navigates to the build directory and runs your test suite using <code class="docutils literal notranslate"><span class="pre">ctest</span></code>. The <code class="docutils literal notranslate"><span class="pre">--output-on-failure</span></code> flag ensures that, if any test fails, the output is shown in the GitHub Actions log for easy debugging.</p>
+</section>
+</section>
+<section id="final-outcome">
+<h2>Final Outcome<a class="headerlink" href="#final-outcome" title="Link to this heading"></a></h2>
+<p>With this setup in place, your unit tests will automatically run every time:</p>
+<ul class="simple">
+<li><p>a new commit is pushed to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, or</p></li>
+<li><p>a pull request is opened or updated.</p></li>
+</ul>
+<p>This ensures continuous validation of your codebase, helping to catch regressions early and maintain high quality standards throughout development.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="advanced-usages.html" class="btn btn-neutral float-left" title="Advanced Usages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feedback.html" class="btn btn-neutral float-right" title="Bug Reports and Feature Requests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Usages &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GitHub Integration" href="github-integration.html" />
+    <link rel="prev" title="Command Line Options for the Unit Test Executable" href="command-line-options.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Usages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sharing-functionalities-with-a-common-base-class">Sharing Functionalities with a Common Base Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organizing-your-tests-with-labels">Organizing Your Tests with Labels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-tags-to-test-classes-and-functions">Adding Tags to Test Classes and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-targets-to-track-tested-functions">Adding Targets to Track Tested Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-marking-long-running-tests">Example: Marking Long-Running Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Advanced Usages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/advanced-usages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-usages">
+<span id="index-0"></span><span id="advanced"></span><h1>Advanced Usages<a class="headerlink" href="#advanced-usages" title="Link to this heading"></a></h1>
+<section id="sharing-functionalities-with-a-common-base-class">
+<h2>Sharing Functionalities with a Common Base Class<a class="headerlink" href="#sharing-functionalities-with-a-common-base-class" title="Link to this heading"></a></h2>
+<p>You can create a base class to provide shared functionality across your test classes. However, ensure that the name of the base class does <strong>not</strong> end with <code class="docutils literal notranslate"><span class="pre">Test</span></code> to avoid conflicts.</p>
+<p><code class="file docutils literal notranslate"><span class="pre">CommonBase.hpp</span></code>: Base Class for Shared Functions</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/UnitTest.hpp&gt;</span>
+<span class="c1">// ...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CommonBase</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">commonTestFunction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><code class="file docutils literal notranslate"><span class="pre">ExampleTest.hpp</span></code>: Subclass Using the Base Class</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CommonBase.hpp&quot;</span>
+<span class="c1">// ...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UNITTEST_SUBCLASS</span><span class="p">(</span><span class="n">CommonBase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">commonTestFunction</span><span class="p">());</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When using a shared base class for your unit tests, wrap the parent class name with the macro <code class="docutils literal notranslate"><span class="pre">UNITTEST_SUBCLASS</span></code>. This ensures that the class is properly detected by the CMake automation system.</p>
+</div>
+</section>
+<section id="organizing-your-tests-with-labels">
+<h2>Organizing Your Tests with Labels<a class="headerlink" href="#organizing-your-tests-with-labels" title="Link to this heading"></a></h2>
+<p>For better organization, always label your test classes and functions using the <code class="docutils literal notranslate"><span class="pre">TESTED_TARGETS</span></code> and <code class="docutils literal notranslate"><span class="pre">TAGS</span></code> macros. These labels help identify the scope and nature of each test, simplifying filtering and debugging.</p>
+<section id="adding-tags-to-test-classes-and-functions">
+<h3>Adding Tags to Test Classes and Functions<a class="headerlink" href="#adding-tags-to-test-classes-and-functions" title="Link to this heading"></a></h3>
+<p>You can add tags using the <code class="docutils literal notranslate"><span class="pre">TAGS</span></code> macro to describe the type of test. Simply place the macro before the class or function definition:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TAGS</span><span class="p">(</span><span class="n">HeavyCPU</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TAGS</span><span class="p">(</span><span class="n">LongRun</span><span class="w"> </span><span class="n">ExtensiveTest</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testEveryCombination</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Multiple Tags</strong>: Tags can be separated by spaces, allowing you to assign multiple labels to a single test or test suite.</p></li>
+<li><p><strong>No Code Impact</strong>: The macros expand to nothing during compilation and do not influence your code execution. However, they are read by the CMake integration and incorporated into the test metadata.</p></li>
+</ul>
+</section>
+<section id="adding-targets-to-track-tested-functions">
+<h3>Adding Targets to Track Tested Functions<a class="headerlink" href="#adding-targets-to-track-tested-functions" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">TESTED_TARGETS</span></code> macro to note which functions or classes are being tested. This enables you to selectively run tests targeting specific functions, improving your workflow when debugging or modifying code.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Nanoseconds</span><span class="w"> </span><span class="n">Microseconds</span><span class="w"> </span><span class="n">Milliseconds</span><span class="w"> </span><span class="n">Seconds</span><span class="w"> </span><span class="n">Minutes</span><span class="w"> </span><span class="n">Hours</span><span class="w"> </span><span class="n">Days</span><span class="w"> </span><span class="n">Weeks</span><span class="w"> </span><span class="n">Amount</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeAmountsTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">el</span><span class="o">::</span><span class="n">UnitTest</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="n">TESTED_TARGETS</span><span class="p">(</span><span class="n">Nanoseconds</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">testNanoseconds</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Purpose of Targets</strong>: Targets specify which functionality is tested by a class or function.</p></li>
+<li><p><strong>Selective Execution</strong>: Later, you can run only the tests targeting a specific function using command-line options.</p></li>
+</ul>
+</section>
+<section id="example-marking-long-running-tests">
+<h3>Example: Marking Long-Running Tests<a class="headerlink" href="#example-marking-long-running-tests" title="Link to this heading"></a></h3>
+<p>Tags can also be used to classify certain tests as long-running or resource-intensive. Combine <code class="docutils literal notranslate"><span class="pre">TAGS</span></code> with <code class="docutils literal notranslate"><span class="pre">SKIP_BY_DEFAULT()</span></code> to exclude such tests from default execution:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TAGS</span><span class="p">(</span><span class="n">LongRun</span><span class="p">)</span>
+<span class="n">SKIP_BY_DEFAULT</span><span class="p">()</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">testLongComputation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This setup skips the test during regular runs but allows it to be explicitly enabled with a command-line option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./unittest/unittest<span class="w"> </span>+tag:LongRun
+</pre></div>
+</div>
+<p>This approach ensures efficient testing workflows by skipping unnecessary tests while retaining the flexibility to run them when needed.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="command-line-options.html" class="btn btn-neutral float-left" title="Command Line Options for the Unit Test Executable" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="github-integration.html" class="btn btn-neutral float-right" title="GitHub Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

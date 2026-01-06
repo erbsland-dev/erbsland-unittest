@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceerbsland_1_1unittest_1_1fh" kind="namespace" language="C++">
+    <compoundname>erbsland::unittest::fh</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1fh_1a16017016487af09af4f9cac67128e617" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::fh::unitTestExecutablePath</definition>
+        <argsstring>() -&gt; std::filesystem::path</argsstring>
+        <name>unitTestExecutablePath</name>
+        <qualifiedname>erbsland::unittest::fh::unitTestExecutablePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Access the executable path for the unittest executable.</para>
+<para><simplesect kind="return"><para>The absolute path to the currently executed unittest executable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/FileHelper.cpp" line="31" column="6" bodyfile="erbsland/unittest/FileHelper.cpp" bodystart="31" bodyend="33" declfile="erbsland/unittest/FileHelper.hpp" declline="21" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1fh_1a28d9e6866e754f4648e6369e34051ac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::fh::resolveDataPath</definition>
+        <argsstring>(std::string_view relativePath) -&gt; std::filesystem::path</argsstring>
+        <name>resolveDataPath</name>
+        <qualifiedname>erbsland::unittest::fh::resolveDataPath</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>relativePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resolves the path to a test data file or directory.</para>
+<para>This method searches for the given relative path in the directory containing the executable and its parent directory to support various CMake build configurations (e.g., MSVC multi-config builds).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relativePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative path to the test data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The resolved absolute path to the test data. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>AssertFailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the path cannot be resolved. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/FileHelper.cpp" line="36" column="6" bodyfile="erbsland/unittest/FileHelper.cpp" bodystart="36" bodyend="55" declfile="erbsland/unittest/FileHelper.hpp" declline="33" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1fh_1a0ad121e69e6afc807ff453636c23d010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::fh::readDataText</definition>
+        <argsstring>(std::string_view relativePath, std::size_t maximumSize) -&gt; std::string</argsstring>
+        <name>readDataText</name>
+        <qualifiedname>erbsland::unittest::fh::readDataText</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>relativePath</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>maximumSize</declname>
+          <defval>10000000U</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the complete contents of a test data file into a string.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relativePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative path to the test data file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maximumSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowed size of the file in bytes (default 10MB). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The contents of the file as a string. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>AssertFailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the file cannot be found or exceeds the maximum size. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/FileHelper.cpp" line="58" column="6" bodyfile="erbsland/unittest/FileHelper.cpp" bodystart="58" bodyend="87" declfile="erbsland/unittest/FileHelper.hpp" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1fh_1ab99a0f94ce60247365ac642a794bb51d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::fh::readDataLines</definition>
+        <argsstring>(std::string_view relativePath, std::size_t maximumSize=10000000U) -&gt; std::vector&lt; std::string &gt;</argsstring>
+        <name>readDataLines</name>
+        <qualifiedname>erbsland::unittest::fh::readDataLines</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>relativePath</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>maximumSize</declname>
+          <defval>10000000U</defval>
+        </param>
+        <briefdescription>
+<para>Reads a test data file line by line into a vector of strings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relativePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative path to the test data file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maximumSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowed size of the file in bytes (default 10MB). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing each line of the file. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>AssertFailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the file cannot be found or exceeds the maximum size. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/FileHelper.cpp" line="90" column="6" bodyfile="erbsland/unittest/FileHelper.cpp" bodystart="90" bodyend="121" declfile="erbsland/unittest/FileHelper.hpp" declline="51" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Namespace for file and data helpers. </para>
+    </detaileddescription>
+    <location file="erbsland/unittest/FileHelper.cpp" line="16" column="1"/>
+  </compounddef>
+</doxygen>

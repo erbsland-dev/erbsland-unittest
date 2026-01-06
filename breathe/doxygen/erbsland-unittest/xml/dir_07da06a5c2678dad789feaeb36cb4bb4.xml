@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_07da06a5c2678dad789feaeb36cb4bb4" kind="dir">
+    <compoundname>erbsland/unittest</compoundname>
+    <innerdir refid="dir_df46d0b236c90952d596c174be385cbe">erbsland/unittest/impl</innerdir>
+    <innerfile refid="all_8hpp">all.hpp</innerfile>
+    <innerfile refid="_file_helper_8cpp">FileHelper.cpp</innerfile>
+    <innerfile refid="_file_helper_8hpp">FileHelper.hpp</innerfile>
+    <innerfile refid="fwd_8hpp">fwd.hpp</innerfile>
+    <innerfile refid="_unit_test_8cpp">UnitTest.cpp</innerfile>
+    <innerfile refid="_unit_test_8hpp">UnitTest.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="erbsland/unittest/"/>
+  </compounddef>
+</doxygen>

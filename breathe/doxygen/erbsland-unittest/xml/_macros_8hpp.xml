@@ -1,0 +1,689 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="_macros_8hpp" kind="file" language="C++">
+    <compoundname>Macros.hpp</compoundname>
+    <includes local="yes">Private.hpp</includes>
+    <includedby refid="_unit_test_8hpp" local="yes">erbsland/unittest/UnitTest.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>erbsland/unittest/impl/Macros.hpp</label>
+        <link refid="_macros_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Private.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>erbsland/unittest/UnitTest.hpp</label>
+        <link refid="_unit_test_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>erbsland/unittest/all.hpp</label>
+        <link refid="all_8hpp_source"/>
+      </node>
+      <node id="1">
+        <label>erbsland/unittest/impl/Macros.hpp</label>
+        <link refid="_macros_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_macros_8hpp_1afa0c32ba143802f6740d0a112ddf9b78" prot="public" static="no">
+        <name>ASSERT_CONTEXT_REQUIRE</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&amp;]() -&gt; bool { \
+        return static_cast&lt;bool&gt;(__VA_ARGS__); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="38" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1acb5dddd9ff925a935bb6c366fb6bf842" prot="public" static="no">
+        <name>ASSERT_CONTEXT_COMPARISON</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>op</defname></param>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>    ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&amp;]() -&gt; bool { \
+        return static_cast&lt;bool&gt;((a) op (b)); \
+    }, [&amp;]() -&gt; std::string { \
+        return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="42" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a990db09d8dfe4ce2afacfb906076c520" prot="public" static="no">
+        <name>ASSERT_CONTEXT_NOTHROW</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    ::erbsland::unittest::requireNoThrow(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&amp;]() -&gt; void { \
+        static_cast&lt;void&gt;(__VA_ARGS__); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="48" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a4bd9303a3c9f225fb9b84490ce576ea0" prot="public" static="no">
+        <name>ASSERT_CONTEXT_THROWS</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    ::erbsland::unittest::requireThrows(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&amp;]() -&gt; void { \
+        static_cast&lt;void&gt;(__VA_ARGS__); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="52" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ac5810612c615844a810ae77440c3be2d" prot="public" static="no">
+        <name>ASSERT_CONTEXT_THROWS_AS</name>
+        <param><defname>macroName</defname></param>
+        <param><defname>flags</defname></param>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    ::erbsland::unittest::requireThrowsAs&lt;exceptionClass&gt;(this, flags, macroName, #exceptionClass &quot;, &quot; #__VA_ARGS__, {__FILE__, __LINE__}, [&amp;]() -&gt; void { \
+        static_cast&lt;void&gt;(__VA_ARGS__); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="56" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa6194506311604c30f72826d819c8793" prot="public" static="no">
+        <name>WITH_CONTEXT</name>
+        <param><defname>...</defname></param>
+        <initializer>    ::erbsland::unittest::runWithContext(this, 0, &quot;WITH_CONTEXT&quot;, #__VA_ARGS__, {__FILE__, __LINE__}, [&amp;]() -&gt; void { \
+        static_cast&lt;void&gt;(__VA_ARGS__); \
+    });</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="61" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa6e6fc9684bd84ce7b72da6a2eef668f" prot="public" static="no">
+        <name>SOURCE_LOCATION</name>
+        <param></param>
+        <initializer>(::erbsland::unittest::SourceLocation{__FILE__, __LINE__})</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="66" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ad57835ba8f1bb419a865ada6bd011a85" prot="public" static="no">
+        <name>REQUIRE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="68" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ada5065594bafc152162761ace47c1dcb" prot="public" static="no">
+        <name>REQUIRE_FALSE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE_FALSE&quot;, (::erbsland::unittest::AssertNegate), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="69" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ae3c33faa1d31a2bb0811dac74b994e3e" prot="public" static="no">
+        <name>REQUIRE_THROWS</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS(&quot;REQUIRE_THROWS&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="70" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a724f5fee494728ebc42e3b66bf373a20" prot="public" static="no">
+        <name>REQUIRE_THROWS_AS</name>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS_AS(&quot;REQUIRE_THROWS_AS&quot;, 0, exceptionClass, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="71" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ab0148f0dfca438f7aa01974e9c33216a" prot="public" static="no">
+        <name>REQUIRE_NOTHROW</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_NOTHROW(&quot;REQUIRE_NOTHROW&quot;, 0, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="72" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a03a63454f5826978f2a50c03c0e27c24" prot="public" static="no">
+        <name>REQUIRE_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_EQUAL&quot;, 0, ==, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="73" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ae5b4d3825e9b055b2393a9c7a58cd89f" prot="public" static="no">
+        <name>REQUIRE_NOT_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_NOT_EQUAL&quot;, 0, !=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="74" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aba572a8f556b6b299b79df7bac0298ef" prot="public" static="no">
+        <name>REQUIRE_LESS</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_LESS&quot;, 0, &lt;, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="75" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a779472ba7e98e0a35ef121b73f225dab" prot="public" static="no">
+        <name>REQUIRE_LESS_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_LESS_EQUAL&quot;, 0, &lt;=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="76" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ad64479d6af56c319bb1f38fb6bc846a9" prot="public" static="no">
+        <name>REQUIRE_GREATER</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_GREATER&quot;, 0, &gt;, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="77" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a8ae34fa7af0fd68bb3f597e86329e6a1" prot="public" static="no">
+        <name>REQUIRE_GREATER_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_GREATER_EQUAL&quot;, 0, &gt;=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="78" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a836cca6b6ed3a1706353f6d1bca0935f" prot="public" static="no">
+        <name>CHECK</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;CHECK&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="80" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a7bf095d8512cb180f8ff3a2258a6eaac" prot="public" static="no">
+        <name>CHECK_FALSE</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_REQUIRE(&quot;CHECK_FALSE&quot;, (::erbsland::unittest::AssertNegate|::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="81" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a5c646dfe831e596b59073014c1c8b9e5" prot="public" static="no">
+        <name>CHECK_THROWS</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS(&quot;CHECK_THROWS&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="82" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1acf0e97ea1cc4544ef5bac2a00a2fcb6e" prot="public" static="no">
+        <name>CHECK_THROWS_AS</name>
+        <param><defname>exceptionClass</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_THROWS_AS(&quot;CHECK_THROWS_AS&quot;, (::erbsland::unittest::AssertCheck), exceptionClass, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="83" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a78e70f011f20c4ade1d1ac2b8fd33626" prot="public" static="no">
+        <name>CHECK_NOTHROW</name>
+        <param><defname>...</defname></param>
+        <initializer>ASSERT_CONTEXT_NOTHROW(&quot;CHECK_NOTHROW&quot;, (::erbsland::unittest::AssertCheck), __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="84" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1abfadc5d6128f37a150c1c87475b392d2" prot="public" static="no">
+        <name>CHECK_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_EQUAL&quot;, (::erbsland::unittest::AssertCheck), ==, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="85" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1adc901bd6c473ea51a81fb3a22b9b022a" prot="public" static="no">
+        <name>CHECK_NOT_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_NOT_EQUAL&quot;, (::erbsland::unittest::AssertCheck), !=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="86" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ab14e667ceb76791caf5c3e11a716228d" prot="public" static="no">
+        <name>CHECK_LESS</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_LESS&quot;, (::erbsland::unittest::AssertCheck), &lt;, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="87" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a69dee48638df6eec3ebb054f622c2ecd" prot="public" static="no">
+        <name>CHECK_LESS_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_LESS_EQUAL&quot;, (::erbsland::unittest::AssertCheck), &lt;=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="88" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ad961b204913982e5124fe7e6a036ccd5" prot="public" static="no">
+        <name>CHECK_GREATER</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_GREATER&quot;, (::erbsland::unittest::AssertCheck), &gt;, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="89" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aebc1fe5c55a76c02c88276f15e809a1a" prot="public" static="no">
+        <name>CHECK_GREATER_EQUAL</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_GREATER_EQUAL&quot;, (::erbsland::unittest::AssertCheck), &gt;=, a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="90" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a983a869f847994c418f23e61dcc3c211" prot="public" static="no">
+        <name>TESTS_BEGIN</name>
+        <param><defname>class_name</defname></param>
+        <initializer>    public: \
+    static constexpr std::tuple&lt;void (class_name::*)(), const char*&gt; cTestFunctions[] = {</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Begin: Manual test registration. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="94" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a88f564ca29980cb3df327ca05d5c3bed" prot="public" static="no">
+        <name>TESTS_END</name>
+        <param></param>
+        <initializer>    };</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>End: Manual test registration. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="100" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="100" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a38db39ac4f16b821148e74e4d2fdff6d" prot="public" static="no">
+        <name>TESTS_ENTRY</name>
+        <param><defname>function_name</defname></param>
+        <initializer>    std::make_tuple((&amp;function_name), #function_name),</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a test to the current unit test class.</para>
+<para>Use this method in the constructor of your unit test to add all test methods. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="107" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="107" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1aa475c570e482c07ab429920cc12a9c1f" prot="public" static="no">
+        <name>ADD_TEST</name>
+        <param><defname>function_name</defname></param>
+        <initializer>    p.addTest((&amp;function_name), std::string(#function_name));</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a test to the current unit test class.</para>
+<para>Use this method in the constructor of your unit test to add all test methods. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="114" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="114" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1ae04af788c8529722357055571d7a8289" prot="public" static="no">
+        <name>ADD_CLASS</name>
+        <param><defname>class_name</defname></param>
+        <initializer>    ::erbsland::unittest::ManualRegistration&lt;class_name&gt; test_registration ## class_name{#class_name};</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a unit test class.</para>
+<para>Add this after your unit test class to automatically register it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="121" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="121" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a028a67378b2d399b07dc80fdf0e74e4f" prot="public" static="no">
+        <name>UNITTEST_SUBCLASS</name>
+        <param><defname>class_name</defname></param>
+        <initializer>class_name</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mark a class as subclass from <computeroutput>UnitTest</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="126" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a1801fa573c93869f4b57e039f99092eb" prot="public" static="no">
+        <name>TAGS</name>
+        <param><defname>tags</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define an empty TAGS() macro, to safely mark the class and method with tags. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="130" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a8afc24d7dc52efd0ef497be02ac1c7e0" prot="public" static="no">
+        <name>TESTED_TARGETS</name>
+        <param><defname>name_list</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define an empty TESTED_TARGETS() macro, allow adding a list of tested classes or functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="134" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a6e29443ad92bf6e597e59b354a55bbe4" prot="public" static="no">
+        <name>SKIP_BY_DEFAULT</name>
+        <param></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An empty macro to skip the test or class unless the tag is explicitly specified. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="138" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_macros_8hpp_1a616019a862e87f7a35f46698e919c55a" prot="public" static="no">
+        <name>ERBSLAND_UNITTEST_MAIN</name>
+        <param></param>
+        <initializer>    auto main(int argc, char *argv[]) -&gt; int { \
+        return ::erbsland::unittest::Controller::instance()-&gt;main(argc, argv); \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define the main method for the unit test executable.</para>
+<para>Create a file <computeroutput>main.cpp</computeroutput> with this macro to define the main method for the unit test. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/impl/Macros.hpp" line="144" column="9" bodyfile="erbsland/unittest/impl/Macros.hpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>©<sp/>2023-2025<sp/>Tobias<sp/>Erbsland<sp/>https://erbsland.dev/<sp/>and<sp/>EducateIT<sp/>GmbH<sp/>https://educateit.ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>According<sp/>to<sp/>the<sp/>copyright<sp/>terms<sp/>specified<sp/>in<sp/>the<sp/>file<sp/>&quot;COPYRIGHT.md&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>LGPL-3.0-or-later</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Private.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>make<sp/>sure<sp/>we<sp/>have<sp/>no<sp/>conflicts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ADD_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ADD_CLASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_FALSE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_THROWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_THROWS_AS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_NOTHROW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_NOT_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_LESS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_LESS_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_GREATER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>REQUIRE_GREATER_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_FALSE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_THROWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_THROWS_AS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_NOTHROW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_NOT_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_LESS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_LESS_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_GREATER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHECK_GREATER_EQUAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>UNITTEST_SUBCLASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_REQUIRE(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::require(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>bool<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>static_cast&lt;bool&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_COMPARISON(macroName,<sp/>flags,<sp/>op,<sp/>a,<sp/>b)<sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::requireComparison(this,<sp/>flags,<sp/>macroName,<sp/>#a<sp/>#op<sp/>#b,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>bool<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>static_cast&lt;bool&gt;((a)<sp/>op<sp/>(b));<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>},<sp/>[&amp;]()<sp/>-&gt;<sp/>std::string<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>::erbsland::unittest::comparisonErrorMessage(#op,<sp/>#a,<sp/>#b,<sp/>(a),<sp/>(b));<sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_NOTHROW(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::requireNoThrow(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>void<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_THROWS(macroName,<sp/>flags,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::requireThrows(this,<sp/>flags,<sp/>macroName,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>void<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT_CONTEXT_THROWS_AS(macroName,<sp/>flags,<sp/>exceptionClass,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::requireThrowsAs&lt;exceptionClass&gt;(this,<sp/>flags,<sp/>macroName,<sp/>#exceptionClass<sp/>&quot;,<sp/>&quot;<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>void<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>run<sp/>an<sp/>expression,<sp/>but<sp/>add<sp/>context<sp/>information<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WITH_CONTEXT(<sp/>...<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::runWithContext(this,<sp/>0,<sp/>&quot;WITH_CONTEXT&quot;,<sp/>#__VA_ARGS__,<sp/>{__FILE__,<sp/>__LINE__},<sp/>[&amp;]()<sp/>-&gt;<sp/>void<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;void&gt;(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>});</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>run<sp/>context<sp/>for<sp/>the<sp/>function<sp/>`runWithContext`.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SOURCE_LOCATION()<sp/>(::erbsland::unittest::SourceLocation{__FILE__,<sp/>__LINE__})</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE&quot;,<sp/>0,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_FALSE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;REQUIRE_FALSE&quot;,<sp/>(::erbsland::unittest::AssertNegate),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_THROWS(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS(&quot;REQUIRE_THROWS&quot;,<sp/>0,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_THROWS_AS(exceptionClass,<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS_AS(&quot;REQUIRE_THROWS_AS&quot;,<sp/>0,<sp/>exceptionClass,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_NOTHROW(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_NOTHROW(&quot;REQUIRE_NOTHROW&quot;,<sp/>0,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_EQUAL&quot;,<sp/>0,<sp/>==,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_NOT_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_NOT_EQUAL&quot;,<sp/>0,<sp/>!=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_LESS(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_LESS&quot;,<sp/>0,<sp/>&lt;,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_LESS_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_LESS_EQUAL&quot;,<sp/>0,<sp/>&lt;=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_GREATER(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_GREATER&quot;,<sp/>0,<sp/>&gt;,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRE_GREATER_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;REQUIRE_GREATER_EQUAL&quot;,<sp/>0,<sp/>&gt;=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;CHECK&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_FALSE(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_REQUIRE(&quot;CHECK_FALSE&quot;,<sp/>(::erbsland::unittest::AssertNegate|::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_THROWS(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS(&quot;CHECK_THROWS&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_THROWS_AS(exceptionClass,<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_THROWS_AS(&quot;CHECK_THROWS_AS&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>exceptionClass,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_NOTHROW(<sp/>...<sp/>)<sp/>ASSERT_CONTEXT_NOTHROW(&quot;CHECK_NOTHROW&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_EQUAL&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>==,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_NOT_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_NOT_EQUAL&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>!=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_LESS(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_LESS&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>&lt;,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_LESS_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_LESS_EQUAL&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>&lt;=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_GREATER(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_GREATER&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>&gt;,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHECK_GREATER_EQUAL(a,<sp/>b)<sp/>ASSERT_CONTEXT_COMPARISON(&quot;CHECK_GREATER_EQUAL&quot;,<sp/>(::erbsland::unittest::AssertCheck),<sp/>&gt;=,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor">#define<sp/>TESTS_BEGIN(class_name)<sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>public:<sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>static<sp/>constexpr<sp/>std::tuple&lt;void<sp/>(class_name::*)(),<sp/>const<sp/>char*&gt;<sp/>cTestFunctions[]<sp/>=<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor">#define<sp/>TESTS_END()<sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor">#define<sp/>TESTS_ENTRY(function_name)<sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::make_tuple((&amp;function_name),<sp/>#function_name),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor">#define<sp/>ADD_TEST(function_name)<sp/>\</highlight></codeline>
+<codeline lineno="115"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>p.addTest((&amp;function_name),<sp/>std::string(#function_name));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor">#define<sp/>ADD_CLASS(class_name)<sp/>\</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>::erbsland::unittest::ManualRegistration&lt;class_name&gt;<sp/>test_registration<sp/>##<sp/>class_name{#class_name};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor">#define<sp/>UNITTEST_SUBCLASS(class_name)<sp/>class_name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor">#define<sp/>TAGS(tags)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor">#define<sp/>TESTED_TARGETS(name_list)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor">#define<sp/>SKIP_BY_DEFAULT()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor">#define<sp/>ERBSLAND_UNITTEST_MAIN()<sp/>\</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>auto<sp/>main(int<sp/>argc,<sp/>char<sp/>*argv[])<sp/>-&gt;<sp/>int<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>::erbsland::unittest::Controller::instance()-&gt;main(argc,<sp/>argv);<sp/>\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="erbsland/unittest/impl/Macros.hpp"/>
+  </compounddef>
+</doxygen>
