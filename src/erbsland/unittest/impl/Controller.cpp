@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <format>
 #include <mutex>
 #include <ranges>
 #include <sstream>
@@ -107,10 +108,8 @@ auto Controller::main(int argc, char **argv) -> int {
     text << "===[ Running " << testClassCount << " test suites with " << testCount << " tests ]===\n";
     auto timeAsString = []() -> std::string {
         using namespace std::chrono;
-        std::time_t t = system_clock::to_time_t(system_clock::now());
-        std::string str = std::ctime(&t);
-        str.resize(str.size()-1);
-        return str;
+        auto now = system_clock::now();
+        return std::format("{:%c}", now);
     };
     text << "Start Time: " << timeAsString();
     const auto startTime = std::chrono::steady_clock::now();
