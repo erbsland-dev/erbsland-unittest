@@ -19,7 +19,7 @@ if(MSVC)
     target_compile_options(erbsland-unittest PUBLIC "/utf-8")
 endif()
 
-if(DEFINED _DEBUG OR DEFINED DEBUG)
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     if(MSVC)
         target_compile_options(erbsland-unittest PRIVATE "/W4" "/WX")
     else()
