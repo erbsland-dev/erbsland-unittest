@@ -1,3 +1,7 @@
+// Copyright © 2026 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
+// According to the copyright terms specified in the file "COPYRIGHT.md".
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #pragma once
 
 
@@ -18,6 +22,15 @@ namespace erbsland::unittest::th::impl {
 template <typename T>
 concept AnyStringView = std::same_as<T, std::string_view> || std::same_as<T, std::u8string_view> ||
     std::same_as<T, std::u16string_view> || std::same_as<T, std::u32string_view> || std::same_as<T, std::wstring_view>;
+
+/// Concept that matches any supported string type.
+template <typename T>
+concept AnyString = std::same_as<T, std::string> || std::same_as<T, std::u8string> || std::same_as<T, std::u16string> ||
+    std::same_as<T, std::u32string> || std::same_as<T, std::wstring>;
+
+/// Concept that matches any supported string and string view type.
+template <typename T>
+concept AnyStringOrStringView = AnyString<T> || AnyStringView<T>;
 
 /// Convert any string into a UTF-8 encoded `std::string`.
 /// @param str The input string.
@@ -153,7 +166,7 @@ static auto paddedString(const tStringView &text, std::size_t width) -> std::str
 /// @param str The string to compare against the pattern.
 /// @return True if the pattern matches the string in reverse order (considering
 ///         wildcards); otherwise, false.
-template <AnyStringView tStringView>
+template <AnyStringOrStringView tStringView>
 [[nodiscard]] auto reverseCompareWithQuestionMark(const tStringView pattern, const tStringView str) -> bool {
     auto strIt = str.rbegin();
     auto patternIt = pattern.rbegin();
@@ -177,7 +190,7 @@ template <AnyStringView tStringView>
 /// @param str The string to compare against the pattern.
 /// @param fullMatch If true, the entire string must match the pattern; otherwise, a partial match is sufficient.
 /// @return True if the pattern matches the string; otherwise, false.
-template <AnyStringView tStringView>
+template <AnyStringOrStringView tStringView>
 [[nodiscard]] auto compareWithQuestionMark(const tStringView pattern, const tStringView str, bool fullMatch) -> bool {
     auto strIt = str.begin();
     auto patternIt = pattern.begin();
@@ -205,7 +218,7 @@ template <AnyStringView tStringView>
 /// @param pattern The pattern string to match. May contain *one* '*' or one or more '?' wildcards.
 /// @param str The string to compare against the pattern.
 /// @return True if the pattern matches the string; otherwise, false.
-template <AnyStringView tStringView>
+template <AnyStringOrStringView tStringView>
 [[nodiscard]] auto compareWithStarAndQuestionMark(const tStringView pattern, const tStringView str) -> bool {
     const auto pos = pattern.find(static_cast<tStringView::value_type>('*'));
     if (pos == std::string_view::npos) {

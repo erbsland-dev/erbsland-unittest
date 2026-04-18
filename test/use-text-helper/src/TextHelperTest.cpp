@@ -1,4 +1,4 @@
-// Copyright © 2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
+// Copyright © 2026 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -197,6 +197,27 @@ public:
         WITH_CONTEXT(th::requireEqualLines(*this, actual, expected));
         // macro use
         REQUIRE_EQUAL_LINES(actual, expected);
+
+        const auto expectedStr = std::vector<std::string>{
+            "hello one two three",
+            "anything*",
+            "*anything",
+            "anything*anything",
+            "two??wildcards",
+            "*any??",
+        };
+        const auto actualStr = std::vector<std::string>{
+            "hello one two three",
+            "anything→goes.here",
+            "another line with anything",
+            "anything can be in the middle, anything",
+            "two+-wildcards",
+            "is there any::",
+        };
+        // manual use
+        WITH_CONTEXT(th::requireEqualLines(*this, actualStr, expectedStr));
+        // macro use
+        REQUIRE_EQUAL_LINES(actualStr, expectedStr);
     }
 
     void testSideBySideComparison() {
