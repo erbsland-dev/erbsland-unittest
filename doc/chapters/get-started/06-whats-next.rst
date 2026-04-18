@@ -56,6 +56,20 @@ Learn more about the framework by exploring the following topics:
     .. grid-item-card::
         :class-card: sd-bg-success-light
 
+        **Text Helpers**
+        ^^^
+        Learn how to validate UTF-8, normalize strings, and compare line-based text output in tests.
+
+        .. button-ref:: text-helpers
+            :color: success
+            :outline:
+            :expand:
+
+            Learn More →
+
+    .. grid-item-card::
+        :class-card: sd-bg-success-light
+
         **The CMake Integration**
         ^^^
         Explore how the framework integrates with CMake to streamline your testing workflow.

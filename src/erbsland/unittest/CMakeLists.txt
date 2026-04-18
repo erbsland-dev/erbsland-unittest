@@ -9,6 +9,8 @@ target_sources(erbsland-unittest PRIVATE
         fwd.hpp
         FileHelper.cpp
         FileHelper.hpp
+        TextHelper.cpp
+        TextHelper.hpp
         UnitTest.cpp
         UnitTest.hpp
 )

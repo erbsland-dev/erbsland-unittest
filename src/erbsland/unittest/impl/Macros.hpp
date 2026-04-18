@@ -39,8 +39,18 @@
     ::erbsland::unittest::require(this, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> bool { \
         return static_cast<bool>(__VA_ARGS__); \
     });
+#define ASSERT_CONTEXT_REQUIRE_FOR_TEST(test, macroName, flags, ...) \
+    ::erbsland::unittest::require(test, flags, macroName, #__VA_ARGS__, {__FILE__, __LINE__}, [&]() -> bool { \
+        return static_cast<bool>(__VA_ARGS__); \
+    });
 #define ASSERT_CONTEXT_COMPARISON(macroName, flags, op, a, b) \
     ::erbsland::unittest::requireComparison(this, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&]() -> bool { \
+        return static_cast<bool>((a) op (b)); \
+    }, [&]() -> std::string { \
+        return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); \
+    });
+#define ASSERT_CONTEXT_COMPARISON_FOR_TEST(test, macroName, flags, op, a, b) \
+    ::erbsland::unittest::requireComparison(test, flags, macroName, #a #op #b, {__FILE__, __LINE__}, [&]() -> bool { \
         return static_cast<bool>((a) op (b)); \
     }, [&]() -> std::string { \
         return ::erbsland::unittest::comparisonErrorMessage(#op, #a, #b, (a), (b)); \

@@ -5,6 +5,7 @@
 
 
 #include "FileHelper.hpp"
+#include "TextHelper.hpp"
 #include "UnitTest.hpp"
 
 

@@ -37,5 +37,7 @@ target_sources(erbsland-unittest PRIVATE
         TestClass.hpp
         TestClassBase.cpp
         TestClassBase.hpp
+        TextHelperImpl.cpp
+        TextHelperImpl.hpp
 )
 

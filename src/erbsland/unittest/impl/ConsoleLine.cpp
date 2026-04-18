@@ -161,7 +161,7 @@ auto ConsoleLine::utf8SafeString(const std::string_view &text, const std::size_t
         }
         processCharacterForSafeUtf8Encoding(i, text, result);
     }
-    // If the string contains
+    // If the string contains escape sequences, enclose it in quotes
     if (result.find_first_of(" \"\\") != std::string::npos) {
         result.insert(0, "\"");
         result.push_back('\"');

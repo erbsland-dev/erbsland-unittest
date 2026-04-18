@@ -11,4 +11,5 @@ This reference gives you an overview of all relevant classes, macros and namespa
     classes-reference
     macros-reference
     file-helpers
+    text-helpers
     namespaces

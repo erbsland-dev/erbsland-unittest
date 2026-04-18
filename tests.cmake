@@ -23,5 +23,9 @@ if(ERBSLAND_UNITTEST_ENABLE_TESTS)
             NAME unittest-file-helper
             COMMAND $<TARGET_FILE:unittest-file-helper>
     )
+    add_test(
+            NAME unittest-text-helper
+            COMMAND $<TARGET_FILE:unittest-text-helper>
+    )
 endif()
 
