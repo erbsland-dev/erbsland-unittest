@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Helpers &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CMake Integration" href="cmake-integration.html" />
+    <link rel="prev" title="File Helpers" href="file-helpers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Text Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-string-types">Supported String Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-utf8error-enum">The <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Utf8Error</span></code> Enum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-allutf8errors-constant">The <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">allUtf8Errors</span></code> Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-charactercount-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">characterCount()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-toconsolesafestring-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-tostdstring-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toStdString()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-tostdu32string-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toStdU32String()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hex-parsing-functions">The Hex Parsing Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-rules-for-hex-parsing">Format Rules for Hex Parsing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-invalidutf8-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">invalidUtf8()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-splitlineviews-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">splitLineViews()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-splitlines-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">splitLines()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-requireequallines-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireEqualLines()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-equal-lines-macro">The <code class="xref c c-macro docutils literal notranslate"><span class="pre">REQUIRE_EQUAL_LINES</span></code> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-requirevalidutf8-function">The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-require-valid-utf8-macro">The <code class="xref c c-macro docutils literal notranslate"><span class="pre">REQUIRE_VALID_UTF8</span></code> Macro</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Text Helpers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/text-helpers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="text-helpers">
+<span id="index-0"></span><span id="id1"></span><h1>Text Helpers<a class="headerlink" href="#text-helpers" title="Link to this heading"></a></h1>
+<p>The text helper API in <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2thE" title="erbsland::unittest::th"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">erbsland::unittest::th</span></code></a> provides practical utilities for working with text in unit tests.</p>
+<p>It helps you:</p>
+<ul class="simple">
+<li><p>Count Unicode code-points instead of raw code units.</p></li>
+<li><p>Convert between UTF-8, UTF-16, UTF-32, and <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> based strings.</p></li>
+<li><p>Produce readable diagnostics for text containing control characters or malformed UTF-8.</p></li>
+<li><p>Generate malformed UTF-8 input for validation tests.</p></li>
+<li><p>Split text into lines for comparisons.</p></li>
+<li><p>Compare multi-line output with simple wildcard support.</p></li>
+<li><p>Verify that a byte string contains valid UTF-8.</p></li>
+</ul>
+<p>If you use these helpers frequently, introducing a namespace alias keeps your test code concise:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;erbsland/unittest/TextHelper.hpp&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">th</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">erbsland</span><span class="o">::</span><span class="nn">unittest</span><span class="o">::</span><span class="nn">th</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These helpers are designed for reliability, diagnostics, and convenience — not for raw speed.</p>
+<p>Several functions internally normalize text to UTF-8 or UTF-32 before processing. This makes them robust
+and predictable, but also unsuitable for performance-critical hot paths.</p>
+<p>If your test repeatedly processes large volumes of text in tight loops, prefer a specialized
+implementation that operates directly on your native data representation.</p>
+</div>
+<section id="supported-string-types">
+<h2>Supported String Types<a class="headerlink" href="#supported-string-types" title="Link to this heading"></a></h2>
+<p>Most helpers provide overloads for the following string view types:</p>
+<ul class="simple">
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">string_view</span></span></p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u8string_view</span></span></p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u16string_view</span></span></p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u32string_view</span></span></p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">wstring_view</span></span></p></li>
+</ul>
+<p>The overloads are intentionally parallel. In most cases, you can call the same helper regardless of the text
+type your test already uses.</p>
+</section>
+<section id="the-utf8error-enum">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Utf8Error</span></code></a> Enum<a class="headerlink" href="#the-utf8error-enum" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Utf8Error</span></code></a> enum specifies which malformed UTF-8 sequence
+<a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE" title="erbsland::unittest::th::invalidUtf8"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">invalidUtf8()</span></code></a> should generate.</p>
+<p>Available values:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE" title="erbsland::unittest::th::Utf8Error::UnexpectedContinuationByte"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">UnexpectedContinuationByte</span></code></a>
+A continuation byte without a valid lead byte.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong2ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Overlong2ByteSequence</span></code></a>
+A two-byte overlong encoding.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated2ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Truncated2ByteSequence</span></code></a>
+A two-byte sequence missing its continuation byte.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn2ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">InvalidContinuationByteIn2ByteSequence</span></code></a>
+A two-byte sequence followed by an invalid continuation byte.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong3ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Overlong3ByteSequence</span></code></a>
+A three-byte overlong encoding.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated3ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Truncated3ByteSequence</span></code></a>
+A three-byte sequence with missing trailing bytes.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn3ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">InvalidContinuationByteIn3ByteSequence</span></code></a>
+A three-byte sequence containing an invalid continuation byte.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE" title="erbsland::unittest::th::Utf8Error::SurrogateCodePoint"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">SurrogateCodePoint</span></code></a>
+Bytes that decode to a UTF-16 surrogate code-point (invalid in UTF-8).</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong4ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Overlong4ByteSequence</span></code></a>
+A four-byte overlong encoding.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated4ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">Truncated4ByteSequence</span></code></a>
+A four-byte sequence with missing trailing bytes.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn4ByteSequence"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">InvalidContinuationByteIn4ByteSequence</span></code></a>
+A four-byte sequence containing an invalid continuation byte.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE" title="erbsland::unittest::th::Utf8Error::CodePointBeyondUnicodeRange"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">CodePointBeyondUnicodeRange</span></code></a>
+A sequence above <code class="docutils literal notranslate"><span class="pre">U+10FFFF</span></code>.</p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th9Utf8Error16InvalidStartByteE" title="erbsland::unittest::th::Utf8Error::InvalidStartByte"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">InvalidStartByte</span></code></a>
+A byte that is not valid as a UTF-8 start byte.</p></li>
+</ul>
+</section>
+<section id="the-allutf8errors-constant">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE" title="erbsland::unittest::th::allUtf8Errors"><code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">allUtf8Errors</span></code></a> Constant<a class="headerlink" href="#the-allutf8errors-constant" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE" title="erbsland::unittest::th::allUtf8Errors"><code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">allUtf8Errors</span></code></a> constant contains all enum values in a
+single iterable array.</p>
+<p>This makes it easy to write exhaustive tests:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">allUtf8Errors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">malformed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">invalidUtf8</span><span class="p">(</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suf&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CHECK_FALSE</span><span class="p">(</span><span class="n">myUtf8Validator</span><span class="p">(</span><span class="n">malformed</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use this pattern when you want to ensure your UTF-8 handling rejects <em>all</em> supported malformed cases.</p>
+</section>
+<section id="the-charactercount-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th14characterCountEKNSt11string_viewE" title="erbsland::unittest::th::characterCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">characterCount()</span></code></a> Function<a class="headerlink" href="#the-charactercount-function" title="Link to this heading"></a></h2>
+<p>Use <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th14characterCountEKNSt11string_viewE" title="erbsland::unittest::th::characterCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">characterCount()</span></code></a> to count Unicode code-points
+instead of bytes or UTF code units.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">count1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">characterCount</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">count2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">characterCount</span><span class="p">(</span><span class="s">&quot;abc→😀&quot;</span><span class="p">);</span>
+
+<span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">count1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">count2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This is especially useful when your test data contains non-ASCII characters and
+<span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">::</span><span class="n">size</span><span class="p">(</span><span class="p">)</span></span> would give misleading results.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The result counts Unicode code-points, not grapheme clusters. A single visible character may still
+consist of multiple code-points.</p>
+</div>
+</section>
+<section id="the-toconsolesafestring-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE" title="erbsland::unittest::th::toConsoleSafeString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a> Function<a class="headerlink" href="#the-toconsolesafestring-function" title="Link to this heading"></a></h2>
+<p>This helper converts text into a representation that is safe and readable in console output.</p>
+<p>It escapes:</p>
+<ul class="simple">
+<li><p>control characters (newline, carriage return, tab),</p></li>
+<li><p>invalid UTF-8 bytes,</p></li>
+<li><p>non-ASCII code-points,</p></li>
+<li><p>backslashes and double quotes.</p></li>
+</ul>
+<p>If the result contains spaces or escape sequences, it is automatically wrapped in double quotes.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">toConsoleSafeString</span><span class="p">(</span><span class="s">&quot;abc</span><span class="se">\n\r\t\\\&quot;\u1234</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">REQUIRE_EQUAL</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">&quot;abc\n\r\t\\\&quot;\u{1234}&quot;</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Use this helper whenever raw strings would make diagnostics hard to interpret.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">maxLength</span></code> parameter limits the length of the <em>escaped</em> result. If the output is truncated, a suffix
+like <code class="docutils literal notranslate"><span class="pre">(...</span> <span class="pre">+&lt;count&gt;</span> <span class="pre">more)</span></code> is appended.</p>
+</section>
+<section id="the-tostdstring-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th11toStdStringENSt11string_viewE" title="erbsland::unittest::th::toStdString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toStdString()</span></code></a> Function<a class="headerlink" href="#the-tostdstring-function" title="Link to this heading"></a></h2>
+<p>This function converts supported string types into a UTF-8 encoded <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">string</span></span>.</p>
+<ul class="simple">
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">string_view</span></span> and <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u8string_view</span></span> are copied as-is.</p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u16string_view</span></span>, <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u32string_view</span></span>, and <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">wstring_view</span></span> are
+transcoded to UTF-8.</p></li>
+</ul>
+<p>Use this to normalize text across platforms before comparing or printing it.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">string_view</span></span>, the function does <strong>not</strong> validate UTF-8. It simply copies the bytes.</p>
+<p>If you need validation, call
+<a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE" title="erbsland::unittest::th::requireValidUtf8"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code></a> explicitly.</p>
+</div>
+</section>
+<section id="the-tostdu32string-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE" title="erbsland::unittest::th::toStdU32String"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a> Function<a class="headerlink" href="#the-tostdu32string-function" title="Link to this heading"></a></h2>
+<p>This function converts supported input into a UTF-32 <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">u32string</span></span>.</p>
+<p>Use it when you want one Unicode code-point per element.</p>
+<p>For UTF-8 input, malformed sequences are replaced with the Unicode replacement character <code class="docutils literal notranslate"><span class="pre">U+FFFD</span></code> instead
+of causing errors.</p>
+<p>This makes the function safe for diagnostics and normalization, even when the input is not fully trustworthy.</p>
+</section>
+<section id="the-hex-parsing-functions">
+<h2>The Hex Parsing Functions<a class="headerlink" href="#the-hex-parsing-functions" title="Link to this heading"></a></h2>
+<p>These helpers parse hexadecimal text into strings with fixed-width element types:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE" title="erbsland::unittest::th::stdStringFromHex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stdStringFromHex()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE" title="erbsland::unittest::th::stdU8StringFromHex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stdU8StringFromHex()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE" title="erbsland::unittest::th::stdU16StringFromHex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stdU16StringFromHex()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE" title="erbsland::unittest::th::stdU32StringFromHex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stdU32StringFromHex()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE" title="erbsland::unittest::th::stdWStringFromHex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stdWStringFromHex()</span></code></a></p></li>
+</ul>
+<p>Use them when expressing test data as hex is clearer than using source code string literals.</p>
+<section id="format-rules-for-hex-parsing">
+<h3>Format Rules for Hex Parsing<a class="headerlink" href="#format-rules-for-hex-parsing" title="Link to this heading"></a></h3>
+<p>All hex parsing helpers follow the same rules:</p>
+<ul class="simple">
+<li><p>Spaces are optional.</p></li>
+<li><p>Spaces may only appear <em>between</em> complete groups.</p></li>
+<li><p>Leading and trailing spaces are not allowed.</p></li>
+<li><p>Invalid hex digits throw <span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">logic_error</span></span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-invalidutf8-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE" title="erbsland::unittest::th::invalidUtf8"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">invalidUtf8()</span></code></a> Function<a class="headerlink" href="#the-invalidutf8-function" title="Link to this heading"></a></h2>
+<p>This helper intentionally creates malformed UTF-8 sequences.</p>
+<p>Use it to test validators, decoders, or error handling:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="o">::</span><span class="n">invalidUtf8</span><span class="p">(</span><span class="n">th</span><span class="o">::</span><span class="n">Utf8Error</span><span class="o">::</span><span class="n">InvalidStartByte</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;before &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; after&quot;</span><span class="p">);</span>
+<span class="n">CHECK_FALSE</span><span class="p">(</span><span class="n">myUtf8Validator</span><span class="p">(</span><span class="n">sample</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Combining it with <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE" title="erbsland::unittest::th::allUtf8Errors"><code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">allUtf8Errors</span></code></a> allows you to build
+exhaustive negative tests with very little code.</p>
+</section>
+<section id="the-splitlineviews-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE" title="erbsland::unittest::th::splitLineViews"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a> Function<a class="headerlink" href="#the-splitlineviews-function" title="Link to this heading"></a></h2>
+<p>Splits text at <code class="docutils literal notranslate"><span class="pre">\\n</span></code> and returns views into the original string.</p>
+<p>Use this when you want to inspect lines without copying data.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The returned views reference the original input. Do not modify or destroy the source string while they are
+in use.</p>
+</div>
+</section>
+<section id="the-splitlines-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th10splitLinesEKNSt11string_viewE" title="erbsland::unittest::th::splitLines"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">splitLines()</span></code></a> Function<a class="headerlink" href="#the-splitlines-function" title="Link to this heading"></a></h2>
+<p>Same behavior as <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE" title="erbsland::unittest::th::splitLineViews"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a>, but returns owned
+strings instead of views.</p>
+<p>Use this when you need independence from the original input lifetime.</p>
+</section>
+<section id="the-requireequallines-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected" title="erbsland::unittest::th::requireEqualLines"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireEqualLines()</span></code></a> Function<a class="headerlink" href="#the-requireequallines-function" title="Link to this heading"></a></h2>
+<p>Compares two sequences of lines and produces a side-by-side diff on failure.</p>
+<p>The expected lines support simple wildcards:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> matches any number of characters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> matches exactly one character.</p></li>
+</ul>
+<p>Use this for stable comparisons of output that may contain variable fragments.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">testRequireEqualLines</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;hello one two three&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;anything*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;*anything&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;anything*anything&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;two??wildcards&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;*any??&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;hello one two three&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;anything→goes.here&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;another line with anything&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;anything can be in the middle, anything&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;two+-wildcards&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;is there any::&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// manual use</span>
+<span class="w">    </span><span class="n">WITH_CONTEXT</span><span class="p">(</span><span class="n">th</span><span class="o">::</span><span class="n">requireEqualLines</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// macro use</span>
+<span class="w">    </span><span class="n">REQUIRE_EQUAL_LINES</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the two line sequences don’t match, you will get diagnostic output like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>| Actual (2)                  |     | Expected (3)                |
+|-----------------------------|-----|-----------------------------|
+| one two three four five six | === | one two three four five six |
+| different                   |  X  | another line                |
+|                             |  X  | last line                   |
+|-----------------------------|-----|-----------------------------|
+</pre></div>
+</div>
+</section>
+<section id="the-require-equal-lines-macro">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#c.REQUIRE_EQUAL_LINES" title="REQUIRE_EQUAL_LINES"><code class="xref c c-macro docutils literal notranslate"><span class="pre">REQUIRE_EQUAL_LINES</span></code></a> Macro<a class="headerlink" href="#the-require-equal-lines-macro" title="Link to this heading"></a></h2>
+<p>Convenience wrapper around <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireEqualLines()</span></code> that automatically integrates with the test
+context:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">REQUIRE_EQUAL_LINES</span><span class="p">(</span><span class="n">actualLines</span><span class="p">,</span><span class="w"> </span><span class="n">expectedLines</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="the-requirevalidutf8-function">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE" title="erbsland::unittest::th::requireValidUtf8"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code></a> Function<a class="headerlink" href="#the-requirevalidutf8-function" title="Link to this heading"></a></h2>
+<p>Validates that a string contains well-formed UTF-8 and only valid Unicode scalar values.</p>
+<p>On failure, the test reports:</p>
+<ul class="simple">
+<li><p>the byte position of the error,</p></li>
+<li><p>a readable preview of the input.</p></li>
+</ul>
+<p>Rejected cases include:</p>
+<ul class="simple">
+<li><p>malformed byte sequences,</p></li>
+<li><p>truncated sequences,</p></li>
+<li><p>surrogate code-points,</p></li>
+<li><p>code-points above <code class="docutils literal notranslate"><span class="pre">U+10FFFF</span></code>.</p></li>
+</ul>
+<p>Use this when correctness of UTF-8 encoding is part of what your test verifies.</p>
+</section>
+<section id="the-require-valid-utf8-macro">
+<h2>The <a class="reference internal" href="reference/text-helpers.html#c.REQUIRE_VALID_UTF8" title="REQUIRE_VALID_UTF8"><code class="xref c c-macro docutils literal notranslate"><span class="pre">REQUIRE_VALID_UTF8</span></code></a> Macro<a class="headerlink" href="#the-require-valid-utf8-macro" title="Link to this heading"></a></h2>
+<p>Convenience macro for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">REQUIRE_VALID_UTF8</span><span class="p">(</span><span class="n">resultText</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For the full API reference, see <a class="reference internal" href="reference/text-helpers.html"><span class="doc">Text Helpers</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="file-helpers.html" class="btn btn-neutral float-left" title="File Helpers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmake-integration.html" class="btn btn-neutral float-right" title="CMake Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="_text_helper_8hpp" kind="file" language="C++">
+    <compoundname>TextHelper.hpp</compoundname>
+    <includes refid="_unit_test_8hpp" local="yes">UnitTest.hpp</includes>
+    <includes refid="_macros_8hpp" local="yes">impl/Macros.hpp</includes>
+    <includes local="yes">impl/TextHelperImpl.hpp</includes>
+    <includes local="no">array</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="_text_helper_8cpp" local="yes">erbsland/unittest/TextHelper.cpp</includedby>
+    <includedby refid="all_8hpp" local="yes">erbsland/unittest/all.hpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>FileHelper.hpp</label>
+        <link refid="_file_helper_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>erbsland/unittest/TextHelper.hpp</label>
+        <link refid="_text_helper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UnitTest.hpp</label>
+        <link refid="_unit_test_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>impl/Macros.hpp</label>
+        <link refid="_macros_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Private.hpp</label>
+      </node>
+      <node id="14">
+        <label>array</label>
+      </node>
+      <node id="15">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="8">
+        <label>impl/AssertContext.hpp</label>
+      </node>
+      <node id="9">
+        <label>impl/Definitions.hpp</label>
+      </node>
+      <node id="12">
+        <label>impl/Private.hpp</label>
+      </node>
+      <node id="13">
+        <label>impl/TextHelperImpl.hpp</label>
+      </node>
+      <node id="16">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>erbsland/unittest/TextHelper.hpp</label>
+        <link refid="_text_helper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>erbsland/unittest/all.hpp</label>
+        <link refid="all_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceerbsland">erbsland</innernamespace>
+    <innernamespace refid="namespaceerbsland_1_1unittest">erbsland::unittest</innernamespace>
+    <innernamespace refid="namespaceerbsland_1_1unittest_1_1th">erbsland::unittest::th</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_text_helper_8hpp_1a086c9e9c335867a045890ae63e1c6c54" prot="public" static="no">
+        <name>REQUIRE_EQUAL_LINES</name>
+        <param><defname>actual</defname></param>
+        <param><defname>expected</defname></param>
+        <initializer>    WITH_CONTEXT(<ref refid="namespaceerbsland_1_1unittest_1_1th_1afe4b4f2961e25245f43d5475f5b312ce" kindref="member">erbsland::unittest::th::requireEqualLines</ref>(*this, actual, expected));</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience macro to call <computeroutput>requireEqualLines()</computeroutput> for the current test instance.</para>
+<para>The macro wraps the check in <computeroutput>WITH_CONTEXT(...)</computeroutput> so the generated side-by-side comparison becomes part of the failure context automatically. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.hpp" line="256" column="9" bodyfile="erbsland/unittest/TextHelper.hpp" bodystart="256" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="define" id="_text_helper_8hpp_1a51a2867a2e6db61fd2bb4d606cb78d7a" prot="public" static="no">
+        <name>REQUIRE_VALID_UTF8</name>
+        <param><defname>str</defname></param>
+        <initializer>WITH_CONTEXT(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" kindref="member">erbsland::unittest::th::requireValidUtf8</ref>(*this, str));</initializer>
+        <briefdescription>
+<para>Convenience macro to call <computeroutput>requireValidUtf8()</computeroutput> for the current test instance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.hpp" line="276" column="9" bodyfile="erbsland/unittest/TextHelper.hpp" bodystart="276" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>©<sp/>2026<sp/>Tobias<sp/>Erbsland<sp/>https://erbsland.dev/<sp/>and<sp/>EducateIT<sp/>GmbH<sp/>https://educateit.ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>According<sp/>to<sp/>the<sp/>copyright<sp/>terms<sp/>specified<sp/>in<sp/>the<sp/>file<sp/>&quot;COPYRIGHT.md&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>LGPL-3.0-or-later</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;UnitTest.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;impl/Macros.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;impl/TextHelperImpl.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceerbsland_1_1unittest_1_1th" kindref="compound">erbsland::unittest::th</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" refkind="member"><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref><sp/>:<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">uint8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d" kindref="member">UnexpectedContinuationByte</ref>,<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84" kindref="member">Overlong2ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6" kindref="member">Truncated2ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918" kindref="member">InvalidContinuationByteIn2ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0" kindref="member">Overlong3ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee" kindref="member">Truncated3ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820" kindref="member">InvalidContinuationByteIn3ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2" kindref="member">SurrogateCodePoint</ref>,<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a" kindref="member">Overlong4ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1" kindref="member">Truncated4ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26" kindref="member">InvalidContinuationByteIn4ByteSequence</ref>,<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4" kindref="member">CodePointBeyondUnicodeRange</ref>,<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c" kindref="member">InvalidStartByte</ref>,<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>_count,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="namespaceerbsland_1_1unittest_1_1th_1a239fa9bbf00e31ab4a839c2e51a23341" refkind="member"><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a239fa9bbf00e31ab4a839c2e51a23341" kindref="member">allUtf8Errors</ref><sp/>=<sp/>std::array&lt;Utf8Error,<sp/>static_cast&lt;std::size_t&gt;(Utf8Error::_count)&gt;{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d" kindref="member">Utf8Error::UnexpectedContinuationByte</ref>,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84" kindref="member">Utf8Error::Overlong2ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6" kindref="member">Utf8Error::Truncated2ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918" kindref="member">Utf8Error::InvalidContinuationByteIn2ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0" kindref="member">Utf8Error::Overlong3ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee" kindref="member">Utf8Error::Truncated3ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820" kindref="member">Utf8Error::InvalidContinuationByteIn3ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2" kindref="member">Utf8Error::SurrogateCodePoint</ref>,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a" kindref="member">Utf8Error::Overlong4ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1" kindref="member">Utf8Error::Truncated4ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26" kindref="member">Utf8Error::InvalidContinuationByteIn4ByteSequence</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4" kindref="member">Utf8Error::CodePointBeyondUnicodeRange</ref>,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c" kindref="member">Utf8Error::InvalidStartByte</ref>,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>std::size_t<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">maxLength</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>std::size_t<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">maxLength</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>std::size_t<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">maxLength</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>std::size_t<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">maxLength</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>std::size_t<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">maxLength</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a4c9e4e2bc4441e9ab4824fc2e112b6af" kindref="member">stdStringFromHex</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">hexString</ref>)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a1f1421f992c112e77cb8c1fa3c9457c9" kindref="member">stdU8StringFromHex</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">hexString</ref>)<sp/>-&gt;<sp/>std::u8string;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1acfbb7914422f766c80af731f6ccc8a83" kindref="member">stdU16StringFromHex</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">hexString</ref>)<sp/>-&gt;<sp/>std::u16string;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a08a480726e54b54399311b034aad29ec" kindref="member">stdU32StringFromHex</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">hexString</ref>)<sp/>-&gt;<sp/>std::u32string;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aebda3fcf40abf6afcbc5037880697555" kindref="member">stdWStringFromHex</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">hexString</ref>)<sp/>-&gt;<sp/>std::wstring;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f" kindref="member">invalidUtf8</ref>(</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">error</ref>,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;std::string_view&gt;<sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">prefix</ref><sp/>=<sp/>std::nullopt,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;std::string_view&gt;<sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">suffix</ref><sp/>=<sp/>std::nullopt)<sp/>-&gt;<sp/>std::string;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::string_view&gt;;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u8string_view&gt;;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u16string_view&gt;;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u32string_view&gt;;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::wstring_view&gt;;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::string&gt;;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u8string&gt;;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u16string&gt;;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u32string&gt;;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">[[<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::wstring&gt;;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>tActual,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>tExpected&gt;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/>std::ranges::range&lt;tActual&gt;<sp/>&amp;&amp;<sp/>std::ranges::range&lt;tExpected&gt;</highlight></codeline>
+<codeline lineno="235" refid="namespaceerbsland_1_1unittest_1_1th_1afe4b4f2961e25245f43d5475f5b312ce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1afe4b4f2961e25245f43d5475f5b312ce" kindref="member">requireEqualLines</ref>(<ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">tActual</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">actual</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">tExpected</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">expected</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>.runWithContext(</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SOURCE_LOCATION(),</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT_CONTEXT_COMPARISON_FOR_TEST(&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="stringliteral">&quot;REQUIRE_EQUAL&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>==,<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">actual</ref>.size(),<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">expected</ref>.size());</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itActual</ref><sp/>=<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">actual</ref>.begin();</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itExpected</ref><sp/>=<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">expected</ref>.begin();</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itActual</ref><sp/>!=<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">actual</ref>.end();<sp/>++<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itActual</ref>,<sp/>++<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itExpected</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT_CONTEXT_REQUIRE_FOR_TEST(</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="stringliteral">&quot;REQUIRE&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>impl::compareWithStarAndQuestionMark(*<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itExpected</ref>,<sp/>*<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">itActual</ref>))</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/>std::string<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::createSideBySideComparison(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">actual</ref>,<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">expected</ref>);<sp/>});</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="preprocessor">#define<sp/>REQUIRE_EQUAL_LINES(actual,<sp/>expected)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="257"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>WITH_CONTEXT(erbsland::unittest::th::requireEqualLines(*this,<sp/>actual,<sp/>expected));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" kindref="member">requireValidUtf8</ref>(<ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/>std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="272"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" kindref="member">requireValidUtf8</ref>(<ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/>std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor">#define<sp/>REQUIRE_VALID_UTF8(str)<sp/>WITH_CONTEXT(erbsland::unittest::th::requireValidUtf8(*this,<sp/>str));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="erbsland/unittest/TextHelper.hpp"/>
+  </compounddef>
+</doxygen>

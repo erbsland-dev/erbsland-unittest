@@ -1,0 +1,386 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="_text_helper_8cpp" kind="file" language="C++">
+    <compoundname>TextHelper.cpp</compoundname>
+    <includes refid="_text_helper_8hpp" local="yes">TextHelper.hpp</includes>
+    <includes local="yes">impl/ConsoleLine.hpp</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>FileHelper.hpp</label>
+        <link refid="_file_helper_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>erbsland/unittest/TextHelper.cpp</label>
+        <link refid="_text_helper_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TextHelper.hpp</label>
+        <link refid="_text_helper_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>UnitTest.hpp</label>
+        <link refid="_unit_test_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>impl/Macros.hpp</label>
+        <link refid="_macros_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Private.hpp</label>
+      </node>
+      <node id="15">
+        <label>array</label>
+      </node>
+      <node id="16">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
+      </node>
+      <node id="9">
+        <label>impl/AssertContext.hpp</label>
+      </node>
+      <node id="18">
+        <label>impl/ConsoleLine.hpp</label>
+      </node>
+      <node id="10">
+        <label>impl/Definitions.hpp</label>
+      </node>
+      <node id="13">
+        <label>impl/Private.hpp</label>
+      </node>
+      <node id="14">
+        <label>impl/TextHelperImpl.hpp</label>
+      </node>
+      <node id="17">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceerbsland">erbsland</innernamespace>
+    <innernamespace refid="namespaceerbsland_1_1unittest">erbsland::unittest</innernamespace>
+    <innernamespace refid="namespaceerbsland_1_1unittest_1_1th">erbsland::unittest::th</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>©<sp/>2026<sp/>Tobias<sp/>Erbsland<sp/>https://erbsland.dev/<sp/>and<sp/>EducateIT<sp/>GmbH<sp/>https://educateit.ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>According<sp/>to<sp/>the<sp/>copyright<sp/>terms<sp/>specified<sp/>in<sp/>the<sp/>file<sp/>&quot;COPYRIGHT.md&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>LGPL-3.0-or-later</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TextHelper.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;impl/ConsoleLine.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespaceerbsland_1_1unittest_1_1th" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceerbsland_1_1unittest_1_1th" kindref="compound">erbsland::unittest::th</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>text)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::characterCount(text);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/>text)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::characterCount(text);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u16string_view<sp/>text)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::characterCount(text);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u32string_view<sp/>text)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::characterCount(text);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" kindref="member">characterCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring_view<sp/>text)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::size_t<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::characterCount(text);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>maxLength)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ConsoleLine::utf8SafeString(text,<sp/>maxLength);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/>text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>maxLength)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ConsoleLine::utf8SafeString(impl::toStdString(text),<sp/>maxLength);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u16string_view<sp/>text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>maxLength)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ConsoleLine::utf8SafeString(impl::toStdString(text),<sp/>maxLength);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u32string_view<sp/>text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>maxLength)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ConsoleLine::utf8SafeString(impl::toStdString(text),<sp/>maxLength);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" kindref="member">toConsoleSafeString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring_view<sp/>text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>maxLength)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ConsoleLine::utf8SafeString(impl::toStdString(text),<sp/>maxLength);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::string_view<sp/>text)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdString(text);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u8string_view<sp/>text)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdString(text);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u16string_view<sp/>text)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdString(text);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::u32string_view<sp/>text)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdString(text);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" kindref="member">toStdString</ref>(std::wstring_view<sp/>text)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdString(text);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>text)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdU32String(text);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/>text)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdU32String(text);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u16string_view<sp/>text)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdU32String(text);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u32string_view<sp/>text)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdU32String(text);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" kindref="member">toStdU32String</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring_view<sp/>text)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::toStdU32String(text);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a4c9e4e2bc4441e9ab4824fc2e112b6af" kindref="member">stdStringFromHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>hexString)<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::stringFromHex&lt;std::string&gt;(hexString,<sp/>2);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a1f1421f992c112e77cb8c1fa3c9457c9" kindref="member">stdU8StringFromHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>hexString)<sp/>-&gt;<sp/>std::u8string<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::stringFromHex&lt;std::u8string&gt;(hexString,<sp/>2);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1acfbb7914422f766c80af731f6ccc8a83" kindref="member">stdU16StringFromHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>hexString)<sp/>-&gt;<sp/>std::u16string<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::stringFromHex&lt;std::u16string&gt;(hexString,<sp/>4);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a08a480726e54b54399311b034aad29ec" kindref="member">stdU32StringFromHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>hexString)<sp/>-&gt;<sp/>std::u32string<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::stringFromHex&lt;std::u32string&gt;(hexString,<sp/>8);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1aebda3fcf40abf6afcbc5037880697555" kindref="member">stdWStringFromHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>hexString)<sp/>-&gt;<sp/>std::wstring<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::stringFromHex&lt;std::wstring&gt;(hexString,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal">)<sp/>*<sp/>2U);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>appendInvalidUtf8Sequence(std::string<sp/>&amp;result,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref><sp/>error)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d" kindref="member">Utf8Error::UnexpectedContinuationByte</ref>:</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84" kindref="member">Utf8Error::Overlong2ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xC0));</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6" kindref="member">Utf8Error::Truncated2ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xC2));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918" kindref="member">Utf8Error::InvalidContinuationByteIn2ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xC2));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x20));</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0" kindref="member">Utf8Error::Overlong3ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xE0));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee" kindref="member">Utf8Error::Truncated3ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xE1));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820" kindref="member">Utf8Error::InvalidContinuationByteIn3ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xE1));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x20));</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2" kindref="member">Utf8Error::SurrogateCodePoint</ref>:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xED));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xA0));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a" kindref="member">Utf8Error::Overlong4ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xF0));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1" kindref="member">Utf8Error::Truncated4ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xF1));</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26" kindref="member">Utf8Error::InvalidContinuationByteIn4ByteSequence</ref>:</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xF1));</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x20));</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4" kindref="member">Utf8Error::CodePointBeyondUnicodeRange</ref>:</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xF4));</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x90));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0x80));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c" kindref="member">Utf8Error::InvalidStartByte</ref>:</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0xF8));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f" kindref="member">invalidUtf8</ref>(</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref><sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;std::string_view&gt;<sp/>&amp;prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;std::string_view&gt;<sp/>&amp;suffix)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>std::string{};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>result.reserve((prefix<sp/>?<sp/>prefix-&gt;size()<sp/>:<sp/>0U)<sp/>+<sp/>4U<sp/>+<sp/>(suffix<sp/>?<sp/>suffix-&gt;size()<sp/>:<sp/>0U));</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prefix)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>*prefix;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>appendInvalidUtf8Sequence(result,<sp/>error);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(suffix)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>*suffix;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLineViews(text);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::u8string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLineViews(text);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u16string_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::u16string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLineViews(text);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u32string_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::u32string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLineViews(text);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" kindref="member">splitLineViews</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::wstring_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLineViews(text);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>text)<sp/>-&gt;<sp/>std::vector&lt;std::string&gt;<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLines&lt;std::string_view,<sp/>std::string&gt;(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u8string&gt;<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLines&lt;std::u8string_view,<sp/>std::u8string&gt;(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u16string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u16string&gt;<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLines&lt;std::u16string_view,<sp/>std::u16string&gt;(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u32string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::u32string&gt;<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLines&lt;std::u32string_view,<sp/>std::u32string&gt;(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">splitLines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>-&gt;<sp/>std::vector&lt;std::wstring&gt;<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl::splitLines&lt;std::wstring_view,<sp/>std::wstring&gt;(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" kindref="member">requireValidUtf8</ref>(<ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref><sp/>=<sp/>impl::validateUtf8(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>.runWithContext(</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SOURCE_LOCATION(),</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>{<sp/>ASSERT_CONTEXT_REQUIRE_FOR_TEST(&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="stringliteral">&quot;REQUIRE_VALID_UTF8&quot;</highlight><highlight class="normal">,<sp/>0,<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.valid)<sp/>},</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format(</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>UTF-8<sp/>at<sp/>byte<sp/>{}:<sp/>{}\n<sp/><sp/>Text:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.byteIndex,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.message,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ConsoleLine::utf8SafeString(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>,<sp/>120U));</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" kindref="member">requireValidUtf8</ref>(<ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref><sp/>&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::u8string_view<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref><sp/>=<sp/>impl::validateUtf8(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>.runWithContext(</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SOURCE_LOCATION(),</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>{<sp/>ASSERT_CONTEXT_REQUIRE_FOR_TEST(&amp;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">test</ref>,<sp/></highlight><highlight class="stringliteral">&quot;REQUIRE_VALID_UTF8&quot;</highlight><highlight class="normal">,<sp/>0,<sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.valid)<sp/>},</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;]()<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format(</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>UTF-8<sp/>at<sp/>byte<sp/>{}:<sp/>{}\n<sp/><sp/>Text:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.byteIndex,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">validation</ref>.message,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ConsoleLine::utf8SafeString(impl::toStdString(<ref refid="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" kindref="member">text</ref>),<sp/>120U));</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="erbsland/unittest/TextHelper.cpp"/>
+  </compounddef>
+</doxygen>

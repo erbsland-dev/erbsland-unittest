@@ -1,0 +1,1174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceerbsland_1_1unittest_1_1th" kind="namespace" language="C++">
+    <compoundname>erbsland::unittest::th</compoundname>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>Utf8Error</name>
+        <qualifiedname>erbsland::unittest::th::Utf8Error</qualifiedname>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d" prot="public">
+          <name>UnexpectedContinuationByte</name>
+          <briefdescription>
+<para>A standalone continuation byte (<computeroutput>0x80</computeroutput>-<computeroutput>0xBF</computeroutput>) without a valid start byte. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84" prot="public">
+          <name>Overlong2ByteSequence</name>
+          <briefdescription>
+<para>A two-byte sequence that encodes a value representable in one byte. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6" prot="public">
+          <name>Truncated2ByteSequence</name>
+          <briefdescription>
+<para>A two-byte sequence whose continuation byte is missing. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918" prot="public">
+          <name>InvalidContinuationByteIn2ByteSequence</name>
+          <briefdescription>
+<para>A two-byte sequence followed by a non-continuation byte. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0" prot="public">
+          <name>Overlong3ByteSequence</name>
+          <briefdescription>
+<para>A three-byte sequence that uses more bytes than required for the code-point. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee" prot="public">
+          <name>Truncated3ByteSequence</name>
+          <briefdescription>
+<para>A three-byte sequence with one or more missing continuation bytes. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820" prot="public">
+          <name>InvalidContinuationByteIn3ByteSequence</name>
+          <briefdescription>
+<para>A three-byte sequence containing an invalid continuation byte. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2" prot="public">
+          <name>SurrogateCodePoint</name>
+          <briefdescription>
+<para>A UTF-8 sequence that decodes to a UTF-16 surrogate code-point. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a" prot="public">
+          <name>Overlong4ByteSequence</name>
+          <briefdescription>
+<para>A four-byte sequence that over-encodes a smaller code-point. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1" prot="public">
+          <name>Truncated4ByteSequence</name>
+          <briefdescription>
+<para>A four-byte sequence with one or more missing continuation bytes. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26" prot="public">
+          <name>InvalidContinuationByteIn4ByteSequence</name>
+          <briefdescription>
+<para>A four-byte sequence containing an invalid continuation byte. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4" prot="public">
+          <name>CodePointBeyondUnicodeRange</name>
+          <briefdescription>
+<para>A UTF-8 sequence that decodes to a code-point above <computeroutput>U+10FFFF</computeroutput>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c" prot="public">
+          <name>InvalidStartByte</name>
+          <briefdescription>
+<para>A byte that cannot start a valid UTF-8 sequence. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ad69186af02738a9b3ced1bc5b652ba55" prot="public">
+          <name>_count</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>All supported malformed UTF-8 sequence categories for <computeroutput><ref refid="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f" kindref="member">invalidUtf8()</ref></computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.hpp" line="31" column="1" bodyfile="erbsland/unittest/TextHelper.hpp" bodystart="31" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceerbsland_1_1unittest_1_1th_1a239fa9bbf00e31ab4a839c2e51a23341" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto erbsland::unittest::th::allUtf8Errors</definition>
+        <argsstring></argsstring>
+        <name>allUtf8Errors</name>
+        <qualifiedname>erbsland::unittest::th::allUtf8Errors</qualifiedname>
+        <initializer>= std::array&lt;<ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref>, static_cast&lt;std::size_t&gt;(Utf8Error::_count)&gt;{
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d" kindref="member">Utf8Error::UnexpectedContinuationByte</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84" kindref="member">Utf8Error::Overlong2ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6" kindref="member">Utf8Error::Truncated2ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918" kindref="member">Utf8Error::InvalidContinuationByteIn2ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0" kindref="member">Utf8Error::Overlong3ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee" kindref="member">Utf8Error::Truncated3ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820" kindref="member">Utf8Error::InvalidContinuationByteIn3ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2" kindref="member">Utf8Error::SurrogateCodePoint</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a" kindref="member">Utf8Error::Overlong4ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1" kindref="member">Utf8Error::Truncated4ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26" kindref="member">Utf8Error::InvalidContinuationByteIn4ByteSequence</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4" kindref="member">Utf8Error::CodePointBeyondUnicodeRange</ref>,
+    <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c" kindref="member">Utf8Error::InvalidStartByte</ref>,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A list of all malformed UTF-8 categories supported by <computeroutput><ref refid="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f" kindref="member">invalidUtf8()</ref></computeroutput>.</para>
+<para>This constant is convenient for parameterized tests that verify UTF-8 validation or error reporting against every malformed sequence generator provided by this API. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.hpp" line="53" column="16" bodyfile="erbsland/unittest/TextHelper.hpp" bodystart="53" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::characterCount</definition>
+        <argsstring>(const std::string_view text) noexcept -&gt; std::size_t</argsstring>
+        <name>characterCount</name>
+        <qualifiedname>erbsland::unittest::th::characterCount</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the code-point count for UTF-8 encoded text. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UTF-8 encoded text to count the code-points for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of code-points in the UTF-8 encoded text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="12" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="12" bodyend="14" declfile="erbsland/unittest/TextHelper.hpp" declline="72" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1ae408f382d0e9df169c1409b4a8d0fa3c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::characterCount</definition>
+        <argsstring>(std::u8string_view text) noexcept -&gt; std::size_t</argsstring>
+        <name>characterCount</name>
+        <qualifiedname>erbsland::unittest::th::characterCount</qualifiedname>
+        <param>
+          <type>const std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="16" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="16" bodyend="18" declfile="erbsland/unittest/TextHelper.hpp" declline="74" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1adab37cc52ec412e5b907f779e34952f0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::characterCount</definition>
+        <argsstring>(std::u16string_view text) noexcept -&gt; std::size_t</argsstring>
+        <name>characterCount</name>
+        <qualifiedname>erbsland::unittest::th::characterCount</qualifiedname>
+        <param>
+          <type>const std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="20" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="20" bodyend="22" declfile="erbsland/unittest/TextHelper.hpp" declline="76" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a48e64b925fd74b6e0b5c548798818d67" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::characterCount</definition>
+        <argsstring>(std::u32string_view text) noexcept -&gt; std::size_t</argsstring>
+        <name>characterCount</name>
+        <qualifiedname>erbsland::unittest::th::characterCount</qualifiedname>
+        <param>
+          <type>const std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="24" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="24" bodyend="26" declfile="erbsland/unittest/TextHelper.hpp" declline="78" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1aca908c3f00a21519e8c8f630786075dd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::characterCount</definition>
+        <argsstring>(std::wstring_view text) noexcept -&gt; std::size_t</argsstring>
+        <name>characterCount</name>
+        <qualifiedname>erbsland::unittest::th::characterCount</qualifiedname>
+        <param>
+          <type>const std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="28" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="28" bodyend="30" declfile="erbsland/unittest/TextHelper.hpp" declline="80" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toConsoleSafeString</definition>
+        <argsstring>(const std::string_view text, const std::size_t maxLength) noexcept -&gt; std::string</argsstring>
+        <name>toConsoleSafeString</name>
+        <qualifiedname>erbsland::unittest::th::toConsoleSafeString</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create text that is safe for console output from UTF-8 encoded input.</para>
+<para>This call scans the UTF-8 encoded text for any invalid UTF-8 sequences and replaces the invalid bytes with escape sequences &quot;\x&lt;XX&gt;&quot;. Valid UTF-8 sequences are preserved, but all code-points &gt;=0x80 are escaped as &quot;\u{&lt;XXXX&gt;}&quot; and control codes are escaped as &quot;\x&lt;XX&gt;&quot; or as &quot;\n&quot;, &quot;\r&quot;, &quot;\t&quot;. Any backslash and double quote are escaped as &quot;\\&quot; or &quot;"&quot;.
+
+If the string contains spaces, double quotes, or escape sequences - it is automatically enclosed in quotes.
+
+@param text The UTF-8 encoded text to convert to console safe text.
+@param maxLength The maximum length of the returned string. If the text is longer, it will be truncated
+   and the text &quot;(... +&lt;count&gt; more)" will be added to at the end. This maximum is for the processed text, containing the escape sequences. <simplesect kind="return"><para>The console safe text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="32" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="32" bodyend="34" declfile="erbsland/unittest/TextHelper.hpp" declline="96" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a4849e7b9d6311fc2a5d327b722cbf3bb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toConsoleSafeString</definition>
+        <argsstring>(std::u8string_view text, std::size_t maxLength) noexcept -&gt; std::string</argsstring>
+        <name>toConsoleSafeString</name>
+        <qualifiedname>erbsland::unittest::th::toConsoleSafeString</qualifiedname>
+        <param>
+          <type>const std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const std::size_t</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="36" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="36" bodyend="38" declfile="erbsland/unittest/TextHelper.hpp" declline="98" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a84007707c31a012187ad45f4619ea73b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toConsoleSafeString</definition>
+        <argsstring>(std::u16string_view text, std::size_t maxLength) noexcept -&gt; std::string</argsstring>
+        <name>toConsoleSafeString</name>
+        <qualifiedname>erbsland::unittest::th::toConsoleSafeString</qualifiedname>
+        <param>
+          <type>const std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const std::size_t</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="40" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="40" bodyend="42" declfile="erbsland/unittest/TextHelper.hpp" declline="100" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a97ecbff878006ecdbacd8e2e354f67dc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toConsoleSafeString</definition>
+        <argsstring>(std::u32string_view text, std::size_t maxLength) noexcept -&gt; std::string</argsstring>
+        <name>toConsoleSafeString</name>
+        <qualifiedname>erbsland::unittest::th::toConsoleSafeString</qualifiedname>
+        <param>
+          <type>const std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const std::size_t</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="44" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="44" bodyend="46" declfile="erbsland/unittest/TextHelper.hpp" declline="102" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a53635ad8db1d41a82b15fafccf48517f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toConsoleSafeString</definition>
+        <argsstring>(std::wstring_view text, std::size_t maxLength) noexcept -&gt; std::string</argsstring>
+        <name>toConsoleSafeString</name>
+        <qualifiedname>erbsland::unittest::th::toConsoleSafeString</qualifiedname>
+        <param>
+          <type>const std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const std::size_t</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="48" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="48" bodyend="50" declfile="erbsland/unittest/TextHelper.hpp" declline="104" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdString</definition>
+        <argsstring>(std::string_view text) -&gt; std::string</argsstring>
+        <name>toStdString</name>
+        <qualifiedname>erbsland::unittest::th::toStdString</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string into a UTF-8 encoded <computeroutput>std::string</computeroutput>.</para>
+<para><computeroutput>std::string_view</computeroutput> and <computeroutput>std::u8string_view</computeroutput> are copied byte-for-byte. <computeroutput>std::u16string_view</computeroutput>, <computeroutput>std::u32string_view</computeroutput> and <computeroutput>std::wstring_view</computeroutput> are transcoded to UTF-8. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="52" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="52" bodyend="54" declfile="erbsland/unittest/TextHelper.hpp" declline="110" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1af9d466e64c839abd27dfe1e9205d28ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdString</definition>
+        <argsstring>(std::u8string_view text) -&gt; std::string</argsstring>
+        <name>toStdString</name>
+        <qualifiedname>erbsland::unittest::th::toStdString</qualifiedname>
+        <param>
+          <type>std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="56" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="56" bodyend="58" declfile="erbsland/unittest/TextHelper.hpp" declline="112" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a640357c9ef2e4ff6a386659a139eafd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdString</definition>
+        <argsstring>(std::u16string_view text) -&gt; std::string</argsstring>
+        <name>toStdString</name>
+        <qualifiedname>erbsland::unittest::th::toStdString</qualifiedname>
+        <param>
+          <type>std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="60" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="60" bodyend="62" declfile="erbsland/unittest/TextHelper.hpp" declline="114" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1ade349d3f812132c0baca4cf99e938ac1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdString</definition>
+        <argsstring>(std::u32string_view text) -&gt; std::string</argsstring>
+        <name>toStdString</name>
+        <qualifiedname>erbsland::unittest::th::toStdString</qualifiedname>
+        <param>
+          <type>std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="64" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="64" bodyend="66" declfile="erbsland/unittest/TextHelper.hpp" declline="116" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a2771c8e9d3f4be5706efa38f8a943a86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdString</definition>
+        <argsstring>(std::wstring_view text) -&gt; std::string</argsstring>
+        <name>toStdString</name>
+        <qualifiedname>erbsland::unittest::th::toStdString</qualifiedname>
+        <param>
+          <type>std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="68" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="68" bodyend="70" declfile="erbsland/unittest/TextHelper.hpp" declline="118" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdU32String</definition>
+        <argsstring>(const std::string_view text) -&gt; std::u32string</argsstring>
+        <name>toStdU32String</name>
+        <qualifiedname>erbsland::unittest::th::toStdU32String</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string into a UTF-32 encoded <computeroutput>std::u32string</computeroutput>.</para>
+<para><computeroutput>std::u32string_view</computeroutput> is copied unmodified. All other string views are decoded according to their encoding and converted to UTF-32 code-points. Invalid UTF-8 input is replaced with the Unicode replacement character (<computeroutput>U+FFFD</computeroutput>). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="72" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="72" bodyend="74" declfile="erbsland/unittest/TextHelper.hpp" declline="125" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a16bf4cc6b59c723fdf7a5045113f1475" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdU32String</definition>
+        <argsstring>(std::u8string_view text) -&gt; std::u32string</argsstring>
+        <name>toStdU32String</name>
+        <qualifiedname>erbsland::unittest::th::toStdU32String</qualifiedname>
+        <param>
+          <type>const std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="76" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="76" bodyend="78" declfile="erbsland/unittest/TextHelper.hpp" declline="127" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a0c3986cd0f37b959cfccc5f94967e8f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdU32String</definition>
+        <argsstring>(std::u16string_view text) -&gt; std::u32string</argsstring>
+        <name>toStdU32String</name>
+        <qualifiedname>erbsland::unittest::th::toStdU32String</qualifiedname>
+        <param>
+          <type>const std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="80" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="80" bodyend="82" declfile="erbsland/unittest/TextHelper.hpp" declline="129" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a8f62bdda87e443bd0c9434582e7410c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdU32String</definition>
+        <argsstring>(std::u32string_view text) -&gt; std::u32string</argsstring>
+        <name>toStdU32String</name>
+        <qualifiedname>erbsland::unittest::th::toStdU32String</qualifiedname>
+        <param>
+          <type>const std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="84" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="84" bodyend="86" declfile="erbsland/unittest/TextHelper.hpp" declline="131" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a983f3e4b9322637f056e0aa10fd7d357" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::toStdU32String</definition>
+        <argsstring>(std::wstring_view text) -&gt; std::u32string</argsstring>
+        <name>toStdU32String</name>
+        <qualifiedname>erbsland::unittest::th::toStdU32String</qualifiedname>
+        <param>
+          <type>const std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="88" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="88" bodyend="90" declfile="erbsland/unittest/TextHelper.hpp" declline="133" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a4c9e4e2bc4441e9ab4824fc2e112b6af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::stdStringFromHex</definition>
+        <argsstring>(const std::string_view hexString) -&gt; std::string</argsstring>
+        <name>stdStringFromHex</name>
+        <qualifiedname>erbsland::unittest::th::stdStringFromHex</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse a hexadecimal byte string into a <computeroutput>std::string</computeroutput>.</para>
+<para>Spaces are allowed only between complete byte groups, not inside them. Examples: <computeroutput>&quot;0102c8&quot;</computeroutput> or <computeroutput>&quot;01 02 A1&quot;</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The hexadecimal string to parse. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The decoded string. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::logic_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the format is invalid. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="92" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="92" bodyend="94" declfile="erbsland/unittest/TextHelper.hpp" declline="143" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a1f1421f992c112e77cb8c1fa3c9457c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::stdU8StringFromHex</definition>
+        <argsstring>(const std::string_view hexString) -&gt; std::u8string</argsstring>
+        <name>stdU8StringFromHex</name>
+        <qualifiedname>erbsland::unittest::th::stdU8StringFromHex</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses two hexadecimal digits per element into a <computeroutput>std::u8string</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="96" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="96" bodyend="98" declfile="erbsland/unittest/TextHelper.hpp" declline="146" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1acfbb7914422f766c80af731f6ccc8a83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::stdU16StringFromHex</definition>
+        <argsstring>(const std::string_view hexString) -&gt; std::u16string</argsstring>
+        <name>stdU16StringFromHex</name>
+        <qualifiedname>erbsland::unittest::th::stdU16StringFromHex</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses four hexadecimal digits per element into a <computeroutput>std::u16string</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="100" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="100" bodyend="102" declfile="erbsland/unittest/TextHelper.hpp" declline="149" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a08a480726e54b54399311b034aad29ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::stdU32StringFromHex</definition>
+        <argsstring>(const std::string_view hexString) -&gt; std::u32string</argsstring>
+        <name>stdU32StringFromHex</name>
+        <qualifiedname>erbsland::unittest::th::stdU32StringFromHex</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses eight hexadecimal digits per element into a <computeroutput>std::u32string</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="104" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="104" bodyend="106" declfile="erbsland/unittest/TextHelper.hpp" declline="152" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1aebda3fcf40abf6afcbc5037880697555" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::stdWStringFromHex</definition>
+        <argsstring>(const std::string_view hexString) -&gt; std::wstring</argsstring>
+        <name>stdWStringFromHex</name>
+        <qualifiedname>erbsland::unittest::th::stdWStringFromHex</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses one <computeroutput>wchar_t</computeroutput> value per element using <computeroutput>sizeof(wchar_t) * 2</computeroutput> hexadecimal digits. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="108" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="108" bodyend="110" declfile="erbsland/unittest/TextHelper.hpp" declline="155" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a0f91d0619639c08a5d2ff8800bfbf3ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::appendInvalidUtf8Sequence</definition>
+        <argsstring>(std::string &amp;result, const Utf8Error error) -&gt; void</argsstring>
+        <name>appendInvalidUtf8Sequence</name>
+        <qualifiedname>erbsland::unittest::th::appendInvalidUtf8Sequence</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="112" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="112" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::invalidUtf8</definition>
+        <argsstring>(const Utf8Error error, const std::optional&lt; std::string_view &gt; &amp;prefix, const std::optional&lt; std::string_view &gt; &amp;suffix) -&gt; std::string</argsstring>
+        <name>invalidUtf8</name>
+        <qualifiedname>erbsland::unittest::th::invalidUtf8</qualifiedname>
+        <param>
+          <type><ref refid="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20" kindref="member">Utf8Error</ref></type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; std::string_view &gt; &amp;</type>
+          <declname>prefix</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>const std::optional&lt; std::string_view &gt; &amp;</type>
+          <declname>suffix</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a malformed UTF-8 byte sequence, optionally wrapped with valid prefix and suffix text.</para>
+<para>This helper is intended for UTF-8 decoder and validator tests. The generated malformed sequence is inserted between the optional prefix and suffix without modifying those surrounding bytes.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The malformed UTF-8 error kind to generate. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prefix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional valid UTF-8 bytes to prepend. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>suffix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional valid UTF-8 bytes to append. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string containing the malformed UTF-8 sequence. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="178" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="178" bodyend="192" declfile="erbsland/unittest/TextHelper.hpp" declline="166" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLineViews</definition>
+        <argsstring>(const std::string_view text) -&gt; std::vector&lt; std::string_view &gt;</argsstring>
+        <name>splitLineViews</name>
+        <qualifiedname>erbsland::unittest::th::splitLineViews</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Split a string into individual lines without copying the line contents.</para>
+<para>This function returns string views into the original input and therefore does not allocate storage for the individual line contents. The original text must stay alive and unchanged while the returned views are used. Lines are split at newline characters (<computeroutput>\n</computeroutput>), and the resulting views do not include the newline characters. A trailing newline does not produce an additional empty line at the end.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to split into lines. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of string views, each representing a line from the input text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="194" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="194" bodyend="196" declfile="erbsland/unittest/TextHelper.hpp" declline="180" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a5b55c38accc4fe23b38736e602fbdf9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLineViews</definition>
+        <argsstring>(std::u8string_view text) -&gt; std::vector&lt; std::u8string_view &gt;</argsstring>
+        <name>splitLineViews</name>
+        <qualifiedname>erbsland::unittest::th::splitLineViews</qualifiedname>
+        <param>
+          <type>const std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="198" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="198" bodyend="200" declfile="erbsland/unittest/TextHelper.hpp" declline="182" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a023555b76e44c19e05c89ab0bd4ed44b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLineViews</definition>
+        <argsstring>(std::u16string_view text) -&gt; std::vector&lt; std::u16string_view &gt;</argsstring>
+        <name>splitLineViews</name>
+        <qualifiedname>erbsland::unittest::th::splitLineViews</qualifiedname>
+        <param>
+          <type>const std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="202" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="202" bodyend="204" declfile="erbsland/unittest/TextHelper.hpp" declline="184" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1ad93aa79b2ad2a23b78dc26964e90c9a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLineViews</definition>
+        <argsstring>(std::u32string_view text) -&gt; std::vector&lt; std::u32string_view &gt;</argsstring>
+        <name>splitLineViews</name>
+        <qualifiedname>erbsland::unittest::th::splitLineViews</qualifiedname>
+        <param>
+          <type>const std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="206" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="206" bodyend="208" declfile="erbsland/unittest/TextHelper.hpp" declline="186" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1af02b17e5d6f12a14991c2268096d9d45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLineViews</definition>
+        <argsstring>(std::wstring_view text) -&gt; std::vector&lt; std::wstring_view &gt;</argsstring>
+        <name>splitLineViews</name>
+        <qualifiedname>erbsland::unittest::th::splitLineViews</qualifiedname>
+        <param>
+          <type>const std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="210" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="210" bodyend="212" declfile="erbsland/unittest/TextHelper.hpp" declline="188" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLines</definition>
+        <argsstring>(const std::string_view text) -&gt; std::vector&lt; std::string &gt;</argsstring>
+        <name>splitLines</name>
+        <qualifiedname>erbsland::unittest::th::splitLines</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Split a string into individual lines and return owned strings for each line.</para>
+<para>Lines are split at newline characters (<computeroutput>\n</computeroutput>), and the resulting strings do not include the newline characters. A trailing newline does not produce an additional empty line at the end.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to split into lines. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing one string per line from the input text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="214" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="214" bodyend="216" declfile="erbsland/unittest/TextHelper.hpp" declline="197" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1abd5db59513b9f14e1524aacfab125e01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLines</definition>
+        <argsstring>(std::u8string_view text) -&gt; std::vector&lt; std::u8string &gt;</argsstring>
+        <name>splitLines</name>
+        <qualifiedname>erbsland::unittest::th::splitLines</qualifiedname>
+        <param>
+          <type>const std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="218" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="218" bodyend="220" declfile="erbsland/unittest/TextHelper.hpp" declline="199" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a0579ab86c54fc0429e71835a87d18fce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLines</definition>
+        <argsstring>(std::u16string_view text) -&gt; std::vector&lt; std::u16string &gt;</argsstring>
+        <name>splitLines</name>
+        <qualifiedname>erbsland::unittest::th::splitLines</qualifiedname>
+        <param>
+          <type>const std::u16string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="222" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="222" bodyend="224" declfile="erbsland/unittest/TextHelper.hpp" declline="201" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1aacfc1ba7cc2b462d9ec1c597575d08f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLines</definition>
+        <argsstring>(std::u32string_view text) -&gt; std::vector&lt; std::u32string &gt;</argsstring>
+        <name>splitLines</name>
+        <qualifiedname>erbsland::unittest::th::splitLines</qualifiedname>
+        <param>
+          <type>const std::u32string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="226" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="226" bodyend="228" declfile="erbsland/unittest/TextHelper.hpp" declline="203" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1aa254e01da961d417c98d16572a23bd42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto erbsland::unittest::th::splitLines</definition>
+        <argsstring>(std::wstring_view text) -&gt; std::vector&lt; std::wstring &gt;</argsstring>
+        <name>splitLines</name>
+        <qualifiedname>erbsland::unittest::th::splitLines</qualifiedname>
+        <param>
+          <type>const std::wstring_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="230" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="230" bodyend="232" declfile="erbsland/unittest/TextHelper.hpp" declline="205" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::th::requireValidUtf8</definition>
+        <argsstring>(UnitTest &amp;test, const std::string_view text)</argsstring>
+        <name>requireValidUtf8</name>
+        <qualifiedname>erbsland::unittest::th::requireValidUtf8</qualifiedname>
+        <param>
+          <type><ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>test</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test if the given string contains valid UTF-8 text.</para>
+<para>This helper validates both the byte-level UTF-8 encoding and the decoded Unicode scalar values. Inputs containing malformed byte sequences, surrogate code-points, or code-points outside the Unicode range fail the current test with a diagnostic that includes the offending byte position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The active test instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to validate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="234" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="234" bodyend="246" declfile="erbsland/unittest/TextHelper.hpp" declline="268" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1af51332d304746d97a1f6516356308257" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void erbsland::unittest::th::requireValidUtf8</definition>
+        <argsstring>(UnitTest &amp;test, const std::u8string_view text)</argsstring>
+        <name>requireValidUtf8</name>
+        <qualifiedname>erbsland::unittest::th::requireValidUtf8</qualifiedname>
+        <param>
+          <type><ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>test</declname>
+        </param>
+        <param>
+          <type>std::u8string_view</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The active test instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UTF-8 text to validate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.cpp" line="248" column="6" bodyfile="erbsland/unittest/TextHelper.cpp" bodystart="248" bodyend="260" declfile="erbsland/unittest/TextHelper.hpp" declline="272" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceerbsland_1_1unittest_1_1th_1afe4b4f2961e25245f43d5475f5b312ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename tActual</type>
+          </param>
+          <param>
+            <type>typename tExpected</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void erbsland::unittest::th::requireEqualLines</definition>
+        <argsstring>(UnitTest &amp;test, const tActual &amp;actual, const tExpected &amp;expected)</argsstring>
+        <name>requireEqualLines</name>
+        <qualifiedname>erbsland::unittest::th::requireEqualLines</qualifiedname>
+        <param>
+          <type><ref refid="classerbsland_1_1unittest_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>test</declname>
+        </param>
+        <param>
+          <type>const tActual &amp;</type>
+          <declname>actual</declname>
+        </param>
+        <param>
+          <type>const tExpected &amp;</type>
+          <declname>expected</declname>
+        </param>
+    <requiresclause>std::ranges::range&lt;tActual&gt; &amp;&amp; std::ranges::range&lt;tExpected&gt;    </requiresclause>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compare a container with lines, against a container with line patterns.</para>
+<para>Common usage: <computeroutput> void testLines() { // ... std::vector&lt;std::string&gt; actual = //... from test auto expected = std::vector&lt;std::string&gt;{ &quot;the first line&quot;, &quot;a second line&quot;}; REQUIRE_EQUAL_LINES(actual, expected); } </computeroutput></para>
+<para>Each line on the expected side can contain <emphasis>one</emphasis> optional asterisk (*) character, that matches any number of characters at this location. The expected line can also contain any number of question mark (?) characters that match exactly one character at this location.</para>
+<para>If the number of lines differs, or if at least one line does not match, the test fails and reports a side-by-side comparison of the actual and expected lines.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>tActual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A range type that provides <computeroutput>size()</computeroutput>, <computeroutput>begin()</computeroutput>, <computeroutput>end()</computeroutput>, and string-like line values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tExpected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A range type that provides <computeroutput>size()</computeroutput>, <computeroutput>begin()</computeroutput>, <computeroutput>end()</computeroutput>, and pattern line values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The active test instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The produced lines from the test. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The expected lines or line patterns. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="erbsland/unittest/TextHelper.hpp" line="235" column="6" bodyfile="erbsland/unittest/TextHelper.hpp" bodystart="235" bodyend="249"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Namespace for text helpers.</para>
+<para>These text helper functions are mainly provided for handling diagnostic output and validating text in unit tests. They are designed to be robust but can be inefficient, as they internally convert the text to UTF-8 for processing, which can be costly for large strings.</para>
+<para>For performance critical hot-paths in your tests, please use a custom implementation that avoids the UTF-8 conversion. </para>
+    </detaileddescription>
+    <location file="erbsland/unittest/TextHelper.cpp" line="9" column="1"/>
+  </compounddef>
+</doxygen>

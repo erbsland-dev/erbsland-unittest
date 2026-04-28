@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Helpers &mdash; Erbsland Unittest 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Namespaces" href="namespaces.html" />
+    <link rel="prev" title="File Helpers" href="file-helpers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Erbsland Unittest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure-and-naming.html">Structure and Naming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the-unittest-class.html">The <span class="cpp-expr sig sig-inline cpp"><span class="n">UnitTest</span></span> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-helpers.html">File Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-helpers.html">Text Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake-integration.html">CMake Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../macros-for-tests.html">Macros for Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command-line-options.html">Command Line Options for the Unit Test Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-usages.html">Advanced Usages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github-integration.html">GitHub Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">Bug Reports and Feature Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../goals.html">Goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes-reference.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macros-reference.html">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-helpers.html">File Helpers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Text Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2thE"><code class="docutils literal notranslate"><span class="pre">erbsland::unittest::th</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE"><code class="docutils literal notranslate"><span class="pre">Utf8Error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14characterCountEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">characterCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">characterCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt14u16string_viewE"><code class="docutils literal notranslate"><span class="pre">characterCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt14u32string_viewE"><code class="docutils literal notranslate"><span class="pre">characterCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt12wstring_viewE"><code class="docutils literal notranslate"><span class="pre">characterCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE"><code class="docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt13u8string_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u16string_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u32string_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt12wstring_viewENSt6size_tE"><code class="docutils literal notranslate"><span class="pre">toConsoleSafeString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt14u16string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt14u32string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt12wstring_viewE"><code class="docutils literal notranslate"><span class="pre">toStdString()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u16string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u32string_viewE"><code class="docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt12wstring_viewE"><code class="docutils literal notranslate"><span class="pre">toStdU32String()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">stdStringFromHex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">stdU8StringFromHex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">stdU16StringFromHex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">stdU32StringFromHex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">stdWStringFromHex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th25appendInvalidUtf8SequenceERNSt6stringEK9Utf8Error"><code class="docutils literal notranslate"><span class="pre">appendInvalidUtf8Sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE"><code class="docutils literal notranslate"><span class="pre">invalidUtf8()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u16string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u32string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt12wstring_viewE"><code class="docutils literal notranslate"><span class="pre">splitLineViews()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th10splitLinesEKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt14u16string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt14u32string_viewE"><code class="docutils literal notranslate"><span class="pre">splitLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt12wstring_viewE"><code class="docutils literal notranslate"><span class="pre">splitLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE"><code class="docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt13u8string_viewE"><code class="docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected"><code class="docutils literal notranslate"><span class="pre">requireEqualLines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE"><code class="docutils literal notranslate"><span class="pre">allUtf8Errors</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#related-macros">Related Macros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.REQUIRE_EQUAL_LINES"><code class="docutils literal notranslate"><span class="pre">REQUIRE_EQUAL_LINES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.REQUIRE_VALID_UTF8"><code class="docutils literal notranslate"><span class="pre">REQUIRE_VALID_UTF8</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Erbsland Unittest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Reference</a></li>
+      <li class="breadcrumb-item active">Text Helpers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/chapters/reference/text-helpers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="text-helpers">
+<span id="index-0"></span><h1>Text Helpers<a class="headerlink" href="#text-helpers" title="Link to this heading"></a></h1>
+<p>The text helper API lives in the <a class="reference internal" href="#_CPPv4N8erbsland8unittest2thE" title="erbsland::unittest::th"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">erbsland::unittest::th</span></code></a> namespace and provides small utilities for
+working with encoded text in tests. This includes counting Unicode code-points, converting between string
+encodings, generating malformed UTF-8 for validation tests, splitting text into lines, and validating or
+comparing text output.</p>
+<p>The namespace reference below lists all currently available helpers, including the <a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Utf8Error</span></code></a> enum and the <a class="reference internal" href="#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE" title="erbsland::unittest::th::allUtf8Errors"><code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">allUtf8Errors</span></code></a> convenience constant.</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2thE">
+<span id="_CPPv3N8erbsland8unittest2thE"></span><span id="_CPPv2N8erbsland8unittest2thE"></span><span id="erbsland::unittest::th"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">th</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2thE" title="Link to this definition"></a><br /></dt>
+<dd><p>Namespace for text helpers.</p>
+<p>These text helper functions are mainly provided for handling diagnostic output and validating text in unit tests. They are designed to be robust but can be inefficient, as they internally convert the text to UTF-8 for processing, which can be costly for large strings.</p>
+<p>For performance critical hot-paths in your tests, please use a custom implementation that avoids the UTF-8 conversion. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8ErrorE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8ErrorE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8ErrorE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Utf8Error</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="Link to this definition"></a><br /></dt>
+<dd><p>All supported malformed UTF-8 sequence categories for <code class="docutils literal notranslate"><a class="reference internal" href="#namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f"><span class="std std-ref"><span class="pre">invalidUtf8()</span></span></a></code>. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a83538ee17346d2198c69a49ba901932d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnexpectedContinuationByte</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE" title="Link to this definition"></a><br /></dt>
+<dd><p>A standalone continuation byte (<code class="docutils literal notranslate"><span class="pre">0x80</span></code>-<code class="docutils literal notranslate"><span class="pre">0xBF</span></code>) without a valid start byte. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a421d4d1d4265508cbf7d75a630793a84"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Overlong2ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A two-byte sequence that encodes a value representable in one byte. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a167516a678c0e5a12c1da20d532b98e6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Truncated2ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A two-byte sequence whose continuation byte is missing. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ae0e3de63253dc61b434487b2464cb918"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidContinuationByteIn2ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A two-byte sequence followed by a non-continuation byte. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3e7788c9e9e108a1c4d7429721baf1a0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Overlong3ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A three-byte sequence that uses more bytes than required for the code-point. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a37b7490d04a44172f08d44d0209b9cee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Truncated3ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A three-byte sequence with one or more missing continuation bytes. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a0f3c9cf7b5dadfe9beed1d28605f5820"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidContinuationByteIn3ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A three-byte sequence containing an invalid continuation byte. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a66f7aed014213475bbb24a734e3fbea2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SurrogateCodePoint</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE" title="Link to this definition"></a><br /></dt>
+<dd><p>A UTF-8 sequence that decodes to a UTF-16 surrogate code-point. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a3c9045abb186fda0d5ba8cb0c424229a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Overlong4ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A four-byte sequence that over-encodes a smaller code-point. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a521bd26434385fe21707c01308973cc1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Truncated4ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A four-byte sequence with one or more missing continuation bytes. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a2369bb6fd91ade8cf9513b3f74752a26"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidContinuationByteIn4ByteSequence</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE" title="Link to this definition"></a><br /></dt>
+<dd><p>A four-byte sequence containing an invalid continuation byte. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a477c3def33be3a19890ff8d31d3818e4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CodePointBeyondUnicodeRange</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE" title="Link to this definition"></a><br /></dt>
+<dd><p>A UTF-8 sequence that decodes to a code-point above <code class="docutils literal notranslate"><span class="pre">U+10FFFF</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error16InvalidStartByteE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error16InvalidStartByteE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error16InvalidStartByteE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20a95d8b96b9aaea0f023f63631b1c7d29c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidStartByte</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error16InvalidStartByteE" title="Link to this definition"></a><br /></dt>
+<dd><p>A byte that cannot start a valid UTF-8 sequence. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th9Utf8Error6_countE">
+<span id="_CPPv3N8erbsland8unittest2th9Utf8Error6_countE"></span><span id="_CPPv2N8erbsland8unittest2th9Utf8Error6_countE"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a621844c6aa515758185e9cf7bde7ec20ad69186af02738a9b3ced1bc5b652ba55"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_count</span></span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th9Utf8Error6_countE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14characterCountEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14characterCountEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14characterCountEKNSt11string_viewE"></span><span id="erbsland::unittest::th::characterCount__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a51feef692301f5895d449a17322880a6"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">characterCount</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14characterCountEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the code-point count for UTF-8 encoded text. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – The UTF-8 encoded text to count the code-points for. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of code-points in the UTF-8 encoded text. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14characterCountENSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14characterCountENSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14characterCountENSt13u8string_viewE"></span><span id="erbsland::unittest::th::characterCount__std::u8string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1ae408f382d0e9df169c1409b4a8d0fa3c"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">characterCount</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14characterCountENSt14u16string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14characterCountENSt14u16string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14characterCountENSt14u16string_viewE"></span><span id="erbsland::unittest::th::characterCount__std::u16string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1adab37cc52ec412e5b907f779e34952f0"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">characterCount</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt14u16string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14characterCountENSt14u32string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14characterCountENSt14u32string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14characterCountENSt14u32string_viewE"></span><span id="erbsland::unittest::th::characterCount__std::u32string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a48e64b925fd74b6e0b5c548798818d67"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">characterCount</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt14u32string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14characterCountENSt12wstring_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14characterCountENSt12wstring_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14characterCountENSt12wstring_viewE"></span><span id="erbsland::unittest::th::characterCount__std::wstring_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1aca908c3f00a21519e8c8f630786075dd"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">characterCount</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14characterCountENSt12wstring_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE"></span><span id="erbsland::unittest::th::toConsoleSafeString__std::string_viewC.std::sC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a16df870d82e14dcf5bfe669edfa11b9f"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toConsoleSafeString</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maxLength</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringEKNSt11string_viewEKNSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>Create text that is safe for console output from UTF-8 encoded input.</p>
+<p><p>This call scans the UTF-8 encoded text for any invalid UTF-8 sequences and replaces the invalid bytes with escape sequences “\x&lt;XX&gt;”. Valid UTF-8 sequences are preserved, but all code-points &gt;=0x80 are escaped as “\u{&lt;XXXX&gt;}” and control codes are escaped as “\x&lt;XX&gt;” or as “\n”, “\r”, “\t”. Any backslash and double quote are escaped as “\” or “””.</p>
+<p>If the string contains spaces, double quotes, or escape sequences - it is automatically enclosed in quotes.</p>
+<p>&#64;param text The UTF-8 encoded text to convert to console safe text.</p>
+<p>&#64;param maxLength The maximum length of the returned string. If the text is longer, it will be truncated</p>
+<p>and the text “(… +&lt;count&gt; more)” will be added to at the end. This maximum is for the processed text, containing the escape sequences.</p>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The console safe text. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt13u8string_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2th19toConsoleSafeStringENSt13u8string_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2th19toConsoleSafeStringENSt13u8string_viewENSt6size_tE"></span><span id="erbsland::unittest::th::toConsoleSafeString__std::u8string_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a4849e7b9d6311fc2a5d327b722cbf3bb"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toConsoleSafeString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maxLength</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt13u8string_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u16string_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2th19toConsoleSafeStringENSt14u16string_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2th19toConsoleSafeStringENSt14u16string_viewENSt6size_tE"></span><span id="erbsland::unittest::th::toConsoleSafeString__std::u16string_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a84007707c31a012187ad45f4619ea73b"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toConsoleSafeString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maxLength</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u16string_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u32string_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2th19toConsoleSafeStringENSt14u32string_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2th19toConsoleSafeStringENSt14u32string_viewENSt6size_tE"></span><span id="erbsland::unittest::th::toConsoleSafeString__std::u32string_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a97ecbff878006ecdbacd8e2e354f67dc"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toConsoleSafeString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maxLength</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt14u32string_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt12wstring_viewENSt6size_tE">
+<span id="_CPPv3N8erbsland8unittest2th19toConsoleSafeStringENSt12wstring_viewENSt6size_tE"></span><span id="_CPPv2N8erbsland8unittest2th19toConsoleSafeStringENSt12wstring_viewENSt6size_tE"></span><span id="erbsland::unittest::th::toConsoleSafeString__std::wstring_view.std::s"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a53635ad8db1d41a82b15fafccf48517f"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toConsoleSafeString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">maxLength</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19toConsoleSafeStringENSt12wstring_viewENSt6size_tE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11toStdStringENSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th11toStdStringENSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th11toStdStringENSt11string_viewE"></span><span id="erbsland::unittest::th::toStdString__std::string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1ac8bc634f83ce50e04315dbad5a132815"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Convert a string into a UTF-8 encoded <code class="docutils literal notranslate"><span class="pre">std::string</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">std::string_view</span></code> and <code class="docutils literal notranslate"><span class="pre">std::u8string_view</span></code> are copied byte-for-byte. <code class="docutils literal notranslate"><span class="pre">std::u16string_view</span></code>, <code class="docutils literal notranslate"><span class="pre">std::u32string_view</span></code> and <code class="docutils literal notranslate"><span class="pre">std::wstring_view</span></code> are transcoded to UTF-8. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11toStdStringENSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th11toStdStringENSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th11toStdStringENSt13u8string_viewE"></span><span id="erbsland::unittest::th::toStdString__std::u8string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1af9d466e64c839abd27dfe1e9205d28ea"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11toStdStringENSt14u16string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th11toStdStringENSt14u16string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th11toStdStringENSt14u16string_viewE"></span><span id="erbsland::unittest::th::toStdString__std::u16string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a640357c9ef2e4ff6a386659a139eafd2"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt14u16string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11toStdStringENSt14u32string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th11toStdStringENSt14u32string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th11toStdStringENSt14u32string_viewE"></span><span id="erbsland::unittest::th::toStdString__std::u32string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1ade349d3f812132c0baca4cf99e938ac1"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt14u32string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11toStdStringENSt12wstring_viewE">
+<span id="_CPPv3N8erbsland8unittest2th11toStdStringENSt12wstring_viewE"></span><span id="_CPPv2N8erbsland8unittest2th11toStdStringENSt12wstring_viewE"></span><span id="erbsland::unittest::th::toStdString__std::wstring_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a2771c8e9d3f4be5706efa38f8a943a86"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdString</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11toStdStringENSt12wstring_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE"></span><span id="erbsland::unittest::th::toStdU32String__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1aa5f1f270d86ae05c1b20e45078b8fd9b"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdU32String</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Convert a string into a UTF-32 encoded <code class="docutils literal notranslate"><span class="pre">std::u32string</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">std::u32string_view</span></code> is copied unmodified. All other string views are decoded according to their encoding and converted to UTF-32 code-points. Invalid UTF-8 input is replaced with the Unicode replacement character (<code class="docutils literal notranslate"><span class="pre">U+FFFD</span></code>). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14toStdU32StringENSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14toStdU32StringENSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14toStdU32StringENSt13u8string_viewE"></span><span id="erbsland::unittest::th::toStdU32String__std::u8string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a16bf4cc6b59c723fdf7a5045113f1475"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdU32String</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u16string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14toStdU32StringENSt14u16string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14toStdU32StringENSt14u16string_viewE"></span><span id="erbsland::unittest::th::toStdU32String__std::u16string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a0c3986cd0f37b959cfccc5f94967e8f6"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdU32String</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u16string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u32string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14toStdU32StringENSt14u32string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14toStdU32StringENSt14u32string_viewE"></span><span id="erbsland::unittest::th::toStdU32String__std::u32string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a8f62bdda87e443bd0c9434582e7410c3"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdU32String</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt14u32string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14toStdU32StringENSt12wstring_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14toStdU32StringENSt12wstring_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14toStdU32StringENSt12wstring_viewE"></span><span id="erbsland::unittest::th::toStdU32String__std::wstring_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a983f3e4b9322637f056e0aa10fd7d357"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toStdU32String</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14toStdU32StringENSt12wstring_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE"></span><span id="erbsland::unittest::th::stdStringFromHex__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a4c9e4e2bc4441e9ab4824fc2e112b6af"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stdStringFromHex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hexString</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th16stdStringFromHexEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parse a hexadecimal byte string into a <code class="docutils literal notranslate"><span class="pre">std::string</span></code>.</p>
+<p>Spaces are allowed only between complete byte groups, not inside them. Examples: <code class="docutils literal notranslate"><span class="pre">&quot;0102c8&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;01</span> <span class="pre">02</span> <span class="pre">A1&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hexString</strong> – The hexadecimal string to parse. </p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">logic_error</span></span></span> – if the format is invalid. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The decoded string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE"></span><span id="erbsland::unittest::th::stdU8StringFromHex__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a1f1421f992c112e77cb8c1fa3c9457c9"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stdU8StringFromHex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hexString</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th18stdU8StringFromHexEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses two hexadecimal digits per element into a <code class="docutils literal notranslate"><span class="pre">std::u8string</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE"></span><span id="erbsland::unittest::th::stdU16StringFromHex__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1acfbb7914422f766c80af731f6ccc8a83"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stdU16StringFromHex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hexString</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19stdU16StringFromHexEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses four hexadecimal digits per element into a <code class="docutils literal notranslate"><span class="pre">std::u16string</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE"></span><span id="erbsland::unittest::th::stdU32StringFromHex__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a08a480726e54b54399311b034aad29ec"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stdU32StringFromHex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hexString</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th19stdU32StringFromHexEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses eight hexadecimal digits per element into a <code class="docutils literal notranslate"><span class="pre">std::u32string</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE"></span><span id="erbsland::unittest::th::stdWStringFromHex__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1aebda3fcf40abf6afcbc5037880697555"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stdWStringFromHex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hexString</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th17stdWStringFromHexEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Parses one <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> value per element using <code class="docutils literal notranslate"><span class="pre">sizeof(wchar_t)</span> <span class="pre">*</span> <span class="pre">2</span></code> hexadecimal digits. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th25appendInvalidUtf8SequenceERNSt6stringEK9Utf8Error">
+<span id="_CPPv3N8erbsland8unittest2th25appendInvalidUtf8SequenceERNSt6stringEK9Utf8Error"></span><span id="_CPPv2N8erbsland8unittest2th25appendInvalidUtf8SequenceERNSt6stringEK9Utf8Error"></span><span id="erbsland::unittest::th::appendInvalidUtf8Sequence__ssR.Utf8ErrorC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a0f91d0619639c08a5d2ff8800bfbf3ba"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">appendInvalidUtf8Sequence</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">result</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th25appendInvalidUtf8SequenceERNSt6stringEK9Utf8Error" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE">
+<span id="_CPPv3N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE"></span><span id="_CPPv2N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE"></span><span id="erbsland::unittest::th::invalidUtf8__Utf8ErrorC.std::optional:std::string_view:CR.std::optional:std::string_view:CR"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">invalidUtf8</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">error</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">prefix</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">suffix</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th11invalidUtf8EK9Utf8ErrorRKNSt8optionalINSt11string_viewEEERKNSt8optionalINSt11string_viewEEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Generate a malformed UTF-8 byte sequence, optionally wrapped with valid prefix and suffix text.</p>
+<p>This helper is intended for UTF-8 decoder and validator tests. The generated malformed sequence is inserted between the optional prefix and suffix without modifying those surrounding bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error</strong> – The malformed UTF-8 error kind to generate. </p></li>
+<li><p><strong>prefix</strong> – Optional valid UTF-8 bytes to prepend. </p></li>
+<li><p><strong>suffix</strong> – Optional valid UTF-8 bytes to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string containing the malformed UTF-8 sequence. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE"></span><span id="erbsland::unittest::th::splitLineViews__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a840fc9a96dc4c50aa5c28c68d1c6dbb7"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLineViews</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Split a string into individual lines without copying the line contents.</p>
+<p>This function returns string views into the original input and therefore does not allocate storage for the individual line contents. The original text must stay alive and unchanged while the returned views are used. Lines are split at newline characters (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), and the resulting views do not include the newline characters. A trailing newline does not produce an additional empty line at the end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – The text to split into lines. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A vector of string views, each representing a line from the input text. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14splitLineViewsENSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14splitLineViewsENSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14splitLineViewsENSt13u8string_viewE"></span><span id="erbsland::unittest::th::splitLineViews__std::u8string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a5b55c38accc4fe23b38736e602fbdf9a"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLineViews</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u16string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14splitLineViewsENSt14u16string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14splitLineViewsENSt14u16string_viewE"></span><span id="erbsland::unittest::th::splitLineViews__std::u16string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a023555b76e44c19e05c89ab0bd4ed44b"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLineViews</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u16string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u32string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14splitLineViewsENSt14u32string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14splitLineViewsENSt14u32string_viewE"></span><span id="erbsland::unittest::th::splitLineViews__std::u32string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1ad93aa79b2ad2a23b78dc26964e90c9a4"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLineViews</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt14u32string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th14splitLineViewsENSt12wstring_viewE">
+<span id="_CPPv3N8erbsland8unittest2th14splitLineViewsENSt12wstring_viewE"></span><span id="_CPPv2N8erbsland8unittest2th14splitLineViewsENSt12wstring_viewE"></span><span id="erbsland::unittest::th::splitLineViews__std::wstring_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1af02b17e5d6f12a14991c2268096d9d45"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLineViews</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th14splitLineViewsENSt12wstring_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th10splitLinesEKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th10splitLinesEKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th10splitLinesEKNSt11string_viewE"></span><span id="erbsland::unittest::th::splitLines__std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a9324d8e26695b1c6dfd4c4caa8be6cb7"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLines</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th10splitLinesEKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Split a string into individual lines and return owned strings for each line.</p>
+<p>Lines are split at newline characters (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), and the resulting strings do not include the newline characters. A trailing newline does not produce an additional empty line at the end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – The text to split into lines. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A vector containing one string per line from the input text. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th10splitLinesENSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th10splitLinesENSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th10splitLinesENSt13u8string_viewE"></span><span id="erbsland::unittest::th::splitLines__std::u8string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1abd5db59513b9f14e1524aacfab125e01"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLines</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th10splitLinesENSt14u16string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th10splitLinesENSt14u16string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th10splitLinesENSt14u16string_viewE"></span><span id="erbsland::unittest::th::splitLines__std::u16string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a0579ab86c54fc0429e71835a87d18fce"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLines</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u16string</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt14u16string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th10splitLinesENSt14u32string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th10splitLinesENSt14u32string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th10splitLinesENSt14u32string_viewE"></span><span id="erbsland::unittest::th::splitLines__std::u32string_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1aacfc1ba7cc2b462d9ec1c597575d08f4"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLines</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u32string</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt14u32string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th10splitLinesENSt12wstring_viewE">
+<span id="_CPPv3N8erbsland8unittest2th10splitLinesENSt12wstring_viewE"></span><span id="_CPPv2N8erbsland8unittest2th10splitLinesENSt12wstring_viewE"></span><span id="erbsland::unittest::th::splitLines__std::wstring_view"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1aa254e01da961d417c98d16572a23bd42"></span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">splitLines</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th10splitLinesENSt12wstring_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE"></span><span id="erbsland::unittest::th::requireValidUtf8__UnitTestR.std::string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a790b902cdce6040e11ef1f34858d586a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requireValidUtf8</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n"><span class="pre">UnitTest</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">test</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt11string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>Test if the given string contains valid UTF-8 text.</p>
+<p>This helper validates both the byte-level UTF-8 encoding and the decoded Unicode scalar values. Inputs containing malformed byte sequences, surrogate code-points, or code-points outside the Unicode range fail the current test with a diagnostic that includes the offending byte position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test</strong> – The active test instance. </p></li>
+<li><p><strong>text</strong> – The text to validate. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt13u8string_viewE">
+<span id="_CPPv3N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt13u8string_viewE"></span><span id="_CPPv2N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt13u8string_viewE"></span><span id="erbsland::unittest::th::requireValidUtf8__UnitTestR.std::u8string_viewC"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1af51332d304746d97a1f6516356308257"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requireValidUtf8</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n"><span class="pre">UnitTest</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">test</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">u8string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th16requireValidUtf8ER8UnitTestKNSt13u8string_viewE" title="Link to this definition"></a><br /></dt>
+<dd><p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test</strong> – The active test instance. </p></li>
+<li><p><strong>text</strong> – The UTF-8 text to validate. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected">
+<span id="_CPPv3I00EN8erbsland8unittest2th17requireEqualLinesER8UnitTestRK7tActualRK9tExpected"></span><span id="_CPPv2I00EN8erbsland8unittest2th17requireEqualLinesER8UnitTestRK7tActualRK9tExpected"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tActual</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tExpected</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1afe4b4f2961e25245f43d5475f5b312ce"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requireEqualLines</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classes-reference.html#_CPPv4N8erbsland8unittest8UnitTestE" title="erbsland::unittest::UnitTest"><span class="n"><span class="pre">UnitTest</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">test</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected" title="erbsland::unittest::th::requireEqualLines::tActual"><span class="n"><span class="pre">tActual</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">actual</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected" title="erbsland::unittest::th::requireEqualLines::tExpected"><span class="n"><span class="pre">tExpected</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">expected</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN8erbsland8unittest2th17requireEqualLinesEvR8UnitTestRK7tActualRK9tExpected" title="Link to this definition"></a><br /></dt>
+<dd><p>Compare a container with lines, against a container with line patterns.</p>
+<p>Common usage: <code class="docutils literal notranslate"> <span class="pre">void</span> <span class="pre">testLines()</span> <span class="pre">{</span> <span class="pre">//</span> <span class="pre">...</span> <span class="pre">std::vector&lt;std::string&gt;</span> <span class="pre">actual</span> <span class="pre">=</span> <span class="pre">//...</span> <span class="pre">from</span> <span class="pre">test</span> <span class="pre">auto</span> <span class="pre">expected</span> <span class="pre">=</span> <span class="pre">std::vector&lt;std::string&gt;{</span> <span class="pre">&quot;the</span> <span class="pre">first</span> <span class="pre">line&quot;,</span> <span class="pre">&quot;a</span> <span class="pre">second</span> <span class="pre">line&quot;};</span> <span class="pre">REQUIRE_EQUAL_LINES(actual,</span> <span class="pre">expected);</span> <span class="pre">}</span> </code></p>
+<p>Each line on the expected side can contain <em>one</em> optional asterisk (*) character, that matches any number of characters at this location. The expected line can also contain any number of question mark (?) characters that match exactly one character at this location.</p>
+<p>If the number of lines differs, or if at least one line does not match, the test fails and reports a side-by-side comparison of the actual and expected lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tActual</strong> – A range type that provides <code class="docutils literal notranslate"><span class="pre">size()</span></code>, <code class="docutils literal notranslate"><span class="pre">begin()</span></code>, <code class="docutils literal notranslate"><span class="pre">end()</span></code>, and string-like line values. </p></li>
+<li><p><strong>tExpected</strong> – A range type that provides <code class="docutils literal notranslate"><span class="pre">size()</span></code>, <code class="docutils literal notranslate"><span class="pre">begin()</span></code>, <code class="docutils literal notranslate"><span class="pre">end()</span></code>, and pattern line values. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>test</strong> – The active test instance. </p></li>
+<li><p><strong>actual</strong> – The produced lines from the test. </p></li>
+<li><p><strong>expected</strong> – The expected lines or line patterns. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE">
+<span id="_CPPv3N8erbsland8unittest2th13allUtf8ErrorsE"></span><span id="_CPPv2N8erbsland8unittest2th13allUtf8ErrorsE"></span><span id="erbsland::unittest::th::allUtf8Errors__auto"></span><span class="target" id="namespaceerbsland_1_1unittest_1_1th_1a239fa9bbf00e31ab4a839c2e51a23341"></span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allUtf8Errors</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">static_cast</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error6_countE" title="erbsland::unittest::th::Utf8Error::_count"><span class="n"><span class="pre">_count</span></span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">{</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error26UnexpectedContinuationByteE" title="erbsland::unittest::th::Utf8Error::UnexpectedContinuationByte"><span class="n"><span class="pre">UnexpectedContinuationByte</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong2ByteSequence"><span class="n"><span class="pre">Overlong2ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated2ByteSequence"><span class="n"><span class="pre">Truncated2ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn2ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn2ByteSequence"><span class="n"><span class="pre">InvalidContinuationByteIn2ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong3ByteSequence"><span class="n"><span class="pre">Overlong3ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated3ByteSequence"><span class="n"><span class="pre">Truncated3ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn3ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn3ByteSequence"><span class="n"><span class="pre">InvalidContinuationByteIn3ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error18SurrogateCodePointE" title="erbsland::unittest::th::Utf8Error::SurrogateCodePoint"><span class="n"><span class="pre">SurrogateCodePoint</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error21Overlong4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Overlong4ByteSequence"><span class="n"><span class="pre">Overlong4ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error22Truncated4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::Truncated4ByteSequence"><span class="n"><span class="pre">Truncated4ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error38InvalidContinuationByteIn4ByteSequenceE" title="erbsland::unittest::th::Utf8Error::InvalidContinuationByteIn4ByteSequence"><span class="n"><span class="pre">InvalidContinuationByteIn4ByteSequence</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error27CodePointBeyondUnicodeRangeE" title="erbsland::unittest::th::Utf8Error::CodePointBeyondUnicodeRange"><span class="n"><span class="pre">CodePointBeyondUnicodeRange</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8ErrorE" title="erbsland::unittest::th::Utf8Error"><span class="n"><span class="pre">Utf8Error</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8erbsland8unittest2th9Utf8Error16InvalidStartByteE" title="erbsland::unittest::th::Utf8Error::InvalidStartByte"><span class="n"><span class="pre">InvalidStartByte</span></span></a><span class="p"><span class="pre">,</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N8erbsland8unittest2th13allUtf8ErrorsE" title="Link to this definition"></a><br /></dt>
+<dd><p>A list of all malformed UTF-8 categories supported by <code class="docutils literal notranslate"><a class="reference internal" href="#namespaceerbsland_1_1unittest_1_1th_1ae0d131d675f1fbadbe4282599af2f30f"><span class="std std-ref"><span class="pre">invalidUtf8()</span></span></a></code>.</p>
+<p>This constant is convenient for parameterized tests that verify UTF-8 validation or error reporting against every malformed sequence generator provided by this API. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<section id="related-macros">
+<h2>Related Macros<a class="headerlink" href="#related-macros" title="Link to this heading"></a></h2>
+<p>The following convenience macros are declared together with the text helper API:</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_EQUAL_LINES">
+<span class="target" id="_text_helper_8hpp_1a086c9e9c335867a045890ae63e1c6c54"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_EQUAL_LINES</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">actual</span></span>, <span class="n"><span class="pre">expected</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_EQUAL_LINES" title="Link to this definition"></a><br /></dt>
+<dd><p>Convenience macro to call <code class="docutils literal notranslate"><span class="pre">requireEqualLines()</span></code> for the current test instance.</p>
+<p>The macro wraps the check in <code class="docutils literal notranslate"><span class="pre">WITH_CONTEXT(...)</span></code> so the generated side-by-side comparison becomes part of the failure context automatically. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REQUIRE_VALID_UTF8">
+<span class="target" id="_text_helper_8hpp_1a51a2867a2e6db61fd2bb4d606cb78d7a"></span><span class="sig-name descname"><span class="n"><span class="pre">REQUIRE_VALID_UTF8</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.REQUIRE_VALID_UTF8" title="Link to this definition"></a><br /></dt>
+<dd><p>Convenience macro to call <code class="docutils literal notranslate"><span class="pre">requireValidUtf8()</span></code> for the current test instance. </p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="file-helpers.html" class="btn btn-neutral float-left" title="File Helpers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="namespaces.html" class="btn btn-neutral float-right" title="Namespaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2025, Erbsland DEV.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
