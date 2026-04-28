@@ -5,6 +5,9 @@ on:
     branches: [ main, dev ]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -16,12 +19,13 @@ jobs:
       BUILD_DIR: cmake-build
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
+          persist-credentials: false
           submodules: recursive
 
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
         with:
           path: ${{ env.BUILD_DIR }}
           key: ${{ runner.os }}-cmake-${{ hashFiles('**/CMakeLists.txt') }}
