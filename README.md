@@ -1,6 +1,7 @@
 # Erbsland Unit Testing System
 
-Welcome to **Erbsland Unit Test** — a lightweight and modern unit testing framework designed specifically for C++20 and beyond. Originally created for testing Erbsland libraries and applications, this system is tailored to be **practically dependency-free**, offering developers a clean and minimalistic testing environment.
+Welcome to **Erbsland Unit Test** — a lightweight and modern unit testing framework designed specifically for C++20 and beyond.
+A system is tailored to be **practically dependency-free**, offering developers a clean and minimalistic testing environment.
 
 Compatible with any C++20-compliant compiler, this framework is perfect for those who value simplicity and control in their testing workflows.
 
@@ -56,11 +57,5 @@ Found a bug? Have a feature in mind? We value community input and encourage you 
 
 ## License
 
-Copyright © 2025 [Tobias Erbsland](https://erbsland.dev/) and [EducateIT GmbH](https://educateit.ch/)
-
-This project is licensed under the **GNU Lesser General Public License v3.0 or later** (LGPL-3.0-or-later). See the file `COPYRIGHT.md` for details.
-
-This software is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY** — without even the implied warranty of **MERCHANTABILITY** or **FITNESS FOR A PARTICULAR PURPOSE**.
-
-Learn more at: <https://www.gnu.org/licenses/>
-
+Copyright ©2026 Tobias Erbsland – https://erbsland.dev
+Licensed under the **Apache License, Version 2.0**.
