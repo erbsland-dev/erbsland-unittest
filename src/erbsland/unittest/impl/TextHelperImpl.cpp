@@ -139,15 +139,15 @@ auto toStdString(const std::u16string_view str) -> std::string {
     std::string result;
     result.reserve(str.size() * 3); // UTF-8 can use up to 3 bytes per UTF-16 code unit (4 bytes for surrogate pairs)
     for (std::size_t i = 0; i < str.size(); ++i) {
-        const char16_t unit = str[i];
+        const auto unit = str[i];
         // Check for high surrogate (0xD800-0xDBFF)
-        if (unit >= 0xD800 && unit <= 0xDBFF) {
+        if (unit >= 0xD800U && unit <= 0xDBFFU) {
             // Need a low surrogate to follow
             if (i + 1 < str.size()) {
                 const char16_t low = str[i + 1];
                 if (low >= 0xDC00 && low <= 0xDFFF) {
                     // Valid surrogate pair - decode to code point
-                    const char32_t codePoint = 0x10000 + ((unit - 0xD800) << 10) + (low - 0xDC00);
+                    const char32_t codePoint = 0x10000U + ((unit - 0xD800U) << 10) + (low - 0xDC00U);
                     appendUtf8FromCodePoint(result, codePoint);
                     ++i; // Skip the low surrogate
                     continue;
@@ -157,7 +157,7 @@ auto toStdString(const std::u16string_view str) -> std::string {
             appendUtf8FromCodePoint(result, cReplacementCharacter);
         }
         // Check for low surrogate without high surrogate (0xDC00-0xDFFF)
-        else if (unit >= 0xDC00 && unit <= 0xDFFF) {
+        else if (unit >= 0xDC00U && unit <= 0xDFFFU) {
             // Invalid - use replacement character
             appendUtf8FromCodePoint(result, cReplacementCharacter);
         } else {
@@ -186,7 +186,7 @@ auto toStdString(std::wstring_view str) -> std::string {
     }
 }
 
-auto toStdU32String(std::string_view str) -> std::u32string {
+auto toStdU32String(const std::string_view str) -> std::u32string {
     auto result = std::u32string{};
     result.reserve(str.size());
     for (std::size_t byteIndex = 0; byteIndex < str.size();) {
@@ -209,12 +209,12 @@ auto toStdU32String(std::u16string_view str) -> std::u32string {
     result.reserve(str.size());
     for (std::size_t i = 0; i < str.size(); ++i) {
         const auto unit = str[i];
-        if (unit >= 0xD800 && unit <= 0xDBFF) {
+        if (unit >= 0xD800U && unit <= 0xDBFFU) {
             if (i + 1 < str.size()) {
                 const auto low = str[i + 1];
-                if (low >= 0xDC00 && low <= 0xDFFF) {
+                if (low >= 0xDC00U && low <= 0xDFFFU) {
                     const auto codePoint =
-                        0x10000U + (static_cast<char32_t>(unit - 0xD800) << 10) + static_cast<char32_t>(low - 0xDC00);
+                        0x10000U + (static_cast<char32_t>(unit - 0xD800U) << 10) + static_cast<char32_t>(low - 0xDC00U);
                     result.push_back(codePoint);
                     ++i;
                     continue;
@@ -223,7 +223,7 @@ auto toStdU32String(std::u16string_view str) -> std::u32string {
             result.push_back(cReplacementCharacter);
             continue;
         }
-        if (unit >= 0xDC00 && unit <= 0xDFFF) {
+        if (unit >= 0xDC00U && unit <= 0xDFFFU) {
             result.push_back(cReplacementCharacter);
             continue;
         }
@@ -271,10 +271,10 @@ auto characterCount(std::u16string_view str) noexcept -> std::size_t {
     std::size_t result = 0;
     for (std::size_t i = 0; i < str.size(); ++i) {
         // Check for high surrogate (0xD800-0xDBFF)
-        if (str[i] >= 0xD800 && str[i] <= 0xDBFF) {
+        if (str[i] >= 0xD800U && str[i] <= 0xDBFFU) {
             // Need a low surrogate to follow
             if (i + 1 < str.size()) {
-                if (str[i + 1] >= 0xDC00 && str[i + 1] <= 0xDFFF) {
+                if (str[i + 1] >= 0xDC00U && str[i + 1] <= 0xDFFFU) {
                     result += 1;
                     ++i; // Skip the low surrogate
                     continue;

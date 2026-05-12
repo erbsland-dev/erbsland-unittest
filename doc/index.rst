@@ -52,6 +52,7 @@ Contents at a Glance
     chapters/feedback
     chapters/goals
     chapters/requirements
+    chapters/changelog
     chapters/license
     chapters/reference/index
 

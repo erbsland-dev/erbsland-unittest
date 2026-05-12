@@ -1,6 +1,5 @@
-# Copyright © 2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
-# According to the copyright terms specified in the file "COPYRIGHT.md".
-# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2025-2026 Tobias Erbsland - https://erbsland.dev
+# SPDX-License-Identifier: Apache-2.0
 
 cmake_minimum_required(VERSION 3.23)
 
@@ -13,9 +12,10 @@ install(TARGETS erbsland-unittest
 install(DIRECTORY include/
         DESTINATION include
 )
-install(DIRECTORY src/erbsland/unittest/
+install(DIRECTORY src/erbsland/unittest
         DESTINATION src/erbsland/unittest
-        FILES_MATCHING PATTERN "*.hpp"
+        FILES_MATCHING
+        PATTERN "*.hpp"
 )
 install(EXPORT erbsland-unittest-targets
         FILE erbsland-unittest-targets.cmake
@@ -29,7 +29,7 @@ write_basic_package_version_file(
         COMPATIBILITY SameMajorVersion
 )
 configure_package_config_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/erbsland-unittestConfig.cmake.in"
+        "${CMAKE_CURRENT_LIST_DIR}/erbsland-unittestConfig.cmake.in"
         "${CMAKE_CURRENT_BINARY_DIR}/erbsland-unittestConfig.cmake"
         INSTALL_DESTINATION lib/cmake/erbsland-unittest
 )

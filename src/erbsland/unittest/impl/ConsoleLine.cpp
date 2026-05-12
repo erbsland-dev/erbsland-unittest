@@ -34,8 +34,10 @@ void ConsoleLine::addText(
 }
 
 auto ConsoleLine::utf8Length(const std::string_view &text) noexcept -> std::size_t {
-    return std::count_if(
-        text.begin(), text.end(), [](unsigned char character) -> bool { return (character & 0xC0) != 0x80; });
+    const auto count = std::ranges::count_if(text, [](const char character) -> bool {
+        return (static_cast<uint8_t>(character) & uint8_t{0xC0U}) != uint8_t{0x80U};
+    });
+    return static_cast<std::size_t>(count);
 }
 
 auto ConsoleLine::utf8RemoveControlCharacters(const std::string_view &text) noexcept -> std::string {
@@ -43,7 +45,7 @@ auto ConsoleLine::utf8RemoveControlCharacters(const std::string_view &text) noex
     result.reserve(text.size());
     for (const auto character : text) {
         const auto asByte = static_cast<uint8_t>(character);
-        if (asByte < 0x20U || asByte == 0x7FU) {
+        if (asByte < uint8_t{0x20U} || asByte == uint8_t{0x7FU}) {
             continue;
         }
         result.push_back(character);

@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
-AlignAfterOpenBracket: AlwaysBreak
+AlignAfterOpenBracket: false
 AlignConsecutiveAssignments:
   Enabled: false
 AlignConsecutiveDeclarations: false
@@ -10,9 +10,8 @@ AlignOperands: DontAlign
 AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 1
-AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
-BinPackParameters: false
+BinPackParameters: OnePerLine
 BraceWrapping:
   AfterCaseLabel: false
   AfterClass: false
@@ -30,30 +29,38 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
+BreakAfterOpenBracketBracedList: true
+BreakAfterOpenBracketIf: true
 BreakBeforeBraces: Custom
 BreakConstructorInitializers: AfterColon
+BreakTemplateDeclarations: Yes
 ColumnLimit: 120
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '^"[^/]*"'
+  - Regex: '^"[^.][^/]+"'
     Priority: 1
-  - Regex: '^".*/.*"'
+  - Regex: '^"[^./]+/.+"'
     Priority: 2
-  - Regex: '^"\.\./.*"'
+  - Regex: '^"\.\./[^.].+"'
     Priority: 3
-  - Regex: '^<.*\.hpp>'
+  - Regex: '^"\.\./\.\./.+"'
     Priority: 4
-  - Regex: '^<[^.]*>'
+  - Regex: '^<.*\.h(pp)?>'
     Priority: 5
-  - Regex: '.*'
+  - Regex: '^<[^.]+>'
     Priority: 6
+  - Regex: '.*'
+    Priority: 7
+IncludeIsMainRegex: '(_[A-Za-z0-9_]+)?$'
 IndentGotoLabels: false
 IndentWidth: 4
 InsertNewlineAtEOF: true
-MaxEmptyLinesToKeep: 2
+MaxEmptyLinesToKeep: 1
 PackConstructorInitializers: NextLine
 SeparateDefinitionBlocks: Leave
-SortIncludes: true
+SortIncludes:
+  Enabled: true
+  IgnoreCase: true
 SpaceInEmptyParentheses: false
 SpacesInAngles: Never
 SpacesInParens: Never

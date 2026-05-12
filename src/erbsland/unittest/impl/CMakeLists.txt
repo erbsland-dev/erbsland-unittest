@@ -1,7 +1,7 @@
-﻿# Copyright (c) 2023-2026 Tobias Erbsland - https://erbsland.dev
+# Copyright (c) 2026 Tobias Erbsland - https://erbsland.dev
 # SPDX-License-Identifier: Apache-2.0
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.25)
 
 target_sources(erbsland-unittest PRIVATE
         AssertContext.cpp
@@ -39,4 +39,3 @@ target_sources(erbsland-unittest PRIVATE
         TextHelperImpl.cpp
         TextHelperImpl.hpp
 )
-

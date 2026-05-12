@@ -1,10 +1,7 @@
-# Copyright © 2025 Tobias Erbsland https://erbsland.dev/ and EducateIT GmbH https://educateit.ch
-# According to the copyright terms specified in the file "COPYRIGHT.md".
-# SPDX-License-Identifier: LGPL-3.0-or-later
-
+# Copyright (c) 2025-2026 Tobias Erbsland - https://erbsland.dev
+# SPDX-License-Identifier: Apache-2.0
 
 cmake_minimum_required(VERSION 3.23)
-
 
 if(ERBSLAND_UNITTEST_ENABLE_TESTS)
     # Add the test subdirectory.
