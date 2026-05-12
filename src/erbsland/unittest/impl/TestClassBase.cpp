@@ -3,30 +3,21 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "TestClassBase.hpp"
 
-
 namespace erbsland::unittest {
 
-
-TestClassBase::TestClassBase(MetaData metaData)
-    : _metaData{std::move(metaData)} {
+TestClassBase::TestClassBase(MetaData metaData) : _metaData{std::move(metaData)} {
 }
 
-
-auto TestClassBase::metaData() const -> const MetaData& {
+auto TestClassBase::metaData() const -> const MetaData & {
     return _metaData;
 }
 
-
-auto TestClassBase::name() const -> const std::string& {
+auto TestClassBase::name() const -> const std::string & {
     return _metaData.name();
 }
 
-
-auto TestClassBase::shortName() const -> const std::string& {
+auto TestClassBase::shortName() const -> const std::string & {
     return _metaData.shortName();
 }
 
-
 }
-
-

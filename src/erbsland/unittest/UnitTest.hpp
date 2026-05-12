@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include "FileHelper.hpp"
 
 #include "impl/AssertContext.hpp"
@@ -13,9 +12,7 @@
 
 #include <filesystem>
 
-
 namespace erbsland::unittest {
-
 
 /// The base class for all unit test suites.
 ///
@@ -89,8 +86,7 @@ public: // helper methods.
     /// @param testFn The lambda function with the tests.
     /// @param diagnoseFn Optional function to collect diagnose information.
     ///
-    void runWithContext(
-        const SourceLocation &sourceLocation,
+    void runWithContext(const SourceLocation &sourceLocation,
         const std::function<void()> &testFn,
         const std::function<std::string()> &diagnoseFn = nullptr);
 
@@ -116,6 +112,4 @@ public:
     Private p; ///< @private The private implementation
 };
 
-
 }
-

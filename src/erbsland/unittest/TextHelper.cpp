@@ -5,9 +5,7 @@
 
 #include "impl/ConsoleLine.hpp"
 
-
 namespace erbsland::unittest::th {
-
 
 auto characterCount(const std::string_view text) noexcept -> std::size_t {
     return impl::characterCount(text);
@@ -237,8 +235,7 @@ void requireValidUtf8(UnitTest &test, const std::string_view text) {
         SOURCE_LOCATION(),
         [&]() -> void { ASSERT_CONTEXT_REQUIRE_FOR_TEST(&test, "REQUIRE_VALID_UTF8", 0, validation.valid) },
         [&]() -> std::string {
-            return std::format(
-                "Invalid UTF-8 at byte {}: {}\n  Text: {}",
+            return std::format("Invalid UTF-8 at byte {}: {}\n  Text: {}",
                 validation.byteIndex,
                 validation.message,
                 ConsoleLine::utf8SafeString(text, 120U));
@@ -251,13 +248,11 @@ void requireValidUtf8(UnitTest &test, const std::u8string_view text) {
         SOURCE_LOCATION(),
         [&]() -> void { ASSERT_CONTEXT_REQUIRE_FOR_TEST(&test, "REQUIRE_VALID_UTF8", 0, validation.valid) },
         [&]() -> std::string {
-            return std::format(
-                "Invalid UTF-8 at byte {}: {}\n  Text: {}",
+            return std::format("Invalid UTF-8 at byte {}: {}\n  Text: {}",
                 validation.byteIndex,
                 validation.message,
                 ConsoleLine::utf8SafeString(impl::toStdString(text), 120U));
         });
 }
-
 
 }

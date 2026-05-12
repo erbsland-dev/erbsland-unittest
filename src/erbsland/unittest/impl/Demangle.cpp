@@ -3,17 +3,13 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "Demangle.hpp"
 
-
 #include <memory>
-
 
 #ifndef ERBSLAND_OS_WINDOWS
 #include <cxxabi.h>
 #endif
 
-
 namespace erbsland::unittest {
-
 
 auto demangleTypeName(const std::string &name) -> std::string {
 #ifdef ERBSLAND_OS_WINDOWS
@@ -32,7 +28,4 @@ auto demangleTypeName(const std::string &name) -> std::string {
 #endif
 }
 
-
 }
-
-

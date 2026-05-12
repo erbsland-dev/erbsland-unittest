@@ -3,18 +3,13 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 namespace erbsland::unittest {
-
 
 /// @internal
 /// The source location in the unittest code
-///
 struct SourceLocation {
     const char *file;
     int lineNo;
 };
 
-
 }
-

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "FileHelper.hpp"
 
-
 #include "impl/AssertFailed.hpp"
 #include "impl/Console.hpp"
 #include "impl/ConsoleColor.hpp"
@@ -12,9 +11,7 @@
 #include <format>
 #include <fstream>
 
-
 namespace erbsland::unittest::fh {
-
 
 namespace {
 
@@ -27,11 +24,9 @@ namespace {
 
 }
 
-
 auto unitTestExecutablePath() -> std::filesystem::path {
     return Controller::instance()->executablePath();
 }
-
 
 auto resolveDataPath(std::string_view relativePath) -> std::filesystem::path {
     const auto exePath = unitTestExecutablePath();
@@ -48,26 +43,19 @@ auto resolveDataPath(std::string_view relativePath) -> std::filesystem::path {
     }
 
     throwError(std::format(
-        "Could not resolve test data path: {}\nTried:\n  {}\n  {}\n",
-       relativePath,
-       path1.string(),
-       path2.string()));
+        "Could not resolve test data path: {}\nTried:\n  {}\n  {}\n", relativePath, path1.string(), path2.string()));
 }
-
 
 auto readDataText(std::string_view relativePath, std::size_t maximumSize) -> std::string {
     const auto path = resolveDataPath(relativePath);
 
     if (!std::filesystem::is_regular_file(path)) {
-        throwError(std::format(
-            "Test data path is not a regular file: {}",
-            path.string()));
+        throwError(std::format("Test data path is not a regular file: {}", path.string()));
     }
 
     const auto size = std::filesystem::file_size(path);
     if (size > maximumSize) {
-        throwError(std::format(
-            "Test data file size ({} bytes) exceeds maximum allowed size ({} bytes): {}",
+        throwError(std::format("Test data file size ({} bytes) exceeds maximum allowed size ({} bytes): {}",
             size,
             maximumSize,
             path.string()));
@@ -75,9 +63,7 @@ auto readDataText(std::string_view relativePath, std::size_t maximumSize) -> std
 
     std::ifstream file(path, std::ios::in);
     if (!file) {
-        throwError(std::format(
-            "Could not open test data file for reading: {}",
-            path.string()));
+        throwError(std::format("Could not open test data file for reading: {}", path.string()));
     }
 
     std::string content;
@@ -86,20 +72,16 @@ auto readDataText(std::string_view relativePath, std::size_t maximumSize) -> std
     return content;
 }
 
-
 auto readDataLines(std::string_view relativePath, std::size_t maximumSize) -> std::vector<std::string> {
     const auto path = resolveDataPath(relativePath);
 
     if (!std::filesystem::is_regular_file(path)) {
-        throwError(std::format(
-            "Test data path is not a regular file: {}",
-            path.string()));
+        throwError(std::format("Test data path is not a regular file: {}", path.string()));
     }
 
     const auto size = std::filesystem::file_size(path);
     if (size > maximumSize) {
-        throwError(std::format(
-            "Test data file size ({} bytes) exceeds maximum allowed size ({} bytes): {}",
+        throwError(std::format("Test data file size ({} bytes) exceeds maximum allowed size ({} bytes): {}",
             size,
             maximumSize,
             path.string()));
@@ -107,9 +89,7 @@ auto readDataLines(std::string_view relativePath, std::size_t maximumSize) -> st
 
     std::ifstream file(path, std::ios::in);
     if (!file) {
-        throwError(std::format(
-            "Could not open test data file for reading: {}",
-            path.string()));
+        throwError(std::format("Could not open test data file for reading: {}", path.string()));
     }
 
     std::vector<std::string> lines;
@@ -120,6 +100,4 @@ auto readDataLines(std::string_view relativePath, std::size_t maximumSize) -> st
     return lines;
 }
 
-
 }
-

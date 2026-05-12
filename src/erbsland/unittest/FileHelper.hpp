@@ -3,12 +3,10 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include <filesystem>
 #include <string>
 #include <string_view>
 #include <vector>
-
 
 /// Namespace for file and data helpers.
 ///
@@ -49,6 +47,5 @@ auto readDataText(std::string_view relativePath, std::size_t maximumSize = 10000
 /// @throws AssertFailed If the file cannot be found or exceeds the maximum size.
 ///
 auto readDataLines(std::string_view relativePath, std::size_t maximumSize = 10000000U) -> std::vector<std::string>;
-
 
 }

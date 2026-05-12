@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include "UnitTest.hpp"
 
 #include "impl/Macros.hpp"
@@ -15,7 +14,6 @@
 #include <string>
 #include <string_view>
 #include <vector>
-
 
 /// Namespace for text helpers.
 ///
@@ -30,18 +28,18 @@ namespace erbsland::unittest::th {
 /// All supported malformed UTF-8 sequence categories for `invalidUtf8()`.
 enum class Utf8Error : uint8_t {
     UnexpectedContinuationByte, ///< A standalone continuation byte (`0x80`-`0xBF`) without a valid start byte.
-    Overlong2ByteSequence, ///< A two-byte sequence that encodes a value representable in one byte.
-    Truncated2ByteSequence, ///< A two-byte sequence whose continuation byte is missing.
+    Overlong2ByteSequence,      ///< A two-byte sequence that encodes a value representable in one byte.
+    Truncated2ByteSequence,     ///< A two-byte sequence whose continuation byte is missing.
     InvalidContinuationByteIn2ByteSequence, ///< A two-byte sequence followed by a non-continuation byte.
-    Overlong3ByteSequence, ///< A three-byte sequence that uses more bytes than required for the code-point.
+    Overlong3ByteSequence,  ///< A three-byte sequence that uses more bytes than required for the code-point.
     Truncated3ByteSequence, ///< A three-byte sequence with one or more missing continuation bytes.
     InvalidContinuationByteIn3ByteSequence, ///< A three-byte sequence containing an invalid continuation byte.
-    SurrogateCodePoint, ///< A UTF-8 sequence that decodes to a UTF-16 surrogate code-point.
-    Overlong4ByteSequence, ///< A four-byte sequence that over-encodes a smaller code-point.
-    Truncated4ByteSequence, ///< A four-byte sequence with one or more missing continuation bytes.
+    SurrogateCodePoint,                     ///< A UTF-8 sequence that decodes to a UTF-16 surrogate code-point.
+    Overlong4ByteSequence,                  ///< A four-byte sequence that over-encodes a smaller code-point.
+    Truncated4ByteSequence,                 ///< A four-byte sequence with one or more missing continuation bytes.
     InvalidContinuationByteIn4ByteSequence, ///< A four-byte sequence containing an invalid continuation byte.
-    CodePointBeyondUnicodeRange, ///< A UTF-8 sequence that decodes to a code-point above `U+10FFFF`.
-    InvalidStartByte, ///< A byte that cannot start a valid UTF-8 sequence.
+    CodePointBeyondUnicodeRange,            ///< A UTF-8 sequence that decodes to a code-point above `U+10FFFF`.
+    InvalidStartByte,                       ///< A byte that cannot start a valid UTF-8 sequence.
 
     _count,
 };
@@ -163,8 +161,7 @@ constexpr auto allUtf8Errors = std::array<Utf8Error, static_cast<std::size_t>(Ut
 /// @param prefix Optional valid UTF-8 bytes to prepend.
 /// @param suffix Optional valid UTF-8 bytes to append.
 /// @return A string containing the malformed UTF-8 sequence.
-[[nodiscard]] auto invalidUtf8(
-    Utf8Error error,
+[[nodiscard]] auto invalidUtf8(Utf8Error error,
     const std::optional<std::string_view> &prefix = std::nullopt,
     const std::optional<std::string_view> &suffix = std::nullopt) -> std::string;
 
@@ -248,14 +245,12 @@ void requireEqualLines(UnitTest &test, const tActual &actual, const tExpected &e
         [&]() -> std::string { return impl::createSideBySideComparison(actual, expected); });
 }
 
-
 /// Convenience macro to call `requireEqualLines()` for the current test instance.
 ///
 /// The macro wraps the check in `WITH_CONTEXT(...)` so the generated side-by-side comparison becomes part of
 /// the failure context automatically.
 #define REQUIRE_EQUAL_LINES(actual, expected)                                                                          \
     WITH_CONTEXT(erbsland::unittest::th::requireEqualLines(*this, actual, expected));
-
 
 /// Test if the given string contains valid UTF-8 text.
 ///
@@ -271,9 +266,7 @@ void requireValidUtf8(UnitTest &test, std::string_view text);
 /// @param text The UTF-8 text to validate.
 void requireValidUtf8(UnitTest &test, std::u8string_view text);
 
-
 /// Convenience macro to call `requireValidUtf8()` for the current test instance.
 #define REQUIRE_VALID_UTF8(str) WITH_CONTEXT(erbsland::unittest::th::requireValidUtf8(*this, str));
-
 
 }

@@ -2,7 +2,6 @@
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-
 #include "TestHelper.hpp"
 
 #include <ExamplePriority.hpp>
@@ -11,9 +10,7 @@
 #include <string>
 #include <vector>
 
-
 using erbsland::ExamplePriority;
-
 
 TESTED_TARGETS(ExamplePriority)
 class PriorityTest final : public UNITTEST_SUBCLASS(TestHelper) {
@@ -40,8 +37,7 @@ public:
             ExamplePriority::Low,
             ExamplePriority::Medium,
             ExamplePriority::High,
-            ExamplePriority::Highest
-        };
+            ExamplePriority::Highest};
         WITH_CONTEXT(requireStrictOrder(sequence));
     }
 
@@ -55,8 +51,7 @@ public:
             {ExamplePriority::Low, "Low"},
             {ExamplePriority::Medium, "Medium"},
             {ExamplePriority::High, "High"},
-            {ExamplePriority::Highest, "Highest"}
-        };
+            {ExamplePriority::Highest, "Highest"}};
         for (const auto &[priority, expectedString] : testData) {
             REQUIRE_EQUAL(priority.toString(), expectedString);
         }
@@ -72,11 +67,9 @@ public:
             {"Low", ExamplePriority::Low},
             {"Medium", ExamplePriority::Medium},
             {"High", ExamplePriority::High},
-            {"Highest", ExamplePriority::Highest}
-        };
+            {"Highest", ExamplePriority::Highest}};
         for (const auto &[string, expectedPriority] : testData) {
             REQUIRE_EQUAL(ExamplePriority::fromString(string), expectedPriority);
         }
     }
 };
-

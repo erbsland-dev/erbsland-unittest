@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "Controller.hpp"
 
-
 #include "AssertFailed.hpp"
 #include "Demangle.hpp"
 #include "TestBase.hpp"
@@ -17,29 +16,21 @@
 #include <sstream>
 #include <thread>
 
-
 namespace erbsland::unittest {
 
-
-Controller::Controller() noexcept
-    : _console(new Console()) {
+Controller::Controller() noexcept : _console(new Console()) {
 }
-
 
 Controller::~Controller() {
     delete _console;
 }
 
-
-auto Controller::instance() -> Controller* {
+auto Controller::instance() -> Controller * {
     static std::once_flag storageOnce; // Flag to synchronize controller creation.
     static Controller *storage = nullptr;
-    std::call_once(storageOnce, []() -> void {
-        storage = new Controller();
-    });
+    std::call_once(storageOnce, []() -> void { storage = new Controller(); });
     return storage;
 }
-
 
 auto Controller::main(int argc, char **argv) -> int {
     if (auto result = parseCommandLine(argc, argv); result != 0) {
@@ -48,9 +39,7 @@ auto Controller::main(int argc, char **argv) -> int {
     // Reset the formatting to make sure the output always starts in the same color.
     console()->resetFormatting();
     // Sort the test classes by name, as registration may change depending on the compilation order.
-    std::ranges::stable_sort(
-        _testClasses,
-        [](const auto &a, const auto &b) -> bool { return a->name() < b->name(); });
+    std::ranges::stable_sort(_testClasses, [](const auto &a, const auto &b) -> bool { return a->name() < b->name(); });
     // Create the initial set of tests.
     if (_filter.hasExclusiveSet()) {
         // disable all.
@@ -139,7 +128,7 @@ auto Controller::main(int argc, char **argv) -> int {
                 auto exceptionMessage = std::string(ex.what());
                 text.str({});
                 text << "Exception Type: " << demangleTypeName(exceptionType) << "\n"
-                    << "Exception Message: " << exceptionMessage;
+                     << "Exception Message: " << exceptionMessage;
                 console()->writeDebug(text.str());
                 errorCapture->addDebugInfo(text.str());
                 ++errors;
@@ -147,7 +136,7 @@ auto Controller::main(int argc, char **argv) -> int {
                     break;
                 }
                 continue;
-            } catch(...) {
+            } catch (...) {
                 auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Unknown exception while creating the unit test instance.");
                 errorCapture->addContextInfo("Unknown exception while creating the unit test instance.");
@@ -189,25 +178,24 @@ auto Controller::main(int argc, char **argv) -> int {
                 if (test->metaData().isPrintMethod()) {
                     _printMethodRunning = true;
                     text.str({});
-                    text << "---{ start output from " << testClass->shortName()
-                        << " / " << test->shortName() << " }---";
+                    text << "---{ start output from " << testClass->shortName() << " / " << test->shortName()
+                         << " }---";
                     console()->writeDebug(text.str());
                 }
                 testClass->callTest(i);
                 if (test->metaData().isPrintMethod()) {
                     _printMethodRunning = false;
                     text.str({});
-                    text << "---{ end output from " << testClass->shortName()
-                         << " / " << test->shortName() << " }---";
+                    text << "---{ end output from " << testClass->shortName() << " / " << test->shortName() << " }---";
                     console()->writeDebug(text.str());
                 }
                 if (_waitAfterEachTest) {
                     std::this_thread::sleep_for(std::chrono::seconds{1});
                 }
                 console()->finishTask("OK!", ConsoleColor::Green);
-            } catch(const AssertFailed&) {
+            } catch (const AssertFailed &) {
                 ++errors;
-            } catch (const std::exception &ex) { \
+            } catch (const std::exception &ex) {
                 auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Exception outside of assert clause.");
                 errorCapture->addContextInfo("Exception outside of assert clause.");
@@ -215,11 +203,11 @@ auto Controller::main(int argc, char **argv) -> int {
                 auto exceptionMessage = std::string(ex.what());
                 text.str({});
                 text << "Exception Type: " << demangleTypeName(exceptionType) << "\n"
-                    << "Exception Message: " << exceptionMessage;
+                     << "Exception Message: " << exceptionMessage;
                 console()->writeDebug(text.str());
                 errorCapture->addDebugInfo(text.str());
                 ++errors;
-            } catch(...) {
+            } catch (...) {
                 auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
                 console()->writeErrorInfo("Unknown exception outside of assert clause.");
                 errorCapture->addContextInfo("Unknown exception outside of assert clause.");
@@ -242,12 +230,9 @@ auto Controller::main(int argc, char **argv) -> int {
             for (std::size_t i = 0; it != _capturedErrors.end() && i < 3; ++i, ++it) {
                 const auto &errorCapture = *it;
                 text.str({});
-                text << "Error " << static_cast<int>(i + 1) << " - "
-                    << errorCapture->suite() << " / " << errorCapture->test();
-                console()->writeErrorTaskLine(
-                    text.str(),
-                    errorCapture->result(),
-                    errorCapture->resultColor());
+                text << "Error " << static_cast<int>(i + 1) << " - " << errorCapture->suite() << " / "
+                     << errorCapture->test();
+                console()->writeErrorTaskLine(text.str(), errorCapture->result(), errorCapture->resultColor());
                 const auto &context = errorCapture->contextInfo();
                 for (const auto &line : context) {
                     console()->writeErrorInfo(line);
@@ -270,16 +255,13 @@ auto Controller::main(int argc, char **argv) -> int {
     return 0;
 }
 
-
 void Controller::addTestClass(TestClassBase *testClass) noexcept {
     _testClasses.push_back(testClass);
 }
 
-
 auto Controller::executablePath() -> std::filesystem::path {
     return _executablePath;
 }
-
 
 auto Controller::parseCommandLine(int argc, char **argv) -> int {
     // capture the executable path.
@@ -287,7 +269,7 @@ auto Controller::parseCommandLine(int argc, char **argv) -> int {
         _executablePath = std::filesystem::path(argv[0]);
         try {
             _executablePath = std::filesystem::absolute(_executablePath);
-        } catch (const std::filesystem::filesystem_error&) {
+        } catch (const std::filesystem::filesystem_error &) {
             // ignore
         }
     }
@@ -352,15 +334,15 @@ auto Controller::parseCommandLine(int argc, char **argv) -> int {
                 return 1;
             }
             switch (type) {
-                case FilterOption::Exclusive:
-                    rule->exclusive.insert(value);
-                    break;
-                case FilterOption::Included:
-                    rule->included.insert(value);
-                    break;
-                case FilterOption::Excluded:
-                    rule->excluded.insert(value);
-                    break;
+            case FilterOption::Exclusive:
+                rule->exclusive.insert(value);
+                break;
+            case FilterOption::Included:
+                rule->included.insert(value);
+                break;
+            case FilterOption::Excluded:
+                rule->excluded.insert(value);
+                break;
             }
         } else {
             std::stringstream text;
@@ -376,34 +358,33 @@ auto Controller::parseCommandLine(int argc, char **argv) -> int {
 void Controller::printHelp() {
     std::stringstream text;
     text << "Erbsland Unit Test Help:\n"
-        << "  -h/--help ......... Display this help\n"
-        << "  -v/--verbose ...... Display verbose messages. Skipped tests.\n"
-        << "  -e ................ Stop at the first error.\n"
-        << "  -l/--list ......... List all suites and tests. Do not run any test.\n"
-        << "  -c/--no-color ..... Do not colorize the output and disable status updates.\n"
-        << "  -s/--no-summary ... Do not list the first three errors at the end of the run.\n"
-        << "  name:<name> ....... Exclusively run tests with the specified test or class name (case sensitive).\n"
-        << "  +name:<name> ...... Run tests with the specified test or class name, even optional ones.\n"
-        << "  -name:<name> ...... Skip tests with the specified test or class name.\n"
-        << "  target:<target> ... Exclusively run tests for the specified target.\n"
-        << "  +target:<target> .. Run tests with for the specified target, even optional ones.\n"
-        << "  -target:<target> .. Skip tests with for the specified target.\n"
-        << "  tag:<tag> ......... Exclusively run tests with the specified tags.\n"
-        << "  +tag:<tag> ........ Run tests with the specified tags, even optional ones.\n"
-        << "  -tag:<tag> ........ Skip tests with the specified tags.\n"
-        << "\n"
-        << "By default all tests that are not marked with `SKIP_BY_DEFAULT()` are enabled.\n"
-        << "You can individually add `+` or remove `-` tests from this initial set.\n"
-        << "\n"
-        << "If you specify one or more options like `<opt>:<tag>`, only tests with \n"
-        << "are enabled, and further `+/-` options will change this set.\n"
-        << "\n"
-        << "The processing order of the options is <opt>, +<opt>, -<opt> and does not depend\n"
-        << "on the order how they are specified on the command line. Therefore `-` always have\n"
-        << "the highest priority and will skip these tests no mather what was specified otherwise.\n";
+         << "  -h/--help ......... Display this help\n"
+         << "  -v/--verbose ...... Display verbose messages. Skipped tests.\n"
+         << "  -e ................ Stop at the first error.\n"
+         << "  -l/--list ......... List all suites and tests. Do not run any test.\n"
+         << "  -c/--no-color ..... Do not colorize the output and disable status updates.\n"
+         << "  -s/--no-summary ... Do not list the first three errors at the end of the run.\n"
+         << "  name:<name> ....... Exclusively run tests with the specified test or class name (case sensitive).\n"
+         << "  +name:<name> ...... Run tests with the specified test or class name, even optional ones.\n"
+         << "  -name:<name> ...... Skip tests with the specified test or class name.\n"
+         << "  target:<target> ... Exclusively run tests for the specified target.\n"
+         << "  +target:<target> .. Run tests with for the specified target, even optional ones.\n"
+         << "  -target:<target> .. Skip tests with for the specified target.\n"
+         << "  tag:<tag> ......... Exclusively run tests with the specified tags.\n"
+         << "  +tag:<tag> ........ Run tests with the specified tags, even optional ones.\n"
+         << "  -tag:<tag> ........ Skip tests with the specified tags.\n"
+         << "\n"
+         << "By default all tests that are not marked with `SKIP_BY_DEFAULT()` are enabled.\n"
+         << "You can individually add `+` or remove `-` tests from this initial set.\n"
+         << "\n"
+         << "If you specify one or more options like `<opt>:<tag>`, only tests with \n"
+         << "are enabled, and further `+/-` options will change this set.\n"
+         << "\n"
+         << "The processing order of the options is <opt>, +<opt>, -<opt> and does not depend\n"
+         << "on the order how they are specified on the command line. Therefore `-` always have\n"
+         << "the highest priority and will skip these tests no mather what was specified otherwise.\n";
     console()->writeLine(text.str());
 }
-
 
 void Controller::printList() {
     console()->writeLine("===[ List all test suites and tests ]===");
@@ -416,11 +397,9 @@ void Controller::printList() {
     console()->writeSuccess("Done!");
 }
 
-
 auto Controller::console() const noexcept -> Console * {
     return _console;
 }
-
 
 void Controller::writeFromUnitTest(const std::string &text) {
     if (_printMethodRunning) {
@@ -430,14 +409,11 @@ void Controller::writeFromUnitTest(const std::string &text) {
     }
 }
 
-
 auto Controller::reportError(const std::string &result, ConsoleColor textColor) -> ErrorCapturePtr {
     auto errorCapture = std::make_shared<ErrorCapture>(_currentSuite, _currentTest, result, textColor);
     _capturedErrors.push_back(errorCapture);
     console()->finishTask(result, textColor);
-    return  errorCapture;
+    return errorCapture;
 }
 
-
 }
-

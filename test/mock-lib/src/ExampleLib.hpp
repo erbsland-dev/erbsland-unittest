@@ -3,13 +3,10 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
-#include <string>
 #include <cstdint>
-
+#include <string>
 
 namespace erbsland {
-
 
 /// The interface of the example library.
 ///
@@ -64,6 +61,4 @@ private:
     std::string _name;
 };
 
-
 }
-

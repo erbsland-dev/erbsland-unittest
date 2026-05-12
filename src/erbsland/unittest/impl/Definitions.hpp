@@ -3,15 +3,12 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 // This is a copy of some of the definitions found in the `Definitions.hpp` file from ErbslandCore.
 // It is included in ErbslandUnitTest to keep this project dependency free.
-
 
 #include <cassert>
 #include <cstdint>
 #include <cstdlib>
-
 
 // Roughly detect the platform and compiler for API access.
 #if _WIN32 || _WIN64
@@ -31,7 +28,6 @@
 #endif
 #endif
 
-
 // Roughly detect the compiler.
 #if defined(__clang__)
 #define ERBSLAND_COMPILER_CLANG
@@ -40,7 +36,6 @@
 #elif defined(_MSC_VER)
 #define ERBSLAND_COMPILER_MSVC
 #endif
-
 
 // Basic checks about the environment.
 #ifdef ERBSLAND_OS_WINDOWS
@@ -57,13 +52,11 @@
 #endif
 #endif
 
-
 // Define the `erbsland::unittest` namespace and import it into the `erbsland` namespace.
 namespace erbsland {
 namespace unittest {}
 using namespace ::erbsland::unittest;
 };
-
 
 // Allow to disable the short namespace if it causes conflicts.
 #ifndef ERBSLAND_NO_SHORT_NAMESPACE
@@ -73,5 +66,3 @@ namespace ERBSLAND_SHORT_NAMESPACE = erbsland;
 namespace el = erbsland;
 #endif
 #endif
-
-

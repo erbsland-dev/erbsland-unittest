@@ -2,14 +2,10 @@
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-
 #include <erbsland/unittest/UnitTest.hpp>
-
 #include <ExampleLib.hpp>
 
-
 using erbsland::ExampleLib;
-
 
 TESTED_TARGETS(ExampleLib)
 class BasicTest final : public el::UnitTest {
@@ -58,6 +54,4 @@ public:
         exampleLib.setName("alila");
         REQUIRE_FALSE(exampleLib.isNamePalindrome());
     }
-
 };
-

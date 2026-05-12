@@ -3,50 +3,40 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "Console.hpp"
 
-
 #include "MetaData.hpp"
 
 #include <iostream>
 #include <utility>
 
-
 namespace erbsland::unittest {
-
 
 void Console::setUseColor(bool enabled) {
     _useColor = enabled;
 }
 
-
 void Console::flush() {
     std::cout.flush();
 }
-
 
 void Console::writeLine(const std::string &text) {
     writeLineWithColor(text);
 }
 
-
 void Console::writeDebug(const std::string &text) {
     writeLineWithColor(text, ConsoleColor::DarkGray);
 }
-
 
 void Console::writeError(const std::string &text) {
     writeLineWithColor(text, ConsoleColor::Red);
 }
 
-
 void Console::writeErrorInfo(const std::string &text) {
     writeLineWithColor(text, ConsoleColor::Orange);
 }
 
-
 void Console::writeSuccess(const std::string &text) {
     writeLineWithColor(text, ConsoleColor::Green);
 }
-
 
 void Console::writeLineWithColor(const std::string &text, const ConsoleColor textColor) {
     beforeWriteLine();
@@ -63,11 +53,8 @@ void Console::writeLineWithColor(const std::string &text, const ConsoleColor tex
     afterWriteLine();
 }
 
-
 auto Console::createTaskLine(
-    const TaskInfo &taskInfo,
-    const std::string &status,
-    const ConsoleColor statusColor) noexcept -> ConsoleLine {
+    const TaskInfo &taskInfo, const std::string &status, const ConsoleColor statusColor) noexcept -> ConsoleLine {
 
     ConsoleLine line;
     if (status.empty()) {
@@ -87,7 +74,6 @@ auto Console::createTaskLine(
     return line;
 }
 
-
 void Console::startTask(const std::string &text, int taskNumber, int totalTasks) {
     _currentTask.taskNumber = taskNumber;
     _currentTask.totalTasks = totalTasks;
@@ -95,7 +81,6 @@ void Console::startTask(const std::string &text, int taskNumber, int totalTasks)
     _currentTaskLine = createTaskLine(_currentTask, {}, {});
     writeTaskLine();
 }
-
 
 void Console::finishTask(const std::string &result, ConsoleColor textColor) {
     clearTaskLine();
@@ -105,7 +90,6 @@ void Console::finishTask(const std::string &result, ConsoleColor textColor) {
     _currentTask = {};
 }
 
-
 void Console::writeTaskLine() {
     if (!_useColor) {
         return;
@@ -114,13 +98,11 @@ void Console::writeTaskLine() {
     flush();
 }
 
-
 void Console::clearTaskLine() {
     if (_useColor) {
         std::cout << "\x1b[1F\x1b[0K";
     }
 }
-
 
 void Console::beforeWriteLine() {
     if (!_currentTaskLine.empty()) {
@@ -128,13 +110,11 @@ void Console::beforeWriteLine() {
     }
 }
 
-
 void Console::afterWriteLine() {
     if (!_currentTaskLine.empty()) {
         writeTaskLine();
     }
 }
-
 
 void Console::writeTestEntry(const std::string &type, const MetaData &metaData) {
     ConsoleLine result;
@@ -174,7 +154,6 @@ void Console::writeTestEntry(const std::string &type, const MetaData &metaData) 
     sendLineSynchronized(result);
 }
 
-
 void Console::resetFormatting() {
     if (_useColor) {
         _currentForeground = {};
@@ -184,11 +163,7 @@ void Console::resetFormatting() {
     }
 }
 
-
-void Console::writeErrorTaskLine(
-    const std::string &task,
-    const std::string &result,
-    const ConsoleColor textColor) {
+void Console::writeErrorTaskLine(const std::string &task, const std::string &result, const ConsoleColor textColor) {
 
     ConsoleLine line;
     line.addText(task);
@@ -196,7 +171,6 @@ void Console::writeErrorTaskLine(
     line.addText(result, textColor);
     sendLineSynchronized(line);
 }
-
 
 void Console::sendLineSynchronized(const ConsoleLine &line) noexcept {
     std::unique_lock lock{_mutex};
@@ -217,6 +191,4 @@ void Console::sendLineSynchronized(const ConsoleLine &line) noexcept {
     flush();
 }
 
-
 }
-

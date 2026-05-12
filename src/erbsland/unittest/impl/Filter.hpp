@@ -3,21 +3,13 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include <algorithm>
 #include <set>
 #include <string>
 
-
 namespace erbsland::unittest {
 
-
-enum class FilterOption {
-    Exclusive,
-    Included,
-    Excluded
-};
-
+enum class FilterOption { Exclusive, Included, Excluded };
 
 struct FilterRule {
     std::set<std::string> exclusive;
@@ -32,30 +24,40 @@ struct FilterRule {
         std::string result;
         if (!exclusive.empty()) {
             result += "only use";
-            std::for_each(exclusive.cbegin(), exclusive.cend(), [&](auto x) { result += " '"; result += x; result += "'"; });
+            std::for_each(exclusive.cbegin(), exclusive.cend(), [&](auto x) {
+                result += " '";
+                result += x;
+                result += "'";
+            });
             result += " ";
         }
         if (!included.empty()) {
             result += "include";
-            std::for_each(included.cbegin(), included.cend(), [&](auto x) { result += " '"; result += x; result += "'"; });
+            std::for_each(included.cbegin(), included.cend(), [&](auto x) {
+                result += " '";
+                result += x;
+                result += "'";
+            });
             result += " ";
         }
         if (!excluded.empty()) {
             result += "exclude";
-            std::for_each(excluded.cbegin(), excluded.cend(), [&](auto x) { result += " '"; result += x; result += "'"; });
+            std::for_each(excluded.cbegin(), excluded.cend(), [&](auto x) {
+                result += " '";
+                result += x;
+                result += "'";
+            });
             result += " ";
         }
         return result;
     }
 };
 
-
 struct FilterSet {
     const std::set<std::string> &names;
     const std::set<std::string> &tags;
     const std::set<std::string> &targets;
 };
-
 
 struct Filter {
     FilterRule names;
@@ -68,19 +70,17 @@ struct Filter {
 
     [[nodiscard]] inline auto set(FilterOption option) const -> FilterSet {
         switch (option) {
-            case FilterOption::Exclusive:
-            default:
-                return FilterSet{names.exclusive, tags.exclusive, targets.exclusive};
-            case FilterOption::Included:
-                return FilterSet{names.included, tags.included, targets.included};
-            case FilterOption::Excluded:
-                return FilterSet{names.excluded, tags.excluded, targets.excluded};
+        case FilterOption::Exclusive:
+        default:
+            return FilterSet{names.exclusive, tags.exclusive, targets.exclusive};
+        case FilterOption::Included:
+            return FilterSet{names.included, tags.included, targets.included};
+        case FilterOption::Excluded:
+            return FilterSet{names.excluded, tags.excluded, targets.excluded};
         }
     }
 
-    [[nodiscard]] inline auto isEmpty() const -> bool {
-        return names.isEmpty() && tags.isEmpty() && targets.isEmpty();
-    }
+    [[nodiscard]] inline auto isEmpty() const -> bool { return names.isEmpty() && tags.isEmpty() && targets.isEmpty(); }
 
     [[nodiscard]] inline auto toString() const -> std::string {
         std::string result;
@@ -101,6 +101,5 @@ struct Filter {
         return result;
     }
 };
-
 
 }

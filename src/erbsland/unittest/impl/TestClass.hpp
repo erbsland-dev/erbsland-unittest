@@ -3,52 +3,37 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include "Test.hpp"
 #include "TestBase.hpp"
 #include "TestClassBase.hpp"
 
 #include <memory>
 
-
 namespace erbsland::unittest {
-
 
 /// @internal
 /// A test class of a certain unittest class type.
-///
-template<typename T>
+template <typename T>
 class TestClass : public TestClassBase {
 public:
     /// ctor
-    ///
-    explicit TestClass(MetaData metaData) : TestClassBase(std::move(metaData)) {
-    }
-
+    explicit TestClass(MetaData metaData) : TestClassBase(std::move(metaData)) {}
     /// dtor
-    ///
-    ~TestClass() override {
-        delete _unitTest;
-    }
+    ~TestClass() override { delete _unitTest; }
 
 public:
     /// Add a test to this test class.
-    ///
-    void addTest(typename Test<T>::TestFunction fn, const MetaData& metaData) {
+    void addTest(typename Test<T>::TestFunction fn, const MetaData &metaData) {
         _tests.emplace_back(std::make_shared<Test<T>>(fn, metaData));
     }
 
-    [[nodiscard]] auto testCount() const -> std::size_t override {
-        return _tests.size();
-    }
+    [[nodiscard]] auto testCount() const -> std::size_t override { return _tests.size(); }
 
-    [[nodiscard]] auto testMetaData(std::size_t index) const -> const MetaData& override {
+    [[nodiscard]] auto testMetaData(std::size_t index) const -> const MetaData & override {
         return _tests[index]->metaData();
     }
 
-    [[nodiscard]] auto test(std::size_t index) const -> TestBase* override {
-        return _tests[index].get();
-    }
+    [[nodiscard]] auto test(std::size_t index) const -> TestBase * override { return _tests[index].get(); }
 
     void callTest(std::size_t index) override {
         if (!_unitTest) {
@@ -59,9 +44,7 @@ public:
         _unitTest->tearDown();
     }
 
-    void createUnitTest() override {
-        _unitTest = new T();
-    }
+    void createUnitTest() override { _unitTest = new T(); }
 
     [[nodiscard]] auto isEnabled() const -> bool override {
         for (const auto &test : _tests) {
@@ -83,9 +66,7 @@ public:
 
 private:
     std::vector<std::shared_ptr<Test<T>>> _tests{}; ///< A list of tests in this class.
-    T* _unitTest{}; ///< The local unittest instance.
+    T *_unitTest{};                                 ///< The local unittest instance.
 };
 
-
 }
-

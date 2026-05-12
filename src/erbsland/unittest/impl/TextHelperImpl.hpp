@@ -4,7 +4,6 @@
 
 #pragma once
 
-
 #include "ConsoleLine.hpp"
 
 #include <algorithm>
@@ -212,9 +211,7 @@ template <AnyStringOrStringView tStringView>
 }
 
 /// Compare a pattern that contains a wildcard '*' or '?'.
-///
 /// The pattern may contain *one* '*' or one or more '?' wildcards.
-///
 /// @param pattern The pattern string to match. May contain *one* '*' or one or more '?' wildcards.
 /// @param str The string to compare against the pattern.
 /// @return True if the pattern matches the string; otherwise, false.
@@ -250,10 +247,9 @@ auto createSideBySideComparison(const tActual &actual, const tExpected &expected
     }
     std::size_t expectedWidth = 1;
     if (expected.size() > 0) {
-        expectedWidth = characterCount(
-            *std::max_element(expected.begin(), expected.end(), [](const auto &a, const auto &b) -> bool {
-                return characterCount(a) < characterCount(b);
-            }));
+        expectedWidth = characterCount(*std::max_element(expected.begin(),
+            expected.end(),
+            [](const auto &a, const auto &b) -> bool { return characterCount(a) < characterCount(b); }));
     }
     const auto actualHeader = std::format("Actual ({})", actual.size());
     const auto expectedHeader = std::format("Expected ({})", expected.size());

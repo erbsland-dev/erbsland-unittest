@@ -2,16 +2,12 @@
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-
 #include <erbsland/unittest/UnitTest.hpp>
-
 #include <ExampleLib.hpp>
 
 #include <sstream>
 
-
 using erbsland::ExampleLib;
-
 
 TESTED_TARGETS(ExampleLib)
 class ContextTest final : public el::UnitTest {
@@ -25,7 +21,7 @@ public:
             text += std::format("    getName() = \"{}\"\n", exampleLib.getName());
             text += std::format("    getNameLength() = {}\n", exampleLib.getNameLength());
             return text;
-        } catch(...) {
+        } catch (...) {
             return {"Unexpected Exception"};
         }
     }
@@ -56,4 +52,3 @@ public:
         WITH_CONTEXT(setAndVerifyName_error("Lisa"));
     }
 };
-

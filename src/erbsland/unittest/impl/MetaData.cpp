@@ -3,24 +3,16 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "MetaData.hpp"
 
-
 namespace erbsland::unittest {
 
-
-MetaData::MetaData(const std::string& name)
-    : _name{name}, _shortName{name}, _flags{0} {
+MetaData::MetaData(const std::string &name) : _name{name}, _shortName{name}, _flags{0} {
 }
 
-
-MetaData::MetaData(
-    const std::string &name,
+MetaData::MetaData(const std::string &name,
     const std::vector<std::string> &tags,
     const std::vector<std::string> &testedTargets,
-    Flags flags) noexcept
-:
-    _name{name},
-    _shortName{name},
-    _flags{flags} {
+    Flags flags) noexcept :
+    _name{name}, _shortName{name}, _flags{flags} {
 
     for (const auto &tag : tags) {
         _tags.insert(tag);
@@ -45,7 +37,6 @@ MetaData::MetaData(
     }
 }
 
-
 auto MetaData::matches(const Filter &filter, FilterOption option) const noexcept -> bool {
     const auto &filterSet = filter.set(option);
     if (filterSet.names.find(_name) != filterSet.names.cend()) {
@@ -55,36 +46,33 @@ auto MetaData::matches(const Filter &filter, FilterOption option) const noexcept
         return true;
     }
     if (std::any_of(_tags.cbegin(), _tags.cend(), [&](const auto &tag) -> bool {
-        return filterSet.tags.find(tag) != filterSet.tags.cend(); })) {
+            return filterSet.tags.find(tag) != filterSet.tags.cend();
+        })) {
         return true;
     }
     if (std::any_of(_targets.cbegin(), _targets.cend(), [&](const auto &target) -> bool {
-        return filterSet.targets.find(target) != filterSet.targets.cend(); })) {
+            return filterSet.targets.find(target) != filterSet.targets.cend();
+        })) {
         return true;
     }
     return false;
 }
 
-
 auto MetaData::name() const noexcept -> const std::string & {
     return _name;
 }
-
 
 auto MetaData::shortName() const noexcept -> const std::string & {
     return _shortName;
 }
 
-
 auto MetaData::tags() const noexcept -> const std::set<std::string> & {
     return _tags;
 }
 
-
 auto MetaData::targets() const noexcept -> const std::set<std::string> & {
     return _targets;
 }
-
 
 auto MetaData::isSkipByDefault() const noexcept -> bool {
     return (_flags & SkipByDefault) != 0;
@@ -93,6 +81,5 @@ auto MetaData::isSkipByDefault() const noexcept -> bool {
 auto MetaData::isPrintMethod() const noexcept -> bool {
     return (_flags & PrintMethod) != 0;
 }
-
 
 }

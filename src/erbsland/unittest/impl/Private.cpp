@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "Private.hpp"
 
-
 #include "AssertFailed.hpp"
 #include "AssertFlags.hpp"
 #include "Controller.hpp"
@@ -14,14 +13,9 @@
 
 #include <sstream>
 
-
 namespace erbsland::unittest {
 
-
-void Private::handleAssertResult(
-    AssertResult result,
-    const AssertContext &context,
-    UnitTest *unitTest) {
+void Private::handleAssertResult(AssertResult result, const AssertContext &context, UnitTest *unitTest) {
 
     ErrorCapturePtr errorCapture;
     if (result == UnexpectedException) {
@@ -45,7 +39,7 @@ void Private::handleAssertResult(
         console->writeError(text.str());
     } else if (!context.exceptionType.empty()) {
         text << "Exception Type: " << demangleTypeName(context.exceptionType) << "\n"
-            << "Exception Message: " << context.exceptionMessage;
+             << "Exception Message: " << context.exceptionMessage;
         console->writeDebug(text.str());
         errorCapture->addDebugInfo(text.str());
     }
@@ -56,7 +50,7 @@ void Private::handleAssertResult(
             if (i != _contextStack.size()) {
                 text << "\n";
             }
-            text << "[" << i << "]: " << _contextStack[i-1]->toString();
+            text << "[" << i << "]: " << _contextStack[i - 1]->toString();
         }
         console->writeErrorInfo(text.str());
         errorCapture->addContextInfo(text.str());
@@ -73,11 +67,9 @@ void Private::handleAssertResult(
     }
 }
 
-
 void Private::addContext(AssertContext *context) noexcept {
     _contextStack.push_back(context);
 }
-
 
 void Private::removeContext(AssertContext *context) noexcept {
     if (_contextStack.empty() || _contextStack.back() != context) {
@@ -88,6 +80,4 @@ void Private::removeContext(AssertContext *context) noexcept {
     }
 }
 
-
 }
-

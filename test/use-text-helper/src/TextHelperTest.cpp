@@ -2,13 +2,10 @@
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-
 #include <erbsland/unittest/TextHelper.hpp>
 #include <erbsland/unittest/UnitTest.hpp>
 
-
 namespace th = erbsland::unittest::th;
-
 
 class TextHelperTest final : public el::UnitTest {
 public:
@@ -115,9 +112,7 @@ public:
             const auto expectedWStr = std::wstring{wchar_t{0x56A9}, wchar_t{0x12FF}};
             REQUIRE_EQUAL(th::stdWStringFromHex("56a9 12ff"), expectedWStr);
         } else {
-            const auto expectedWStr = std::wstring{
-                static_cast<wchar_t>(0x12345678),
-                static_cast<wchar_t>(0x1BC49283)};
+            const auto expectedWStr = std::wstring{static_cast<wchar_t>(0x12345678), static_cast<wchar_t>(0x1BC49283)};
             REQUIRE_EQUAL(th::stdWStringFromHex("12345678 1BC49283"), expectedWStr);
         }
 
@@ -231,13 +226,13 @@ public:
             "different",
         };
         auto comparisonStr = th::impl::createSideBySideComparison(actual, expected);
-        const auto expectedComparisonStr = th::splitLines(
-            "| Actual (2)                  |     | Expected (3)                |\n"
-            "|-----------------------------|-----|-----------------------------|\n"
-            "| one two three four five six | === | one two three four five six |\n"
-            "| different                   |  X  | another line                |\n"
-            "|                             |  X  | last line                   |\n"
-            "|-----------------------------|-----|-----------------------------|");
+        const auto expectedComparisonStr =
+            th::splitLines("| Actual (2)                  |     | Expected (3)                |\n"
+                           "|-----------------------------|-----|-----------------------------|\n"
+                           "| one two three four five six | === | one two three four five six |\n"
+                           "| different                   |  X  | another line                |\n"
+                           "|                             |  X  | last line                   |\n"
+                           "|-----------------------------|-----|-----------------------------|");
         const auto comparisonLines = th::splitLines(comparisonStr);
         REQUIRE_EQUAL(comparisonLines.size(), expectedComparisonStr.size());
         for (auto index = std::size_t{0}; index < comparisonLines.size(); ++index) {

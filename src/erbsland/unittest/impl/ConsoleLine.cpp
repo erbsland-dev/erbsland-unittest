@@ -3,24 +3,20 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "ConsoleLine.hpp"
 
-
 #include <algorithm>
 #include <format>
 #include <numeric>
 
-
 namespace erbsland::unittest {
 
-
 ConsoleLine::ConsoleLine(const std::string &text, const ConsoleColor foreground, const ConsoleColor background) noexcept
-    : _parts{1, Part{utf8RemoveControlCharacters(text), foreground, background}} {
+    :
+    _parts{1, Part{utf8RemoveControlCharacters(text), foreground, background}} {
 }
-
 
 auto ConsoleLine::empty() const noexcept -> bool {
     return length() == 0;
 }
-
 
 auto ConsoleLine::length() const noexcept -> std::size_t {
     return std::accumulate(_parts.begin(), _parts.end(), std::size_t{0}, [](auto sum, const auto &part) {
@@ -28,27 +24,20 @@ auto ConsoleLine::length() const noexcept -> std::size_t {
     });
 }
 
-
-auto ConsoleLine::parts() const noexcept -> const std::vector<Part>& {
+auto ConsoleLine::parts() const noexcept -> const std::vector<Part> & {
     return _parts;
 }
 
-
 void ConsoleLine::addText(
-    const std::string &text,
-    const ConsoleColor foreground,
-    const ConsoleColor background) noexcept {
+    const std::string &text, const ConsoleColor foreground, const ConsoleColor background) noexcept {
 
     _parts.emplace_back(Part{utf8RemoveControlCharacters(text), foreground, background});
 }
 
-
 auto ConsoleLine::utf8Length(const std::string_view &text) noexcept -> std::size_t {
-    return std::count_if(text.begin(), text.end(), [](unsigned char character) -> bool {
-        return (character & 0xC0) != 0x80;
-    });
+    return std::count_if(
+        text.begin(), text.end(), [](unsigned char character) -> bool { return (character & 0xC0) != 0x80; });
 }
-
 
 auto ConsoleLine::utf8RemoveControlCharacters(const std::string_view &text) noexcept -> std::string {
     std::string result;
@@ -63,21 +52,14 @@ auto ConsoleLine::utf8RemoveControlCharacters(const std::string_view &text) noex
     return result;
 }
 
-
 /// Processes a potentially valid UTF-8 encoded character from the input text, appending a representation of the
 /// character to the result string. This function ensures that the UTF-8 data is safe and properly encoded.
 /// Invalid or incomplete data will be represented by an escaped hexadecimal notation.
-///
 /// @param currentIndex Reference to the current index in the text to be processed.
 ///     Will be updated to point to the next character index after processing multibyte sequences.
 /// @param text The string view containing the UTF-8 encoded text to process.
 /// @param result The string to which the processed and validated character representation will be appended.
-///
-void processSafeUtf8Character(
-    std::size_t &currentIndex,
-    const std::string_view &text,
-    std::string &result) {
-
+void processSafeUtf8Character(std::size_t &currentIndex, const std::string_view &text, std::string &result) {
     const auto asByte = static_cast<uint8_t>(text.at(currentIndex));
     std::size_t cSize = 0;
     char32_t unicodeValue{};
@@ -117,28 +99,33 @@ void processSafeUtf8Character(
     }
 }
 
-
 /// Processes a single character from the input text, appending a representation of the character to the result string.
 /// This function ensures that the character is safe and properly encoded.
-///
 /// @param currentIndex Reference to the current index in the text to be processed.
 ///     Will be updated to point to the next character index after processing multibyte sequences.
 /// @param text The string view containing the UTF-8 encoded text to process.
 /// @param result The string to which the processed and validated character representation will be appended.
-///
-void processCharacterForSafeUtf8Encoding(
-    std::size_t &currentIndex,
-    const std::string_view &text,
-    std::string &result) {
+void processCharacterForSafeUtf8Encoding(std::size_t &currentIndex, const std::string_view &text, std::string &result) {
 
     const auto character = text.at(currentIndex);
     switch (character) {
-    case '\n': result.append("\\n"); return;
-    case '\r': result.append("\\r"); return;
-    case '\t': result.append("\\t"); return;
-    case '\\': result.append("\\\\"); return;
-    case '\"': result.append("\\\""); return;
-    default: break;
+    case '\n':
+        result.append("\\n");
+        return;
+    case '\r':
+        result.append("\\r");
+        return;
+    case '\t':
+        result.append("\\t");
+        return;
+    case '\\':
+        result.append("\\\\");
+        return;
+    case '\"':
+        result.append("\\\"");
+        return;
+    default:
+        break;
     }
 
     const auto asByte = static_cast<uint8_t>(character);
@@ -150,7 +137,6 @@ void processCharacterForSafeUtf8Encoding(
         processSafeUtf8Character(currentIndex, text, result);
     }
 }
-
 
 auto ConsoleLine::utf8SafeString(const std::string_view &text, const std::size_t maxLength) noexcept -> std::string {
     std::string result;
@@ -169,6 +155,4 @@ auto ConsoleLine::utf8SafeString(const std::string_view &text, const std::size_t
     return result;
 }
 
-
 }
-

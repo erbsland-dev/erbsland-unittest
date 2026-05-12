@@ -3,39 +3,32 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "UnitTest.hpp"
 
-
 namespace erbsland::unittest {
-
 
 auto UnitTest::additionalErrorMessages() -> std::string {
     return {};
 }
 
-
 void UnitTest::setUp() {
     // empty
 }
-
 
 void UnitTest::tearDown() {
     // empty
 }
 
-
 auto UnitTest::unitTestExecutablePath() -> std::filesystem::path {
     return fh::unitTestExecutablePath();
 }
 
-
-void UnitTest::runWithContext(
-    const SourceLocation &sourceLocation,
+void UnitTest::runWithContext(const SourceLocation &sourceLocation,
     const std::function<void()> &testFn,
     const std::function<std::string()> &diagnoseFn) {
 
     AssertContext context(this, 0, "runWithContext", "", sourceLocation);
     try {
         testFn();
-    } catch(const ::erbsland::unittest::AssertFailed&) {
+    } catch (const ::erbsland::unittest::AssertFailed &) {
         if (diagnoseFn != nullptr) {
             Controller::instance()->console()->writeDebug(diagnoseFn());
         }
@@ -44,17 +37,13 @@ void UnitTest::runWithContext(
         context.exceptionType = std::string(typeid(ex).name());
         context.exceptionMessage = std::string(ex.what());
         context.unexpectedException();
-    } catch(...) { \
+    } catch (...) {
         context.unexpectedException();
     }
 }
-
 
 void UnitTest::consoleWriteLine(const std::string &text) {
     Controller::instance()->writeFromUnitTest(text);
 }
 
-
-
 }
-

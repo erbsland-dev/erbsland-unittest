@@ -3,22 +3,15 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include <exception>
-
 
 namespace erbsland::unittest {
 
-
 /// @internal
 /// The exception which is thrown whenever an assert has failed.
-///
-class AssertFailed : public std::exception
-{
+class AssertFailed : public std::exception {
 public:
     AssertFailed() = default;
 };
 
-
 }
-

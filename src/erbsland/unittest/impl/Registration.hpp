@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include "Controller.hpp"
 #include "MetaData.hpp"
 #include "TestClass.hpp"
@@ -13,20 +12,15 @@
 #include <type_traits>
 #include <vector>
 
-
 namespace erbsland::unittest {
-
 
 /// @internal
 /// A helper class to automatically register unit test classes.
-///
-template<class T>
-class Registration
-{
+template <class T>
+class Registration {
 public:
     explicit Registration(
-        MetaData metaData,
-        std::vector<std::tuple<void (T::*)(), MetaData>> testMethods = {}) noexcept {
+        MetaData metaData, std::vector<std::tuple<void (T::*)(), MetaData>> testMethods = {}) noexcept {
         auto testClass = new TestClass<T>(metaData);
         for (const auto &[fn, md] : testMethods) {
             testClass->addTest(fn, md);
@@ -35,13 +29,10 @@ public:
     }
 };
 
-
 /// @internal
 /// A helper class to automatically register unit test classes.
-///
-template<class T>
-class ManualRegistration
-{
+template <class T>
+class ManualRegistration {
 public:
     explicit ManualRegistration(const char *className) noexcept {
         auto testClass = new TestClass<T>(MetaData{std::string{className}});
@@ -52,6 +43,4 @@ public:
     }
 };
 
-
 }
-

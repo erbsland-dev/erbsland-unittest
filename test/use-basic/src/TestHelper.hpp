@@ -3,9 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #pragma once
 
-
 #include <erbsland/unittest/UnitTest.hpp>
-
 
 class TestHelper : public el::UnitTest {
 public:
@@ -17,10 +15,8 @@ public:
     ///
     /// The test always puts `a<n>` on the left, and `b<n>` on the right side of the operator.
     ///
-    template<typename A, typename B>
-    void requireAllOperators(
-        const A &a1, const A &a2, const A &a3,
-        const B &b1, const B &b2, const B &b3) {
+    template <typename A, typename B>
+    void requireAllOperators(const A &a1, const A &a2, const A &a3, const B &b1, const B &b2, const B &b3) {
 
         // Test ==
         REQUIRE(a1 == b1);
@@ -100,7 +96,7 @@ public:
         REQUIRE((a3 <=> b3) == std::strong_ordering::equal);
     }
 
-    template<typename T, std::size_t tSize>
+    template <typename T, std::size_t tSize>
     void requireStrictOrder(const std::array<T, tSize> &valuesInOrder) {
         for (std::size_t i = 0; i < tSize; ++i) {
             for (std::size_t j = 0; j < tSize; ++j) {
@@ -121,4 +117,3 @@ public:
         }
     }
 };
-

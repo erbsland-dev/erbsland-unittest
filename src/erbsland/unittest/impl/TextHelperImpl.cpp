@@ -3,11 +3,9 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "TextHelperImpl.hpp"
 
-
 #include "../TextHelper.hpp"
 
 #include <exception>
-
 
 namespace erbsland::unittest::th::impl {
 

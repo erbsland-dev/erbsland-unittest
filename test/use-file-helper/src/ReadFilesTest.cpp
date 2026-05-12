@@ -2,12 +2,10 @@
 // According to the copyright terms specified in the file "COPYRIGHT.md".
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-
-#include <erbsland/unittest/UnitTest.hpp>
 #include <erbsland/unittest/FileHelper.hpp>
+#include <erbsland/unittest/UnitTest.hpp>
 
 #include <filesystem>
-
 
 namespace fh = erbsland::unittest::fh;
 namespace fs = std::filesystem;
@@ -41,4 +39,3 @@ public:
         REQUIRE_EQUAL(lines[2], "😀");
     }
 };
-

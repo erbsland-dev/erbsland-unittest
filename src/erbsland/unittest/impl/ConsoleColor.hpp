@@ -2,14 +2,11 @@
 // All rights are reserved. Detailed terms are specified in the "COPYRIGHT.md" file.
 #pragma once
 
-
 #include <cstdint>
 #include <map>
 #include <string>
 
-
 namespace erbsland::unittest {
-
 
 class ConsoleColor final {
 public:
@@ -51,12 +48,10 @@ public:
     [[nodiscard]] auto background() const noexcept -> std::string;
 
 private:
-    static auto colorMap() noexcept -> const std::map<Value, std::tuple<int, int>>&;
+    static auto colorMap() noexcept -> const std::map<Value, std::tuple<int, int>> &;
 
 private:
     Value _value{Default};
 };
 
-
 }
-
