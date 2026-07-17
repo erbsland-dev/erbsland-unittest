@@ -12,5 +12,4 @@ add_executable(unittest-basic
 target_compile_features(unittest-basic PRIVATE cxx_std_20)
 target_link_libraries(unittest-basic PRIVATE mock-lib)
 target_include_directories(unittest-basic PRIVATE ../mock-lib/src)
-erbsland_unittest(TARGET unittest-basic ENABLE_WARNINGS)
-
+erbsland_unittest(TARGET unittest-basic ENABLE_WARNINGS PRECOMPILE_HEADERS)

@@ -17,7 +17,7 @@ function(erbsland_unittest)
 
     # Collect all paths
     cmake_path(SET _unittestScriptDir NORMALIZE "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
-    cmake_path(SET _unittestDir NORMALIZE "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../..")
+    cmake_path(SET _unittestDir NORMALIZE "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/..")
     cmake_path(SET _unittestSrcDir NORMALIZE "${_unittestDir}/src")
     cmake_path(SET _unittestIncludeDir NORMALIZE "${_unittestDir}/include")
     get_target_property(_targetSources ${ARGS_TARGET} SOURCES)
@@ -63,6 +63,13 @@ function(erbsland_unittest)
         endif()
     endforeach()
     file(APPEND "${_testSourcesPath}" "]\n# EOF\n\n")
+
+    # The generated metadata sources include the test files. Keep the original files visible in the target for IDEs
+    # and metadata dependencies, but do not compile them as additional translation units.
+    set_source_files_properties(${_sourcesToProcess}
+            TARGET_DIRECTORY ${ARGS_TARGET}
+            PROPERTIES HEADER_FILE_ONLY TRUE
+    )
 
     # Group source and header files.
     foreach(src IN LISTS _sourcesToProcess)
@@ -130,4 +137,3 @@ function(erbsland_unittest)
         endif()
     endif()
 endfunction()
-

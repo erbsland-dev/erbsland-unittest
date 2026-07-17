@@ -2,6 +2,12 @@
 Changelog
 *********
 
+Version 1.8.1
+=============
+
+*   Avoid compiling test source files twice when generating unit-test metadata.
+*   Fix the precompiled-header include path after the CMake directory reorganization.
+
 Version 1.8.0
 =============
 

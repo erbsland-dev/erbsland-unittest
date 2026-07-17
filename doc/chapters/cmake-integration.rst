@@ -78,6 +78,10 @@ Finally, invoke ``erbsland_unittest`` with the ``TARGET`` parameter set to the n
 
 The ``erbsland_unittest`` call performs several tasks for you: it first adds the required include directories and links your unit test with the Erbsland Unit Test library. It then integrates the metadata script into the project, automatically generating all necessary structures to register your test suites, test functions, and added metadata.
 
+Test source files remain part of the CMake target so they are visible in IDEs and tracked as metadata dependencies.
+The generated metadata translation units include these files and are their only compilation units; CMake does not
+compile the original test sources a second time.
+
 Utilizing the ``erbsland_unittest`` Function
 ============================================
 

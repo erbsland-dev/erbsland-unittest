@@ -6,9 +6,19 @@
 
 using erbsland::ExampleLib;
 
+namespace erbsland::unittest::test {
+
+auto compiledOnce() -> int {
+    return 42;
+}
+
+}
+
 TESTED_TARGETS(ExampleLib)
 class BasicTest final : public el::UnitTest {
 public:
+    void testSourceIsCompiledOnce() { REQUIRE(erbsland::unittest::test::compiledOnce() == 42); }
+
     TESTED_TARGETS(getMagicWord)
     void testMagic() {
         auto exampleLib = ExampleLib{};
