@@ -1,0 +1,30 @@
+*********
+Changelog
+*********
+
+Version 1.9.0
+=============
+
+*   Added optional per-test and per-suite timing with ``-t`` / ``--time-tests``.
+*   Added ``--time-stat`` timing statistics, including totals, averages, medians, and the ten slowest tests and suites.
+*   Added a self-test suite that verifies command-line handling, timing reports, output formatting, and runner failure handling.
+*   Improved the test runner internals by separating command-line parsing, output rendering, and timing collection.
+
+Version 1.8.1
+=============
+
+*   Avoid compiling test source files twice when generating unit-test metadata.
+*   Fix the precompiled-header include path after the CMake directory reorganization.
+
+Version 1.8.0
+=============
+
+*   Changed the license from LGPL-3.0 to the less restrictive Apache-2.0.
+*   Updated the code style to align with the latest Erbsland Code guidelines.
+*   Hardened the build process and GitHub workflows.
+*   Introduced build utilities with a ``pre_commit`` action.
+*   Minor fixes, such as explicitly converting ``std::ptrdiff_t`` to ``std::size_t``.
+*   Removed unused dependencies from the documentation build.
+*   Reorganized the directory structure, moved Cmake related files to a new `cmake` directory.
+*   Removed `tools`, it is replaced by `utilities` and `cmake`.
+*   Updated all dependencies to the latest versions.
