@@ -9,6 +9,8 @@ target_sources(erbsland-unittest PRIVATE
         AssertFailed.hpp
         AssertFlags.hpp
         AssertResult.hpp
+        CommandLine.cpp
+        CommandLine.hpp
         Console.cpp
         Console.hpp
         ConsoleColor.cpp
@@ -26,6 +28,8 @@ target_sources(erbsland-unittest PRIVATE
         Macros.hpp
         MetaData.cpp
         MetaData.hpp
+        Output.cpp
+        Output.hpp
         Private.cpp
         Private.hpp
         Registration.hpp
@@ -38,4 +42,6 @@ target_sources(erbsland-unittest PRIVATE
         TestClassBase.hpp
         TextHelperImpl.cpp
         TextHelperImpl.hpp
+        Timing.cpp
+        Timing.hpp
 )

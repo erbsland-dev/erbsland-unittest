@@ -34,6 +34,8 @@ public: // settings
 public: // usage
     /// Write a regular line of text.
     void writeLine(const std::string &text);
+    /// Write a formatted line.
+    void writeLine(const ConsoleLine &line);
     /// Write debug messages (adds a newline).
     void writeDebug(const std::string &text);
     /// Write an error message (adds a newline).
@@ -56,7 +58,10 @@ public: // status handling.
     void startTask(const std::string &text, int taskNumber, int totalTasks);
     /// Finish a task.
     /// Finishes the task, by replacing the status line with "<task text> <result>".
-    void finishTask(const std::string &result, ConsoleColor textColor = {});
+    /// @param result The task result.
+    /// @param textColor The result color.
+    /// @param duration An optional formatted duration.
+    void finishTask(const std::string &result, ConsoleColor textColor = {}, const std::string &duration = {});
     /// Write a task line for error reporting.
     void writeErrorTaskLine(const std::string &task, const std::string &result, ConsoleColor textColor);
 
@@ -68,8 +73,10 @@ private: // low level API
     /// @param status An optional status. Empty means "running".
     /// @param statusColor An optional status color, only used if a status is set.
     /// @return The prepared status line.
-    [[nodiscard]] auto createTaskLine(
-        const TaskInfo &taskInfo, const std::string &status, ConsoleColor statusColor) noexcept -> ConsoleLine;
+    [[nodiscard]] auto createTaskLine(const TaskInfo &taskInfo,
+        const std::string &status,
+        ConsoleColor statusColor,
+        const std::string &duration) noexcept -> ConsoleLine;
     /// Flush the output buffer.
     void flush();
     /// Called before a write line.

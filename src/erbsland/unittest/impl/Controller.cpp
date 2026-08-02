@@ -3,255 +3,39 @@
 #include "Controller.hpp"
 
 #include "AssertFailed.hpp"
-#include "Demangle.hpp"
 #include "TestBase.hpp"
 #include "TestClassBase.hpp"
 
 #include <algorithm>
 #include <chrono>
-#include <format>
+#include <exception>
 #include <mutex>
 #include <ranges>
-#include <sstream>
 #include <thread>
 
 namespace erbsland::unittest {
 
-Controller::Controller() noexcept : _console(new Console()) {
-}
-
-Controller::~Controller() {
-    delete _console;
-}
-
 auto Controller::instance() -> Controller * {
-    static std::once_flag storageOnce; // Flag to synchronize controller creation.
+    static auto storageOnce = std::once_flag{};
     static Controller *storage = nullptr;
     std::call_once(storageOnce, []() -> void { storage = new Controller(); });
     return storage;
 }
 
-auto Controller::main(int argc, char **argv) -> int {
-    if (auto result = parseCommandLine(argc, argv); result != 0) {
-        return result;
+auto Controller::main(const int argc, char **argv) -> int {
+    const auto commandLineResult = _commandLine.parse(argc, argv, _output);
+    if (commandLineResult.action == CommandLine::Action::Exit) {
+        return commandLineResult.exitCode;
     }
-    // Reset the formatting to make sure the output always starts in the same color.
-    console()->resetFormatting();
-    // Sort the test classes by name, as registration may change depending on the compilation order.
-    std::ranges::stable_sort(_testClasses, [](const auto &a, const auto &b) -> bool { return a->name() < b->name(); });
-    // Create the initial set of tests.
-    if (_filter.hasExclusiveSet()) {
-        // disable all.
-        for (auto &testClass : _testClasses) {
-            testClass->setEnabled(false);
-        }
-        // enable all exclusive tests.
-        for (auto &testClass : _testClasses) {
-            for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-                if (testClass->testMetaData(i).matches(_filter, FilterOption::Exclusive)) {
-                    testClass->test(i)->setEnabled(true);
-                }
-            }
-            if (testClass->metaData().matches(_filter, FilterOption::Exclusive)) {
-                testClass->setEnabled(true);
-            }
-        }
+    if (commandLineResult.action == CommandLine::Action::List) {
+        _output.writeList(_testClasses);
+        return commandLineResult.exitCode;
     }
-    // Now apply all including options.
-    for (auto &testClass : _testClasses) {
-        for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-            if (testClass->testMetaData(i).matches(_filter, FilterOption::Included)) {
-                testClass->test(i)->setEnabled(true);
-            }
-        }
-        if (testClass->metaData().matches(_filter, FilterOption::Included)) {
-            testClass->setEnabled(true);
-        }
-    }
-    // Finally apply all excluding options.
-    for (auto &testClass : _testClasses) {
-        for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-            if (testClass->testMetaData(i).matches(_filter, FilterOption::Excluded)) {
-                testClass->test(i)->setEnabled(false);
-            }
-        }
-        if (testClass->metaData().matches(_filter, FilterOption::Excluded)) {
-            testClass->setEnabled(false);
-        }
-    }
-    // Count enabled tests.
-    int testCount = 0;
-    int testClassCount = 0;
-    for (auto &testClass : _testClasses) {
-        for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-            if (testClass->test(i)->isEnabled()) {
-                ++testCount;
-            }
-        }
-        if (testClass->isEnabled()) {
-            ++testClassCount;
-        }
-    }
-    std::stringstream text;
-    text << "===[ Running " << testClassCount << " test suites with " << testCount << " tests ]===\n";
-    auto timeAsString = []() -> std::string {
-        using namespace std::chrono;
-        auto now = system_clock::now();
-        return std::format("{:%c}", now);
-    };
-    text << "Start Time: " << timeAsString();
-    const auto startTime = std::chrono::steady_clock::now();
-    if (!_filter.isEmpty()) {
-        text << "\nFilter: " << _filter.toString();
-    } else {
-        text << "\nFilter: no filter set";
-    }
-    console()->writeLine(text.str());
-    int errors = 0;
-    const int totalTaskCount = testClassCount + testCount;
-    int currentTask = 1;
-    for (auto testClass : _testClasses) {
-        text.str({});
-        text << "Suite: " << testClass->shortName();
-        _currentSuite = testClass->shortName();
-        _currentTest = "<ctor>";
-        if (testClass->isEnabled()) {
-            console()->startTask(text.str(), currentTask, totalTaskCount);
-            try {
-                testClass->createUnitTest();
-            } catch (const std::exception &ex) {
-                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
-                console()->writeLine("Exception while creating the unit test instance.");
-                errorCapture->addContextInfo("Exception while creating the unit test instance.");
-                auto exceptionType = std::string(typeid(ex).name());
-                auto exceptionMessage = std::string(ex.what());
-                text.str({});
-                text << "Exception Type: " << demangleTypeName(exceptionType) << "\n"
-                     << "Exception Message: " << exceptionMessage;
-                console()->writeDebug(text.str());
-                errorCapture->addDebugInfo(text.str());
-                ++errors;
-                if (_stopAtFirstError) {
-                    break;
-                }
-                continue;
-            } catch (...) {
-                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
-                console()->writeErrorInfo("Unknown exception while creating the unit test instance.");
-                errorCapture->addContextInfo("Unknown exception while creating the unit test instance.");
-                console()->writeDebug("Unknown exception.");
-                ++errors;
-                continue;
-            }
-            if (_waitAfterEachTest) {
-                std::this_thread::sleep_for(std::chrono::seconds{1});
-            }
-            console()->finishTask("Running", ConsoleColor::White);
-            ++currentTask;
-        } else {
-            if (_verbose) {
-                console()->startTask(text.str(), currentTask, totalTaskCount);
-                console()->finishTask("Skipped", ConsoleColor::Orange);
-            }
-            continue;
-        }
-        for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-            auto test = testClass->test(i);
-            text.str({});
-            if (test->metaData().isPrintMethod()) {
-                text << "  Print: " << test->shortName();
-            } else {
-                text << "  Test: " << test->shortName();
-            }
-            if (test->isEnabled()) {
-                console()->startTask(text.str(), currentTask, totalTaskCount);
-            } else {
-                if (_verbose) {
-                    console()->startTask(text.str(), currentTask, totalTaskCount);
-                    console()->finishTask("Skipped", ConsoleColor::Orange);
-                }
-                continue;
-            }
-            _currentTest = test->shortName();
-            try {
-                if (test->metaData().isPrintMethod()) {
-                    _printMethodRunning = true;
-                    text.str({});
-                    text << "---{ start output from " << testClass->shortName() << " / " << test->shortName()
-                         << " }---";
-                    console()->writeDebug(text.str());
-                }
-                testClass->callTest(i);
-                if (test->metaData().isPrintMethod()) {
-                    _printMethodRunning = false;
-                    text.str({});
-                    text << "---{ end output from " << testClass->shortName() << " / " << test->shortName() << " }---";
-                    console()->writeDebug(text.str());
-                }
-                if (_waitAfterEachTest) {
-                    std::this_thread::sleep_for(std::chrono::seconds{1});
-                }
-                console()->finishTask("OK!", ConsoleColor::Green);
-            } catch (const AssertFailed &) {
-                ++errors;
-            } catch (const std::exception &ex) {
-                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
-                console()->writeErrorInfo("Exception outside of assert clause.");
-                errorCapture->addContextInfo("Exception outside of assert clause.");
-                auto exceptionType = std::string(typeid(ex).name());
-                auto exceptionMessage = std::string(ex.what());
-                text.str({});
-                text << "Exception Type: " << demangleTypeName(exceptionType) << "\n"
-                     << "Exception Message: " << exceptionMessage;
-                console()->writeDebug(text.str());
-                errorCapture->addDebugInfo(text.str());
-                ++errors;
-            } catch (...) {
-                auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
-                console()->writeErrorInfo("Unknown exception outside of assert clause.");
-                errorCapture->addContextInfo("Unknown exception outside of assert clause.");
-                console()->writeDebug("Unknown exception.");
-                ++errors;
-            }
-            ++currentTask;
-            if (_stopAtFirstError && errors > 0) {
-                break;
-            }
-        }
-        if (_stopAtFirstError && errors > 0) {
-            break;
-        }
-    }
-    if (errors > 0) {
-        if (_showSummary) {
-            console()->writeError("===[ ERROR SUMMARY ]===");
-            auto it = _capturedErrors.begin();
-            for (std::size_t i = 0; it != _capturedErrors.end() && i < 3; ++i, ++it) {
-                const auto &errorCapture = *it;
-                text.str({});
-                text << "Error " << static_cast<int>(i + 1) << " - " << errorCapture->suite() << " / "
-                     << errorCapture->test();
-                console()->writeErrorTaskLine(text.str(), errorCapture->result(), errorCapture->resultColor());
-                const auto &context = errorCapture->contextInfo();
-                for (const auto &line : context) {
-                    console()->writeErrorInfo(line);
-                }
-            }
-        }
-        text.str({});
-        text << "===[ ERROR | " << errors << " errors while running the tests. ]===";
-        console()->writeError(text.str());
-        console()->resetFormatting();
-        return 1;
-    }
-    const auto endTime = std::chrono::steady_clock::now();
-    const std::chrono::duration<double> testDuration = endTime - startTime;
-    text.str({});
-    text << "Total Test Duration: " << std::setprecision(3) << testDuration.count() << " seconds";
-    console()->writeLine(text.str());
-    console()->writeSuccess("===[ SUCCESS | Successfully run all tests without errors. ]===");
-    console()->resetFormatting();
-    return 0;
+
+    _output.resetFormatting();
+    sortTestClasses();
+    applyFilter();
+    return runTests(countEnabledTests());
 }
 
 void Controller::addTestClass(TestClassBase *testClass) noexcept {
@@ -259,159 +43,276 @@ void Controller::addTestClass(TestClassBase *testClass) noexcept {
 }
 
 auto Controller::executablePath() -> std::filesystem::path {
-    return _executablePath;
-}
-
-auto Controller::parseCommandLine(int argc, char **argv) -> int {
-    // capture the executable path.
-    if (argc > 0) {
-        _executablePath = std::filesystem::path(argv[0]);
-        try {
-            _executablePath = std::filesystem::absolute(_executablePath);
-        } catch (const std::filesystem::filesystem_error &) {
-            // ignore
-        }
-    }
-    // convert the arguments.
-    std::vector<std::string> args;
-    for (int i = 1; i < argc; ++i) {
-        args.emplace_back(argv[i]);
-    }
-    for (const auto &arg : args) {
-        if (arg == "-h" || arg == "-help" || arg == "--help") {
-            printHelp();
-            return 1;
-        }
-        if (arg == "-l" || arg == "--list") {
-            printList();
-            return 1;
-        }
-        if (arg == "-v" || arg == "--verbose") {
-            _verbose = true;
-            continue;
-        }
-        if (arg == "-s") {
-            _stopAtFirstError = true;
-            continue;
-        }
-        if (arg == "-c" || arg == "--no-color") {
-            console()->setUseColor(false);
-            continue;
-        }
-        if (arg == "-s" || arg == "--no-summary") {
-            _showSummary = false;
-            continue;
-        }
-        if (arg == "-Xw") {
-            _waitAfterEachTest = true;
-            continue;
-        }
-        auto index = arg.find(':');
-        if (index > 0) {
-            std::string option = arg.substr(0, index);
-            std::string value = arg.substr(index + 1);
-            FilterOption type = FilterOption::Exclusive;
-            if (option[0] == '+') {
-                type = FilterOption::Included;
-                option = option.substr(1);
-            } else if (option[0] == '-') {
-                type = FilterOption::Excluded;
-                option = option.substr(1);
-            }
-            FilterRule *rule = nullptr;
-            if (option == "name") {
-                rule = &_filter.names;
-            } else if (option == "target") {
-                rule = &_filter.targets;
-            } else if (option == "tag") {
-                rule = &_filter.tags;
-            } else {
-                std::stringstream text;
-                text << "Unknown command line argument \"" << arg << "\"\n\n";
-                console()->writeError(text.str());
-                printHelp();
-                return 1;
-            }
-            switch (type) {
-            case FilterOption::Exclusive:
-                rule->exclusive.insert(value);
-                break;
-            case FilterOption::Included:
-                rule->included.insert(value);
-                break;
-            case FilterOption::Excluded:
-                rule->excluded.insert(value);
-                break;
-            }
-        } else {
-            std::stringstream text;
-            text << "Unknown command line argument \"" << arg << "\"\n\n";
-            console()->writeError(text.str());
-            printHelp();
-            return 1;
-        }
-    }
-    return 0;
-}
-
-void Controller::printHelp() {
-    std::stringstream text;
-    text << "Erbsland Unit Test Help:\n"
-         << "  -h/--help ......... Display this help\n"
-         << "  -v/--verbose ...... Display verbose messages. Skipped tests.\n"
-         << "  -e ................ Stop at the first error.\n"
-         << "  -l/--list ......... List all suites and tests. Do not run any test.\n"
-         << "  -c/--no-color ..... Do not colorize the output and disable status updates.\n"
-         << "  -s/--no-summary ... Do not list the first three errors at the end of the run.\n"
-         << "  name:<name> ....... Exclusively run tests with the specified test or class name (case sensitive).\n"
-         << "  +name:<name> ...... Run tests with the specified test or class name, even optional ones.\n"
-         << "  -name:<name> ...... Skip tests with the specified test or class name.\n"
-         << "  target:<target> ... Exclusively run tests for the specified target.\n"
-         << "  +target:<target> .. Run tests with for the specified target, even optional ones.\n"
-         << "  -target:<target> .. Skip tests with for the specified target.\n"
-         << "  tag:<tag> ......... Exclusively run tests with the specified tags.\n"
-         << "  +tag:<tag> ........ Run tests with the specified tags, even optional ones.\n"
-         << "  -tag:<tag> ........ Skip tests with the specified tags.\n"
-         << "\n"
-         << "By default all tests that are not marked with `SKIP_BY_DEFAULT()` are enabled.\n"
-         << "You can individually add `+` or remove `-` tests from this initial set.\n"
-         << "\n"
-         << "If you specify one or more options like `<opt>:<tag>`, only tests with \n"
-         << "are enabled, and further `+/-` options will change this set.\n"
-         << "\n"
-         << "The processing order of the options is <opt>, +<opt>, -<opt> and does not depend\n"
-         << "on the order how they are specified on the command line. Therefore `-` always have\n"
-         << "the highest priority and will skip these tests no mather what was specified otherwise.\n";
-    console()->writeLine(text.str());
-}
-
-void Controller::printList() {
-    console()->writeLine("===[ List all test suites and tests ]===");
-    for (auto testClass : _testClasses) {
-        console()->writeTestEntry("Suite", testClass->metaData());
-        for (std::size_t i = 0; i < testClass->testCount(); ++i) {
-            console()->writeTestEntry("  Test", testClass->testMetaData(i));
-        }
-    }
-    console()->writeSuccess("Done!");
-}
-
-auto Controller::console() const noexcept -> Console * {
-    return _console;
+    return _commandLine.settings().executablePath;
 }
 
 void Controller::writeFromUnitTest(const std::string &text) {
-    if (_printMethodRunning) {
-        console()->writeLine(text);
-    } else {
-        console()->writeDebug(text);
+    _output.writeFromUnitTest(text);
+}
+
+auto Controller::console() noexcept -> Console * {
+    return _output.console();
+}
+
+void Controller::sortTestClasses() {
+    std::ranges::stable_sort(
+        _testClasses, [](const auto &left, const auto &right) -> bool { return left->name() < right->name(); });
+}
+
+void Controller::applyFilter() {
+    const auto &filter = _commandLine.settings().filter;
+    if (filter.hasExclusiveSet()) {
+        for (auto &testClass : _testClasses) {
+            testClass->setEnabled(false);
+        }
+        for (auto &testClass : _testClasses) {
+            for (std::size_t index = 0; index < testClass->testCount(); ++index) {
+                if (testClass->testMetaData(index).matches(filter, FilterOption::Exclusive)) {
+                    testClass->test(index)->setEnabled(true);
+                }
+            }
+            if (testClass->metaData().matches(filter, FilterOption::Exclusive)) {
+                testClass->setEnabled(true);
+            }
+        }
+    }
+
+    for (auto &testClass : _testClasses) {
+        for (std::size_t index = 0; index < testClass->testCount(); ++index) {
+            if (testClass->testMetaData(index).matches(filter, FilterOption::Included)) {
+                testClass->test(index)->setEnabled(true);
+            }
+        }
+        if (testClass->metaData().matches(filter, FilterOption::Included)) {
+            testClass->setEnabled(true);
+        }
+    }
+
+    for (auto &testClass : _testClasses) {
+        for (std::size_t index = 0; index < testClass->testCount(); ++index) {
+            if (testClass->testMetaData(index).matches(filter, FilterOption::Excluded)) {
+                testClass->test(index)->setEnabled(false);
+            }
+        }
+        if (testClass->metaData().matches(filter, FilterOption::Excluded)) {
+            testClass->setEnabled(false);
+        }
     }
 }
 
-auto Controller::reportError(const std::string &result, ConsoleColor textColor) -> ErrorCapturePtr {
-    auto errorCapture = std::make_shared<ErrorCapture>(_currentSuite, _currentTest, result, textColor);
-    _capturedErrors.push_back(errorCapture);
-    console()->finishTask(result, textColor);
+auto Controller::countEnabledTests() const -> TestCounts {
+    auto result = TestCounts{};
+    for (const auto testClass : _testClasses) {
+        for (std::size_t index = 0; index < testClass->testCount(); ++index) {
+            if (testClass->test(index)->isEnabled()) {
+                ++result.tests;
+            }
+        }
+        if (testClass->isEnabled()) {
+            ++result.suites;
+        }
+    }
+    return result;
+}
+
+auto Controller::runTests(const TestCounts &counts) -> int {
+    _runState = {};
+    _runState.currentTask = 1;
+    _runState.totalTasks = counts.suites + counts.tests;
+    _timingStatistics = {};
+    const auto &settings = _commandLine.settings();
+    _output.writeRunHeader(counts.suites, counts.tests, settings.filter);
+    const auto startTime = std::chrono::steady_clock::now();
+
+    for (const auto testClass : _testClasses) {
+        const auto interrupted = runSuite(testClass);
+        if (interrupted && settings.stopAtFirstError) {
+            break;
+        }
+    }
+    return finishRun(std::chrono::steady_clock::now() - startTime);
+}
+
+auto Controller::runSuite(TestClassBase *testClass) -> bool {
+    const auto suiteStart = std::chrono::steady_clock::now();
+    const auto suiteName = testClass->shortName();
+    const auto suiteTask = "Suite: " + suiteName;
+    const auto &settings = _commandLine.settings();
+    if (!testClass->isEnabled()) {
+        if (settings.verbose) {
+            _output.writeSkippedTask(suiteTask, _runState.currentTask, _runState.totalTasks);
+        }
+        return false;
+    }
+
+    _output.startTask(suiteTask, _runState.currentTask, _runState.totalTasks);
+    beginTask(suiteName, "<ctor>", false);
+    auto interrupted = !constructSuite(testClass);
+    ++_runState.currentTask;
+    for (std::size_t index = 0; !interrupted && index < testClass->testCount(); ++index) {
+        runMethod(testClass, index);
+        if (settings.stopAtFirstError && _runState.errors > 0) {
+            interrupted = true;
+        }
+    }
+
+    const TestDuration suiteDuration = std::chrono::steady_clock::now() - suiteStart;
+    if (isTimingEnabled()) {
+        _timingStatistics.addSuite(suiteName, suiteDuration, interrupted);
+    }
+    if (settings.showTestTime) {
+        _output.writeTimingValue("  Total Time: ", suiteDuration);
+    }
+    return interrupted;
+}
+
+auto Controller::constructSuite(TestClassBase *testClass) -> bool {
+    try {
+        testClass->createUnitTest();
+        waitAfterTask();
+        finishCurrentTask("Running", ConsoleColor::White);
+        return true;
+    } catch (const std::exception &exception) {
+        const auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
+        _output.writeException(errorCapture, "Exception while creating the unit test instance.", exception);
+    } catch (...) {
+        const auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
+        _output.writeUnknownException(errorCapture, "Unknown exception while creating the unit test instance.");
+    }
+    finishCurrentTask(_runState.task.errorResult, _runState.task.errorColor);
+    ++_runState.errors;
+    return false;
+}
+
+void Controller::runMethod(TestClassBase *testClass, const std::size_t index) {
+    const auto test = testClass->test(index);
+    const auto isPrintMethod = test->metaData().isPrintMethod();
+    const auto task = std::string{isPrintMethod ? "  Print: " : "  Test: "} + test->shortName();
+    const auto &settings = _commandLine.settings();
+    if (!test->isEnabled()) {
+        if (settings.verbose) {
+            _output.writeSkippedTask(task, _runState.currentTask, _runState.totalTasks);
+        }
+        return;
+    }
+
+    _output.startTask(task, _runState.currentTask, _runState.totalTasks);
+    beginTask(testClass->shortName(), test->shortName(), true);
+    auto interrupted = false;
+    auto duration = TestDuration{};
+    try {
+        if (isPrintMethod) {
+            _output.beginPrintMethod(_runState.task.suite, _runState.task.test);
+        }
+        _runState.task.start = std::chrono::steady_clock::now();
+        testClass->callTest(index);
+        duration = currentTaskDuration();
+        if (isPrintMethod) {
+            _output.endPrintMethod(_runState.task.suite, _runState.task.test);
+        }
+        waitAfterTask();
+        if (!_runState.task.hadError) {
+            finishCurrentTask("OK!", ConsoleColor::Green, duration);
+        }
+    } catch (const AssertFailed &) {
+        duration = currentTaskDuration();
+        interrupted = true;
+    } catch (const std::exception &exception) {
+        duration = currentTaskDuration();
+        interrupted = true;
+        const auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
+        _output.writeException(errorCapture, "Exception outside of assert clause.", exception);
+    } catch (...) {
+        duration = currentTaskDuration();
+        interrupted = true;
+        const auto errorCapture = reportError("EXCEPTION!", ConsoleColor::Red);
+        _output.writeUnknownException(errorCapture, "Unknown exception outside of assert clause.");
+    }
+
+    _output.cancelPrintMethod();
+    if (_runState.task.hadError) {
+        finishCurrentTask(_runState.task.errorResult, _runState.task.errorColor, duration);
+    }
+    _runState.task.timed = false;
+    if (_runState.task.hadError) {
+        ++_runState.errors;
+    }
+    if (isTimingEnabled()) {
+        const auto kind = isPrintMethod ? TimingKind::Print : TimingKind::Test;
+        _timingStatistics.addMethod(_runState.task.suite, _runState.task.test, kind, duration, interrupted);
+    }
+    ++_runState.currentTask;
+}
+
+auto Controller::finishRun(const TestDuration totalDuration) -> int {
+    const auto &settings = _commandLine.settings();
+    if (_runState.errors > 0) {
+        if (settings.showSummary) {
+            _output.writeErrorSummary();
+        }
+        _output.writeErrorBanner(_runState.errors);
+        if (settings.showTimeStatistics) {
+            _output.writeTimingStatistics(_timingStatistics);
+        }
+        _output.resetFormatting();
+        return 1;
+    }
+
+    if (isTimingEnabled()) {
+        _output.writeTimingValue("Total Test Duration: ", totalDuration);
+    } else {
+        _output.writeLegacyTotalDuration(totalDuration);
+    }
+    _output.writeSuccessBanner();
+    if (settings.showTimeStatistics) {
+        _output.writeTimingStatistics(_timingStatistics);
+    }
+    _output.resetFormatting();
+    return 0;
+}
+
+void Controller::beginTask(const std::string &suite, const std::string &test, const bool timed) {
+    _runState.task = {};
+    _runState.task.suite = suite;
+    _runState.task.test = test;
+    _runState.task.timed = timed;
+}
+
+auto Controller::isTimingEnabled() const noexcept -> bool {
+    const auto &settings = _commandLine.settings();
+    return settings.showTestTime || settings.showTimeStatistics;
+}
+
+auto Controller::currentTaskDuration() const -> TestDuration {
+    if (!_runState.task.timed) {
+        return {};
+    }
+    return std::chrono::steady_clock::now() - _runState.task.start;
+}
+
+void Controller::finishCurrentTask(
+    const std::string &result, const ConsoleColor textColor, const std::optional<TestDuration> duration) {
+    if (_runState.task.finished) {
+        return;
+    }
+    const auto showDuration = _commandLine.settings().showTestTime && _runState.task.timed;
+    _output.finishTask(result, textColor, showDuration, duration.value_or(currentTaskDuration()));
+    _runState.task.finished = true;
+}
+
+void Controller::waitAfterTask() const {
+    if (_commandLine.settings().waitAfterEachTest) {
+        std::this_thread::sleep_for(std::chrono::seconds{1});
+    }
+}
+
+auto Controller::reportError(const std::string &result, const ConsoleColor textColor) -> ErrorCapturePtr {
+    auto errorCapture = _output.captureError(_runState.task.suite, _runState.task.test, result, textColor);
+    if (!_runState.task.hadError) {
+        _runState.task.errorResult = result;
+        _runState.task.errorColor = textColor;
+    }
+    _runState.task.hadError = true;
     return errorCapture;
 }
 

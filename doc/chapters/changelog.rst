@@ -2,6 +2,14 @@
 Changelog
 *********
 
+Version 1.9.0
+=============
+
+*   Added optional per-test and per-suite timing with ``-t`` / ``--time-tests``.
+*   Added ``--time-stat`` timing statistics, including totals, averages, medians, and the ten slowest tests and suites.
+*   Added a self-test suite that verifies command-line handling, timing reports, output formatting, and runner failure handling.
+*   Improved the test runner internals by separating command-line parsing, output rendering, and timing collection.
+
 Version 1.8.1
 =============
 

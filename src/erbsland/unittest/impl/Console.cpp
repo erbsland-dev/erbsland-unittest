@@ -21,6 +21,12 @@ void Console::writeLine(const std::string &text) {
     writeLineWithColor(text);
 }
 
+void Console::writeLine(const ConsoleLine &line) {
+    beforeWriteLine();
+    sendLineSynchronized(line);
+    afterWriteLine();
+}
+
 void Console::writeDebug(const std::string &text) {
     writeLineWithColor(text, ConsoleColor::DarkGray);
 }
@@ -52,8 +58,10 @@ void Console::writeLineWithColor(const std::string &text, const ConsoleColor tex
     afterWriteLine();
 }
 
-auto Console::createTaskLine(
-    const TaskInfo &taskInfo, const std::string &status, const ConsoleColor statusColor) noexcept -> ConsoleLine {
+auto Console::createTaskLine(const TaskInfo &taskInfo,
+    const std::string &status,
+    const ConsoleColor statusColor,
+    const std::string &duration) noexcept -> ConsoleLine {
 
     ConsoleLine line;
     if (status.empty()) {
@@ -68,6 +76,11 @@ auto Console::createTaskLine(
         line.addText("- ");
         line.addText(taskInfo.text, ConsoleColor::White);
         line.addText(" ");
+        if (!duration.empty()) {
+            line.addText("(");
+            line.addText(duration, ConsoleColor::Cyan);
+            line.addText(") ");
+        }
         line.addText(status, statusColor);
     }
     return line;
@@ -77,13 +90,13 @@ void Console::startTask(const std::string &text, int taskNumber, int totalTasks)
     _currentTask.taskNumber = taskNumber;
     _currentTask.totalTasks = totalTasks;
     _currentTask.text = text;
-    _currentTaskLine = createTaskLine(_currentTask, {}, {});
+    _currentTaskLine = createTaskLine(_currentTask, {}, {}, {});
     writeTaskLine();
 }
 
-void Console::finishTask(const std::string &result, ConsoleColor textColor) {
+void Console::finishTask(const std::string &result, ConsoleColor textColor, const std::string &duration) {
     clearTaskLine();
-    _currentTaskLine = createTaskLine(_currentTask, result, textColor);
+    _currentTaskLine = createTaskLine(_currentTask, result, textColor, duration);
     sendLineSynchronized(_currentTaskLine);
     _currentTaskLine = {};
     _currentTask = {};
